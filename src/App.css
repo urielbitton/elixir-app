@@ -16,6 +16,9 @@ html, body {
 .xgrid {
   padding: 100px 0;
 }
+.fgrid {
+  padding: 50px 0 30px 0;
+}
 .left {
   float: left;
 }
@@ -28,7 +31,7 @@ html, body {
 .hidden {
   display: none;
 }
-h1,h2,h3,h4,h5,h6,i,p,li,button,a,span,small,img,section {
+h1,h2,h3,h4,h5,h6,i,p,li,button,a,span,small,img,section, input {
   position: relative;
   margin: 0;
 }
@@ -49,7 +52,7 @@ a {
   text-decoration: none;
   color: #000;
 }
-input, textarea {
+input, textarea, select {
   outline: none;
 }
 hr {
@@ -78,12 +81,13 @@ hr {
   position: absolute;
   padding: 5px;
   font-style: normal;
-  font-weight: 400;
-  transform: scale(1.2,1.2);
+  font-weight: 200;
+  transform: scale(1,1);
   cursor: pointer;
   width: 20px;
   height: 20px;
   color: #333;
+  font-size: 35px;
   transition: all 0.3s;
 }
 .close::before {
@@ -145,7 +149,7 @@ nav h1 span {
   color: #333;
   font-weight: 700;
   padding: 10px 5px;
-  padding-bottom: 60px;
+  padding-bottom: 33px;
   margin: auto 20px;
   text-transform: uppercase;
   display: inline-block;
@@ -176,7 +180,7 @@ nav h1 span {
   position: absolute;
   visibility: hidden;
   opacity: 0;
-  top: 130px;
+  top: 120px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   min-width: 600px;
@@ -189,7 +193,7 @@ nav h1 span {
 .menu > li:hover .tab {
   visibility: visible;
   opacity: 1;
-  top: 80px;
+  top: 60px;
 }
 nav .left, nav .right {
   position: relative;
@@ -302,9 +306,30 @@ nav .right > div {
   background: var(--color);
   color: #333;
 }
+.bgnav {
+  position: absolute;
+  bottom: 80px;
+  z-index: 10;
+}
+.bgnav > div {
+  margin: auto 10px;
+  display: inline-block;
+  width: 28px;
+  height: 25px;
+  opacity: 0.9;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.bgnav > div:hover {
+  opacity: 1;
+}
+.bgnav small {
+  padding: 10px 13px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+}
 
 section {
-  position: relative;
   width: 100%;
 }
 section .sectitle {
@@ -525,6 +550,385 @@ section .secsubtitle {
 .innerbanner a:hover {
   color: #000;
 }
+.section3 {
+  text-align: center;
+  background: #fafafa;
+}
+.section3 .grid > div {
+  position: relative;
+}
+.section3 .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.section3 img {
+  width: 100px;
+  opacity: 0.9;
+}
+.section3 p {
+  font-size: 14px;
+  color: #555;
+  top: 10px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.section3 h5 {
+  font-size: 15px;
+  transition: all 0.3s;
+  top: 0px;
+  color: #aaa;
+  text-transform: uppercase;
+}
+.section3 .grid > div:hover p {
+  opacity: 1;
+  top: 20px;
+}
+.section3 .grid > div:hover h5 {
+  top: 30px;
+  opacity: 0.2;
+}
+.section4 .banner {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px;
+}
+.section4 .banner:hover img {
+  transform: scale(1.1);
+}
+.section4 .banner > div {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.section4 .banner img {
+  width: 100%;
+  height: 450px;
+  transition: all 0.4s;
+}
+.section4 .salediv {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  padding: 10px 30px;
+  width: 400px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  text-align: center;
+  flex-direction: column;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.section4 .salediv:hover {
+  background: #f1f1f1;
+}
+.section4 .salediv h4 {
+  font-size: 60px;
+  text-transform: uppercase;
+  letter-spacing: 25px;
+}
+.section4 .salediv h4::first-letter {
+  margin-left: 25px;
+}
+.section4 .salediv small {
+  font-weight: 700;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 12px;
+}
+.section4 .salediv small::first-letter {
+  margin-left: 12px;
+}
+footer {
+  background: #f1f1f1;
+}
+footer .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 40px 25px;
+}
+footer h2 {
+  font-size: 70px;
+  margin-bottom:20px;
+}
+footer h2 span {
+  color: #aaa;
+}
+footer p {
+  color: #555;
+}
+footer h4 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+footer ul li {
+  margin: 10px 0;
+  padding: 5px 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+footer ul li a {
+  color: #999;
+  transition: all 0.3s;
+  padding-bottom: 2px;
+  padding-right: 5px;
+}
+footer ul a:hover {
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+footer h6 {
+  font-size: 14px;
+  color: #777;
+  text-transform: uppercase;
+}
+footer label {
+  position: relative;
+  width:100%;
+  margin-top: 20px;
+  display: block;
+}
+footer label i {
+  left: -30px;
+  color: #aaa;
+}
+footer input {
+  width: 90%;
+  border: none;
+  background: #fff;
+  padding: 20px 40px 20px 20px;
+}
+footer input::placeholder {
+  color: #aaa;
+}
+footer .socials {
+  position: relative;
+  margin-top: 40px;
+}
+footer .socials > div {
+  position: relative;
+  margin: auto 10px;
+  float: left;
+  border-radius: 100%;
+  width:35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  border: 1px solid #ddd;
+}
+footer .socials > div i {
+  color: #555;
+}
+
+.quickviewcont {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: url('https://i.imgur.com/GSfMhIM.png'), auto;
+  opacity: 0;
+  transition: all 0.4s;
+} 
+.quickviewcont .close {
+  color: #fff;
+  position: absolute;
+  top: 30px;
+  right: 60px;
+}
+.quickview {
+  position: relative;
+  top: -40px;
+  padding: 30px;
+  width: 900px;
+  height: 75vh;
+  background: #fff;
+  box-shadow: 0 1px 30px rgba(0,0,0,0.8);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  cursor: auto;
+  transition: all 0.5s;
+}
+.quickview > div {
+  width: 100%;
+}
+.quickviewimg {
+  height: 500px;
+  width: 100%;
+  transition: all 0.3s;
+}
+.quickviewimg:hover {
+  filter: brightness(60%);
+}
+.quickview .otherimg {
+  position: relative;
+  float: left;
+  width: 70px;
+  height: 70px;
+  background: #ddd;
+  margin-right: 10px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.quickview .otherimg:hover {
+  background: #eee;
+}
+.quickview h2 {
+  margin-top: 10px;
+  font-size: 35px;
+  font-weight: 500;
+  color: #666;
+}
+.quickview h5 {
+  font-size: 18px;
+  margin-top: 10px;
+}
+.quickview p {
+  line-height: 1.7;
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  color: #555;
+}
+.quickview hr {
+  height: 1px;
+  background: #eee;
+  width: 100%;
+}
+.quickview label {
+  display: block;
+  margin-top: 20px;
+}
+.quickview label small {
+  float: left;
+  font-size: 16px;
+  margin-left:20px;
+  top: 8px;
+}
+.quickview label select {
+  float: right;
+  margin-right: 20px;
+  padding: 10px;
+  background: #f1f1f1;
+  border: none;
+  width: 180px;
+  color: #777;
+}
+.quickview .itemnum {
+  float: left;
+}
+.quickview .itemnum > div {
+  float: left;
+  width: 50px;
+  height: 45px;
+  background: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #777;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.quickview .itemnum .num {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  cursor: auto;
+}
+.quickview .subnum:hover, .quickview .addnum:hover {
+  background: #333;
+  color: #fff;
+}  
+.quickview .addtocart {
+  float: left;
+  margin-left: 40px;
+  padding: 15px 25px;
+  background: #111;
+  color: #fff;
+  margin-bottom: 30px;
+}
+.quickview .addtocart:hover {
+  background: #444;
+}
+.quickview .metaitem {
+  position: relative;
+  margin-top: 30px;
+  clear: both;
+}
+.quickview .metaitem h6 {
+  text-transform: uppercase;
+  color: #555;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 15px 0;
+}
+.quickview .metaitem h6 span {
+  font-weight: 400;
+  color: #aaa;
+  text-transform: lowercase;
+  margin-left: 20px;
+}
+.quickview .metaitem > div {
+  float: left;
+  margin-right: 20px;
+  padding: 5px;
+  color: #aaa;
+}
+.quickview .metaitem > div i {
+  cursor: pointer;
+}
+.quickview .metaitem > div i:hover {
+  color: #333;
+}
+.quickview .addtowish {
+  display: block;
+  margin-top: 20px;
+  padding: 20px 30px;
+  background: #111;
+  color: #fff;
+  text-transform: uppercase;
+}
+.quickview .addtowish:hover {
+  background: #444;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -536,3 +940,53 @@ section .secsubtitle {
     width: 95%;
   }
 }
+@media (max-width:1250px) {
+  .sectiongrid {
+    grid-template-columns:repeat(10,1fr);
+  }
+}
+@media (max-width:1080px) {
+  .sectiongrid {
+    grid-template-columns:repeat(6,1fr);
+  }
+  .sectiongrid .large {
+    grid-column: span 6;
+    height: 600px;
+  }
+  footer .grid {
+    grid-template-columns:repeat(2,1fr);
+  }
+  nav .menu {
+    display: none;
+  }
+
+}
+@media (max-width:600px) {
+  footer .grid {
+    grid-template-columns:repeat(1,1fr);
+  }
+  .section2 .innerbanner {
+    width: 100%;
+  }
+  .section2 .innerbanner big {
+    font-size: 80px;
+  }
+  .section4 .salediv {
+    width: 200px;
+  }
+  .section4 .salediv h4 {
+    letter-spacing: 15px;
+    font-size: 40px;
+  }
+  .section4 .salediv small {
+    letter-spacing: 5px;
+  }
+ 
+}
+
+
+
+
+
+
+

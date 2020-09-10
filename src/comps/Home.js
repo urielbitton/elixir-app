@@ -5,9 +5,8 @@ import Section2 from './Section2'
 import Section3 from './Section3'
 import Section4 from './Section4'
 import Footer from './Footer'
-import QuickView from './QuickView'
 
-function Home() {
+function Home() { 
   return (
     <div className="homepage">
       <Mainbg />
@@ -16,7 +15,6 @@ function Home() {
       <Section3 />
       <Section4 />
       <Footer />
-      <QuickView />
     </div>  
   )
 }

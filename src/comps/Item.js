@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 
 function Item(props) { 
 
@@ -24,14 +25,14 @@ function Item(props) {
     <div className="itemcont">
       <div className="imgcont">
         <i className="far fa-heart"></i>
-        <img src={props.link} alt="item"/>
+        <Link to="/product"><img src={props.link} alt="item"/></Link>
         <div className="itemactions">
           <i className="fas fa-shopping-cart"></i>
           <i class="fas fa-search-plus quickviewbtn"></i>
           <i class="fas fa-random"></i>
         </div>
       </div>
-      <h5><a href="#">{props.title}</a></h5>
+      <h5><Link to="/product">{props.title}</Link></h5>
       <small>${props.price}</small>
     </div>
   )

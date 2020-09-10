@@ -16,6 +16,9 @@ html, body {
 .xgrid {
   padding: 100px 0;
 }
+.pgrid {
+  width: 1200px;
+}
 .fgrid {
   padding: 50px 0 30px 0;
 }
@@ -113,7 +116,10 @@ hr {
 .spacerl {
   height: 100px;
 } 
- 
+[re-tab] {
+  display: none;
+} 
+
 nav {
   position: fixed;
   top: 0;
@@ -481,7 +487,7 @@ section .secsubtitle {
 .sectiongrid .large img {
   cursor: default;
 }
-.sectiongrid .itemcont {
+.itemcont {
   position: relative;
   grid-column: span 3;
   grid-row: span 1;
@@ -502,15 +508,19 @@ section .secsubtitle {
 .sectiongrid .imgcont:hover img {
   transform: scale(1.2);
 }
-.sectiongrid .itemcont h5 {
+.itemcont h5 {
   margin-top: 20px;
   font-size: 16px;
   font-weight: 500;
 }
-.sectiongrid .itemcont h5 a {
+.itemcont h5 a {
   color: #777;
+  transition: all 0.2s;
 }
-.sectiongrid .itemcont small {
+.itemcont h5 a:hover {
+  color: var(--color);
+}
+.itemcont small {
   display: block;
   margin-top: 15px;
   color: #333;
@@ -570,7 +580,7 @@ section .secsubtitle {
   top: 0;
   opacity: 1;
   visibility: visible;
-} 
+}   
 .section2 .banner {
   position: relative;
   background-image: url('https://i.imgur.com/qy9wB4B.jpg');
@@ -858,72 +868,84 @@ footer .socials > div i {
   top: -40px;
   padding: 30px;
   width: 900px;
-  height: 75vh;
+  min-height: 75vh;
   background: #fff;
   box-shadow: 0 1px 30px rgba(0,0,0,0.8);
+  cursor: auto;
+  transition: all 0.5s;
+}   
+.productpage .product {
+  width: 90%;
+  grid-gap: 50px;
+}
+.product {
+  position: relative;
+  background: #fff;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
-  cursor: auto;
-  transition: all 0.5s;
 }
-.quickview > div {
+.product > div {
   width: 100%;
 }
-.quickviewimg {
+.productpage .productimg {
+  height: 600px;
+}
+.productimg {
   height: 500px;
   width: 100%;
   transition: all 0.3s;
 }
-.quickviewimg:hover {
+.productimg:hover {
   filter: brightness(60%);
 }
-.quickview .otherimg {
+.product .otherimg {
   position: relative;
   float: left;
   width: 70px;
   height: 70px;
   background: #ddd;
   margin-right: 10px;
+  margin-bottom: 10px;
   transition: all 0.3s;
   cursor: pointer;
 }
-.quickview .otherimg:hover {
+.product .otherimg:hover {
   background: #eee;
 }
-.quickview h2 {
+.product h2 {
   margin-top: 10px;
   font-size: 35px;
   font-weight: 500;
   color: #666;
 }
-.quickview h5 {
+.product h5 {
   font-size: 18px;
   margin-top: 10px;
 }
-.quickview p {
+.product p {
   line-height: 1.7;
   font-size: 15px;
   margin-top: 20px;
   margin-bottom: 50px;
   color: #555;
 }
-.quickview hr {
+.productpage hr {
   height: 1px;
   background: #eee;
   width: 100%;
 }
-.quickview label {
+.product label {
   display: block;
   margin-top: 20px;
 }
-.quickview label small {
+.product label small {
   float: left;
   font-size: 16px;
   margin-left:20px;
   top: 8px;
 }
-.quickview label select {
+.product label select {
   float: right;
   margin-right: 20px;
   padding: 10px;
@@ -932,10 +954,10 @@ footer .socials > div i {
   width: 180px;
   color: #777;
 }
-.quickview .itemnum {
+.product .itemnum {
   float: left;
 }
-.quickview .itemnum > div {
+.product .itemnum > div {
   float: left;
   width: 50px;
   height: 45px;
@@ -948,17 +970,17 @@ footer .socials > div i {
   transition: all 0.3s;
   cursor: pointer;
 }
-.quickview .itemnum .num {
+.product .itemnum .num {
   font-size: 16px;
   color: #333;
   font-weight: 600;
   cursor: auto;
 }
-.quickview .subnum:hover, .quickview .addnum:hover {
+.product .subnum:hover, .product .addnum:hover {
   background: #333;
   color: #fff;
 }  
-.quickview .addtocart {
+.product .addtocart {
   float: left;
   margin-left: 40px;
   padding: 15px 25px;
@@ -966,40 +988,40 @@ footer .socials > div i {
   color: #fff;
   margin-bottom: 30px;
 }
-.quickview .addtocart:hover {
+.product .addtocart:hover {
   background: #444;
 }
-.quickview .metaitem {
+.product .metaitem {
   position: relative;
   margin-top: 30px;
   clear: both;
 }
-.quickview .metaitem h6 {
+.product .metaitem h6 {
   text-transform: uppercase;
   color: #555;
   font-size: 13px;
   font-weight: 700;
   margin: 15px 0;
 }
-.quickview .metaitem h6 span {
+.product .metaitem h6 span {
   font-weight: 400;
   color: #aaa;
   text-transform: lowercase;
   margin-left: 20px;
 }
-.quickview .metaitem > div {
+.product .metaitem > div {
   float: left;
   margin-right: 20px;
   padding: 5px;
   color: #aaa;
 }
-.quickview .metaitem > div i {
+.product .metaitem > div i {
   cursor: pointer;
 }
-.quickview .metaitem > div i:hover {
+.product .metaitem > div i:hover {
   color: #333;
 }
-.quickview .addtowish {
+.product .addtowish {
   display: block;
   margin-top: 20px;
   padding: 20px 30px;
@@ -1007,18 +1029,105 @@ footer .socials > div i {
   color: #fff;
   text-transform: uppercase;
 }
-.quickview .addtowish:hover {
+.product .addtowish:hover {
   background: #444;
 }
 
-
-
-
-
-
-
-
-
+[re-taber="acc1"] {
+  display: block;
+} 
+.productpage .prodaccordion {
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+}
+.productpage .prodaccordion p {
+  line-height: 1.8;
+  color: #777;
+}
+.productpage .prodaccordion h2 {
+  text-align: center;
+  display: inline-block;
+  margin: 20px;
+  color: #aaa;
+  font-size: 30px;
+  cursor: pointer; 
+}
+.productpage .prodaccordion table {
+  margin-top: 40px;
+  width: 100%;
+  border-collapse: collapse;
+}
+.productpage .prodaccordion table tr {
+  border-top: 1px solid #eee;
+}
+.productpage .prodaccordion table tr:nth-child(even) {
+  background: #f5f5f5;
+}
+.productpage .prodaccordion table th {
+  color:#777;
+  padding-left: 10px;
+  font-size: 15px;
+  width: 200px;
+}
+.productpage .prodaccordion table td {
+  padding: 15px 10px;
+  color: #aaa;
+  font-size: 14px;
+}
+.productpage .prodaccordion .activetab {
+  color: #333;
+}
+.productpage .accordion {
+  margin-top: 30px;
+  text-align: left;
+}
+.similarprods h2 {
+  font-size: 35px;
+  color:#333;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.similarprodgrid {
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  grid-column-gap: 30px;
+}
+.similarprods .itemcont {
+  width: 100%;
+}
+.similarprods .itemcont img {
+  width: 300px;
+  height: 350px;
+}
+.pagebanner {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.pagebanner .bannerbg {
+  position: absolute;
+  top:0;
+  width: 100%;
+  height: 60vh;
+  background-image: url('https://i.imgur.com/kp0n6CL.jpg');
+  background-position:center;
+  background-size: cover;
+}
+.pagebanner h1 {
+  font-size: 75px;
+  font-weight:700;
+  color: #444;
+  margin-bottom: 10px;
+}
+.pagebanner h5 {
+  color:#aaa;
+  font-size: 13px;
+  text-transform: uppercase;
+}
 
 
 
@@ -1038,6 +1147,9 @@ footer .socials > div i {
 @media (max-width:1250px) {
   .sectiongrid {
     grid-template-columns:repeat(10,1fr);
+  }
+  .pgrid {
+    width: 95%;
   }
 }
 @media (max-width:1080px) {

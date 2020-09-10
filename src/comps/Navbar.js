@@ -28,13 +28,13 @@ function Navbar() {
     <nav>
       <div className="grid">
         <div className="left">
-          <h1 className="logo">elixir<span>.</span></h1>
+          <Link to="/"><h1 className="logo">elixir<span>.</span></h1></Link>
           <ul className="menu">
             <li>
-              <Link to="#" className="activelink">Home<hr/></Link>
+              <Link to="/" className="activelink">Home<hr/></Link>
             </li>
             <li>
-              <Link to="#">Shop<i className="fas fa-caret-down"></i><hr/></Link>
+              <Link to="shop">Shop<i className="fas fa-caret-down"></i><hr/></Link>
               <div className="tab">
                 <ul>
                   <h4>Women's</h4>
@@ -44,22 +44,22 @@ function Navbar() {
                 </ul>
                 <ul>
                   <h4>Kids</h4>
-                </ul>
+                </ul> 
                 <ul>
                   <h4>Promos</h4>
                 </ul>
               </div> 
             </li>
             <li>
-              <Link to="#">About<i className="fas fa-caret-down"></i><hr/></Link>
+              <Link to="about">About<i className="fas fa-caret-down"></i><hr/></Link>
               <div className="tab"></div>
             </li>
             <li>
-              <Link to="#">Gallery<i className="fas fa-caret-down"></i><hr/></Link>
+              <Link to="gallery">Gallery<i className="fas fa-caret-down"></i><hr/></Link>
               <div className="tab"></div>
             </li>
             <li>
-              <Link to="#">Contact<hr/></Link>
+              <Link to="contact">Contact<hr/></Link>
             </li>
           </ul>
         </div>
@@ -69,7 +69,7 @@ function Navbar() {
           <i class="fas fa-search"></i>
           </div>
           <div className="cartdiv">
-          <i class="fas fa-shopping-cart"></i>
+          <i className="fas fa-shopping-cart"></i>
           <small className="cartitemsnum"><span>0</span></small>
           <div className="cartcont">
             <CartItem name="Tight Fit Jeans" num="2" price="149.00"/>

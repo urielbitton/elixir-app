@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
+import CartItem from './CartItem';
 
 function Navbar() {
 
@@ -62,17 +63,25 @@ function Navbar() {
             </li>
           </ul>
         </div>
-  
+   
         <div className="right">
           <div className="searchdiv">
           <i class="fas fa-search"></i>
           </div>
           <div className="cartdiv">
           <i class="fas fa-shopping-cart"></i>
-          <small className="cartitems"><span>0</span></small>
+          <small className="cartitemsnum"><span>0</span></small>
           <div className="cartcont">
-            <p>No items in your cart.</p>
-            <small>Add Items</small>
+            <CartItem name="Tight Fit Jeans" num="2" price="149.00"/>
+            <CartItem name="Tight Fit Jeans" num="2" price="149.00"/>
+
+            <h4>Subtotal:</h4>
+            <h3>$149.00</h3>
+            <hr/>
+            <button className="viewcartbtn">View Cart</button>
+            <button className="checkoutbtn">Checkout</button>
+            {/*<p>No items in your cart.</p>
+            <small>Add Items</small>*/}
           </div>
           </div>
         </div>

@@ -25,7 +25,7 @@ function Item(props) {
     <div className="itemcont">
       <div className="imgcont">
         <i className="far fa-heart"></i>
-        <Link to="/product"><img src={props.link} alt="item"/></Link>
+        <Link to="/product"><img src={props.img} alt="item"/></Link>
         <div className="itemactions">
           <i className="fas fa-shopping-cart"></i>
           <i class="fas fa-search-plus quickviewbtn"></i>

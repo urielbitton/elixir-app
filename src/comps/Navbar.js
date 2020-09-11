@@ -11,7 +11,7 @@ function Navbar() {
 
     window.onscroll = () => {navSlide()}
     function navSlide() {
-      if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
         navbar.style.cssText = 'height:80px;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,0.07)'
         navleft.style.top = '-15px'
         navright.style.top = '-15px'

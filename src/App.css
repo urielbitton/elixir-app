@@ -959,14 +959,14 @@ footer .socials > div i {
   width: 180px;
   color: #777;
 }
-.product .itemnum {
+.product .itemnum, .carttable .itemnum {
   float: left;
 }
-.product .itemnum > div {
+.product .itemnum > div, .carttable .itemnum > div {
   float: left;
   width: 50px;
   height: 45px;
-  background: #f1f1f1;
+  background: #f7f7f7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -975,16 +975,16 @@ footer .socials > div i {
   transition: all 0.3s;
   cursor: pointer;
 }
-.product .itemnum .num {
+.product .itemnum .num, .carttable .itemnum .num {
   font-size: 16px;
   color: #333;
   font-weight: 600;
   cursor: auto;
 }
-.product .subnum:hover, .product .addnum:hover {
+.product .subnum:hover, .product .addnum:hover, .carttable .subnum:hover, .carttable .addnum:hover {
   background: #333;
   color: #fff;
-}  
+}   
 .product .addtocart {
   float: left;
   margin-left: 40px;
@@ -1132,6 +1132,114 @@ footer .socials > div i {
   font-size: 13px;
   text-transform: uppercase;
 }
+ 
+.carttable {
+  position: relative;
+  margin: 20px auto;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.carttable tr {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 30px;
+}
+.carttable thead th {
+  padding-bottom: 15px;
+}
+.carttable thead th {
+  text-transform: uppercase;
+  color: #777;
+}
+.carttable tbody td {
+  padding: 20px 5px;
+} 
+.carttable tfoot td {
+  padding: 40px 0px;
+} 
+.carttable img {
+  height: 130px;
+  width: 100px;
+} 
+.carttable tbody td img {
+  margin-right: 30px;
+  float: left;
+}
+.carttable tbody td h6 {
+  font-size: 16px;
+  color: #555;
+  font-weight:500;
+  margin-top: 55px;
+}
+.carttable .pricetd {
+  font-weight:500;
+  color: #555;
+}
+.carttable .itemtotaltd {
+  font-weight:700;
+  color: #333;
+}
+.carttable .fa-window-close {
+  font-size: 35px;
+  color: #ddd;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.carttable .fa-window-close:hover {
+  color: var(--color);
+}
+.carttable button {
+  margin: auto 20px;
+  padding: 17px 25px;
+  font-size: 15px;
+  border: 1px solid #111;
+}
+.carttable button.b1 {
+  background: #111;
+  color: #fff;
+}
+.carttable button.b1:hover {
+  background: #333;
+}
+.carttable button.b2 {
+  background: none;
+  color: #333;
+}
+.carttable button.b2:hover {
+  background: #111;
+  color: #fff;
+}
+.subtotaltd h4 {
+  text-align: right;
+  font-size: 16px;
+  color: #777;
+  font-weight: 500;
+}
+.subtotaltd h4 span {
+  font-size: 24px;
+  margin-left: 20px; 
+  color: #111;
+  font-weight: 700;
+}
+.carttable tfoot button {
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

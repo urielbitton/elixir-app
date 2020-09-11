@@ -24,12 +24,14 @@ function Section1() {
             </a>
           </div>
 
-          <Item link="https://i.imgur.com/mgjGwhr.jpg" title="Women's Shoes" price="299.00"/>
-          <Item link="https://i.imgur.com/2lEwsyE.jpg" title="Tight Fit Jeans" price="149.00"/>
-          <Item link="https://i.imgur.com/iFLjPjb.jpg" title="Men's Hoodie" price="89.00"/>
-          <Item link="https://i.imgur.com/Fn8r6E5.jpg" title="Casual T-Shirt" price="129.00"/>
-          <Item link="https://i.imgur.com/TaHouH3.jpg" title="Women's Fur Coat" price="899.00"/>
-          <Item link="https://i.imgur.com/DMRfG7x.jpg" title="Short Fit Jeans" price="139.00"/>
+          <Item img="https://i.imgur.com/mgjGwhr.jpg" title="Women's Shoes" price="299.00"/>
+          <Item img="https://i.imgur.com/2lEwsyE.jpg" title="Tight Fit Jeans" price="149.00"/>
+          <Item img="https://i.imgur.com/iFLjPjb.jpg" title="Men's Hoodie" price="89.00"/>
+          <Item img="https://i.imgur.com/Fn8r6E5.jpg" title="Casual T-Shirt" price="129.00"/>
+          <Item img="https://i.imgur.com/TaHouH3.jpg" title="Women's Fur Coat" price="899.00"/>
+          <Item img="https://i.imgur.com/DMRfG7x.jpg" title="Short Fit Jeans" price="139.00"/>
+          <Item img="https://i.imgur.com/OztKcJN.jpg" title="Women's Fall Jacket" price="699.00"/>
+          <Item img="https://i.imgur.com/a7ibChD.jpg" title="Summer Dress Shirt" price="229.00" />
         </div>
 
       </div> 

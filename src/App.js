@@ -5,10 +5,11 @@ import Navbar from './comps/Navbar'
 import Home from './comps/Home'
 import Shop from './comps/Shop'
 import About from './comps/About'
-import Gallery from './comps/Gallery'
+import Gallery from './comps/Gallery' 
 import Contact from './comps/Contact'
 import ProductPage from './comps/ProductPage';
 import QuickView from './comps/QuickView'
+import CartPage from './comps/CartPage';
 
 function App() {
 
@@ -58,6 +59,9 @@ function App() {
           </Route> 
           <Route path="/product">
             <ProductPage />
+          </Route> 
+          <Route path="/cart">
+            <CartPage />
           </Route> 
         </Switch>
 

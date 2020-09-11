@@ -151,18 +151,23 @@ nav h1 span {
   padding: 0;
   display: inline-block;
 } 
-.menu a {
-  color: #333;
+.menu a { 
+  color: #555;
   font-weight: 700;
   padding: 10px 5px;
-  padding-bottom: 33px;
+  padding-bottom: 13px;
   margin: auto 20px;
   text-transform: uppercase;
   display: inline-block;
+  transition: all 0.2s;
 } 
 .menu a i {
   top: 0px;
   margin-left: 5px;
+}
+.menu a:hover {
+  color: #000;
+  padding-bottom: 33px;
 }
 .menu a hr {
   position: absolute;
@@ -1113,7 +1118,6 @@ footer .socials > div i {
   top:0;
   width: 100%;
   height: 60vh;
-  background-image: url('https://i.imgur.com/kp0n6CL.jpg');
   background-position:center;
   background-size: cover;
 }

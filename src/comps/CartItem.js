@@ -5,7 +5,7 @@ function CartItem(props) {
   return (
     <div className="cartitem">
       <img src ="https://i.imgur.com/2lEwsyE.jpg" alt="cartimg" />
-      <h5><Link to="#">{props.name}</Link> <span><small>x</small>{props.num}</span></h5>
+      <h5><Link to="/product">{props.name}</Link> <span><small>x</small>{props.num}</span></h5>
       <h6>${props.price}</h6> 
       <hr/>
     </div>

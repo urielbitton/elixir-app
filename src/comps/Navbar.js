@@ -78,7 +78,7 @@ function Navbar() {
             <h4>Subtotal:</h4>
             <h3>$149.00</h3>
             <hr/>
-            <button className="viewcartbtn">View Cart</button>
+            <Link to="/cart"><button className="viewcartbtn">View Cart</button></Link>
             <button className="checkoutbtn">Checkout</button>
             {/*<p>No items in your cart.</p>
             <small>Add Items</small>*/}

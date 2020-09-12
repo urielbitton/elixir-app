@@ -748,7 +748,7 @@ section .secsubtitle {
   margin-left: 12px;
 }
 footer {
-  background: #f1f1f1;
+  background: #171717; 
 }
 footer .grid {
   display: grid;
@@ -758,26 +758,29 @@ footer .grid {
 footer h2 {
   font-size: 70px;
   margin-bottom:20px;
+  color: #eee;
 }
 footer h2 span {
-  color: #aaa;
+  color: #777;
 }
 footer p {
-  color: #555;
+  color: #aaa;
+  font-size: 18px;
 }
 footer h4 {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 25px;
   margin-bottom: 20px;
+  color: #eee;
 }
 footer ul {
   list-style-type: none;
   padding: 0;
-}
+} 
 footer ul li {
   margin: 10px 0;
   padding: 5px 0;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
 }
 footer ul li a {
@@ -787,12 +790,12 @@ footer ul li a {
   padding-right: 5px;
 }
 footer ul a:hover {
-  color: #000;
-  border-bottom: 1px solid #000;
+  color: #eee;
+  border-bottom: 1px solid #eee;
 }
 footer h6 {
   font-size: 14px;
-  color: #777;
+  color: #aaa;
   text-transform: uppercase;
 }
 footer label {
@@ -808,9 +811,10 @@ footer label i {
 footer input {
   width: 90%;
   border: none;
-  background: #fff;
+  background: #eee;
   padding: 20px 40px 20px 20px;
   transition: all 0.3s;
+  font-size: 16px;
 }
 footer input:focus {
   box-shadow: 0 1px 10px rgba(0,0,0,0.1)
@@ -821,19 +825,19 @@ footer input::placeholder {
 footer .socials {
   position: relative;
   margin-top: 40px;
-}
+} 
 footer .socials > div {
   position: relative;
   margin: auto 10px;
   float: left;
   border-radius: 100%;
-  width:35px;
-  height: 35px;
+  width:40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 17px;
-  border: 1px solid #ddd;
+  font-size: 19px;
+  border: 1px solid #eee;
   transition: all 0.3s;
   cursor: pointer;
 }
@@ -844,7 +848,7 @@ footer .socials > div:hover i {
   color: #fff;
 }
 footer .socials > div i {
-  color: #555;
+  color: #eee;
 }
 
 .quickviewcont {
@@ -1225,6 +1229,153 @@ footer .socials > div i {
   margin-left: 0;
   margin-right: 30px;
 }
+.carttable input {
+  padding: 18px 10px;
+  border: none;
+  background: #f1f1f1;
+  font-size: 15px;
+}
+.carttable input::placeholder {
+  color: #aaa;
+}
+.carttable .proceeddiv {
+  text-align: right;
+}
+.carttable .proceeddiv button {
+  margin-right:0;
+}
+.totalsgrid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 40px;
+}
+.totalsgrid h2 {
+  font-size: 34px;
+  color:#333;
+  margin-bottom: 40px;
+}
+.totalsgrid select, .totalsgrid input {
+  border: none;
+  background: #f5f5f5;
+  padding: 17px 10px;
+  width: 100%;
+  margin: 10px auto;
+  font-size: 15px;
+} 
+.carttotals > div {
+  position: relative;
+  padding: 25px 0;
+  border-bottom: 1px solid #eee;
+  color: #777;
+}
+.carttotals > div h6 {
+  font-size: 16px;
+}
+.carttotals > div h6:nth-of-type(1) {
+  float: left;
+}
+.carttotals > div h6:nth-last-of-type(1) {
+  float: right;
+} 
+.carttotals .ordertotal {
+  font-size: 30px;
+  font-weight: 600;
+  color: #111;
+}
+.carttotals > div:last-child {
+  border: none;
+  text-align: right;
+}
+.carttotals button {
+  margin: auto;
+  padding: 17px 30px;
+  background: #111;
+  color: #fff;
+  font-size: 16px;
+  border: 1px solid #111;
+}
+.carttotals button:hover {
+  background: none;
+  border: 1px solid #111;
+  color: #111;
+}
+.logreg {
+  position: relative;
+}
+.logreg p {
+  margin-bottom: 10px;
+}
+.logreg p a {
+  font-weight: 600;
+  color: #333;
+}
+.logreg p a:hover {
+  text-decoration: underline;
+}
+.checkoutgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 40px;
+  margin-top: 50px;
+}
+.checkoutgrid h2 {
+  font-size: 34px;
+  margin-bottom: 40px;
+}
+.billinggrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px 40px;
+}
+.billinggrid h6 {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+.billinggrid label {
+  grid-column: span 2;
+}
+.billinggrid label.span1 {
+  grid-column: span 1;
+}
+.billinggrid label input {
+  margin-bottom: 10px;
+}
+.billinggrid input, .billinggrid label textarea {
+  padding: 12px 10px;
+  width: 100%;
+  border: none;
+  background: #f5f5f5;
+  font-size: 15px;
+  resize: vertical;
+  font-family: inherit
+}
+.billinggrid * {
+  letter-spacing: 1.3px;
+}
+.ordertotaldiv {
+  padding: 50px 30px;
+  background: #f5f5f5;
+}
+.ordertotaldiv h2 {
+  text-align: center;
+}
+.ordertotaldiv .carttotals > div {
+  border-color: #e5e5e5;
+}
+.ordertotaldiv .carttotals h4 {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 10px;
+}
+.ordertotaldiv .totalprods h6 {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+ 
+
 
 
 

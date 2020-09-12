@@ -44,7 +44,7 @@ function Product() {
           <div className="clear"></div>
           <button className="addtowish"><i class="fas fa-heart"></i>Add to Wishlist</button>
         </div>
-      </div>
+      </div> 
   ) 
 }
 

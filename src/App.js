@@ -10,6 +10,8 @@ import Contact from './comps/Contact'
 import ProductPage from './comps/ProductPage';
 import QuickView from './comps/QuickView'
 import CartPage from './comps/CartPage';
+import Footer from './comps/Footer'
+import Checkout from './comps/Checkout';
 
 function App() {
 
@@ -39,8 +41,8 @@ function App() {
  
   return (
     <>
-      <Router> 
-        <Navbar />
+      <Router>  
+        <Navbar /> 
         <Switch>
           <Route exact path="/">
             <Home />
@@ -63,10 +65,14 @@ function App() {
           <Route path="/cart">
             <CartPage />
           </Route> 
+          <Route path="/checkout">
+            <Checkout />
+          </Route>  
         </Switch>
 
         <QuickView />
 
+        <Footer />
       </Router> 
 
     </>

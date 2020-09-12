@@ -40,7 +40,7 @@ function App() {
   },[])
  
   return (
-    <>
+    <> 
       <Router>  
         <Navbar /> 
         <Switch>

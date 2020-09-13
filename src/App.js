@@ -12,6 +12,8 @@ import QuickView from './comps/QuickView'
 import CartPage from './comps/CartPage';
 import Footer from './comps/Footer'
 import Checkout from './comps/Checkout';
+import Search from './comps/Search'
+import ProductContextProvider from "./comps/ProductContext";
 
 function App() {
 
@@ -42,7 +44,9 @@ function App() {
   return (
     <> 
       <Router>  
-        <Navbar /> 
+      <ProductContextProvider> 
+        <Navbar />  
+        <Search />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -73,6 +77,7 @@ function App() {
         <QuickView />
 
         <Footer />
+        </ProductContextProvider> 
       </Router> 
 
     </>

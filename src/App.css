@@ -492,44 +492,67 @@ section .secsubtitle {
 .sectiongrid .large img {
   cursor: default;
 }
-.itemcont {
-  position: relative;
+.sectiongrid .itemcont {
   grid-column: span 3;
   grid-row: span 1;
+}
+.itemcont {
+  position: relative;
   text-align: center;
 }
-.sectiongrid .imgcont {
+.itemcont .imgcont {
   height: 420px;
   width: 100%;
   overflow: hidden;
 }
-.sectiongrid img {
+.itemcont img {
   position: relative;
   cursor: pointer;
   width: 100%;
   height: 100%;
   transition: all 0.3s;
 }
-.sectiongrid .imgcont:hover img {
+.itemcont .imgcont:hover img {
   transform: scale(1.2);
 }
+.itemcont .labelcont {
+  position: absolute; 
+  top: 20px;
+  left: 0;
+  z-index: 100;
+  text-transform: uppercase;
+}
+.itemcont .labelcont small {
+  padding: 3px 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  display: none;
+}
+.itemcont .labelcont .sale {
+  background: var(--color);
+} 
+.itemcont .labelcont .hot {
+  background: #fc0303;
+}  
 .itemcont h5 {
   margin-top: 20px;
   font-size: 16px;
   font-weight: 500;
-}
+} 
 .itemcont h5 a {
   color: #777;
   transition: all 0.2s;
 }
 .itemcont h5 a:hover {
   color: var(--color);
-}
+} 
 .itemcont small {
   display: block;
-  margin-top: 15px;
+  margin-top: 10px;
+  font-size: 16px;
   color: #333;
-  font-weight: 800;
+  font-weight: 700;
 }
 .itemcont .fa-heart {
   position: absolute;
@@ -553,7 +576,7 @@ section .secsubtitle {
   margin: auto;
   transition: all 0.3s;
   overflow: hidden;
-} 
+}  
 .itemactions i {
   font-size: 16px;
   padding: 10px;
@@ -563,8 +586,8 @@ section .secsubtitle {
   color: #444;
   display: inline-block;
   margin: auto 10px;
-  transition: all 0.4s;
-  opacity: 0;
+  transition: top 0.4s, opacity 0.4s, visibility 0.4s;
+  opacity: 0; 
   visibility: hidden;
   box-shadow: 0 1px 6px rgba(0,0,0,0.1);
   cursor: pointer;
@@ -580,6 +603,14 @@ section .secsubtitle {
 .itemactions i:nth-child(3) {
   top: 50px;
   transition-delay: 0.3s;
+}
+.itemactions i:hover {
+  background: #f1f1f1;
+  color: #333;
+}
+.itemactions i:active {
+  background: #333;
+  color: #eee;
 }
 .itemcont:hover .itemactions i {
   top: 0;
@@ -756,7 +787,7 @@ footer .grid {
   grid-gap: 40px 25px;
 }
 footer h2 {
-  font-size: 70px;
+  font-size: 60px;
   margin-bottom:20px;
   color: #eee;
 }
@@ -765,11 +796,11 @@ footer h2 span {
 }
 footer p {
   color: #aaa;
-  font-size: 18px;
+  font-size: 17px;
 }
 footer h4 {
   font-weight: 700;
-  font-size: 25px;
+  font-size: 23px;
   margin-bottom: 20px;
   color: #eee;
 }
@@ -780,7 +811,7 @@ footer ul {
 footer ul li {
   margin: 10px 0;
   padding: 5px 0;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 500;
 }
 footer ul li a {
@@ -1100,15 +1131,11 @@ footer .socials > div i {
 }
 .similarprodgrid {
   display: grid;
-  grid-template-columns: repeat(12,1fr);
+  grid-template-columns: repeat(4,1fr);
   grid-column-gap: 30px;
 }
-.similarprods .itemcont {
-  width: 100%;
-}
-.similarprods .itemcont img {
-  width: 300px;
-  height: 350px;
+.similarprodgrid .itemcont .imgcont {
+  height: 400px;
 }
 .pagebanner {
   height: 60vh;
@@ -1374,7 +1401,55 @@ footer .socials > div i {
   font-weight: 500;
   margin-bottom: 8px;
 }
+.carttotals label {
+  position: relative;
+  display: block;
+  margin: 15px 0;
+} 
+.carttotals label small {
+  margin-left: 20px;
+  top: -2px;
+}
  
+.searchcont {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  background: rgba(0,0,0,0.9);
+  z-index:950;
+  text-align: center;
+  transition: all 0.4s;
+  display: none;
+  opacity: 0;
+}
+.searchcont .close {
+  color: #eee;
+  position: absolute;
+  right: 40px;
+  top: 40px;
+}  
+.searchbox {
+  position: relative;
+  margin: auto;
+  margin-top: 80px;
+  width: 100%;
+  transition: all 0.5s;
+}
+.searchbox input {
+  width: 100%;
+  padding: 30px 20px;
+  background: none;
+  border: 2px solid #eee;
+  color: #eee;
+  font-size: 18px;
+}
+
+.productsgrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 30px;
+}
 
 
 
@@ -1395,25 +1470,20 @@ footer .socials > div i {
 
 
 
-
-
-
-
-
-
+ 
 
 @media (max-width:1650px) {
   .grid {
     width: 95%;
   }
+  .pgrid {
+    width: 1050px;
+  } 
 }
 @media (max-width:1250px) {
   .sectiongrid {
     grid-template-columns:repeat(10,1fr);
-  }
-  .pgrid {
-    width: 95%;
-  }
+  } 
 }
 @media (max-width:1080px) {
   .sectiongrid {
@@ -1428,6 +1498,12 @@ footer .socials > div i {
   }
   nav .menu {
     display: none;
+  }
+  .pgrid {
+    width: 95%;
+  }
+  .checkoutgrid, .totalsgrid {
+    grid-template-columns: 1fr;
   }
 
 }
@@ -1450,6 +1526,12 @@ footer .socials > div i {
   }
   .section4 .salediv small {
     letter-spacing: 5px;
+  }
+  .sectiongrid {
+    grid-template-columns: 1fr;
+  }
+  .sectiongrid .itemcont {
+    grid-column: span 6;
   }
  
 }

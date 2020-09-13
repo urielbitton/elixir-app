@@ -38,6 +38,10 @@ function Checkout() {
               <div><h6>Subtotal</h6><h6>$398.00</h6><div className="clear"></div></div>
               <div><h6>Shipping Fees</h6><h6>Free Shipping</h6><div className="clear"></div></div>
               <div><h6>Order Total</h6><h6 className="ordertotal">$435.00</h6><div className="clear"></div></div>
+              <div>
+                <label><input name="payment" type="radio"/><small>Bank Transfer</small></label>
+                <label><input name="payment" type="radio"/><small>Cash On Delivery</small></label>
+              </div>
               <div><button>Proceed To Checkout</button></div>
             </div>
           </div> 

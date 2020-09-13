@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Product from './Product'
 import Item from './Item'
+import { ProductContext } from './ProductContext'
 
 function ProductPage() {
+
+  const {products} = useContext(ProductContext)
+
   return (
     <div className="productpage">
       <div className="grid xgrid pgrid">
@@ -32,10 +36,10 @@ function ProductPage() {
         <div className="similarprods">
           <h2>Similar Products</h2>
           <div className="similarprodgrid">
-            <Item link="https://i.imgur.com/iFLjPjb.jpg" title="Men's Hoodie" price="89.00"/>
-            <Item link="https://i.imgur.com/Fn8r6E5.jpg" title="Casual T-Shirt" price="129.00"/>
-            <Item link="https://i.imgur.com/2lEwsyE.jpg" title="Tight Fit Jeans" price="149.00"/>
-            <Item link="https://i.imgur.com/TaHouH3.jpg" title="Women's Fur Coat" price="899.00"/>
+            <Item img={products[3].img} name={products[3].name} price={products[3].price} hot={products[3].hot} sale={products[3].sale}/>
+            <Item img={products[0].img} name={products[0].name} price={products[0].price} hot={products[0].hot} sale={products[0].sale}/>
+            <Item img={products[7].img} name={products[7].name} price={products[7].price} hot={products[7].hot} sale={products[7].sale}/>
+            <Item img={products[8].img} name={products[8].name} price={products[8].price} hot={products[8].hot} sale={products[8].sale}/>
           </div> 
         </div>
 

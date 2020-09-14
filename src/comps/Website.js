@@ -16,6 +16,15 @@ import Search from './Search'
 
 function Website() {
  
+  const [cartitems, setCartitems] = useState(0)
+  const [subtotal, setSubtotal] = useState(0)
+
+  function updateCartNum() {
+    setCartitems(num => num+1)
+  }
+  function updateSubtotal(current) {
+    setSubtotal(sub => sub+current)
+  }
  
   useEffect(() => {
     const taber = document.querySelectorAll('[re-taber]')
@@ -43,12 +52,12 @@ function Website() {
 
   return (
     <>
-      <Navbar />  
+      <Navbar cartitems={cartitems} subtotal={subtotal}/>  
       <Search />
       <Switch> 
         <Route exact path="/">
-          <Home />
-        </Route>  
+          <Home updatecartnum={updateCartNum} updatesub={updateSubtotal}/>
+        </Route>   
         <Route path="/shop">
           <Shop />
         </Route> 

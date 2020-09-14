@@ -1,8 +1,21 @@
-import React from 'react'
+import React, {useContext, useState } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 import PageBanner from './PageBanner'
+import CartPageItem from './CartPageitem';
+import { ProductContext } from './ProductContext'
 
-function CartPage() {
+function CartPage(props) {
+
+  const {products, setProducts, setGeneral} = useContext(ProductContext)
+
+  const cartitem = products.map(prod => {
+    if(prod.addcart) {   
+      return ( 
+        <CartPageItem name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={prod.id}/>
+      )  
+    }     
+  }) 
+
   return (
     <div className="cartpage">
       <PageBanner title="Cart" subtitle="Products in your cart" bgimg="https://i.imgur.com/qy9wB4B.jpg"/>
@@ -20,20 +33,7 @@ function CartPage() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><img src="https://i.imgur.com/OztKcJN.jpg" alt="cartprod"/><h6>Fall Jacket - Navy</h6></td>
-              <td className="pricetd">$199.00</td>
-              <td><div className="itemnum"><div className="subnum">-</div><div className="num">1</div><div className="addnum">+</div></div></td>
-              <td className="itemtotaltd">$199.00</td>
-              <td><i className="far fa-window-close"></i></td>
-            </tr>
-            <tr>
-              <td><img src="https://i.imgur.com/a7ibChD.jpg" alt="cartprod"/><h6>Summer Dress Shirt - White</h6></td>
-              <td className="pricetd">$199.00</td>
-              <td><div className="itemnum"><div className="subnum">-</div><div className="num">1</div><div className="addnum">+</div></div></td>
-              <td className="itemtotaltd">$199.00</td>
-              <td><i className="far fa-window-close"></i></td>
-            </tr>
+            {cartitem}
           </tbody>
           <tfoot>
           <tr>
@@ -55,7 +55,7 @@ function CartPage() {
               </td>
               <td colSpan="1"></td>
               <td colSpan="3" className="subtotaltd"> 
-                <h4>Subtotal: <span>$398.00</span></h4>
+                <h4>Subtotal: <span>${props.subtotal}.00</span></h4>
               </td>
             </tr>
           </tfoot>

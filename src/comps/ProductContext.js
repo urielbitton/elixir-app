@@ -96,12 +96,15 @@ const ProductContextProvider = (props) => {
       units: 1,
     },    
   ]) 
-  const [cart, setCart] = useState([
-
-  ])
+  const [general, setGeneral] = useState(
+    {
+      cartitems: 0,
+      subtotal: 0,
+    }
+  )
   
   return (
-    <ProductContext.Provider value={{products, setProducts,setCart}}>
+    <ProductContext.Provider value={{products, setProducts,general,setGeneral}}>
       {props.children}
     </ProductContext.Provider>
   )

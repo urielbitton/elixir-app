@@ -9,7 +9,7 @@ function Home(props) {
   return (
     <div className="homepage">
       <Mainbg />
-      <Section1 />
+      <Section1 updatecartnum={props.updatecartnum} updatesub={props.updatesub}/>
       <Section2 />
       <Section3 />
       <Section4 />

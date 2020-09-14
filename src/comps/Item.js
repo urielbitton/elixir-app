@@ -4,13 +4,14 @@ import { ProductContext } from './ProductContext'
 
 function Item(props) {   
  
-  const {products, setProducts, setCart} = useContext(ProductContext)
+  const {products, setProducts, setGeneral} = useContext(ProductContext)
 
-  function addToCart(update) { 
+  function addToCart() { 
     products.map((prod) => {  
       return (prod.id === props.prod.id)?(props.prod.addcart = true):""
     })  
-    setCart(update)
+    props.updatecartnum()
+    props.updatesub(props.price) 
   }     
    
   useEffect(() => {

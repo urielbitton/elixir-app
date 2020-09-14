@@ -6,9 +6,9 @@ import Item from './Item'
 
 function Navbar(props) { 
  
-  const {products, cartprods} = useContext(ProductContext)
+  const {products} = useContext(ProductContext)
  
-  const cartitems = products.map(prod => {
+  const cartprods = products.map(prod => {
     if(prod.addcart) {   
       return ( 
         <CartItem name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={props.id}/>
@@ -116,13 +116,13 @@ function Navbar(props) {
           </div>
           <div className="cartdiv">
           <i className="fas fa-shopping-cart"></i>
-          <small className="cartitemsnum"><span>0</span></small>
-          <div className="cartcont">
+          <small className="cartitemsnum"><span>{props.cartitems}</span></small>
+          <div className="cartcont"> 
             <div className="innercart">
-              {cartitems}
+              {cartprods}
             </div>
             <h4>Subtotal:</h4> 
-            <h3>$0.00</h3>
+            <h3>${props.subtotal}.00</h3>
             <hr/>
             <Link to="/cart"><button className="viewcartbtn">View Cart</button></Link>
             <Link to="/checkout"><button className="checkoutbtn">Checkout</button></Link>

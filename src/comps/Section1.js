@@ -9,7 +9,7 @@ function Section1(props) {
   const newarrivals = products.map(prod => {
     return <Item prod={prod} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} addcart={prod.addcart} key={prod.id}/>
   })  
-
+ 
   return (
     <section className="section1">
       <div className="grid xgrid">

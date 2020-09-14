@@ -11,10 +11,10 @@ function Navbar(props) {
   const cartitems = products.map(prod => {
     if(prod.addcart) {   
       return ( 
-        <CartItem name={prod.name} img={prod.img} price={prod.price} key={props.id}/>
+        <CartItem name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={props.id}/>
       )  
-    }    
-  }) 
+    }     
+  })  
 
   useEffect(() => {
     const navbar = document.querySelector('nav')

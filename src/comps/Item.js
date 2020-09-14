@@ -4,10 +4,13 @@ import { ProductContext } from './ProductContext'
 
 function Item(props) {   
  
-  const {products, setProducts} = useContext(ProductContext)
+  const {products, setProducts, setCart} = useContext(ProductContext)
 
-  function addToCart() {
-    
+  function addToCart(update) { 
+    products.map((prod) => {  
+      return (prod.id === props.prod.id)?(props.prod.addcart = true):""
+    })  
+    setCart(update)
   }     
    
   useEffect(() => {
@@ -30,8 +33,6 @@ function Item(props) {
     const addtocart = document.querySelectorAll('.itemcont .addtocart')
     addtocart.forEach(el => {
       el.onclick = () => {
-        el.classList.remove('fa-shopping-cart','addtocart')
-        el.classList.add('fa-check') 
         document.querySelector('.cartcont').style.cssText += 'opacity:1;visibility:visible;top: 45px'
       }
     }) 
@@ -53,15 +54,15 @@ function Item(props) {
         <i className="far fa-heart"></i>
         <Link to="/product"><img src={props.img} alt="item"/></Link>
         <div className="itemactions">
-          <i className="fas fa-shopping-cart addtocart" onClick={() => addToCart()}></i>
+          <i className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart(props.name)}></i>
           <i class="fas fa-search-plus quickviewbtn"></i> 
           <i class="fas fa-random"></i>
         </div> 
       </div> 
       <h5><Link to="/product">{props.name}</Link></h5>
       <small>${props.price}.00</small>
-    </div>
+    </div> 
   )
-}
+} 
 
 export default Item

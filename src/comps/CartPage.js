@@ -88,12 +88,12 @@ function CartPage(props) {
             <input placeholder="City"/>
             <input placeholder="Postal Code"/> 
           </div>
-          <div className="carttotals">
+          <div className="carttotals"> 
             <h2>Cart Totals</h2>
             <div><h6>Subtotal</h6><h6>${props.subtotal}.00</h6><div className="clear"></div></div>
             <div><h6>Tax Rate (15%)</h6><h6>${(props.subtotal * 0.15).toFixed(2)}</h6><div className="clear"></div></div>
             <div><h6>Shipping Fees</h6><h6>{props.subtotal>100?"Free Shipping":"Flat Rate: 30$"}</h6><div className="clear"></div></div>
-            <div><h6>Order Total</h6><h6 className="ordertotal">${props.subtotal<1?0:(props.subtotal>100?total:(total+30))}</h6><div className="clear"></div></div>
+            <div><h6>Order Total</h6><h6 className="ordertotal">${props.subtotal<1?0:(props.subtotal>100?total.toFixed(2):(total+30))}</h6><div className="clear"></div></div>
             <div><Link to="/checkout"><button>Proceed To Checkout</button></Link></div>
           </div> 
         </div> 

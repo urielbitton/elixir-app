@@ -1,4 +1,4 @@
-import React, {useContext, useState } from 'react'
+import React, {useContext, useState, useEffect } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 import PageBanner from './PageBanner'
 import CartPageItem from './CartPageitem';
@@ -16,11 +16,20 @@ function CartPage(props) {
     }     
   }) 
 
+  const total = (props.subtotal + props.subtotal * 0.15).toFixed(2)
+
+  useEffect(() => {
+    document.querySelector('.proceeddiv .b1').onclick = () => {
+      document.querySelector('.scrollpos').scrollIntoView()
+    }
+  },[])
+
   return (
     <div className="cartpage">
       <PageBanner title="Cart" subtitle="Products in your cart" bgimg="https://i.imgur.com/qy9wB4B.jpg"/>
  
-      <div className="grid pgrid">
+      <div className="grid pgrid xgrid">
+        <div className="cartpageinner" style={{display: (props.cartitems<1?"none":"block")}}>
         <div className="spacerl"></div>
         <table className="carttable">
           <thead>
@@ -61,6 +70,7 @@ function CartPage(props) {
           </tfoot>
         </table>
 
+        <div className="scrollpos"></div>
         <div className="spacerl"></div>
 
         <div className="totalsgrid">
@@ -80,14 +90,21 @@ function CartPage(props) {
           </div>
           <div className="carttotals">
             <h2>Cart Totals</h2>
-            <div><h6>Subtotal</h6><h6>$398.00</h6><div className="clear"></div></div>
-            <div><h6>Shipping Fees</h6><h6>Free Shipping</h6><div className="clear"></div></div>
-            <div><h6>Order Total</h6><h6 className="ordertotal">$435.00</h6><div className="clear"></div></div>
+            <div><h6>Subtotal</h6><h6>${props.subtotal}.00</h6><div className="clear"></div></div>
+            <div><h6>Tax Rate (15%)</h6><h6>${(props.subtotal * 0.15).toFixed(2)}</h6><div className="clear"></div></div>
+            <div><h6>Shipping Fees</h6><h6>{props.subtotal>100?"Free Shipping":"Flat Rate: 30$"}</h6><div className="clear"></div></div>
+            <div><h6>Order Total</h6><h6 className="ordertotal">${props.subtotal<1?0:(props.subtotal>100?total:(total+30))}</h6><div className="clear"></div></div>
             <div><Link to="/checkout"><button>Proceed To Checkout</button></Link></div>
-          </div>
+          </div> 
         </div> 
 
         <div className="spacerl"></div>
+        </div>
+
+        <div className="emptycartdiv" style={{display: (props.cartitems>0?"none":"block")}}>
+          <div className="emptymsg"><p><i class="fas fa-box"></i>Your cart is currently empty.</p></div>
+          <Link to="/shop"><button>Return To Shop</button></Link>
+        </div>
 
       </div> 
 

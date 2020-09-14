@@ -3,12 +3,12 @@ import PageBanner from './PageBanner'
 import { ProductContext } from './ProductContext'
 import Item from './Item'
 
-function Shop() {
+function Shop(props) {
 
   const {products} = useContext(ProductContext)
 
   const allprods = products.map(prod => {
-    return <Item name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} key={prod.id}/>
+    return <Item prod={prod} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} addcart={prod.addcart} updatecartnum={props.updatecartnum} updatesub={props.updatesub} key={prod.id}/>
   })
   
   return (

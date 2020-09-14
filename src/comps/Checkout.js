@@ -1,7 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import PageBanner from './PageBanner'
+import { ProductContext } from './ProductContext'
 
-function Checkout() {
+function Checkout(props) {
+
+  const {products, setProducts, setGeneral} = useContext(ProductContext)
+
+  const total = (props.subtotal + props.subtotal * 0.15).toFixed(2)
+
   return (
     <div className="checkoutpage">
       <PageBanner title="Checkout" subtitle="Checkout your products" bgimg="https://i.imgur.com/hgx84Pw.jpg"/>
@@ -12,7 +18,7 @@ function Checkout() {
         </div>
 
         <div className="checkoutgrid">
-          <div className="billingdiv">
+          <div className="billingdiv"> 
             <h2>Billing Details</h2>
             <div className="billinggrid">
               <label className="span1"><h6>First Name</h6><input /></label>
@@ -32,12 +38,21 @@ function Checkout() {
             <div className="carttotals">
               <div className="totalprods">
                 <h4>Products</h4>
-                <div><h6>Women's Casual Shoes</h6><h6>$199.00</h6><div className="clear"></div></div>
-                <div><h6>Women's Summer Jacket</h6><h6>$699.00</h6><div className="clear"></div></div>
+                <div>
+                 { 
+                   products.map(prod => {
+                     return (
+                     prod.addcart? <div><h6>{prod.name}</h6><h6>${prod.price.toFixed(2)}</h6><div className="clear"></div></div>:""
+                     )
+                   }) 
+                 }
+                 
+                  <div className="clear"></div>
+                </div>
               </div>
-              <div><h6>Subtotal</h6><h6>$398.00</h6><div className="clear"></div></div>
+              <div><h6>Subtotal</h6><h6>${props.subtotal.toFixed(2)}</h6><div className="clear"></div></div>
               <div><h6>Shipping Fees</h6><h6>Free Shipping</h6><div className="clear"></div></div>
-              <div><h6>Order Total</h6><h6 className="ordertotal">$435.00</h6><div className="clear"></div></div>
+              <div><h6>Order Total</h6><h6 className="ordertotal">${total}</h6><div className="clear"></div></div>
               <div>
                 <label><input name="payment" type="radio"/><small>Bank Transfer</small></label>
                 <label><input name="payment" type="radio"/><small>Cash On Delivery</small></label>

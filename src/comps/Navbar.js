@@ -118,16 +118,20 @@ function Navbar(props) {
           <i className="fas fa-shopping-cart"></i>
           <small className="cartitemsnum"><span>{props.cartitems}</span></small>
           <div className="cartcont"> 
+          <div style={{display: props.cartitems>0?"block":"none"}}>
             <div className="innercart">
               {cartprods}
             </div>
             <h4>Subtotal:</h4> 
-            <h3>${props.subtotal}.00</h3>
-            <hr/>
+            <h3>${(props.subtotal).toFixed(2)}</h3>
+            <hr/> 
             <Link to="/cart"><button className="viewcartbtn">View Cart</button></Link>
             <Link to="/checkout"><button className="checkoutbtn">Checkout</button></Link>
-            {/*<p>No items in your cart.</p>
-            <small>Add Items</small>*/}
+          </div>
+            <div className="emptycart" style={{display: props.cartitems>0?"none":"block",textAlign:"center"}}>
+              <p>No items in your cart.</p>
+              <Link to="/shop"><small>Add Items</small></Link>
+            </div>
           </div>
           </div>
         </div>

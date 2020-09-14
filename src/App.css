@@ -249,6 +249,16 @@ nav .right > div {
   visibility: hidden;
   opacity: 0;
   cursor: auto;
+} 
+.cartcont .emptycart p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.cartcont .emptycart small {
+  font-size: 13px;
+}
+.cartcont .emptycart a:hover {
+  text-decoration: underline;
 }
 .cartcont .innercart {
   position: relative;
@@ -1207,6 +1217,14 @@ footer .socials > div i {
   color: #555;
   font-weight:500;
   margin-top: 55px;
+  transition: all 0.2s;
+}
+.carttable tbody td h6:hover {
+  color: var(--color)
+}
+.carttable tbody td a:hover {
+  text-decoration: underline;
+  color: var(--color);
 }
 .carttable .pricetd {
   font-weight:500;
@@ -1276,7 +1294,7 @@ footer .socials > div i {
 }
 .carttable .proceeddiv button {
   margin-right:0;
-}
+} 
 .totalsgrid {
   display: grid;
   grid-template-columns: repeat(2,1fr);
@@ -1331,6 +1349,26 @@ footer .socials > div i {
   background: none;
   border: 1px solid #111;
   color: #111;
+}
+.emptycartdiv .emptymsg {
+  width: 100%;
+  background: rgba(132, 216, 227,0.4);
+  padding: 20px 15px;
+  border: 2px solid var(--color);
+  margin-bottom: 40px;
+  color: #555;
+}
+.emptycartdiv .emptymsg  i {
+  margin-right: 20px;
+}
+.emptycartdiv button {
+  padding: 20px 30px;
+  font-size: 15px;
+  background: #111;
+  color: #fff;
+}
+.emptycartdiv button:hover {
+  background: #333;
 }
 .logreg {
   position: relative;

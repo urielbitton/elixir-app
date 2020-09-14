@@ -13,6 +13,7 @@ import CartPage from './CartPage';
 import Footer from './Footer'
 import Checkout from './Checkout';
 import Search from './Search'
+import Wishlist from './Wishlist';
 
 function Website() {
  
@@ -46,11 +47,11 @@ function Website() {
         }, 50);
       }
     })  
-    document.querySelectorAll('a').forEach(el => el.onclick = () => window.scrollTo(0, 0))
+    document.querySelectorAll('.grid a').forEach(el => el.onclick = () => window.scrollTo(0, 0))
     document.querySelectorAll('.itemcont a').forEach(el => el.onclick = () => window.scrollTo(0, 0))
   },[])
 
-  return (
+  return ( 
     <>
       <Navbar cartitems={cartitems} subtotal={subtotal}/>  
       <Search />
@@ -59,7 +60,7 @@ function Website() {
           <Home updatecartnum={updateCartNum} updatesub={updateSubtotal}/>
         </Route>   
         <Route path="/shop">
-          <Shop />
+          <Shop updatecartnum={updateCartNum} updatesub={updateSubtotal}/>
         </Route> 
         <Route path="/about">
           <About />
@@ -74,10 +75,13 @@ function Website() {
           <ProductPage />
         </Route> 
         <Route path="/cart">
-          <CartPage />
+          <CartPage subtotal={subtotal} cartitems={cartitems}/>
         </Route> 
         <Route path="/checkout">
-          <Checkout />
+          <Checkout subtotal={subtotal}/>
+        </Route>
+        <Route path="/wishlist">
+          <Wishlist />
         </Route>  
       </Switch>
  

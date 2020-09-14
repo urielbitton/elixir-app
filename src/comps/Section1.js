@@ -2,14 +2,13 @@ import React, {useContext} from 'react'
 import Item from './Item'
 import { ProductContext } from './ProductContext'
 
-function Section1() {
+function Section1(props) {
 
   const {products} = useContext(ProductContext)
 
   const newarrivals = products.map(prod => {
-    return <Item prod={prod} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} key={prod.id}/>
-  })
-
+    return <Item prod={prod} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} addcart={prod.addcart} key={prod.id}/>
+  })  
 
   return (
     <section className="section1">
@@ -21,17 +20,9 @@ function Section1() {
         </div>
 
         <div className="sectiongrid">
-          <div className="large">
-            <a href="#"> 
-            <h2>Women's Wear</h2>
-            <div>
-              <img src="https://i.imgur.com/RFR8pzC.jpg" alt="item"/>
-            </div>
-            </a>
-          </div>
+           
 
           {newarrivals}
-          
           
         </div>
  

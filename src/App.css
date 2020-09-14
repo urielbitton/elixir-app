@@ -249,11 +249,17 @@ nav .right > div {
   visibility: hidden;
   opacity: 0;
   cursor: auto;
-  max-height: 600px;
+}
+.cartcont .innercart {
+  position: relative;
+  max-height: 300px;
   overflow-y: scroll;
 }
-.cartcont::-webkit-scrollbar {
-  display: none;
+.innercart::-webkit-scrollbar {
+  display:none;
+} 
+.innercart:hover::-webkit-scrollbar {
+  display: block;
 }
 .cartdiv:hover .cartcont {
   visibility: visible;

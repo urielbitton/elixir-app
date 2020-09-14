@@ -2,18 +2,19 @@ import React, { useEffect, useContext, useState } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 import CartItem from './CartItem';
 import { ProductContext } from './ProductContext'
+import Item from './Item'
 
-function Navbar(props) {
+function Navbar(props) { 
  
-  const {products} = useContext(ProductContext)
-
+  const {products, cartprods} = useContext(ProductContext)
+ 
   const cartitems = products.map(prod => {
     if(prod.addcart) {   
       return ( 
         <CartItem name={prod.name} img={prod.img} price={prod.price} key={props.id}/>
-      ) 
-    } 
-  })
+      )  
+    }    
+  }) 
 
   useEffect(() => {
     const navbar = document.querySelector('nav')
@@ -108,7 +109,7 @@ function Navbar(props) {
             </li>
           </ul>
         </div>
-   
+    
         <div className="right">
           <div className="searchdiv searchbtn">
           <i class="fas fa-search"></i>
@@ -117,8 +118,9 @@ function Navbar(props) {
           <i className="fas fa-shopping-cart"></i>
           <small className="cartitemsnum"><span>0</span></small>
           <div className="cartcont">
-            {cartitems}
-
+            <div className="innercart">
+              {cartitems}
+            </div>
             <h4>Subtotal:</h4> 
             <h3>$0.00</h3>
             <hr/>

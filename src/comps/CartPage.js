@@ -93,16 +93,16 @@ function CartPage(props) {
             <div><h6>Subtotal</h6><h6>${props.subtotal}.00</h6><div className="clear"></div></div>
             <div><h6>Tax Rate (15%)</h6><h6>${(props.subtotal * 0.15).toFixed(2)}</h6><div className="clear"></div></div>
             <div><h6>Shipping Fees</h6><h6>{props.subtotal>100?"Free Shipping":"Flat Rate: 30$"}</h6><div className="clear"></div></div>
-            <div><h6>Order Total</h6><h6 className="ordertotal">${props.subtotal<1?0:(props.subtotal>100?total.toFixed(2):(total+30))}</h6><div className="clear"></div></div>
-            <div><Link to="/checkout"><button>Proceed To Checkout</button></Link></div>
+            <div><h6>Order Total</h6><h6 className="ordertotal">${props.subtotal<1?0:(props.subtotal>100?total:(total+30))}</h6><div className="clear"></div></div>
+            <div><Link to="/checkout"><button onClick={() => window.scrollTo(0, 0)}>Proceed To Checkout</button></Link></div>
           </div> 
         </div> 
 
         <div className="spacerl"></div>
         </div>
 
-        <div className="emptycartdiv" style={{display: (props.cartitems>0?"none":"block")}}>
-          <div className="emptymsg"><p><i class="fas fa-box"></i>Your cart is currently empty.</p></div>
+        <div className="msgcont" style={{display: (props.cartitems>0?"none":"block")}}>
+          <div className="msgbox"><p><i class="fas fa-shopping-cart"></i>Your cart is currently empty.</p></div>
           <Link to="/shop"><button>Return To Shop</button></Link>
         </div>
 

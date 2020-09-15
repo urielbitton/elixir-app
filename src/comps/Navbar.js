@@ -1,8 +1,9 @@
 import React, { useEffect, useContext, useState } from 'react'
-import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
+import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom"
 import CartItem from './CartItem';
 import { ProductContext } from './ProductContext'
 import Item from './Item'
+import Menu from './Menu'
 
 function Navbar(props) { 
  
@@ -75,42 +76,11 @@ function Navbar(props) {
       <div className="grid">
         <div className="left">
           <Link to="/"><h1 className="logo">elixir<span>.</span></h1></Link>
-          <ul className="menu">
-            <li className="activelink">
-              <Link to="/">Home<hr/></Link>
-            </li>
-            <li>
-              <Link to="shop">Shop<i className="fas fa-caret-down"></i><hr/></Link>
-              <div className="tab">
-                <ul>
-                  <h4>Women's</h4>
-                </ul>
-                <ul>
-                  <h4>Men's</h4>
-                </ul>
-                <ul>
-                  <h4>Kids</h4>
-                </ul> 
-                <ul>
-                  <h4>Promos</h4>
-                </ul>
-              </div> 
-            </li>
-            <li>
-              <Link to="about">About<i className="fas fa-caret-down"></i><hr/></Link>
-              <div className="tab"></div>
-            </li>
-            <li>
-              <Link to="gallery">Gallery<i className="fas fa-caret-down"></i><hr/></Link>
-              <div className="tab"></div>
-            </li>
-            <li>
-              <Link to="contact">Contact<hr/></Link>
-            </li>
-          </ul>
+          <Menu />
         </div>
     
         <div className="right">
+          <small style={{display:"none"}}>{props.wishnum}</small> 
           <div className="searchdiv searchbtn">
           <i class="fas fa-search"></i>
           </div>

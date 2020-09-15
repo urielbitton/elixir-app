@@ -7,7 +7,7 @@ function Section1(props) {
   const {products} = useContext(ProductContext)
 
   const newarrivals = products.map(prod => {
-    return <Item prod={prod} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} addcart={prod.addcart} updatecartnum={props.updatecartnum} updatesub={props.updatesub} key={prod.id}/>
+    return <Item prod={prod} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} addcart={prod.addcart} wishlist={prod.wishlist} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} key={prod.id}/>
   })  
  
   return (

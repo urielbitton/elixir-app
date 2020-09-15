@@ -34,6 +34,9 @@ html, body {
 .hidden {
   display: none;
 }
+* {
+  letter-spacing: 0.3px;
+}
 h1,h2,h3,h4,h5,h6,i,p,li,button,a,span,small,img,section, input {
   position: relative;
   margin: 0;
@@ -151,8 +154,8 @@ nav h1 span {
   padding: 0;
   display: inline-block;
 } 
-.menu a { 
-  color: #555;
+.menu > li > a { 
+  color: #666;
   font-weight: 700;
   padding: 10px 5px;
   padding-bottom: 13px;
@@ -161,15 +164,15 @@ nav h1 span {
   display: inline-block;
   transition: all 0.2s;
 } 
-.menu a i {
+.menu > li > a i {
   top: 0px;
   margin-left: 5px;
 }
-.menu a:hover {
+.menu > li > a:hover {
   color: #000;
   padding-bottom: 33px;
 }
-.menu a hr {
+.menu > li > a hr {
   position: absolute;
   width: 0;
   height: 2px;
@@ -180,7 +183,7 @@ nav h1 span {
   right: 0;
   transition: all 0.3s;
 }
-.menu a:hover hr {
+.menu > li > a:hover hr {
   width: 100%;
 }
 .menu .activelink hr {
@@ -193,13 +196,42 @@ nav h1 span {
   opacity: 0;
   top: 120px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 50px;
   min-width: 600px;
   min-height: 300px;
-  padding: 30px;
-  background: #fff;
+  padding: 30px 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   transition: top 0.7s, opacity 0.4s, visibility 0.4s;
+}
+.shop-tab {
+  background: #fafafa;
+  background-image: url('https://i.imgur.com/2uWnG1P.jpg');
+  background-position: center;
+  background-size: cover; 
+} 
+.menu .tab h4 {
+  color: #777;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+.menu .tab ul {
+  min-width: 140px;
+}
+.menu .tab ul li {
+  margin: 22px 0;
+  list-style-type: none;
+}
+.menu .tab ul li a {
+  transition: all 0.2s;
+  color: #aaa;
+}
+.menu .tab ul li:hover a {
+  text-decoration: underline;
+  color: #000;
 }
 .menu > li:hover .tab {
   visibility: visible;
@@ -479,13 +511,13 @@ section .secsubtitle {
 .sectiongrid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(13,1fr);
+  grid-template-columns: repeat(4,1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-gap: 70px 30px;
+  grid-gap: 70px 50px;
   margin-top: 60px;
   justify-content: center;
   align-content: center;
-}
+} 
 .sectiongrid h2 {
   font-size: 45px;
   font-weight:700;
@@ -495,21 +527,7 @@ section .secsubtitle {
   color:#333;
   display:inline-block;
 } 
-.sectiongrid .large {
-  grid-column: span 4;
-  grid-row: span 2;
-  overflow: hidden;
-}
-.sectiongrid .large div {
-  width: 100%;
-  height:100%;
-  overflow: hidden;
-}
-.sectiongrid .large img {
-  cursor: default;
-}
 .sectiongrid .itemcont {
-  grid-column: span 3;
   grid-row: span 1;
 }
 .itemcont {
@@ -570,19 +588,22 @@ section .secsubtitle {
   color: #333;
   font-weight: 700;
 }
-.itemcont .fa-heart {
+.itemcont .heartlink {
   position: absolute;
   z-index: 10;
   right: 20px;
   top: 20px;
-  font-size:21px;
   color: #333;
   cursor: pointer;
   transition: all 0.2s;
+  font-size:21px;
 }
+.itemcont .fa-heart {
+  transition: all 0.2s;
+} 
 .itemcont .fa-heart:hover {
   color: var(--color)
-}
+} 
 .itemactions {
   position: absolute;
   bottom: 80px;
@@ -1234,13 +1255,13 @@ footer .socials > div i {
   font-weight:700;
   color: #333;
 }
-.carttable .fa-window-close {
+.carttable .fa-window-close, .wishtable .fa-window-close {
   font-size: 35px;
   color: #ddd;
   transition: all 0.2s;
   cursor: pointer;
 }
-.carttable .fa-window-close:hover {
+.carttable .fa-window-close:hover, .wishtable .fa-window-close:hover {
   color: var(--color);
 }
 .carttable button {
@@ -1350,7 +1371,12 @@ footer .socials > div i {
   border: 1px solid #111;
   color: #111;
 }
-.emptycartdiv .emptymsg {
+.msgnotif {
+  display: none;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.msgcont .msgbox {
   width: 100%;
   background: rgba(132, 216, 227,0.4);
   padding: 20px 15px;
@@ -1358,17 +1384,22 @@ footer .socials > div i {
   margin-bottom: 40px;
   color: #555;
 }
-.emptycartdiv .emptymsg  i {
+.msgcont .msgbox  i {
   margin-right: 20px;
 }
-.emptycartdiv button {
+.msgcont button {
   padding: 20px 30px;
   font-size: 15px;
   background: #111;
   color: #fff;
 }
-.emptycartdiv button:hover {
+.msgcont button:hover {
   background: #333;
+}
+.msgcont h2 {
+  font-size: 30px;
+  color: #333;
+  margin-bottom: 30px;
 }
 .logreg {
   position: relative;
@@ -1494,13 +1525,57 @@ footer .socials > div i {
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 30px;
 }
-
-
-
-
-
-
-
+.pagetitle {
+  font-size: 30px;
+  color: #555;
+}
+.wishlistcont table {
+  position: relative;
+  margin-top: 50px;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.wishlistcont table th {
+  text-transform: uppercase;
+  color: #777;
+  font-size: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+.wishlistcont table td {
+  padding: 25px 5px;
+  color: #777;
+  border-bottom: 1px solid #eee;
+}
+.wishlistcont table td.pricetd {
+  color: #333;
+  font-weight: 600;
+}
+.wishlistcont table td:first-child {
+  width: 220px;
+}
+.wishlistcont table img {
+  width: 100px;
+  height: 120px;
+} 
+.wishtable .fa-window-close {
+  position: relative;
+  margin-right: 20px;
+  top: -45px;
+}
+.wishtable p i {
+  margin-right: 10px;
+}
+.wishtable p {
+  font-size: 14px;
+} 
+.wishtable p .fa-check-circle {
+  color: #a5eb23;
+}
+.wishtable p .fa-window-close {
+  color: #f01645;
+}
 
 
 
@@ -1524,19 +1599,12 @@ footer .socials > div i {
     width: 1050px;
   } 
 }
-@media (max-width:1250px) {
+@media (max-width:1220px) {
   .sectiongrid {
-    grid-template-columns:repeat(10,1fr);
-  } 
+    grid-template-columns:repeat(3,1fr);
+  }
 }
 @media (max-width:1080px) {
-  .sectiongrid {
-    grid-template-columns:repeat(6,1fr);
-  }
-  .sectiongrid .large {
-    grid-column: span 6;
-    height: 600px;
-  }
   footer .grid {
     grid-template-columns:repeat(2,1fr);
   }
@@ -1549,7 +1617,10 @@ footer .socials > div i {
   .checkoutgrid, .totalsgrid {
     grid-template-columns: 1fr;
   }
-
+  .sectiongrid {
+    grid-template-columns:repeat(2,1fr);
+  }
+ 
 }
 @media (max-width:600px) {
   footer .grid {

@@ -7,12 +7,19 @@ function Item(props) {
   const {products, setProducts, setGeneral} = useContext(ProductContext)
 
   function addToCart() { 
-    products.map((prod) => {  
+    products.map(prod => {   
       return (prod.id === props.prod.id)?(props.prod.addcart = true):""
     })  
     props.updatecartnum()
     props.updatesub(props.price) 
   }     
+
+  function addToWishlist() {
+    products.map(prod => {
+      return (prod.id === props.prod.id)?(props.prod.wishlist = true):""
+    })
+    props.updatewish() 
+  } 
    
   useEffect(() => {
     const quickviewbtn = document.querySelectorAll('.quickviewbtn')
@@ -42,22 +49,19 @@ function Item(props) {
       document.querySelector('.cartcont').style.visibility = ''
       document.querySelector('.cartcont').style.top = '' 
     } 
-    function dropNotif(msg) {
-
-    } 
 
   },[]) 
  
-  return (
+  return (  
     <div className="itemcont"> 
       <div className="imgcont"> 
         <div className="labelcont"><small className="sale" style={{display: (props.sale?"block":"none")}}>Sale</small><small style={{display: (props.hot?"block":"none") }} className="hot">Hot</small></div>
-        <i className="far fa-heart"></i>
+        <Link to={props.wishlist?"/wishlist":""} className="heartlink"><i className={props.wishlist?"fas fa-heart":"far fa-heart"} onClick={() => addToWishlist()}></i></Link>
         <Link to="/product"><img src={props.img} alt="item"/></Link>
         <div className="itemactions">
           <i className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart(props.name)}></i>
-          <i class="fas fa-search-plus quickviewbtn"></i> 
-          <i class="fas fa-random"></i>
+          <i className="fas fa-search-plus quickviewbtn"></i> 
+          <i className="fas fa-random"></i>
         </div> 
       </div> 
       <h5><Link to="/product">{props.name}</Link></h5>

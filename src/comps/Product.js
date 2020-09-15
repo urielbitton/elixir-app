@@ -1,6 +1,18 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom"
+import { ProductContext } from './ProductContext'
 
-function Product() {
+function Product(props) {
+
+  const {products, setProducts, setGeneral} = useContext(ProductContext)
+
+  function addToWishlist() {
+    products.map(prod => {
+      return (prod.id === props.prod.id)?(props.prod.wishlist = true):""
+    })
+    props.updatewish() 
+  }
+ 
   return ( 
     <div className="product">
         <div>
@@ -42,10 +54,10 @@ function Product() {
             <div><i class="fab fa-linkedin-in"></i></div>
           </div>
           <div className="clear"></div>
-          <button className="addtowish"><i class="fas fa-heart"></i>Add to Wishlist</button>
-        </div>
-      </div> 
+          <button className="addtowish" onClick={() => addToWishlist()}><i class="fas fa-heart"></i>{props.wishlist?"View Wishlist":"Add to Wishlist"}</button>
+        </div> 
+      </div>  
   ) 
-}
+} 
 
 export default Product

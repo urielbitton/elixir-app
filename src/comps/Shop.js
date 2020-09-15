@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import PageBanner from './PageBanner'
+import PageBanner from './PageBanner' 
 import { ProductContext } from './ProductContext'
 import Item from './Item'
 
@@ -8,7 +8,7 @@ function Shop(props) {
   const {products} = useContext(ProductContext)
 
   const allprods = products.map(prod => {
-    return <Item prod={prod} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} addcart={prod.addcart} updatecartnum={props.updatecartnum} updatesub={props.updatesub} key={prod.id}/>
+    return <Item prod={prod} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} addcart={prod.addcart} wishlist={prod.wishlist} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} key={prod.id}/>
   })
   
   return (

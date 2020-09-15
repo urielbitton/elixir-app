@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Product from './Product'
 
-function QuickView() {
+function QuickView(props) {
 
   useEffect(() => {
     const quickviewcont = document.querySelector('.quickviewcont')
@@ -26,7 +26,7 @@ function QuickView() {
     <div className="quickviewcont">
       <i className="close"></i>
       <div className="quickview">
-        <Product />
+        <Product updatewish={props.updatewish}/>
       </div>
     </div>
   )

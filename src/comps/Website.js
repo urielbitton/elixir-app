@@ -4,7 +4,7 @@ import { ProductContext } from './ProductContext'
 import Navbar from './Navbar'
 import Home from './Home'
 import Shop from './Shop'
-import About from './About'
+import About from './About' 
 import Gallery from './Gallery' 
 import Contact from './Contact'
 import ProductPage from './ProductPage';
@@ -19,6 +19,7 @@ function Website() {
  
   const [cartitems, setCartitems] = useState(0)
   const [subtotal, setSubtotal] = useState(0)
+  const [wishnum, setWishnum] = useState(0)
 
   function updateCartNum() {
     setCartitems(num => num+1)
@@ -26,7 +27,10 @@ function Website() {
   function updateSubtotal(current) {
     setSubtotal(sub => sub+current)
   }
- 
+  function updateWishnum() {
+    setWishnum(wish => wish+1)
+  } 
+
   useEffect(() => {
     const taber = document.querySelectorAll('[re-taber]')
     const tab = document.querySelectorAll('[re-tab]')
@@ -47,20 +51,20 @@ function Website() {
         }, 50);
       }
     })  
-    document.querySelectorAll('.grid a').forEach(el => el.onclick = () => window.scrollTo(0, 0))
-    document.querySelectorAll('.itemcont a').forEach(el => el.onclick = () => window.scrollTo(0, 0))
+    document.querySelectorAll('.backtop').forEach(el => el.onclick = () => window.scrollTo(0, 0))
+      
   },[])
-
+ 
   return ( 
     <>
-      <Navbar cartitems={cartitems} subtotal={subtotal}/>  
+      <Navbar cartitems={cartitems} subtotal={subtotal} wishnum={wishnum}/>  
       <Search />
       <Switch> 
         <Route exact path="/">
-          <Home updatecartnum={updateCartNum} updatesub={updateSubtotal}/>
+          <Home updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} />
         </Route>   
         <Route path="/shop">
-          <Shop updatecartnum={updateCartNum} updatesub={updateSubtotal}/>
+          <Shop updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} />
         </Route> 
         <Route path="/about">
           <About />
@@ -85,8 +89,7 @@ function Website() {
         </Route>  
       </Switch>
  
-      <QuickView />
-
+      <QuickView updatewish={updateWishnum}/>
       <Footer />
     </>
   )

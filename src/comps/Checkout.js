@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import PageBanner from './PageBanner'
 import { ProductContext } from './ProductContext'
 
@@ -7,6 +7,19 @@ function Checkout(props) {
   const {products, setProducts, setGeneral} = useContext(ProductContext)
 
   const total = (props.subtotal + props.subtotal * 0.15).toFixed(2)
+
+  useEffect(() => {
+    const placeorderbtn = document.querySelector('.placeorderbtn')
+    placeorderbtn.onclick = () => {
+      document.querySelector('.mark').scrollIntoView()
+      document.querySelector('.msgnotif').style.display = 'block'
+      setTimeout(() => {
+        document.querySelector('.msgnotif').style.opacity = '1'
+      }, 100);
+    }
+
+
+  },[])
 
   return (
     <div className="checkoutpage">
@@ -57,9 +70,19 @@ function Checkout(props) {
                 <label><input name="payment" type="radio"/><small>Bank Transfer</small></label>
                 <label><input name="payment" type="radio"/><small>Cash On Delivery</small></label>
               </div>
-              <div><button>Proceed To Checkout</button></div>
+              <div><button className="placeorderbtn">Place Order</button></div>
             </div>
           </div> 
+        </div>
+
+        <div className="spacerl"></div>
+        <div className="mark"></div>
+
+        <div className="msgcont msgnotif">
+          <h2>Order Placed</h2>
+          <div className="msgbox">
+            <p><i className="fas fa-check-circle"></i>Your order has been placed successfully! Thank you for shopping with elixir.</p>
+          </div>
         </div>
 
       </div>

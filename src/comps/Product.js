@@ -3,38 +3,66 @@ import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom"
 import { ProductContext } from './ProductContext'
 
 function Product(props) {
-
+ 
   const {products, setProducts, setGeneral} = useContext(ProductContext)
 
+  function addToCart() { 
+    products.map(prod => {    
+      return (prod.id === props.prod.id)?(props.prod.addcart = true):""
+    })  
+    props.updatecartnum()
+    props.updatesub(props.price)  
+  } 
   function addToWishlist() {
     products.map(prod => {
       return (prod.id === props.prod.id)?(props.prod.wishlist = true):""
-    })
+    }) 
     props.updatewish() 
   }
- 
+
+  const addtocart = document.querySelectorAll('.quickview .addtocart')
+    addtocart.forEach(el => {
+      el.onclick = () => {
+        document.querySelector('.cartcont').style.cssText += 'opacity:1;visibility:visible;top: 45px'
+      }
+  })  
+
+  const quickviewcont = document.querySelector('.quickviewcont')
+  const quickview = document.querySelector('.quickview')
+  function closeQuickview() {
+    quickview.style.top = ''
+    setTimeout(() => {
+      quickviewcont.style.opacity = ''
+    }, 100)
+    setTimeout(() => { 
+      quickviewcont.style.display = ''
+    }, 200)
+  }
+
   return ( 
     <div className="product">
         <div>
-          <img className="productimg" src="https://i.imgur.com/mgjGwhr.jpg" alt="productimg" />
+          <img className="productimg" src={props.img} alt="productimg" />
           <div className="otherimg"></div>
           <div className="otherimg"></div>
           <div className="otherimg"></div>
           <div className="otherimg"></div>
         </div>
         <div>
-          <h2>Women's Shoes</h2>
-          <h5>$299.00</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.</p>
+          <h2>{props.name}</h2>
+          <h5>${props.price}.00</h5>
+          <p>{props.descript}</p> 
           <hr/>
           <label>
             <small>Color</small>
             <select>
               <option selected disabled>Choose a Color</option>
-              <option>Black</option>
-              <option>Gray</option>
-              <option>Pink</option>
-            </select>
+              {
+                props.color.map(color => {
+                  return <option>{color}</option>
+                })
+              } 
+            </select>  
           </label>
           <div className="clear"></div>
           <div className="spacers"></div>
@@ -43,18 +71,27 @@ function Product(props) {
             <div className="num">1</div>
             <div className="addnum">+</div>
           </div>
-          <button className="addtocart"><i class="fas fa-cart-plus"></i>Add to Cart</button>
+          <Link to={props.prod.addcart?"/cart":""}><button className="addtocart" onClick={() => props.prod.addcart?"":addToCart()}><i class="fas fa-cart-plus"></i>{props.prod.addcart?"View Cart":"Add To Cart"}</button></Link>
           <div className="metaitem">
-            <h6>Categories: <span>women, shoes</span></h6>
-            <h6>Tags: <span>#newarrival, #women, #featured</span></h6>
+            <h6>Categories: 
+              <span>
+              {
+                props.cat.map(cat => {
+                  return cat+", "
+                })
+              } 
+              </span>
+              </h6>
+            <h6>Product ID: <span>elx{props.id+1000}</span></h6>
             <h6>Share Product</h6>
             <div><i class="fab fa-facebook-f"></i></div>
             <div><i class="fab fa-twitter"></i></div>
             <div><i class="fab fa-instagram"></i></div>
             <div><i class="fab fa-linkedin-in"></i></div>
           </div>
-          <div className="clear"></div>
-          <button className="addtowish" onClick={() => addToWishlist()}><i class="fas fa-heart"></i>{props.wishlist?"View Wishlist":"Add to Wishlist"}</button>
+          <div className="clear"></div> 
+          <small style={{display:"none"}}>{props.wishnum}</small> 
+          <Link to={props.prod.wishlist?"/wishlist":""}><button className="addtowish" onClick={() => addToWishlist()}><i class="fas fa-heart"></i>{props.prod.wishlist?"View Wishlist":"Add to Wishlist"}</button></Link>
         </div> 
       </div>  
   ) 

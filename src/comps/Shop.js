@@ -8,7 +8,7 @@ function Shop(props) {
   const {products} = useContext(ProductContext)
 
   const allprods = products.map(prod => {
-    return <Item prod={prod} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} addcart={prod.addcart} wishlist={prod.wishlist} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} key={prod.id}/>
+    return <Item prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} color={prod.color} cat={prod.cat} addcart={prod.addcart} wishlist={prod.wishlist} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} openproduct={props.openproduct} key={prod.id}/>
   })
   
   return (

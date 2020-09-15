@@ -80,11 +80,11 @@ function Navbar(props) {
         </div>
     
         <div className="right">
-          <small style={{display:"none"}}>{props.wishnum}</small> 
+          <div className="wishicondiv" style={{display:props.wishnum>0?"block":"none"}}><Link to="wishlist"><i className="fas fa-heart"></i><small><span>{props.wishnum}</span></small></Link></div>
           <div className="searchdiv searchbtn">
           <i class="fas fa-search"></i>
           </div>
-          <div className="cartdiv">
+          <div className="cartdiv"> 
           <i className="fas fa-shopping-cart"></i>
           <small className="cartitemsnum"><span>{props.cartitems}</span></small>
           <div className="cartcont"> 

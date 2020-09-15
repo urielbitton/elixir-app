@@ -9,7 +9,7 @@ function Wishlist() {
 
   let wishitems = products.map(prod => {
     if(prod.wishlist)
-      return <tr><td><i className="far fa-window-close"></i><img src={prod.img} alt="prodwish" /></td><td>{prod.name}</td><td className="pricetd">${prod.price}.00</td><td>{prod.instock?<p><i class='fas fa-check-circle'></i>In stock</p>:<p><i class='fas fa-window-close'></i>Out of stock</p>}</td><td></td></tr>
+      return <tr><td><i className="far fa-window-close"></i><img src={prod.img} alt="prodwish" /></td><td><Link to="/product">{prod.name}</Link></td><td className="pricetd">${prod.price}.00</td><td>{prod.instock?<p><i class='fas fa-check-circle'></i>In stock</p>:<p><i class='fas fa-window-close'></i>Out of stock</p>}</td><td></td></tr>
   })
   
   return ( 

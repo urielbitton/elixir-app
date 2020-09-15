@@ -252,16 +252,36 @@ nav .right > div {
   font-size: 22px;
   cursor: pointer;
   color: #555;
+} 
+.wishicondiv small {
+  position: absolute;
+  padding: 5px;
+  top: -10px;
+  right: -19px;
+  background: #555;
+  border-radius: 100%;
+  width:20px;
+  height: 20px; 
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 12px;
+} 
+.wishicondiv a {
+  display: inline;
+  color: #555;
 }
 .cartdiv .cartitemsnum {
   position: absolute;
   padding: 5px;
   top: 0px;
-  right: -13px;
+  right: -9px;
   background: #555;
   border-radius: 100%;
-  width:23px;
-  height: 23px; 
+  width:20px;
+  height: 20px; 
   text-align: center;
   display: flex;
   justify-content: center;
@@ -930,7 +950,6 @@ footer .socials > div i {
   display: none;
   justify-content: center;
   align-items: center;
-  cursor: url('https://i.imgur.com/GSfMhIM.png'), auto;
   opacity: 0;
   transition: all 0.4s;
 } 
@@ -939,6 +958,7 @@ footer .socials > div i {
   position: absolute;
   top: 30px;
   right: 60px;
+  z-index: 20;
 }
 .quickview {
   position: relative;
@@ -950,7 +970,16 @@ footer .socials > div i {
   box-shadow: 0 1px 30px rgba(0,0,0,0.8);
   cursor: auto;
   transition: all 0.5s;
-}   
+  z-index: 900;
+}    
+.quickclose {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 10;
+  cursor: url('https://i.imgur.com/GSfMhIM.png'), auto;
+}
 .productpage .product {
   width: 90%;
   grid-gap: 50px;
@@ -995,7 +1024,7 @@ footer .socials > div i {
   font-size: 35px;
   font-weight: 500;
   color: #666;
-}
+} 
 .product h5 {
   font-size: 18px;
   margin-top: 10px;
@@ -1004,8 +1033,13 @@ footer .socials > div i {
   line-height: 1.7;
   font-size: 15px;
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   color: #555;
+}
+.product hr {
+  height: 1px;
+  background: #eee;
+  width: 100%;
 }
 .productpage hr {
   height: 1px;
@@ -1255,13 +1289,13 @@ footer .socials > div i {
   font-weight:700;
   color: #333;
 }
-.carttable .fa-window-close, .wishtable .fa-window-close {
+.carttable .fa-window-close, .wishtable .fa-window-close.far {
   font-size: 35px;
   color: #ddd;
   transition: all 0.2s;
-  cursor: pointer;
+  cursor: pointer; 
 }
-.carttable .fa-window-close:hover, .wishtable .fa-window-close:hover {
+.carttable .fa-window-close:hover, .wishtable .fa-window-close.far:hover {
   color: var(--color);
 }
 .carttable button {
@@ -1548,6 +1582,9 @@ footer .socials > div i {
   color: #777;
   border-bottom: 1px solid #eee;
 }
+.wishlistcont table td a:hover {
+  text-decoration: underline;
+}
 .wishlistcont table td.pricetd {
   color: #333;
   font-weight: 600;
@@ -1559,7 +1596,7 @@ footer .socials > div i {
   width: 100px;
   height: 120px;
 } 
-.wishtable .fa-window-close {
+.wishtable .fa-window-close.far {
   position: relative;
   margin-right: 20px;
   top: -45px;

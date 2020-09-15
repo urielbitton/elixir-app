@@ -17,6 +17,9 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "women",
       instock: true,
+      color: ["Black","Gray","Blue"],
+      cat: ["jacket","women","fall"],
+      descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
     { 
       id: 2,
@@ -30,6 +33,9 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "women",
       instock: true,
+      color: ["Black","Orange","Light Pink"],
+      cat: ["women","dress","summer"],
+      descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
       id: 3,
@@ -43,6 +49,9 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "women",
       instock: true,
+      color: ["Black","Gray","White"],
+      cat: ["shoes","women"],
+      descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
       id: 4,
@@ -56,6 +65,9 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "men",
       instock: true,
+      color: ["Brown","Gray"],
+      cat: ["men","shorts","summer"],
+      descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
       id: 5,
@@ -69,6 +81,9 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "men",
       instock: true,
+      color: ["Black","Gray"],
+      cat: ["jacket","men","fall"],
+      descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
       id: 6,
@@ -82,6 +97,9 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "women",
       instock: true,
+      color: ["Red Stripes","Green Stripes","White"],
+      cat: ["shirt","women","summer"],
+      descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
       id: 7,
@@ -95,6 +113,9 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "women",
       instock: true,
+      color: ["Blue Stripes","Gray","White"],
+      cat: ["dress","women","shirt"],
+      descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
       id: 8,
@@ -108,6 +129,9 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "men",
       instock: false,
+      color: ["Black","Brown"],
+      cat: ["men","belt"],
+      descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
       id: 9,
@@ -121,12 +145,15 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "men", 
       instock: true,
+      color: ["Gray","Black","Blue","Red","Green"],
+      cat: ["men","women","hat","summer"],
+      descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },  
     {   
       id: 10,
       name: "Light Spring Coat", 
       price: 579,
-      img: "https://i.imgur.com/G00krur.jpg",
+      img: "https://i.imgur.com/G00krur.jpg", 
       hot: false,
       sale: false,
       addcart: false,
@@ -134,8 +161,11 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "women", 
       instock: true,
-    },  
-  ]) 
+      color: ["Gray"],
+      cat: ["coat","women"],
+      descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
+    },   
+  ])  
   const [general, setGeneral] = useState(
     {
       wishnum: 0,

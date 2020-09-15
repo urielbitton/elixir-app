@@ -17,10 +17,22 @@ import Wishlist from './Wishlist';
 
 function Website() {
  
+  const {products, setProducts, setGeneral} = useContext(ProductContext)
   const [cartitems, setCartitems] = useState(0)
   const [subtotal, setSubtotal] = useState(0)
   const [wishnum, setWishnum] = useState(0)
 
+  const [prod, setProd] = useState("")
+  const [id, setId] = useState(0)
+  const [name, setName] = useState("")
+  const [img, setImg] = useState("") 
+  const [price, setPrice] = useState(0)
+  const [descript, setDescript] = useState("")
+  const [color, setColor] = useState([""])
+  const [cat, setCat] = useState([""])
+  const [addcart, setAddcart] = useState(false)
+  const [wishlist, setWishlist] = useState(false)
+ 
   function updateCartNum() {
     setCartitems(num => num+1)
   }
@@ -29,6 +41,18 @@ function Website() {
   }
   function updateWishnum() {
     setWishnum(wish => wish+1)
+  } 
+  function openProduct(prod,id,name,img,price,descript,color,cat,addcart,wishlist) {
+    setProd(prod)
+    setId(id)
+    setName(name)
+    setImg(img)
+    setPrice(price)
+    setDescript(descript)
+    setColor(color)
+    setCat(cat)
+    setWishlist(wishlist)
+    setAddcart(addcart)
   } 
 
   useEffect(() => {
@@ -54,17 +78,17 @@ function Website() {
     document.querySelectorAll('.backtop').forEach(el => el.onclick = () => window.scrollTo(0, 0))
       
   },[])
- 
+  
   return ( 
     <>
       <Navbar cartitems={cartitems} subtotal={subtotal} wishnum={wishnum}/>  
       <Search />
-      <Switch> 
+      <Switch>  
         <Route exact path="/">
-          <Home updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} />
+          <Home updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} />
         </Route>   
         <Route path="/shop">
-          <Shop updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} />
+          <Shop updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} openproduct={openProduct} />
         </Route> 
         <Route path="/about">
           <About />
@@ -75,8 +99,8 @@ function Website() {
         <Route path="/contact">
           <Contact />
         </Route> 
-        <Route path="/product">
-          <ProductPage />
+        <Route path="/product"> 
+          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct}/>
         </Route> 
         <Route path="/cart">
           <CartPage subtotal={subtotal} cartitems={cartitems}/>
@@ -87,10 +111,10 @@ function Website() {
         <Route path="/wishlist">
           <Wishlist />
         </Route>  
-      </Switch>
- 
-      <QuickView updatewish={updateWishnum}/>
-      <Footer />
+      </Switch> 
+  
+      <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} wishnum={wishnum} />
+      <Footer /> 
     </>
   )
 }

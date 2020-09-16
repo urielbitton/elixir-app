@@ -3,23 +3,18 @@ import PageBanner from './PageBanner'
 import { ProductContext } from './ProductContext'
 import Item from './Item'
 
-function Shop(props) {
-
+function Shop(props) { 
+  let allcats = /hat/i
   const {products} = useContext(ProductContext)
   const [filteron, setFilteron] = useState(false)
-  const [pricefilt, setPricefilt] = useState(0)
+  const [pricefilt, setPricefilt] = useState([0,Infinity])
+  const [catfilter, setCatfilter] = useState(allcats)
 
   const allprods = products.map(prod => {
-    if(pricefilt === 0) {
-      if(prod.price > 0)
+      if((prod.price >= pricefilt[0] && prod.price < pricefilt[1]) && prod.cat.includes(catfilter)) {
         return <Item prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} color={prod.color} cat={prod.cat} addcart={prod.addcart} wishlist={prod.wishlist} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} openproduct={props.openproduct} key={prod.id}/>
-    }
-    else {
-      if(prod.price <= pricefilt) {
-        return <Item prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} color={prod.color} cat={prod.cat} addcart={prod.addcart} wishlist={prod.wishlist} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} openproduct={props.openproduct} key={prod.id}/>
-      } 
-    } 
-  })
+      }  
+  }) 
   
   return (
     <div className="shoppage">
@@ -44,12 +39,12 @@ function Shop(props) {
 
       <div className={filteron?"filterscont-on filterscont":"filterscont-off filterscont"}>
         <div>
-          <h4>Price Filter</h4>
-          <ul><li className="activefilter">All</li><li onClick={() => setPricefilt(100)}>$0 - $100</li><li onClick={() => setPricefilt(150)}>$100 - $150</li><li onClick={() => setPricefilt(200)}>$150 - $200</li><li onClick={() => setPricefilt(250)}>$200 - $250</li><li onClick={() => setPricefilt(500)}>$250 - $500</li><li onClick={() => setPricefilt(1000)}>$500+</li></ul>
+          <h4>Price Filter</h4> 
+          <ul><li className="activefilter" onClick={() => setPricefilt([0,Infinity])}>All</li><li onClick={() => setPricefilt([1,100])}>$0 - $100</li><li onClick={() => setPricefilt([100,150])}>$100 - $150</li><li onClick={() => setPricefilt([150,200])}>$150 - $200</li><li onClick={() => setPricefilt([200,250])}>$200 - $250</li><li onClick={() => setPricefilt([250,500])}>$250 - $500</li><li onClick={() => setPricefilt([500,Infinity])}>$500+</li></ul>
         </div>
         <div>
           <h4>Categories</h4>
-          <ul><li className="activefilter">All categories</li><li>Women</li><li>Men</li><li>Kids</li><li>Shirts</li><li>Pants</li><li>Jackets</li><li>Shoes</li><li>Others</li></ul>
+          <ul><li className="activefilter">All categories</li><li onClick={() => setCatfilter('women')}>Women</li><li onClick={() => setCatfilter('men')}>Men</li><li onClick={() => setCatfilter('kids')}>Kids</li><li onClick={() => setCatfilter('shirt')}>Shirts</li><li onClick={() => setCatfilter('pants')}>Pants</li><li onClick={() => setCatfilter('jacket')}>Jackets</li><li onClick={() => setCatfilter('shoes')}>Shoes</li></ul>
         </div>
         <div>
           <h4>Colors</h4>

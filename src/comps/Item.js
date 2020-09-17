@@ -64,8 +64,10 @@ function Item(props) {
           <i className="fas fa-random"></i>
         </div> 
       </div> 
-      <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.addcart,props.wishlist)}><Link to="/product">{props.name}</Link></h5>
-      <small>${props.price}.00</small> 
+      <div className="iteminfodiv">
+        <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.addcart,props.wishlist)}><Link to="/product">{props.name}</Link></h5>
+        <small>${props.price}.00</small> 
+      </div>
     </div>  
   )  
 } 

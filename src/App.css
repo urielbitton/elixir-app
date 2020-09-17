@@ -623,7 +623,7 @@ section .secsubtitle {
 .itemcont .fa-heart:hover {
   color: var(--color)
 } 
-.itemactions {
+.productsgrid .itemactions {
   position: absolute;
   bottom: 80px;
   height: 60px;
@@ -633,7 +633,7 @@ section .secsubtitle {
   transition: all 0.3s;
   overflow: hidden;
 }  
-.itemactions i {
+.productsgrid .itemactions i {
   font-size: 16px;
   padding: 10px;
   border-radius: 100%;
@@ -648,27 +648,27 @@ section .secsubtitle {
   box-shadow: 0 1px 6px rgba(0,0,0,0.1);
   cursor: pointer;
 }
-.itemactions i:nth-child(1) {
+.productsgrid .itemactions i:nth-child(1) {
   top: 30px;
   transition-delay: 0.1s;
 }
-.itemactions i:nth-child(2) {
+.productsgrid .itemactions i:nth-child(2) {
   top: 40px;
   transition-delay: 0.2s;
 }
-.itemactions i:nth-child(3) {
+.productsgrid .itemactions i:nth-child(3) {
   top: 50px;
   transition-delay: 0.3s;
 }
-.itemactions i:hover {
+.productsgrid .itemactions i:hover {
   background: #f1f1f1;
   color: #333;
 }
-.itemactions i:active {
+.productsgrid .itemactions i:active {
   background: #333;
   color: #eee;
 }
-.itemcont:hover .itemactions i {
+.productsgrid .itemcont:hover .itemactions i {
   top: 0;
   opacity: 1;
   visibility: visible;
@@ -1581,6 +1581,48 @@ footer .socials > div i {
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 50px 30px;
 }
+.productslist {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 100px;
+}
+.productslist .imgcont {
+  width: 300px;
+  height: 350px;
+}
+.productslist .imgcont .heartlink {
+  left: 250px;
+  right: auto;
+}
+.productslist .imgcont {
+  float: left;
+  margin-right: 30px;
+} 
+.productslist .iteminfodiv {
+  float: left;
+}
+.productslist .iteminfodiv h5 {
+  font-size: 25px;
+  margin-top: 10px;
+}
+.productslist .iteminfodiv h5 a {
+  color: #333;
+}
+.productslist .iteminfodiv small {
+  text-align: left;
+  font-weight: 800;
+}
+.productlist .itemactions {
+  position: relative;
+  bottom: auto;
+  top: auto;
+}
+.productlist .itemactions i {
+  opacity: 1;
+  visibility: visible;
+}
+
+
 .pagetitle {
   font-size: 30px;
   color: #555;

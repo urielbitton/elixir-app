@@ -12,6 +12,7 @@ function Shop(props) {
   const [sizesfilt, setSizesfilt] = useState("all")
   const [sortfilt, setSortfilt] = useState("all")
   const [reset, setReset] = useState(true)
+  const [gridview, setGridview] = useState(true)
 
   const allprods = products.map(prod => {
       if(((prod.price >= pricefilt[0] && prod.price < pricefilt[1])|| pricefilt === "all") && (prod.cat.includes(catfilter) || catfilter === "all") && (prod.color.includes(colorfilt) || colorfilt === "all") && (prod.sizes.includes(sizesfilt) || sizesfilt === "all")) {
@@ -89,7 +90,7 @@ function Shop(props) {
             <option>20 items</option><option>25 items</option><option>30 items</option><option>35 items</option><option>40 items</option>
           </select>
         </div>
-      <div><i className="fas fa-th"></i><i class="fas fa-grip-lines"></i></div>
+      <div><i onClick={() => setGridview(true)} className="fas fa-th"></i><i onClick={() => setGridview(false)} class="fas fa-grip-lines"></i></div>
       </div>
       <div className="clear"></div>
 
@@ -124,13 +125,13 @@ function Shop(props) {
       </div> 
     </div>
         
-        <div className="productsgrid">
+        <div className={gridview?"productsgrid":"productslist"}>
           {allprods}
         </div>
 
         <div className="spacerl"></div>
 
-      </div>
+      </div> 
     </div>
   )
 } 

@@ -11,7 +11,7 @@ function ProductPage(props) {
     <div className="productpage"> 
       <div className="grid xgrid pgrid">
         <div className="spacer"></div>
-        <Product prod={props.prod} id={props.id} name={props.name} img={props.img} price={props.price} descript={props.descript} color={props.color} cat={props.cat} sizes={props.sizes} addcart={props.addcart} wishlist={props.wishlist} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} wishnum={props.wishnum} />
+        <Product prod={props.prod} id={props.id} name={props.name} img={props.img} price={props.price} descript={props.descript} color={props.color} cat={props.cat} sizes={props.sizes} addcart={props.addcart} wishlist={props.wishlist} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updateunits={props.updateunits} updatewish={props.updatewish} wishnum={props.wishnum} />
         <div className="spacer"></div>
         <hr />
         <div className="prodaccordion">
@@ -29,7 +29,7 @@ function ProductPage(props) {
               <p>There are no reviews yet. Add the first review.</p> 
             </div>
           </div>
-        </div>
+        </div> 
         <div className="spacerl"></div> 
         <hr/> 
         <div className="spacer"></div> 

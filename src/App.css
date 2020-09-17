@@ -1089,6 +1089,8 @@ footer .socials > div i {
  
 .product .itemnum, .carttable .itemnum {
   float: left;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .product .itemnum > div, .carttable .itemnum > div {
   float: left;
@@ -1528,9 +1530,13 @@ footer .socials > div i {
   margin-bottom: 10px;
 }
 .ordertotaldiv .totalprods h6 {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   margin-bottom: 8px;
+} 
+.ordertotaldiv .totalprods h6 span {
+  margin-left: 10px;
+  font-weight: 600;
 }
 .carttotals label {
   position: relative;
@@ -1586,9 +1592,49 @@ footer .socials > div i {
   grid-template-columns: 1fr;
   grid-row-gap: 100px;
 }
-.productslist .imgcont {
-  width: 300px;
-  height: 350px;
+.productslist .itemactions {
+  position: relative;
+  transition: all 0.2s;
+  left: 300px;
+  width: 350px;
+} 
+.productslist .itemactions i {
+  visibility: visible;
+  opacity: 1;
+  top: 0;
+  transition: all 0.2s;
+}
+.productslist .itemactions i:hover {
+  background: #111;
+  color: #fff;
+}
+.productslist .itemcont:hover img {
+  transform: scale(1);
+}
+.productslist .itemactions .addtocart, .productslist .itemactions .removefromcart {
+  border-radius: 0;
+  padding: 15px 30px;
+  background: #333;
+  color: #fff;
+}
+.productslist .itemactions .addtocart::after {
+  content: "Add To Cart";
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 10px;
+}
+.productslist .itemactions .quickviewbtn {
+  border-radius: 0;
+  padding: 15px 20px;
+  background: #eee;
+  color: #333;
+}
+.productslist .itemactions .fa-random {
+  border-radius: 0;
+  padding: 15px 20px;
+  background: #eee;
+  color: #333;
 }
 .productslist .imgcont .heartlink {
   left: 250px;
@@ -1597,7 +1643,13 @@ footer .socials > div i {
 .productslist .imgcont {
   float: left;
   margin-right: 30px;
+  width: 300px;
+  height: 350px;
+  overflow: visible;
 } 
+.productslist .imgcont img {
+  position: relative;
+}
 .productslist .iteminfodiv {
   float: left;
 }
@@ -1612,16 +1664,6 @@ footer .socials > div i {
   text-align: left;
   font-weight: 800;
 }
-.productlist .itemactions {
-  position: relative;
-  bottom: auto;
-  top: auto;
-} 
-.productlist .itemactions i {
-  opacity: 1;
-  visibility: visible;
-}
-
 
 .pagetitle {
   font-size: 30px;
@@ -1714,7 +1756,7 @@ footer .socials > div i {
   background: #f5f5f5;
 }
 .shoppage .shopoptions .right > div > i {
-  color: #555;
+  color: #999;
   margin: auto 5px;
   padding: 5px;
   transition: all 0.2s;

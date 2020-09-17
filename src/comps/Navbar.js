@@ -12,9 +12,9 @@ function Navbar(props) {
   const cartprods = products.map(prod => {
     if(prod.addcart) {   
       return ( 
-        <CartItem name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={props.id}/>
+        <CartItem name={prod.name} img={prod.img} price={prod.price} units={props.units} key={props.id}/>
       )  
-    }     
+    }      
   })  
 
   useEffect(() => {

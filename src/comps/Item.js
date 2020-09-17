@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 import { ProductContext } from './ProductContext'
 
-function Item(props) {   
+function Item(props) {    
  
   const {products, setProducts, setGeneral} = useContext(ProductContext)
 
@@ -56,7 +56,7 @@ function Item(props) {
     <div className="itemcont"> 
       <div className="imgcont"> 
         <div className="labelcont"><small className="sale" style={{display: (props.sale?"block":"none")}}>Sale</small><small style={{display: (props.hot?"block":"none") }} className="hot">Hot</small></div>
-        <Link to={props.wishlist?"/wishlist":"#"} className="heartlink"><i className={props.wishlist?"fas fa-heart":"far fa-heart"} onClick={() => addToWishlist()}></i></Link>
+        <Link to={props.wishlist?"/wishlist":"#"} className="heartlink"><i className={props.wishlist?"fas fa-heart":"far fa-heart"} onClick={() => props.wishlist?"":addToWishlist()}></i></Link>
         <img src={props.img} alt="item"/>
         <div className="itemactions">
           <i className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart(props.name)}></i>

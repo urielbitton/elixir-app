@@ -6,19 +6,27 @@ function Product(props) {
  
   const {products, setProducts, setGeneral} = useContext(ProductContext)
   const [prodsize, setProdsize] = useState("")
+  const [units, setUnits] = useState(1)
 
   function addToCart() { 
     products.map(prod => {    
       return (prod.id === props.prod.id)?(props.prod.addcart = true):""
     })  
     props.updatecartnum()
-    props.updatesub(props.price)  
+    props.updatesub(props.price*units)  
+    props.updateunits(units)
   } 
   function addToWishlist() {
     products.map(prod => {
       return (prod.id === props.prod.id)?(props.prod.wishlist = true):""
     }) 
     props.updatewish() 
+  }
+  function addUnits() {
+    units<10?setUnits(prev => prev+1):setUnits(10)
+  }  
+  function subUnits() {
+    units>1?setUnits(prev => prev-1):setUnits(1)
   }
 
   const addtocart = document.querySelectorAll('.quickview .addtocart')
@@ -88,9 +96,9 @@ function Product(props) {
           </label>
           <div className="clear"></div>
           <div className="itemnum">
-            <div className="subnum">-</div>
-            <div className="num">1</div>
-            <div className="addnum">+</div>
+            <div className="subnum" onClick={() => subUnits()}>-</div>
+            <div className="num">{units}</div>
+            <div className="addnum" onClick={() => addUnits()}>+</div>
           </div>
           <Link to={props.prod.addcart?"/cart":"#"}><button className="addtocart" onClick={() => props.prod.addcart?"":addToCart()}><i class="fas fa-cart-plus"></i>{props.prod.addcart?"View Cart":"Add To Cart"}</button></Link>
           <div className="metaitem">

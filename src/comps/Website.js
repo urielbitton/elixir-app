@@ -20,6 +20,7 @@ function Website() {
   const {products, setProducts, setGeneral} = useContext(ProductContext)
   const [cartitems, setCartitems] = useState(0)
   const [subtotal, setSubtotal] = useState(0)
+  const [units, setUnits] = useState(1)
   const [wishnum, setWishnum] = useState(0)
 
   const [prod, setProd] = useState("")
@@ -39,6 +40,9 @@ function Website() {
   }
   function updateSubtotal(current) {
     setSubtotal(sub => sub+current)
+  } 
+  function updateUnits(current) {
+    setUnits(unit => current)
   }
   function updateWishnum() {
     setWishnum(wish => wish+1)
@@ -83,11 +87,11 @@ function Website() {
   
   return ( 
     <>
-      <Navbar cartitems={cartitems} subtotal={subtotal} wishnum={wishnum}/>  
+      <Navbar cartitems={cartitems} subtotal={subtotal} units={units} wishnum={wishnum}/>  
       <Search />
       <Switch>  
         <Route exact path="/">
-          <Home updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} />
+          <Home updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} />
         </Route>   
         <Route path="/shop">
           <Shop updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} openproduct={openProduct} />
@@ -102,20 +106,20 @@ function Website() {
           <Contact />
         </Route> 
         <Route path="/product"> 
-          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct}/>
+          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct}/>
         </Route> 
         <Route path="/cart">
-          <CartPage subtotal={subtotal} cartitems={cartitems}/>
+          <CartPage subtotal={subtotal} cartitems={cartitems} units={units} />
         </Route> 
         <Route path="/checkout">
-          <Checkout subtotal={subtotal}/>
+          <Checkout subtotal={subtotal} units={units}/>
         </Route>
         <Route path="/wishlist">
           <Wishlist />
         </Route>  
       </Switch> 
   
-      <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} wishnum={wishnum} />
+      <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} />
       <Footer /> 
     </>
   )

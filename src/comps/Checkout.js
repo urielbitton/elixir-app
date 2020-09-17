@@ -55,11 +55,10 @@ function Checkout(props) {
                  { 
                    products.map(prod => {
                      return (
-                     prod.addcart? <div><h6>{prod.name}</h6><h6>${prod.price.toFixed(2)}</h6><div className="clear"></div></div>:""
+                      prod.addcart? <div><h6>{prod.name}<span>&#10006; {props.units}</span></h6><h6>${prod.price.toFixed(2)}</h6><div className="clear"></div></div>:""
                      )
                    }) 
                  }
-                 
                   <div className="clear"></div>
                 </div>
               </div>

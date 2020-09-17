@@ -25,7 +25,7 @@ function QuickView(props) {
       <i className="close"></i>
       <div className="quickclose"></div>
         <div className="quickview">
-          <Product prod={props.prod} id={props.id} name={props.name} img={props.img} price={props.price} descript={props.descript} color={props.color} cat={props.cat} sizes={props.sizes} addcart={props.addcart} wishlist={props.wishlist} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} wishnum={props.wishnum} />
+          <Product prod={props.prod} id={props.id} name={props.name} img={props.img} price={props.price} descript={props.descript} color={props.color} cat={props.cat} sizes={props.sizes} addcart={props.addcart} wishlist={props.wishlist} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updateunits={props.updateunits} updatewish={props.updatewish} wishnum={props.wishnum} />
         </div>
     </div>
   )

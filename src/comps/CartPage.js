@@ -11,8 +11,8 @@ function CartPage(props) {
   const cartitem = products.map(prod => {
     if(prod.addcart) {   
       return ( 
-        <CartPageItem name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={prod.id}/>
-      )  
+        <CartPageItem name={prod.name} img={prod.img} price={prod.price} units={props.units} key={prod.id}/>
+      )   
     }     
   }) 
 
@@ -30,7 +30,7 @@ function CartPage(props) {
  
       <div className="grid pgrid xgrid">
         <div className="cartpageinner" style={{display: (props.cartitems<1?"none":"block")}}>
-        <div className="spacerl"></div>
+        
         <table className="carttable">
           <thead>
             <tr>

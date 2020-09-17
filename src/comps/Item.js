@@ -56,18 +56,18 @@ function Item(props) {
     <div className="itemcont"> 
       <div className="imgcont"> 
         <div className="labelcont"><small className="sale" style={{display: (props.sale?"block":"none")}}>Sale</small><small style={{display: (props.hot?"block":"none") }} className="hot">Hot</small></div>
-        <Link to={props.wishlist?"/wishlist":""} className="heartlink"><i className={props.wishlist?"fas fa-heart":"far fa-heart"} onClick={() => addToWishlist()}></i></Link>
+        <Link to={props.wishlist?"/wishlist":"#"} className="heartlink"><i className={props.wishlist?"fas fa-heart":"far fa-heart"} onClick={() => addToWishlist()}></i></Link>
         <img src={props.img} alt="item"/>
         <div className="itemactions">
           <i className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart(props.name)}></i>
-          <i onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.addcart,props.wishlist)} className="fas fa-search-plus quickviewbtn"></i> 
+          <i onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.addcart,props.wishlist)} className="fas fa-search-plus quickviewbtn"></i> 
           <i className="fas fa-random"></i>
         </div> 
       </div> 
-      <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.addcart,props.wishlist)}><Link to="/product">{props.name}</Link></h5>
+      <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.addcart,props.wishlist)}><Link to="/product">{props.name}</Link></h5>
       <small>${props.price}.00</small> 
     </div>  
-  ) 
+  )  
 } 
 
 export default Item

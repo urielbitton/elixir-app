@@ -1,10 +1,11 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom"
 import { ProductContext } from './ProductContext'
 
 function Product(props) {
  
   const {products, setProducts, setGeneral} = useContext(ProductContext)
+  const [prodsize, setProdsize] = useState("")
 
   function addToCart() { 
     products.map(prod => {    
@@ -39,6 +40,15 @@ function Product(props) {
     }, 200)
   }
 
+  useEffect(() => {
+    document.querySelectorAll('.sizesboxdiv .sizebox').forEach(box => {
+      box.onclick = () => {
+        document.querySelectorAll('.sizesboxdiv .sizebox').forEach(el => el.classList.remove('activesizebox'))
+        box.classList.add('activesizebox')
+      }
+    })
+  })
+
   return ( 
     <div className="product">
         <div>
@@ -63,15 +73,26 @@ function Product(props) {
                 })
               } 
             </select>  
+            <div className="clear"></div> 
+          </label> 
+          <label>
+            <small>Size</small>
+            <div className="sizesboxdiv">
+            {
+              props.sizes.map(size => {
+                return <div className="sizebox">{size}</div>
+              })
+            } 
+            </div>
+            <div className="clear"></div> 
           </label>
           <div className="clear"></div>
-          <div className="spacers"></div>
           <div className="itemnum">
             <div className="subnum">-</div>
             <div className="num">1</div>
             <div className="addnum">+</div>
           </div>
-          <Link to={props.prod.addcart?"/cart":""}><button className="addtocart" onClick={() => props.prod.addcart?"":addToCart()}><i class="fas fa-cart-plus"></i>{props.prod.addcart?"View Cart":"Add To Cart"}</button></Link>
+          <Link to={props.prod.addcart?"/cart":"#"}><button className="addtocart" onClick={() => props.prod.addcart?"":addToCart()}><i class="fas fa-cart-plus"></i>{props.prod.addcart?"View Cart":"Add To Cart"}</button></Link>
           <div className="metaitem">
             <h6>Categories: 
               <span>
@@ -91,7 +112,7 @@ function Product(props) {
           </div>
           <div className="clear"></div> 
           <small style={{display:"none"}}>{props.wishnum}</small> 
-          <Link to={props.prod.wishlist?"/wishlist":""}><button className="addtowish" onClick={() => addToWishlist()}><i class="fas fa-heart"></i>{props.prod.wishlist?"View Wishlist":"Add to Wishlist"}</button></Link>
+          <Link to={props.prod.wishlist?"/wishlist":"#"}><button className="addtowish" onClick={() => props.prod.wishlist?"":addToWishlist()}><i class="fas fa-heart"></i>{props.prod.wishlist?"View Wishlist":"Add to Wishlist"}</button></Link>
         </div> 
       </div>  
   ) 

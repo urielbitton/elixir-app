@@ -30,6 +30,7 @@ function Website() {
   const [descript, setDescript] = useState("")
   const [color, setColor] = useState([""])
   const [cat, setCat] = useState([""])
+  const [sizes, setSizes] = useState([""])
   const [addcart, setAddcart] = useState(false)
   const [wishlist, setWishlist] = useState(false)
  
@@ -42,7 +43,7 @@ function Website() {
   function updateWishnum() {
     setWishnum(wish => wish+1)
   } 
-  function openProduct(prod,id,name,img,price,descript,color,cat,addcart,wishlist) {
+  function openProduct(prod,id,name,img,price,descript,color,cat,sizes,addcart,wishlist) {
     setProd(prod)
     setId(id)
     setName(name)
@@ -51,6 +52,7 @@ function Website() {
     setDescript(descript)
     setColor(color)
     setCat(cat)
+    setSizes(sizes)
     setWishlist(wishlist)
     setAddcart(addcart)
   } 
@@ -76,7 +78,7 @@ function Website() {
       }
     })  
     document.querySelectorAll('.backtop').forEach(el => el.onclick = () => window.scrollTo(0, 0))
-      
+       
   },[])
   
   return ( 
@@ -100,7 +102,7 @@ function Website() {
           <Contact />
         </Route> 
         <Route path="/product"> 
-          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct}/>
+          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct}/>
         </Route> 
         <Route path="/cart">
           <CartPage subtotal={subtotal} cartitems={cartitems}/>
@@ -113,7 +115,7 @@ function Website() {
         </Route>  
       </Switch> 
   
-      <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} wishnum={wishnum} />
+      <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} wishnum={wishnum} />
       <Footer /> 
     </>
   )

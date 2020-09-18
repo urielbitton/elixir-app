@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom"
 import CartItem from './CartItem';
 import { ProductContext } from './ProductContext'
-import Item from './Item'
 import Menu from './Menu'
 
 function Navbar(props) { 
@@ -10,10 +9,10 @@ function Navbar(props) {
   const {products} = useContext(ProductContext)
  
   const cartprods = products.map(prod => {
-    if(prod.addcart) {   
+    if(prod.addcart) {     
       return ( 
-        <CartItem name={prod.name} img={prod.img} price={prod.price} units={props.units} key={props.id}/>
-      )  
+        <CartItem name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={prod.id}/>
+      )   
     }      
   })  
 
@@ -78,7 +77,6 @@ function Navbar(props) {
           <Link to="/"><h1 className="logo">elixir<span>.</span></h1></Link>
           <Menu />
         </div>
-    
         <div className="right">
           <div className="wishicondiv" style={{display:props.wishnum>0?"block":"none"}}><Link to="wishlist"><i className="fas fa-heart"></i><small><span>{props.wishnum}</span></small></Link></div>
           <div className="searchdiv searchbtn">

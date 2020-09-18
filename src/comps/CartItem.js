@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 
 function CartItem(props) {
+
   return (
     <div className="cartitem">
       <img src ={props.img} alt="cartimg" />
@@ -9,9 +10,9 @@ function CartItem(props) {
       <h6>${props.price}</h6> 
       <small>Units: {props.units}</small>
       <hr/>
-    </div> 
-    
+    </div>   
+      
   ) 
-}
+} 
 
 export default CartItem

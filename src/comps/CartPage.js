@@ -11,7 +11,7 @@ function CartPage(props) {
   const cartitem = products.map(prod => {
     if(prod.addcart) {   
       return ( 
-        <CartPageItem name={prod.name} img={prod.img} price={prod.price} units={props.units} key={prod.id}/>
+        <CartPageItem name={prod.name} img={prod.img} price={prod.price} key={prod.id}/>
       )   
     }     
   }) 

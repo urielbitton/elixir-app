@@ -13,9 +13,9 @@ function Product(props) {
       return (prod.id === props.prod.id)?(props.prod.addcart = true):""
     })  
     props.updatecartnum()
-    props.updatesub(props.price*units)  
-    props.updateunits(units)
-  } 
+    props.updatesub(props.price*props.prod.units)  
+    props.updateunits(props.prod.units)
+  }   
   function addToWishlist() {
     products.map(prod => {
       return (prod.id === props.prod.id)?(props.prod.wishlist = true):""
@@ -23,10 +23,12 @@ function Product(props) {
     props.updatewish() 
   }
   function addUnits() {
-    units<10?setUnits(prev => prev+1):setUnits(10)
-  }  
+    units>9?setUnits(10):setUnits(prev => prev+1)
+    props.prod.units = units
+  }   
   function subUnits() {
     units>1?setUnits(prev => prev-1):setUnits(1)
+    props.prod.units = units
   }
 
   const addtocart = document.querySelectorAll('.quickview .addtocart')
@@ -42,7 +44,7 @@ function Product(props) {
     quickview.style.top = ''
     setTimeout(() => {
       quickviewcont.style.opacity = ''
-    }, 100)
+    }, 100) 
     setTimeout(() => { 
       quickviewcont.style.display = ''
     }, 200)
@@ -102,7 +104,7 @@ function Product(props) {
           </div>
           <Link to={props.prod.addcart?"/cart":"#"}><button className="addtocart" onClick={() => props.prod.addcart?"":addToCart()}><i class="fas fa-cart-plus"></i>{props.prod.addcart?"View Cart":"Add To Cart"}</button></Link>
           <div className="metaitem">
-            <h6>Categories: 
+            <h6>Categories:  
               <span>
               {
                 props.cat.map(cat => {
@@ -123,7 +125,7 @@ function Product(props) {
           <Link to={props.prod.wishlist?"/wishlist":"#"}><button className="addtowish" onClick={() => props.prod.wishlist?"":addToWishlist()}><i class="fas fa-heart"></i>{props.prod.wishlist?"View Wishlist":"Add to Wishlist"}</button></Link>
         </div> 
       </div>  
-  ) 
+  )  
 } 
 
 export default Product

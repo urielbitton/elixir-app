@@ -6,10 +6,10 @@ import PageBanner from './PageBanner'
 function Wishlist() {
 
   const {products, setProducts, setGeneral} = useContext(ProductContext)
-
+  
   let wishitems = products.map(prod => {
     if(prod.wishlist)
-      return <tr><td><i className="far fa-window-close"></i><img src={prod.img} alt="prodwish" /></td><td><Link to="/product">{prod.name}</Link></td><td className="pricetd">${prod.price}.00</td><td>{prod.instock?<p><i class='fas fa-check-circle'></i>In stock</p>:<p><i class='fas fa-window-close'></i>Out of stock</p>}</td><td></td></tr>
+      return <tr><td><i className="far fa-window-close"></i><img src={prod.img} alt="prodwish" /></td><td><Link to="/product">{prod.name}</Link></td><td className="pricetd">${prod.price}.00</td><td>{prod.instock?<p><i class='fas fa-check-circle'></i>In stock</p>:<p><i class='fas fa-window-close'></i>Out of stock</p>}</td><td>{prod.cat[0]}</td></tr>
   })
   
   return ( 
@@ -25,7 +25,7 @@ function Wishlist() {
               <th>Product Name</th>
               <th>Unit Price</th>
               <th>Stock Status</th>
-              <th>Tags</th>
+              <th>Category</th>
             </thead>
             <tbody>
               {wishitems}

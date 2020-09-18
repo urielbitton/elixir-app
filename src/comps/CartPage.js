@@ -7,11 +7,19 @@ import { ProductContext } from './ProductContext'
 function CartPage(props) {
 
   const {products, setProducts, setGeneral} = useContext(ProductContext)
+  const [newunits, setNewunits] = useState(0)
+
+  function addUnits() {
+    setNewunits(prev => newunits+1)
+  }
+  function subUnits() {
+    setNewunits(prev => newunits-1)
+  }
 
   const cartitem = products.map(prod => {
     if(prod.addcart) {   
       return ( 
-        <CartPageItem name={prod.name} img={prod.img} price={prod.price} key={prod.id}/>
+        <CartPageItem name={prod.name} img={prod.img} price={prod.price} units={prod.units+newunits} key={prod.id} addunits={addUnits} subunits={subUnits}/>
       )   
     }     
   }) 

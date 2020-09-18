@@ -1115,7 +1115,7 @@ footer .socials > div i {
   background: #333;
   color: #fff;
 }   
-.product .addtocart {
+.product .addtocart, .product .viewcart {
   float: left;
   margin-left: 40px;
   padding: 15px 25px;
@@ -1123,7 +1123,7 @@ footer .socials > div i {
   color: #fff;
   margin-bottom: 30px;
 }
-.product .addtocart:hover {
+.product .addtocart:hover, .product .viewcart:hover {
   background: #444;
 }
 .product .metaitem {
@@ -1826,8 +1826,6 @@ footer .socials > div i {
   background: #333;
   color: #fff;
 }
-
-
 
 
 

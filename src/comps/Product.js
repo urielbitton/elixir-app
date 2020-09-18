@@ -15,6 +15,7 @@ function Product(props) {
     props.updatecartnum()
     props.updatesub(props.price*props.prod.units)  
     props.updateunits(props.prod.units)
+    setTimeout(() => setUnits(1),1000)
   }   
   function addToWishlist() {
     products.map(prod => {
@@ -24,11 +25,13 @@ function Product(props) {
   }
   function addUnits() {
     units>9?setUnits(10):setUnits(prev => prev+1)
-    props.prod.units = units
+    props.prod.units = units+1
+    props.prod.addcart = false
   }   
   function subUnits() {
     units>1?setUnits(prev => prev-1):setUnits(1)
-    props.prod.units = units
+    props.prod.units = units+1
+    props.prod.addcart = false
   }
 
   const addtocart = document.querySelectorAll('.quickview .addtocart')
@@ -48,7 +51,7 @@ function Product(props) {
     setTimeout(() => { 
       quickviewcont.style.display = ''
     }, 200)
-  }
+  } 
 
   useEffect(() => {
     document.querySelectorAll('.sizesboxdiv .sizebox').forEach(box => {
@@ -57,6 +60,16 @@ function Product(props) {
         box.classList.add('activesizebox')
       }
     })
+    if(document.body.contains(document.querySelector('.viewcart'))) {
+      document.querySelector('.viewcart').onclick = ()  => {
+          setTimeout(() => {
+            document.querySelector('.quickviewcont').style.opacity = '0'
+            setTimeout(() => {
+              document.querySelector('.quickviewcont').style.display = 'none'
+            }, 100)
+          }, 200)
+      }
+    }
   })
 
   return ( 
@@ -102,7 +115,7 @@ function Product(props) {
             <div className="num">{units}</div>
             <div className="addnum" onClick={() => addUnits()}>+</div>
           </div>
-          <Link to={props.prod.addcart?"/cart":"#"}><button className="addtocart" onClick={() => props.prod.addcart?"":addToCart()}><i class="fas fa-cart-plus"></i>{props.prod.addcart?"View Cart":"Add To Cart"}</button></Link>
+          <Link to={props.prod.addcart?"/cart":"#"}><button className={props.prod.addcart?"viewcart":"addtocart"} onClick={() => props.prod.addcart?"":addToCart()}><i class="fas fa-cart-plus"></i>{props.prod.addcart?"View Cart":"Add To Cart"}</button></Link>
           <div className="metaitem">
             <h6>Categories:  
               <span>

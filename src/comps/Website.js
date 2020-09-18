@@ -35,7 +35,7 @@ function Website() {
   const [units, setUnits] = useState(1)
   const [addcart, setAddcart] = useState(false)
   const [wishlist, setWishlist] = useState(false)
- 
+  
   function updateCartNum() {
     setCartitems(num => num+1)
   }

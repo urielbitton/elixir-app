@@ -6,25 +6,25 @@ import { ProductContext } from './ProductContext'
 
 function CartPage(props) {
 
-  const {products, setProducts, setGeneral} = useContext(ProductContext)
-  const [newunits, setNewunits] = useState(0)
-
-  function addUnits() {
-    setNewunits(prev => newunits+1)
-  }
-  function subUnits() {
-    setNewunits(prev => newunits-1)
-  }
+  const {products, general, setGeneral} = useContext(ProductContext)
+  const [subtotal, setSubtotal] = useState(props.subtotal)
 
   const cartitem = products.map(prod => {
     if(prod.addcart) {   
       return ( 
-        <CartPageItem name={prod.name} img={prod.img} price={prod.price} units={prod.units+newunits} key={prod.id} addunits={addUnits} subunits={subUnits}/>
+        <CartPageItem name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={prod.id} updatedadd={updatedAdd} updatedsub={updatedSub}/>
       )   
     }     
-  }) 
+  })   
 
-  const total = (props.subtotal + props.subtotal * 0.15).toFixed(2)
+  function updatedAdd(price) {
+    setSubtotal(prev => prev+price)
+  }
+  function updatedSub(price) {
+    setSubtotal(prev => prev-price)
+  }
+ 
+  const total = (subtotal + subtotal * 0.15).toFixed(2)
 
   useEffect(() => {
     document.querySelector('.proceeddiv .b1').onclick = () => {
@@ -72,7 +72,7 @@ function CartPage(props) {
               </td>
               <td colSpan="1"></td>
               <td colSpan="3" className="subtotaltd"> 
-                <h4>Subtotal: <span>${props.subtotal}.00</span></h4>
+                <h4>Subtotal: <span>${subtotal}.00</span></h4>
               </td>
             </tr>
           </tfoot>
@@ -93,18 +93,18 @@ function CartPage(props) {
               <option>South America</option>
               <option>Israel</option>
             </select>
-            <input placeholder="City"/>
+            <input placeholder="City"/> 
             <input placeholder="Postal Code"/> 
-          </div>
+          </div>  
           <div className="carttotals"> 
             <h2>Cart Totals</h2>
-            <div><h6>Subtotal</h6><h6>${props.subtotal}.00</h6><div className="clear"></div></div>
-            <div><h6>Tax Rate (15%)</h6><h6>${(props.subtotal * 0.15).toFixed(2)}</h6><div className="clear"></div></div>
-            <div><h6>Shipping Fees</h6><h6>{props.subtotal>100?"Free Shipping":"Flat Rate: 30$"}</h6><div className="clear"></div></div>
-            <div><h6>Order Total</h6><h6 className="ordertotal">${props.subtotal<1?0:(props.subtotal>100?total:(total+30))}</h6><div className="clear"></div></div>
+            <div><h6>Subtotal</h6><h6>${subtotal}.00</h6><div className="clear"></div></div>
+            <div><h6>Tax Rate (15%)</h6><h6>${(subtotal * 0.15).toFixed(2)}</h6><div className="clear"></div></div>
+            <div><h6>Shipping Fees</h6><h6>{subtotal>100?"Free Shipping":"Flat Rate: 30$"}</h6><div className="clear"></div></div>
+            <div><h6>Order Total</h6><h6 className="ordertotal">${subtotal<1?0:(subtotal>100?total:(total+30))}</h6><div className="clear"></div></div>
             <div><Link to="/checkout"><button onClick={() => window.scrollTo(0, 0)}>Proceed To Checkout</button></Link></div>
           </div> 
-        </div> 
+        </div>  
 
         <div className="spacerl"></div>
         </div>
@@ -113,7 +113,7 @@ function CartPage(props) {
           <div className="msgbox"><p><i class="fas fa-shopping-cart"></i>Your cart is currently empty.</p></div>
           <Link to="/shop"><button>Return To Shop</button></Link>
         </div>
-
+ 
       </div> 
 
 

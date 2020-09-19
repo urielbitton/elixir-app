@@ -30,8 +30,8 @@ function Product(props) {
   }   
   function subUnits() {
     units>1?setUnits(prev => prev-1):setUnits(1)
-    props.prod.units = units+1
-    props.prod.addcart = false
+    props.prod.units = units-1
+    props.prod.addcart = false 
   }
 
   const addtocart = document.querySelectorAll('.quickview .addtocart')

@@ -12,16 +12,20 @@ function CartPage(props) {
   const cartitem = products.map(prod => {
     if(prod.addcart) {   
       return ( 
-        <CartPageItem name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={prod.id} updatedadd={updatedAdd} updatedsub={updatedSub}/>
+        <CartPageItem prod={prod} name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={prod.id} updatedadd={updatedAdd} updatedsub={updatedSub}/>
       )   
     }     
   })   
 
-  function updatedAdd(price) {
+  function updatedAdd(price, newunits) {
     setSubtotal(prev => prev+price)
+    props.connectsub(subtotal+price)
+    props.connectunits(newunits)
   }
-  function updatedSub(price) {
+  function updatedSub(price, newunits) {
     setSubtotal(prev => prev-price)
+    props.connectsub(subtotal-price)
+    props.connectunits(newunits)
   }
  
   const total = (subtotal + subtotal * 0.15).toFixed(2)

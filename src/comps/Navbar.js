@@ -15,7 +15,7 @@ function Navbar(props) {
       )   
     }      
   })  
-
+ 
   useEffect(() => {
     const navbar = document.querySelector('nav')
     const navleft = document.querySelector('nav .left')
@@ -101,7 +101,7 @@ function Navbar(props) {
               <Link to="/shop"><small>Add Items</small></Link>
             </div>
           </div>
-          </div>
+          </div> 
         </div>
       </div>  
     </nav>

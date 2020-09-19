@@ -45,10 +45,15 @@ function Website() {
   function updateUnits(current) {
     setCurrunits(prev => prev+current) 
   }
-
   function updateWishnum() {
     setWishnum(wish => wish+1)
+  }
+  function connectSub(updatedsub) {
+    setSubtotal(updatedsub) 
   } 
+  function connectUnits(updatedunits) {
+    setCurrunits(updatedunits) 
+  }
   function openProduct(prod,id,name,img,price,descript,color,cat,sizes,units,addcart,wishlist) {
     setProd(prod)
     setId(id)
@@ -87,10 +92,10 @@ function Website() {
     document.querySelectorAll('.backtop').forEach(el => el.onclick = () => window.scrollTo(0, 0))
        
   },[]) 
-  
-  return ( 
+   
+  return (  
     <> 
-      <Navbar cartitems={cartitems} subtotal={subtotal} units={units} wishnum={wishnum}/>  
+      <Navbar cartitems={cartitems} subtotal={subtotal} units={units} currunits={currunits} wishnum={wishnum}/>  
       <Search />
       <Switch>  
         <Route exact path="/">
@@ -112,7 +117,7 @@ function Website() {
           <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct}/>
         </Route> 
         <Route path="/cart">
-          <CartPage subtotal={subtotal} cartitems={cartitems} />
+          <CartPage subtotal={subtotal} cartitems={cartitems} connectsub={connectSub} connectunits={connectUnits} />
         </Route> 
         <Route path="/checkout">
           <Checkout subtotal={subtotal} />

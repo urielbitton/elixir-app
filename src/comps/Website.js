@@ -21,7 +21,6 @@ function Website() {
   const [cartitems, setCartitems] = useState(0)
   const [subtotal, setSubtotal] = useState(0)
   const [wishnum, setWishnum] = useState(0)
-  const [currunits, setCurrunits] = useState(1)
 
   const [prod, setProd] = useState("")
   const [id, setId] = useState(0)
@@ -43,7 +42,7 @@ function Website() {
     setSubtotal(sub => sub+current)
   } 
   function updateUnits(current) {
-    setCurrunits(prev => prev+current) 
+    setUnits(prev => prev+current) 
   }
   function updateWishnum() {
     setWishnum(wish => wish+1)
@@ -51,9 +50,7 @@ function Website() {
   function connectSub(updatedsub) {
     setSubtotal(updatedsub) 
   } 
-  function connectUnits(updatedunits) {
-    setCurrunits(updatedunits) 
-  }
+  
   function openProduct(prod,id,name,img,price,descript,color,cat,sizes,units,addcart,wishlist) {
     setProd(prod)
     setId(id)
@@ -95,7 +92,7 @@ function Website() {
    
   return (  
     <> 
-      <Navbar cartitems={cartitems} subtotal={subtotal} units={units} currunits={currunits} wishnum={wishnum}/>  
+      <Navbar cartitems={cartitems} subtotal={subtotal} units={units} wishnum={wishnum}/>  
       <Search />
       <Switch>  
         <Route exact path="/">
@@ -117,7 +114,7 @@ function Website() {
           <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct}/>
         </Route> 
         <Route path="/cart">
-          <CartPage subtotal={subtotal} cartitems={cartitems} connectsub={connectSub} connectunits={connectUnits} />
+          <CartPage prod={prod} subtotal={subtotal} cartitems={cartitems} connectsub={connectSub}/>
         </Route> 
         <Route path="/checkout">
           <Checkout subtotal={subtotal} />

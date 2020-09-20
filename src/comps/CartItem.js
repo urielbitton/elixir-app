@@ -8,7 +8,7 @@ function CartItem(props) {
       <img src ={props.img} alt="cartimg" />
       <h5><Link to="/product">{props.name}</Link> <span>{props.num}</span></h5>
       <h6>${props.price}</h6> 
-      <small>Units: {props.units}</small>
+      <small>Units: {props.prod.units}</small>
       <hr/>
     </div>   
       

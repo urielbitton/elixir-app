@@ -7,16 +7,16 @@ function Product(props) {
   const {products, setProducts, setGeneral} = useContext(ProductContext)
   const [prodsize, setProdsize] = useState("")
   const [units, setUnits] = useState(1)
+  let temp = 1
 
   function addToCart() { 
     products.map(prod => {    
       return (prod.id === props.prod.id)?(props.prod.addcart = true):""
     })  
     props.updatecartnum()
-    props.updatesub(props.price*props.prod.units)  
+    props.updatesub(props.prod.price*props.prod.units)  
     props.updateunits(props.prod.units)
-    setTimeout(() => setUnits(1),1000)
-  }   
+  }    
   function addToWishlist() {
     products.map(prod => {
       return (prod.id === props.prod.id)?(props.prod.wishlist = true):""
@@ -25,15 +25,15 @@ function Product(props) {
   }
   function addUnits() {
     units>9?setUnits(10):setUnits(prev => prev+1)
-    props.prod.units = units+1
-    props.prod.addcart = false
+    props.prod.addcart?temp=1:props.prod.units += 1
+    //props.prod.addcart = false //uncomment if you want to allow post addcart adding units
   }   
   function subUnits() {
     units>1?setUnits(prev => prev-1):setUnits(1)
-    props.prod.units = units-1
-    props.prod.addcart = false 
+    props.prod.addcart?temp=1:props.prod.units -= 1
+    //props.prod.addcart = false //uncomment if you want to allow post addcart adding units
   }
-
+ 
   const addtocart = document.querySelectorAll('.quickview .addtocart')
     addtocart.forEach(el => {
       el.onclick = () => {
@@ -112,7 +112,7 @@ function Product(props) {
           <div className="clear"></div>
           <div className="itemnum">
             <div className="subnum" onClick={() => subUnits()}>-</div>
-            <div className="num">{units}</div>
+            <div className="num">{props.prod.units}</div>
             <div className="addnum" onClick={() => addUnits()}>+</div>
           </div>
           <Link to={props.prod.addcart?"/cart":"#"}><button className={props.prod.addcart?"viewcart":"addtocart"} onClick={() => props.prod.addcart?"":addToCart()}><i class="fas fa-cart-plus"></i>{props.prod.addcart?"View Cart":"Add To Cart"}</button></Link>

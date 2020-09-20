@@ -20,12 +20,10 @@ function CartPage(props) {
   function updatedAdd(price, newunits) {
     setSubtotal(prev => prev+price)
     props.connectsub(subtotal+price)
-    props.connectunits(newunits)
   }
   function updatedSub(price, newunits) {
     setSubtotal(prev => prev-price)
     props.connectsub(subtotal-price)
-    props.connectunits(newunits)
   }
  
   const total = (subtotal + subtotal * 0.15).toFixed(2)
@@ -71,7 +69,7 @@ function CartPage(props) {
           <tfoot> 
             <tr>
               <td colSpan="1">
-                <button className="b1">Continue Shopping</button>
+                <Link to="/shop"><button className="b1">Continue Shopping</button></Link>
                 <button className="b2"><i className="fas fa-times"></i>Clear Cart</button>
               </td>
               <td colSpan="1"></td>

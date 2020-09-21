@@ -39,20 +39,16 @@ function Item(props) {
           }, 100);
         }, 200);
       }
-    })
+    }) 
     
     const addtocart = document.querySelectorAll('.itemcont .addtocart')
     addtocart.forEach(el => {
       el.onclick = () => {
         document.querySelector('.cartcont').style.cssText += 'opacity:1;visibility:visible;top: 45px'
       }
-    }) 
-    document.onscroll = () => {
-      document.querySelector('.cartcont').style.opacity = ''
-      document.querySelector('.cartcont').style.visibility = ''
-      document.querySelector('.cartcont').style.top = '' 
-    } 
-
+    })  
+   
+ 
   },[]) 
  
   return (  

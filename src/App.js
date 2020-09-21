@@ -14,18 +14,17 @@ function App() {
   function logIn() {
     setLogin(true)
   }
+  function adminOn() {
+    setAdmin(true)
+  } 
 
   return (  
-    <>  
+    <>   
       <Router>  
         <ProductContextProvider>  
-          {
-            login?(admin?<Admin />:<Website />):<Login loggedin={logIn}/>
-          }
-          
+          { admin?login?<Admin />:<Login logged={logIn}/>:<Website adminon={adminOn}/> } 
         </ProductContextProvider> 
       </Router> 
-
     </> 
   ) 
 }

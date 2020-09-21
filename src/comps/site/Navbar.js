@@ -89,6 +89,7 @@ function Navbar(props) {
           <div className="searchdiv searchbtn">
           <i class="fas fa-search"></i>
           </div>
+          <div className="logindiv" onClick={() => props.adminon()}><Link to="/login"><i class="fas fa-user-alt"></i></Link></div>
           <div className="cartdiv"> 
           <i className="fas fa-shopping-cart"></i>
           <small className="cartitemsnum"><span>{props.cartitems}</span></small>

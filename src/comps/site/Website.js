@@ -14,8 +14,9 @@ import Footer from './Footer'
 import Checkout from './Checkout';
 import Search from './Search'
 import Wishlist from './Wishlist';
+import Login from '../Login'
 
-function Website() { 
+function Website(props) { 
  
   const {products, setProducts, setGeneral} = useContext(ProductContext)
   const [cartitems, setCartitems] = useState(0)
@@ -114,7 +115,7 @@ function Website() {
    
   return (  
     <> 
-      <Navbar cartitems={cartitems} subtotal={subtotal} units={units} wishnum={wishnum}/>  
+      <Navbar cartitems={cartitems} subtotal={subtotal} units={units} wishnum={wishnum} adminon={props.adminon} />  
       <Search openproduct={openProduct}/>
       <Switch>  
         <Route exact path="/">
@@ -143,7 +144,7 @@ function Website() {
         </Route>
         <Route path="/wishlist">
           <Wishlist subwishnum={subWishnum} zerowishnum={zeroWishnum} openproduct={openProduct}/>
-        </Route>  
+        </Route>   
       </Switch> 
    
       <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} setprodcolor={setProdColor} setprodsize={setProdSize} />

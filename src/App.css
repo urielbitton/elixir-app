@@ -202,12 +202,17 @@ nav h1 span {
   padding: 30px 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   transition: top 0.7s, opacity 0.4s, visibility 0.4s;
-}
-.shop-tab {
-  background: #fafafa;
-  background-image: url('https://i.imgur.com/2uWnG1P.jpg');
   background-position: center;
   background-size: cover; 
+}
+.menu .shop-tab {
+  background-image: url('https://i.imgur.com/2uWnG1P.jpg');
+} 
+.menu .about-tab {
+  background-image: url('https://i.imgur.com/29mlO62.jpg?');
+}
+.menu .gal-tab {
+  background: #fafafa;
 } 
 .menu .tab h4 {
   color: #777;
@@ -2009,6 +2014,173 @@ footer .socials > div i {
   position: relative;
   margin: 20px 0;
 }
+
+.wishtable button {
+  padding: 15px 30px;
+  background: #111;
+  color: #fff;
+  font-size: 15px;
+}
+.wishtable button:hover {
+  background: #333;
+}
+
+.abouts1 img {
+  height: 800px;
+  position: relative;
+  z-index: 100;
+  top:-50px;
+  left: 100px;
+} 
+.abouts1 big {
+  position: absolute;
+  font-size: 1100px;
+  top: -200px;
+  transform: translateX(-130px);
+  opacity: 0.07;
+}
+.abouts1 .left small {
+  position: absolute;
+  left: 170px;
+  top:250px;
+  font-size: 18px;
+  letter-spacing: 30px;
+  writing-mode: vertical-rl; 
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #777;
+}
+.abouts1 .left small span {
+  color: var(--color);
+  letter-spacing: 30px;
+}
+.abouts1 .right {
+  text-align: left;
+  width:50%;
+}
+.abouts1 h3 {
+  margin-top: 100px;
+  font-size: 45px;
+  width:500px;
+}
+.abouts1 p {
+  margin-top: 50px;
+  width:500px;
+  color: #777;
+  line-height: 1.8;
+}
+.abouts1 h6 {
+  display: inline-block;
+  margin-top: 50px;
+  font-size: 17px;
+  transition:all 0.2s;
+  font-weight: 600;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #111;
+}
+.abouts1 h6:hover a {
+  color: var(--color);
+  transition:all 0.2s;
+}
+.abouts1 h6:hover {
+  border-color: var(--color)
+}
+
+.loginpage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  height: 100vh;
+  width: 100%;
+  transition: all 0.7s;
+} 
+.loginimgcont img {
+  height: 100vh;
+  width: 100%;
+}
+.logininfo {
+  position: relative;
+  padding: 60px 50px;
+}
+.logininfo h3 {
+  font-size: 45px;
+  color: #333;
+  margin-top: 100px;
+}
+.logininfo form {
+  margin-top: 50px;
+  width:100%;
+}
+.logininfo form input {
+  border: none;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e1e1e1;
+  width: 320px;
+  color: #aaa;
+  transition: all 0.2s;
+  display: block;
+  margin:  40px 0;
+}
+.logininfo form input:focus::placeholder  {
+  border-color: #aaa;
+  color: #555;
+}
+.logininfo form input::placeholder {
+  color: #aaa;
+} 
+.logininfo form label {
+  display: inline-block;
+  margin-right: 50px;
+}
+.logininfo form label input {
+  display: inline-block;
+  width:20px;
+  height: 13px;
+  margin-right: 5px;
+}
+.logininfo form label small {
+  color: #555;
+  top:-1px;
+}
+.logininfo form button {
+  display: block;
+  padding: 15px 30px;
+  background: #111;
+  color: #fff;
+  font-size: 16px;
+  min-width: 150px;
+  margin-top: 20px;
+}
+.logininfo form button:hover {
+  background: #333;
+}
+.logininfo form h6 {
+  margin-top: 40px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.logininfo form h6 a {
+  font-weight: 600;
+}
+.logininfo form a:hover {
+  text-decoration: underline;
+}
+.loginpage .loader {
+  position: fixed;
+  top:0;
+  left: 0;
+  width:0;
+  height: 4px;
+  z-index: 999;
+  background: #333;
+  transition: all 2s;
+}
+
+
+
+
+
+
 
 
 

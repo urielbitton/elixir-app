@@ -6,6 +6,15 @@ import { ProductContext } from './ProductContext'
 function ProductPage(props) {
 
   const {products} = useContext(ProductContext)
+  let r1,r2,r3,r4
+  r1 = Math.floor((Math.random() * products.length-1) + 1)
+  r2 = Math.floor((Math.random() * products.length-1) + 1)
+  while(r1===r2 || r1===r3 || r1===r4 || r2===r3 || r2===r4 | r3===r4) {
+    r2 = Math.floor((Math.random() * products.length-1) + 1)
+    r3 = Math.floor((Math.random() * products.length-1) + 1)
+    r4 = Math.floor((Math.random() * products.length-1) + 1)
+  }
+  
 
   return ( 
     <div className="productpage"> 
@@ -36,14 +45,14 @@ function ProductPage(props) {
         <div className="similarprods">
           <h2>Similar Products</h2>
           <div className="similarprodgrid">
-            <Item img={products[3].img} name={products[3].name} price={products[3].price} hot={products[3].hot} sale={products[3].sale} wishlist={products[3].wishlist} color={products[3].color} sizes={products[3].sizes} addcart={products[3].addcart} openproduct={props.openproduct} />
-            <Item img={products[0].img} name={products[0].name} price={products[0].price} hot={products[0].hot} sale={products[0].sale} wishlist={products[0].wishlist} color={products[0].color} sizes={products[0].sizes} addcart={products[0].addcart} openproduct={props.openproduct} />
-            <Item img={products[7].img} name={products[7].name} price={products[7].price} hot={products[7].hot} sale={products[7].sale} wishlist={products[7].wishlist} color={products[7].color} sizes={products[7].sizes} addcart={products[7].addcart} openproduct={props.openproduct} />
-            <Item img={products[8].img} name={products[8].name} price={products[8].price} hot={products[8].hot} sale={products[8].sale} wishlist={products[8].wishlist} color={products[8].color} sizes={products[8].sizes} addcart={products[8].addcart} openproduct={props.openproduct} />
+            <Item img={products[r1].img} name={products[r1].name} price={products[r1].price} hot={products[r1].hot} sale={products[r1].sale} wishlist={products[r1].wishlist} color={products[r1].color} sizes={products[r1].sizes} units={products[r1].units} addcart={products[r1].addcart} openproduct={props.openproduct} />
+            <Item img={products[r2].img} name={products[r2].name} price={products[r2].price} hot={products[r2].hot} sale={products[r2].sale} wishlist={products[r2].wishlist} color={products[r2].color} sizes={products[r2].sizes} units={products[r2].units} addcart={products[r2].addcart} openproduct={props.openproduct} />
+            <Item img={products[r3].img} name={products[r3].name} price={products[r3].price} hot={products[r3].hot} sale={products[r3].sale} wishlist={products[r3].wishlist} color={products[r3].color} sizes={products[r3].sizes} units={products[r3].units} addcart={products[r3].addcart} openproduct={props.openproduct} />
+            <Item img={products[r4].img} name={products[r4].name} price={products[r4].price} hot={products[r4].hot} sale={products[r4].sale} wishlist={products[r4].wishlist} color={products[r4].color} sizes={products[r4].sizes} units={products[r4].units} addcart={products[r4].addcart} openproduct={props.openproduct} />
           </div> 
         </div>
  
-      </div>
+      </div> 
     </div>
   )
 }

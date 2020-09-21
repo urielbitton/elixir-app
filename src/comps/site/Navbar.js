@@ -15,6 +15,10 @@ function Navbar(props) {
       )   
     }      
   })  
+
+  function scrollUp() {
+    window.scrollTo(0, 0)
+  }
  
   useEffect(() => {
     const navbar = document.querySelector('nav')
@@ -69,7 +73,8 @@ function Navbar(props) {
         }, 200);
       }, 100);
     }
- 
+    document.querySelectorAll('.menu a').forEach(el => el.onclick = () => window.scrollTo(0,0))
+
   },[])
 
   return (
@@ -80,7 +85,7 @@ function Navbar(props) {
           <Menu />
         </div>
         <div className="right">
-          <div className="wishicondiv" style={{display:props.wishnum>0?"block":"none"}}><Link to="wishlist"><i className="fas fa-heart"></i><small><span>{props.wishnum}</span></small></Link></div>
+          <div onClick={() => scrollUp()} className="wishicondiv" style={{display:props.wishnum>0?"block":"none"}}><Link to="wishlist"><i className="fas fa-heart"></i><small><span>{props.wishnum}</span></small></Link></div>
           <div className="searchdiv searchbtn">
           <i class="fas fa-search"></i>
           </div>
@@ -95,8 +100,8 @@ function Navbar(props) {
             <h4>Subtotal:</h4> 
             <h3>${(props.subtotal).toFixed(2)}</h3>
             <hr/> 
-            <Link to="/cart"><button className="viewcartbtn">View Cart</button></Link>
-            <Link to="/checkout"><button className="checkoutbtn">Checkout</button></Link>
+            <Link to="/cart"><button className="viewcartbtn" onClick={() => scrollUp()}>View Cart</button></Link>
+            <Link to="/checkout"><button className="checkoutbtn" onClick={() => scrollUp()}>Checkout</button></Link>
           </div>
             <div className="emptycart" style={{display: props.cartitems>0?"none":"block",textAlign:"center"}}>
               <p>No items in your cart.</p>

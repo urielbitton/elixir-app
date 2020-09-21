@@ -57,6 +57,12 @@ function Website() {
   function updateWishnum() {
     setWishnum(wish => wish+1)
   }
+  function subWishnum() {
+    setWishnum(wish => wish-1) 
+  }
+  function zeroWishnum() {
+    setWishnum(0)
+  }
   function connectSub(updatedsub) {
     setSubtotal(updatedsub) 
   } 
@@ -136,7 +142,7 @@ function Website() {
           <Checkout subtotal={subtotal} zerocartnum={zeroCartNum} />
         </Route>
         <Route path="/wishlist">
-          <Wishlist />
+          <Wishlist subwishnum={subWishnum} zerowishnum={zeroWishnum} openproduct={openProduct}/>
         </Route>  
       </Switch> 
    

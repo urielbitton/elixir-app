@@ -20,6 +20,8 @@ const ProductContextProvider = (props) => {
       color: ["Black","Gray","Blue"],
       cat: ["jacket","women","fall","new"],
       sizes: ["XS","S","L"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
     { 
@@ -34,9 +36,11 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "women",
       instock: true,
-      color: ["Black","Orange","Light Pink"],
+      color: ["Black","Orange","Pink"],
       cat: ["women","shirt","dress","summer","new"],
       sizes: ["S","M","L"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -53,7 +57,9 @@ const ProductContextProvider = (props) => {
       instock: true,
       color: ["Pink","White"],
       cat: ["shoes","women","new"],
-      sizes: ["S","M","L"],
+      sizes: ["S","M","XL"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -71,6 +77,8 @@ const ProductContextProvider = (props) => {
       color: ["Brown","Gray"],
       cat: ["men","shorts","pants","new"],
       sizes: ["S","M","L","XL"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -88,6 +96,8 @@ const ProductContextProvider = (props) => {
       color: ["Black","Gray"],
       cat: ["jacket","men","fall"],
       sizes: ["XS","S","M","L"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -102,9 +112,11 @@ const ProductContextProvider = (props) => {
       units: 1,
       person: "women",
       instock: true,
-      color: ["Red Stripes","Green Stripes","White"],
+      color: ["Red","Green","White"],
       cat: ["shirt","women","summer","new"],
       sizes: ["S","M","L"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -122,6 +134,8 @@ const ProductContextProvider = (props) => {
       color: ["Blue","Gray","White"],
       cat: ["dress","women","shirt","new"],
       sizes: ["L","XL"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -139,6 +153,8 @@ const ProductContextProvider = (props) => {
       color: ["Black","Brown"],
       cat: ["men","belt","new"],
       sizes: ["XS","S","L"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -148,7 +164,7 @@ const ProductContextProvider = (props) => {
       img: "https://i.imgur.com/B8ApMYH.jpg",
       hot: false,
       sale: false,
-      addcart: false,
+      addcart: false, 
       wishlist: false,
       units: 1,
       person: "men", 
@@ -156,6 +172,8 @@ const ProductContextProvider = (props) => {
       color: ["Gray","Black","Blue","Red","Green"],
       cat: ["men","women","hat","summer","new"],
       sizes: ["S","M","L"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },  
     {   
@@ -173,6 +191,8 @@ const ProductContextProvider = (props) => {
       color: ["Gray"],
       cat: ["jacket","coat","women"],
       sizes: ["S","M","L"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },  
     {   
@@ -190,6 +210,8 @@ const ProductContextProvider = (props) => {
       color: ["Black"],
       cat: ["shoes","women"],
       sizes: ["XS","M","XL"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     {    
@@ -207,6 +229,8 @@ const ProductContextProvider = (props) => {
       color: ["Blue","Gray"],
       cat: ["pants","women"],
       sizes: ["XS","XL"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
     {    
@@ -224,6 +248,8 @@ const ProductContextProvider = (props) => {
       color: ["Brown","Black"],
       cat: ["shoes","men","summer"],
       sizes: ["S","M","L"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     {    
@@ -241,6 +267,8 @@ const ProductContextProvider = (props) => {
       color: ["Blue"],
       cat: ["pants","kids"],
       sizes: ["XS","S","M"],
+      selcolor: "",
+      selsize: "",
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
   ])  
@@ -249,6 +277,7 @@ const ProductContextProvider = (props) => {
       wishnum: 0,
       cartitems: 0,
       subtotal: 0,
+      taxrate: 0.15,
     }
   )
   

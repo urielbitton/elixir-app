@@ -49,6 +49,7 @@ function Navbar(props) {
     const closesearch = document.querySelector('.searchcont .close')
 
     searchbtn.onclick = () => {
+      document.body.style.overflowY = 'hidden'
       searchcont.style.display = 'block'
       setTimeout(() => {
         searchcont.style.opacity = '1'
@@ -59,6 +60,7 @@ function Navbar(props) {
       }, 100);
     }
     closesearch.onclick = () => {
+      document.body.style.overflowY = 'inherit'
       searchbox.style.marginTop = ''
       setTimeout(() => {
         searchcont.style.opacity = ''

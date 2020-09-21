@@ -7,26 +7,38 @@ import { ProductContext } from './ProductContext'
 function CartPage(props) {
 
   const {products, general, setGeneral} = useContext(ProductContext)
+  const [taxrate, setTaxrate] = useState(general.taxrate)
   const [subtotal, setSubtotal] = useState(props.subtotal)
+  general.taxrate = taxrate
 
   const cartitem = products.map(prod => {
     if(prod.addcart) {   
       return ( 
-        <CartPageItem prod={prod} name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={prod.id} updatedadd={updatedAdd} updatedsub={updatedSub}/>
+        <CartPageItem prod={prod} name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={prod.id} updatedadd={updatedAdd} updatedsub={updatedSub} removeitem={removeItem} colorupdate={props.colorupdate} sizeupdate={props.sizeupdate} />
       )   
-    }     
-  })   
-
-  function updatedAdd(price, newunits) {
+    }      
+  })    
+ 
+  function updatedAdd(price) {
     setSubtotal(prev => prev+price)
-    props.connectsub(subtotal+price)
+    props.connectsub(subtotal+price) 
   }
-  function updatedSub(price, newunits) {
+  function updatedSub(price) {
     setSubtotal(prev => prev-price)
     props.connectsub(subtotal-price)
+  } 
+  function removeItem(price, qty) {
+    setSubtotal(subtotal-(price*qty))
+    props.connectsub(subtotal-(price*qty))
+    props.subcartnum()
   }
- 
-  const total = (subtotal + subtotal * 0.15).toFixed(2)
+  function clearCart() {
+    products.map(prod => prod.addcart = false)
+    props.zerocartnum()
+    setSubtotal(0)
+  }
+
+  const total = (subtotal + subtotal * taxrate).toFixed(2)
 
   useEffect(() => {
     document.querySelector('.proceeddiv .b1').onclick = () => {
@@ -70,7 +82,7 @@ function CartPage(props) {
             <tr>
               <td colSpan="1">
                 <Link to="/shop"><button className="b1">Continue Shopping</button></Link>
-                <button className="b2"><i className="fas fa-times"></i>Clear Cart</button>
+                <button className="b2" onClick={() => clearCart()}><i className="fas fa-times"></i>Clear Cart</button>
               </td>
               <td colSpan="1"></td>
               <td colSpan="3" className="subtotaltd"> 
@@ -78,7 +90,7 @@ function CartPage(props) {
               </td>
             </tr>
           </tfoot>
-        </table>
+        </table> 
 
         <div className="scrollpos"></div>
         <div className="spacerl"></div>
@@ -88,21 +100,30 @@ function CartPage(props) {
             <h2>Shipping</h2>
             <select> 
               <option>Canada</option>
-              <option>United States</option>
-              <option>UK</option>
-              <option>France</option>
-              <option>China</option>
-              <option>South America</option>
-              <option>Israel</option>
             </select>
-            <input placeholder="City"/> 
+            <select onChange={(e) => setTaxrate(e.target.value/100)}> 
+              <option disabled selected>Choose a Province</option>
+              <option value="5">Alberta</option>
+              <option value="12">British Columbia</option>
+              <option value="12">Manitoba</option>
+              <option value="15">New Brunswick</option>
+              <option value="15">Newfoundland & Labrador</option>
+              <option value="5">Northwest Territories</option>
+              <option value="15">Nova Scotia</option>
+              <option value="5">Nunavut</option>
+              <option value="13">Ontario</option>
+              <option value="15">Prince Edwad Island</option>
+              <option value="15">Quebec</option>
+              <option value="11">Saskatchewan</option> 
+              <option value="5">Yukon</option> 
+            </select>
             <input placeholder="Postal Code"/> 
           </div>  
           <div className="carttotals"> 
             <h2>Cart Totals</h2>
             <div><h6>Subtotal</h6><h6>${subtotal}.00</h6><div className="clear"></div></div>
-            <div><h6>Tax Rate (15%)</h6><h6>${(subtotal * 0.15).toFixed(2)}</h6><div className="clear"></div></div>
-            <div><h6>Shipping Fees</h6><h6>{subtotal>100?"Free Shipping":"Flat Rate: 30$"}</h6><div className="clear"></div></div>
+            <div><h6>Tax Rate ({taxrate*100}%)</h6><h6>${(subtotal * taxrate).toFixed(2)}</h6><div className="clear"></div></div>
+            <div><h6>Shipping Fees</h6><h6>{subtotal>200?"Free Shipping":"Flat Rate: 30$"}</h6><div className="clear"></div></div>
             <div><h6>Order Total</h6><h6 className="ordertotal">${subtotal<1?0:(subtotal>100?total:(total+30))}</h6><div className="clear"></div></div>
             <div><Link to="/checkout"><button onClick={() => window.scrollTo(0, 0)}>Proceed To Checkout</button></Link></div>
           </div> 

@@ -1055,22 +1055,29 @@ footer .socials > div i {
   font-size: 16px;
   top: 8px;
 }
-.product label select {
-  float: right;
-  padding: 10px;
-  background: #f1f1f1;
-  border: none;
-  width: 180px;
-  color: #777;
-}
-.product label .sizesboxdiv {
+.product label .sizesboxdiv, .product label .colorboxcont {
   float: right;
   margin-bottom: 10px;
+}
+.colorboxcont .colorbox {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #f5f5f5;
+  display: inline-flex;
+  margin: auto 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}  
+.product .colorboxcont .colorbox:hover {
+  border: 2px solid var(--color);
 }
 .sizesboxdiv .sizebox {
   position: relative;
   color: #333;
-  width: 50px;
+  width: 40px;
   height: 40px;
   background: #fafafa;
   border: 1px solid #f5f5f5;
@@ -1086,7 +1093,9 @@ footer .socials > div i {
   background: #333;
   color: #fff;
 }
- 
+.product .colorboxcont .activecolorbox {
+  border: 2px solid var(--color);
+} 
 .product .itemnum, .carttable .itemnum {
   float: left;
   user-select: none;
@@ -1434,16 +1443,23 @@ footer .socials > div i {
   opacity: 0;
   transition: all 0.3s;
 }
+.msgnotif h2 {
+  margin-bottom: 40px;
+}
 .msgcont .msgbox {
   width: 100%;
   background: rgba(132, 216, 227,0.4);
   padding: 20px 15px;
   border: 2px solid var(--color);
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   color: #555;
+  transition: all 0.3s;
 }
 .msgcont .msgbox  i {
   margin-right: 20px;
+}
+.msgcont .msgbox2 {
+  opacity: 0;
 }
 .msgcont button {
   padding: 20px 30px;
@@ -1538,6 +1554,13 @@ footer .socials > div i {
   margin-left: 10px;
   font-weight: 600;
 }
+.ordertotaldiv .seedetails {
+  color: #aaa;
+  cursor: pointer;
+}
+.ordertotaldiv .seedetails:hover {
+  text-decoration: underline;
+}
 .carttotals label {
   position: relative;
   display: block;
@@ -1580,6 +1603,58 @@ footer .socials > div i {
   border: 2px solid #eee;
   color: #eee;
   font-size: 18px;
+}  
+.searchbox i {
+  position: absolute;
+  right: 30px;
+  top:30px;
+  font-size: 25px;
+  color: #eee;
+}
+.searchresults {
+  position: relative;
+  margin-top: 5px;
+  width: 100%;
+}
+.searchcont .innersearchresults {
+  position: relative;
+  height: 400px;
+  overflow-y: scroll;
+}
+.searchcont .innersearchresults::-webkit-scrollbar {
+  display: none;
+}
+.searchcont .resultrow {
+  position: relative;
+  width: 100%;
+  padding: 15px 10px;
+  background: #fff;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition:all 0.2s;
+}
+.searchcont .resultrow:hover {
+  background: #f1f1f1;
+}
+.searchresults img {
+  position: relative;
+  float: left;
+  width: 55px;
+  height: 65px;
+  margin-right: 30px; 
+}
+.searchresults h5 {
+  font-size: 16px;
+  margin-top: 5px;
+  color: #333;
+  font-weight: 600;
+}
+.searchresults small {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 15px;
 }
  
 .productsgrid {
@@ -1827,15 +1902,113 @@ footer .socials > div i {
   color: #fff;
 }
 
-
-
-
-
-
-
-
-
-
+.detailscont {
+  position: fixed;
+  display: none;
+  opacity: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999; 
+  background: rgba(0,0,0,0.85);
+  cursor: url('https://i.imgur.com/GSfMhIM.png'), auto;
+  transition: all 0.3s;
+  animation: closedet 0.3s linear;
+}
+.opendetails {
+  animation: opendet 0.3s linear;
+  display: block;
+  opacity: 1;
+} 
+.closedetails {
+  animation: closedet 0.3s linear;
+  display: none;
+  opacity: 0;
+}
+@keyframes opendet {
+  0% {display: block;opacity: 0;}
+  100% {display: block;opacity: 1;}
+}
+@keyframes closedet {
+  0% {display: block;opacity: 0;}
+  100% {display: none;opacity: 0;}
+}
+.detailscont .details {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 600px;
+  height: 80vh;
+  background: #fff;
+  box-shadow: 0 1px 30px rgba(0,0,0,0.8);
+  cursor: auto;
+  transition: all 0.3s;
+  padding: 30px;
+}
+.detailscont .details h3 {
+  text-align: center;
+  font-size: 23px;
+  margin-block-end: 30px;
+}
+.detailscont .innerdetails {
+  height: 80%;
+  position: relative;
+  width: 100%;
+  overflow-y: scroll;
+  padding: 30px 10px;
+}
+.detailscont .innerdetails::-webkit-scrollbar {
+  display: none;
+}
+.detailscont button {
+  padding: 15px 30px;
+  background: #111;
+  color: #fff;
+  margin-right: 20px;
+  border: 1px solid #111;
+}
+.detailscont a button {
+  background: none;
+  border: 1px solid #111;
+  color: #111;
+}
+.detailscont button:hover {
+  background: #333;
+  color: #fff;
+}
+.detailscont .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+}
+.detailscont .innerdetails h6 {
+  font-size: 17px;
+  color: #555;
+}
+.detailscont .innerdetails img {
+  width: 60px;
+  height: 80px;
+  float: left;
+  margin-right: 15px;
+}
+.detailscont .innerdetails .detgrid {
+  position: relative;
+  margin-top: 7px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.detailscont .innerdetails small {
+  display: block;
+  color: #999;
+}
+.detailscont .innerdetails .detailsrow {
+  position: relative;
+  margin: 20px 0;
+}
 
 
 

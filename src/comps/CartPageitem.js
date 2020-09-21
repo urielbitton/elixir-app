@@ -2,31 +2,36 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function CartPageItem(props) {
-  const [units, setUnits] = useState(0);
+  const [rem, setRem] = useState(0)
   let temp //dummy var
  
   function addUnits() {
-    //(props.prod.units)<10?setUnits(prev => prev+1):(temp=1)
     if (props.prod.units < 10) {
       props.updatedadd(props.price)
       props.prod.units += 1
     }
   }
   function subUnits() {
-    //(props.prod.units)>1?setUnits(prev => prev-1):(temp=1)
     if (props.prod.units > 1) { 
       props.updatedsub(props.price) 
       props.prod.units -= 1
     }
-  }  
+  }   
+  function removeItem() {
+    props.prod.units = 0
+    props.prod.addcart = false
+    props.updatedadd()
+    props.removeitem(props.price, props.units)
+  } 
 
   return (
     <tr>
       <td>
         <img src={props.img} alt="cartprod" />
         <Link to="/product">
-          <h6>{props.name}</h6>
+          <h6 data-update={props.colorupdate}>{props.name} - {props.prod.selcolor}</h6>
         </Link> 
+        <small style={{color:"#aaa"}}>Size: {props.prod.selsize}</small>
       </td>
       <td className="pricetd">${props.price}.00</td>
       <td>
@@ -40,7 +45,7 @@ function CartPageItem(props) {
         ${props.price * (props.prod.units)}.00
       </td>
       <td>
-        <i className="far fa-window-close"></i>
+        <i className="far fa-window-close" onClick={removeItem}></i>
       </td>
     </tr>
   );

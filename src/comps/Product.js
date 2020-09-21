@@ -33,7 +33,15 @@ function Product(props) {
     props.prod.addcart?temp=1:props.prod.units -= 1
     //props.prod.addcart = false //uncomment if you want to allow post addcart adding units
   }
- 
+  function colorUpdate(color) {
+    props.prod.selcolor = color
+    props.setprodcolor()  
+  }
+  function sizeUpdate(size) {
+    props.prod.selsize = size
+    props.setprodsize()  
+  }
+  
   const addtocart = document.querySelectorAll('.quickview .addtocart')
     addtocart.forEach(el => {
       el.onclick = () => {
@@ -58,6 +66,12 @@ function Product(props) {
       box.onclick = () => {
         document.querySelectorAll('.sizesboxdiv .sizebox').forEach(el => el.classList.remove('activesizebox'))
         box.classList.add('activesizebox')
+      }
+    })
+    document.querySelectorAll('.colorboxcont .colorbox').forEach(box => {
+      box.onclick = () => {
+        document.querySelectorAll('.colorboxcont .colorbox').forEach(el => el.classList.remove('activecolorbox'))
+        box.classList.add('activecolorbox')
       }
     })
     if(document.body.contains(document.querySelector('.viewcart'))) {
@@ -86,16 +100,15 @@ function Product(props) {
           <h5>${props.price}.00</h5>
           <p>{props.descript}</p> 
           <hr/>
-          <label>
+          <label> 
             <small>Color</small>
-            <select>
-              <option selected disabled>Choose a Color</option>
+            <div className="colorboxcont">
               {
                 props.color.map(color => {
-                  return <option>{color}</option>
+                  return <div className="colorbox" style={{background: color}} onClick={() => colorUpdate(color)}></div>
                 })
               } 
-            </select>  
+            </div> 
             <div className="clear"></div> 
           </label> 
           <label>
@@ -103,7 +116,7 @@ function Product(props) {
             <div className="sizesboxdiv">
             {
               props.sizes.map(size => {
-                return <div className="sizebox">{size}</div>
+                return <div className="sizebox" onClick={() => sizeUpdate(size)}>{size}</div>
               })
             } 
             </div>

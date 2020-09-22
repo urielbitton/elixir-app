@@ -44,7 +44,10 @@ function Item(props) {
     const addtocart = document.querySelectorAll('.itemcont .addtocart')
     addtocart.forEach(el => {
       el.onclick = () => {
-        document.querySelector('.cartcont').style.cssText += 'opacity:1;visibility:visible;top: 45px'
+        Object.assign(document.querySelector('.cartcont').style, {opacity:'1',visibility:'visible',top:'45px'})
+        setTimeout(() => {
+          Object.assign(document.querySelector('.cartcont').style, {opacity:'',visibility:'',top:''})
+        }, 3000);
       }
     })  
    

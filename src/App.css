@@ -187,7 +187,6 @@ nav h1 span {
 }
 .menu .activelink hr {
   width: 100%;
-
 }
 .menu .tab {
   position: absolute;
@@ -250,7 +249,7 @@ nav .left, nav .right {
 nav .right > div {
   float: left;
   position: relative;
-  top: 15px;
+  top: 13px;
   padding: 10px;
   margin-left: 10px;
   font-size: 22px;
@@ -423,6 +422,7 @@ nav .right > div {
 }
 .logindiv i {
   transition: all 0.2s;
+  color: #555;
 }
 .logindiv:hover i {
   color: var(--color)
@@ -2199,10 +2199,25 @@ footer .socials > div i {
   border: 1px solid #ff2e2e;
   background: rgba(255, 46, 46,0.3);
 } 
-
-
-
-
+.backtosite {
+  display: block;
+  margin-top: 50px;
+  color: #aaa;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.2s;
+}
+.backtosite i {
+  margin-left: 8px;
+  transition: all 0.4s;
+}
+.backtosite:hover {
+  border-bottom: 1px solid #333;
+  color: #333;
+}
+.backtosite:hover i {
+  margin-left: 13px;
+}
 
 
 

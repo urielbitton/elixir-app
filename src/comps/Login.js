@@ -55,6 +55,7 @@ function Login(props) {
           </label>
           <button onClick={() => loginSubmit()}>Login</button>
           <h6>Don't have an account? <Link to="/register">Register Here</Link></h6>
+          <Link to="/" onClick={() => props.adminoff()}><small className="backtosite">Back to Website<i class="fas fa-long-arrow-alt-right"></i></small></Link>
         </div> 
           <p className="loginmsg" style={{display: correct===1?"block":"none"}}><i className="fas fa-user-check"></i>Successful Login, setting up admin dashboard.</p>
           <p className="loginmsg loginfailed" style={{display: correct===2?"block":"none"}}><i className="fas fa-times-circle"></i>Login failed, make sure your username or password is correct.</p>

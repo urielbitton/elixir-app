@@ -8,21 +8,27 @@ import Login from './comps/Login'
 
 function App() {
  
-  const [login, setLogin] = useState(false)
-  const [admin, setAdmin] = useState(false)
+  const [login, setLogin] = useState(true)
+  const [admin, setAdmin] = useState(true)
 
   function logIn() {
     setLogin(true)
   }
+  function logOut() {
+    setLogin(false)
+  }
   function adminOn() {
     setAdmin(true)
+  } 
+  function adminOff() {
+    setAdmin(false)
   } 
 
   return (  
     <>   
       <Router>  
         <ProductContextProvider>  
-          { admin?login?<Admin />:<Login logged={logIn}/>:<Website adminon={adminOn}/> } 
+          { admin?login?<Admin adminoff={adminOff} logout={logOut}/>:<Login logged={logIn} adminoff={adminOff}/>:<Website adminon={adminOn}/> } 
         </ProductContextProvider> 
       </Router> 
     </> 

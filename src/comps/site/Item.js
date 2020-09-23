@@ -40,16 +40,20 @@ function Item(props) {
         }, 200);
       }
     }) 
-    
-    const addtocart = document.querySelectorAll('.itemcont .addtocart')
-    addtocart.forEach(el => {
-      el.onclick = () => {
-        Object.assign(document.querySelector('.cartcont').style, {opacity:'1',visibility:'visible',top:'45px'})
-        setTimeout(() => {
-          Object.assign(document.querySelector('.cartcont').style, {opacity:'',visibility:'',top:''})
-        }, 3000);
-      }
-    })  
+     
+      const addtocart = document.querySelectorAll('.itemcont .addtocart')
+      addtocart.forEach(el => {
+        el.onclick = () => {
+          document.querySelector('.cartcont').style.opacity = '1'
+          document.querySelector('.cartcont').style.visibility = 'visible'
+          document.querySelector('.cartcont').style.top = '45px'
+          setTimeout(() => {
+            document.querySelector('.cartcont').style.opacity = ''
+          document.querySelector('.cartcont').style.visibility = ''
+          document.querySelector('.cartcont').style.top = ''
+          }, 3000);
+        }
+      })  
    
  
   },[]) 

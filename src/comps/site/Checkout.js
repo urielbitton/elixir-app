@@ -12,12 +12,15 @@ function Checkout(props) {
   const [details, setDetails] = useState(false)
 
 
-  function placeOrder() { 
+  function placeOrder() {  
     setTimeout(() => {
       props.zerocartnum()
-    }, 500);
+    }, 500); 
+    general.order_proc += 1
+    general.profit += parseInt(total-(subtotal*taxrate),10)
+    general.earnings += parseInt(total,10)
   } 
-
+ 
 
   useEffect(() => {
     const placeorderbtn = document.querySelector(".placeorderbtn")

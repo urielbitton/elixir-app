@@ -45,7 +45,7 @@ function Login(props) {
         <h3>Hello,<br/>Welcome Back</h3>
         <div className="loginform">
           <input placeholder="Username or Email" onChange={(e) => setUsername(e.target.value)}/>
-          <input placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+          <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
           <label>
             <input type="checkbox"/>
             <small>Remember Me</small>
@@ -53,7 +53,7 @@ function Login(props) {
           <label>
           <small><Link to="/forgot">Forgot Password?</Link></small>
           </label>
-          <button onClick={() => loginSubmit()}>Login</button>
+          <Link to="/dashhome"><button onClick={() => loginSubmit()}>Login</button></Link>
           <h6>Don't have an account? <Link to="/register">Register Here</Link></h6>
           <Link to="/" onClick={() => props.adminoff()}><small className="backtosite">Back to Website<i class="fas fa-long-arrow-alt-right"></i></small></Link>
         </div> 

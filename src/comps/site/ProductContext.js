@@ -278,7 +278,11 @@ const ProductContextProvider = (props) => {
       cartitems: 0,
       subtotal: 0,
       taxrate: 0.15,
-    }
+      order_proc: 0,
+      active_order: 0,
+      earnings: 0,
+      profit: 0,
+    } 
   )
   
   return (

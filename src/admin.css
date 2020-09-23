@@ -5,7 +5,6 @@ html,body {
   --color2: #0a9dff;
   --light: rgba(10, 157, 255,0.08);
 }
- 
 .dashboard {
   display: grid;
   grid-template-columns: 220px auto;
@@ -23,10 +22,14 @@ html,body {
   overflow: visible;
   box-shadow: 8px 0px 28px -21px rgba(25,34,51,0.15);
   z-index: 900;
+  resize: horizontal;
 }
 .homecont {
+  position: relative;
   background: #f4f7fd;
   padding: 100px 20px 40px 20px;
+  height: 100vh;
+  overflow-y: scroll;
 } 
 .sidelogodiv {
   margin: auto;
@@ -202,12 +205,159 @@ html,body {
   color: #aaa;
 }
 
+.homegrid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-gap: 30px 20px;
+}
+.dashsmallgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 20px;
+  grid-column: span 10;
+}
+.dashbox {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0px 10px 18px -21px rgba(25,34,51,0.15);
+  padding: 30px 20px;
+  background: #fff;
+  transition: all 0.3s;
+}
+.smallbox:hover {
+  box-shadow: 0px 20px 18px -21px rgba(25,34,51,0.25);
+}
+.smallbox span {
+  float: left;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  border-radius: 100%;
+  margin-right: 40px;
+  font-size: 23px;
+}
+.smallbox h3 {
+  float: right;
+  font-size: 30px;
+  font-weight: 700;
+  color: #555;
+}
+.smallbox h3 small {
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 5px;
+} 
+.dashmed {
+  grid-column: span 5;
+  padding: 30px;
+}
+.dashbox h5 {
+  color: #555;
+  font-size: 19px;
+}
+.dashlarge {
+  grid-column: span 10;
+}
+.dashlarge table {
+  margin: 10px auto;
+  width: 100%;
+  text-align: left;
+}
+.dashlarge h5 {
+  margin-bottom: 30px;
+} 
+.dashlarge table th {
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 600;
+}
+.dashlarge table tbody {
+  margin-top: 20px;
+  color: #555;
+}
+.dashlarge table tbody td {
+  padding: 10px 5px;
+  font-size: 14px;
+}
+.dashlarge table tbody td:first-child {
+  width: 80px;
+}
+.dashlarge table tbody img {
+  width: 70px;
+  height: 90px;
+  margin-right: 40px;
+}
+.dashlarge table tbody .prodname {
+  top: -40px;
+  color: #333;
+}
+.dashlarge table tbody .hottag {
+  color: #FF3737
+}
+.dashlarge table tbody .saletag {
+  color: var(--color2)
+}
+.dashlarge .stockstatus {
+  padding: 15px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+.dashlarge .instock {
+  background: var(--light);
+  color: var(--color2);
+}
+.dashlarge .outstock {
+  background: rgba(255, 196, 196,1);
+  color: #FF3737;
+}
+.dashlarge tfoot small {
+  font-size: 12px;
+  color: var(--color2);
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 7px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.dashlarge tfoot small:hover {
+  background: var(--light)
+}
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1500px) {
+  .dashmed {
+    grid-column: span 10;
+  }
+}
 
 
 

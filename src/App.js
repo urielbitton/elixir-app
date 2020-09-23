@@ -19,9 +19,11 @@ function App() {
   }
   function adminOn() {
     setAdmin(true)
+    document.body.style.overflowY = 'hidden'
   } 
   function adminOff() {
     setAdmin(false)
+    document.body.style.overflowY = 'scroll'
   } 
 
   return (  

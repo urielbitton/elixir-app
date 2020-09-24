@@ -12,13 +12,24 @@ function Checkout(props) {
   const [details, setDetails] = useState(false)
 
 
-  function placeOrder() {  
-    setTimeout(() => {
-      props.zerocartnum()
-    }, 500); 
+  function placeOrder() {   
     general.order_proc += 1
     general.profit += parseInt(total-(subtotal*taxrate),10)
     general.earnings += parseInt(total,10)
+    general.revenue_range.push(subtotal)
+    general.products_sold.push(props.cartitems)
+    products.map(prod => {
+      if(prod.addcart) {
+        prod.purchased.status = true 
+        prod.purchased.qty += prod.units
+      }
+      if(prod.purchased.qty > 8) {
+        prod.hot = true 
+      }
+    }) 
+    setTimeout(() => {
+      props.zerocartnum()
+    }, 500)
   } 
  
 

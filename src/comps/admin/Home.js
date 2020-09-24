@@ -7,13 +7,14 @@ function Home() {
 
   const {products, general} = useContext(ProductContext)
   const [prodshow, setProdshow] = useState(5)
-  const prodsold = products.filter(prod => prod.addcart).length
+  const prodsold = general.products_sold.reduce((a,b) => {return a+b},0)
   const earnings = general.earnings
   const profit = general.profit
   const order_proc = general.order_proc
 
   const topproducts = products.slice(0,prodshow).map(prod => {
-    return <DashTableRow img={prod.img} name={prod.name} price={prod.price} units={prod.units} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
+    if(prod.purchased.status)
+      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased.qty} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
   })
    
   return ( 
@@ -33,7 +34,7 @@ function Home() {
         </div>
         <div className="dashbox smallbox">
           <span style={{background:"rgba(57, 230, 199,0.1)"}}><i className="fas fa-shopping-bag" style={{color:"#39e6c7"}}></i></span>
-          <h3>0<small>active orders</small></h3>
+          <h3>{prodsold}<small>active orders</small></h3>
         </div>
         <div className="dashbox smallbox">
           <span style={{background:"rgba(255, 87, 115,0.1)"}}><i className="fas fa-print" style={{color:"#ff5773"}}></i></span>

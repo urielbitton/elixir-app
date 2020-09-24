@@ -47,7 +47,10 @@ function Website(props) {
   function zeroCartNum() {
     setCartitems(0)
     setSubtotal(0)
-    products.map(el => el.addcart = false)
+    products.map(prod => {
+      prod.addcart = false
+      prod.units = 1
+    })
   }
   function updateSubtotal(current) {
     setSubtotal(sub => sub+current)
@@ -85,7 +88,7 @@ function Website(props) {
     setCat(cat)
     setSizes(sizes)
     setUnits(units)
-    setWishlist(wishlist)
+    setWishlist(wishlist) 
     setAddcart(addcart)
   } 
 
@@ -140,7 +143,7 @@ function Website(props) {
           <CartPage prod={prod} subtotal={subtotal} cartitems={cartitems} connectsub={connectSub} subcartnum={subCartNum} zerocartnum={zeroCartNum} colorupdate={colorupdate} sizeupdate={sizeupdate} />
         </Route> 
         <Route path="/checkout">
-          <Checkout subtotal={subtotal} zerocartnum={zeroCartNum} />
+          <Checkout subtotal={subtotal} zerocartnum={zeroCartNum} cartitems={cartitems} />
         </Route>
         <Route path="/wishlist">
           <Wishlist subwishnum={subWishnum} zerowishnum={zeroWishnum} openproduct={openProduct}/>

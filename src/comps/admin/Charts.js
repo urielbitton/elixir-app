@@ -5,7 +5,6 @@ import { ProductContext } from '../../comps/site/ProductContext'
 function Charts(props) { 
 
   const {products, general} = useContext(ProductContext)
-  const prodsold = products.filter(prod => prod.addcart).length
 
   useEffect(() => {
     let chart = document.getElementById('line-chart').getContext('2d')
@@ -21,11 +20,11 @@ function Charts(props) {
 
     //line chart
     new Chart(document.getElementById("line-chart"), {
-      type: 'line',
+      type: 'line', 
       data: {
         labels: ["Week 1","Week 2","Week 3","Week 4"],
         datasets: [{ 
-            data: [25,15,30,1,5,10,23,36,13,1,22,11,23,19,19,19,22,19,12,13,16,11,25,29,43,12,13,14,1,27,42],
+            data: [general.revenue_range[0],general.revenue_range[1],general.revenue_range[2],general.revenue_range[3],general.revenue_range[4],general.revenue_range[5],general.revenue_range[6],general.revenue_range[7],general.revenue_range[8],general.revenue_range[9],general.revenue_range[10]],
             label: "Revenue",
             borderColor: "#0a9dff",
             fill: true,
@@ -40,18 +39,22 @@ function Charts(props) {
           text: 'This Month'
         },
         scales: {
-                xAxes: [{
-                  gridLines: {
-                      color: '#f1f1f1'
-                  }
-                }],
-                yAxes: [{
-                  gridLines: {
-                      color: '#f1f1f1'
-                  } 
-                }],
+          xAxes: [{
+            gridLines: {
+              color: '#f1f1f1'
+            }
+          }],
+          yAxes: [{
+            gridLines: {
+              color: '#f1f1f1'
+            },
+            ticks: {
+              //stepSize: 100,
+              //beginAtZero: true,
+            } 
+          }],
         } 
-      }
+      } 
     })
     //bar chart
     new Chart(document.getElementById("bar-chart"), {
@@ -59,13 +62,13 @@ function Charts(props) {
       data: {
         labels: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
         datasets: [{ 
-            data: [12.0,11.0,32.4,45.7,40.59,32.0,43.3,41.5,22.0,33.1],
+            data: [general.order_proc,general.order_proc,general.order_proc,general.order_proc,general.order_proc,general.order_proc,general.order_proc],
             label: "Active",
             borderColor: "#fafafa",
             fill: true,
             backgroundColor: gradientblu2
           }, { 
-            data: [12,15,30,21,5,50,43,76,23,12],
+            data: [general.products_sold[0],general.products_sold[1],general.products_sold[2],general.products_sold[3],general.products_sold[4],general.products_sold[5],general.products_sold[6],],
             label: "Processed",
             borderColor: "#fafafa",
             fill: true,
@@ -78,7 +81,7 @@ function Charts(props) {
         title: {
           display: true,
           text: 'This Week'
-        } 
+        }, 
       }
     }); 
  

@@ -249,13 +249,17 @@ nav .left, nav .right {
 nav .right > div {
   float: left;
   position: relative;
-  top: 13px;
+  top: 12px;
   padding: 10px;
   margin-left: 10px;
-  font-size: 22px;
+  font-size: 20px;
   cursor: pointer;
   color: #555;
 } 
+.quicksubtotal {
+  margin-right: 5px;
+  color: #777;
+}
 .wishicondiv small {
   position: absolute;
   padding: 5px;

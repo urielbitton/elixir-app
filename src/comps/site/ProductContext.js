@@ -22,6 +22,10 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","S","L"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
     { 
@@ -41,6 +45,10 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -57,9 +65,13 @@ const ProductContextProvider = (props) => {
       instock: true,
       color: ["Pink","White"],
       cat: ["shoes","women","new"],
-      sizes: ["S","M","XL"],
+      sizes: ["S","M","XL"], 
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0, 
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -79,6 +91,10 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L","XL"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -98,6 +114,10 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","S","M","L"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -117,6 +137,10 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -124,7 +148,7 @@ const ProductContextProvider = (props) => {
       name: "Women's Dress Shirt", 
       price: 199,
       img: "https://i.imgur.com/hvbVCfQ.jpg",
-      hot: true,
+      hot: false,
       sale: false,
       addcart: false,
       wishlist: false,
@@ -136,6 +160,10 @@ const ProductContextProvider = (props) => {
       sizes: ["L","XL"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -155,6 +183,10 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","S","L"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -174,6 +206,10 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },  
     {   
@@ -193,6 +229,10 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },  
     {   
@@ -212,6 +252,10 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","M","XL"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     {    
@@ -231,6 +275,10 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","XL"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
     {    
@@ -250,6 +298,10 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     {    
@@ -269,6 +321,10 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","S","M"],
       selcolor: "",
       selsize: "",
+      purchased: {
+        status: false,
+        qty: 0,
+      },
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
   ])  
@@ -282,6 +338,8 @@ const ProductContextProvider = (props) => {
       active_order: 0,
       earnings: 0,
       profit: 0,
+      revenue_range: [],
+      products_sold: [],
     } 
   )
   

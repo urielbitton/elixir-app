@@ -16,6 +16,7 @@ function Product(props) {
     props.updatecartnum()
     props.updatesub(props.prod.price*props.prod.units)  
     props.updateunits(props.prod.units)
+    setUnits(1)
   }    
   function addToWishlist() {
     products.map(prod => {
@@ -24,13 +25,17 @@ function Product(props) {
     props.updatewish() 
   }
   function addUnits() {
-    units>9?setUnits(10):setUnits(prev => prev+1)
-    props.prod.addcart?temp=1:props.prod.units += 1
+    if(props.prod.units<=9) {
+      props.prod.addcart?temp=1:props.prod.units += 1
+      setUnits(prev => prev+1)
+    }
     //props.prod.addcart = false //uncomment if you want to allow post addcart adding units
-  }   
-  function subUnits() {
-    units>1?setUnits(prev => prev-1):setUnits(1)
-    props.prod.addcart?temp=1:props.prod.units -= 1
+  }    
+  function subUnits() { 
+    if(props.prod.units > 1) {
+      props.prod.addcart?temp=1:props.prod.units -= 1
+      setUnits(prev => prev-1)
+    }
     //props.prod.addcart = false //uncomment if you want to allow post addcart adding units
   }
   function colorUpdate(color) {
@@ -101,7 +106,7 @@ function Product(props) {
         <div>
           <h2>{props.name}</h2>
           <h5>${props.price}.00</h5>
-          <p>{props.descript}</p> 
+          <p>{props.descript}</p>  
           <hr/>
           <label> 
             <small>Color</small>
@@ -117,18 +122,18 @@ function Product(props) {
           <label>
             <small>Size</small>
             <div className="sizesboxdiv">
-            {
+            { 
               props.sizes.map(size => {
                 return <div className="sizebox" onClick={() => sizeUpdate(size)}>{size}</div>
               })
             } 
-            </div>
+            </div> 
             <div className="clear"></div> 
           </label>
           <div className="clear"></div>
           <div className="itemnum">
             <div className="subnum" onClick={() => subUnits()}>-</div>
-            <div className="num">{props.prod.units}</div>
+            <div className="num" data-units={units}>{props.prod.units}</div>
             <div className="addnum" onClick={() => addUnits()}>+</div>
           </div>
           <Link to={props.prod.addcart?"/cart":"#"}><button className={props.prod.addcart?"viewcart":"addtocart"} onClick={() => props.prod.addcart?"":addToCart()}><i class="fas fa-cart-plus"></i>{props.prod.addcart?"View Cart":"Add To Cart"}</button></Link>

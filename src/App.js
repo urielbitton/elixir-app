@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
+import { BrowserRouter as Router,Switch,Route,Link, useHistory } from "react-router-dom";
 import './App.css'
 import Website from './comps/site/Website'
 import ProductContextProvider from "./comps/site/ProductContext";
@@ -10,6 +10,7 @@ function App() {
  
   const [login, setLogin] = useState(true)
   const [admin, setAdmin] = useState(true)
+  const history = useHistory()
 
   function logIn() {
     setLogin(true)

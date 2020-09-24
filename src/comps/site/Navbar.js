@@ -91,6 +91,7 @@ function Navbar(props) {
           </div>
           <div className="logindiv" onClick={() => props.adminon()}><Link to="/login"><i class="fas fa-user-alt"></i></Link></div>
           <div className="cartdiv"> 
+          <small className="quicksubtotal">${props.subtotal.toFixed(2)}</small>
           <i className="fas fa-shopping-cart"></i>
           <small className="cartitemsnum"><span>{props.cartitems}</span></small>
           <div className="cartcont"> 

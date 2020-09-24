@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
+import AddProduct from './AddProduct';
 
 function Sidebar(props) {
 
@@ -24,6 +25,7 @@ function Sidebar(props) {
   },[])
 
   return ( 
+    <div>
     <div className="sidebar">
       <div className="sidelogodiv"><img className="sidelogo" src="https://i.imgur.com/lYlrhuI.png" alt="sidelogo"/><h3>Elixir</h3></div>
       <div className="sidemenu">
@@ -68,6 +70,8 @@ function Sidebar(props) {
       <button className="logoutbtn" onClick={() => props.logout()}><i class="fas fa-sign-out-alt"></i>Logout</button>
 
     </div> 
+      <AddProduct />
+    </div>
   )
 }
 

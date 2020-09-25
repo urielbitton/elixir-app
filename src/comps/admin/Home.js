@@ -34,7 +34,7 @@ function Home() {
         </div>
         <div className="dashbox smallbox">
           <span style={{background:"rgba(57, 230, 199,0.1)"}}><i className="fas fa-shopping-bag" style={{color:"#39e6c7"}}></i></span>
-          <h3>{prodsold}<small>active orders</small></h3>
+          <h3>{products.length}<small>total products</small></h3>
         </div>
         <div className="dashbox smallbox">
           <span style={{background:"rgba(255, 87, 115,0.1)"}}><i className="fas fa-print" style={{color:"#ff5773"}}></i></span>
@@ -72,6 +72,33 @@ function Home() {
             <small onClick={() => prodshow===5?setProdshow(Infinity):setProdshow(5)}>{prodshow===5?"Show All":"Show Less"}</small>
           </tfoot>
         </table>
+      </div>
+
+      <div className="dashbox dashmed">
+        <h5>Recently Sold</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Quantity Sold</th>
+              <th>Earnings</th>
+              <th>Stock Status</th> 
+            </tr>
+          </thead>
+          <tbody>
+            {topproducts}
+          </tbody> 
+          <tfoot>
+            <div className="spacers"></div>
+            <small onClick={() => prodshow===5?setProdshow(Infinity):setProdshow(5)}>{prodshow===5?"Show All":"Show Less"}</small>
+          </tfoot>
+        </table>
+      </div>
+      <div className="dashbox dashmed">
+        <h5>Recent Updates</h5>
+
       </div>
 
     </div>

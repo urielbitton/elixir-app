@@ -5,6 +5,17 @@ html,body {
   --color2: #0a9dff;
   --light: rgba(10, 157, 255,0.08);
 }
+::-webkit-scrollbar-thumb {
+  background: var(--color2)
+}
+::selection {
+  background: var(--color2);
+  color: #fff;
+} 
+
+button:active {
+  transform: scale(0.96)
+}
 .dashboard {
   display: grid;
   grid-template-columns: 220px auto;
@@ -263,61 +274,61 @@ html,body {
 .dashlarge {
   grid-column: span 10;
 }
-.dashlarge table {
+.dashbox table {
   margin: 10px auto;
   width: 100%;
   text-align: left;
 }
-.dashlarge h5 {
+.dashbox table h5 {
   margin-bottom: 30px;
 } 
-.dashlarge table th {
+.dashbox table th {
   font-size: 12px;
   color: #aaa;
   font-weight: 600;
 }
-.dashlarge table tbody {
+.dashbox table tbody {
   margin-top: 20px;
   color: #555;
 }
-.dashlarge table tbody td {
+.dashbox table tbody td {
   padding: 10px 5px;
   font-size: 14px;
 }
-.dashlarge table tbody td:first-child {
+.dashbox table tbody td:first-child {
   width: 80px;
 }
-.dashlarge table tbody img {
+.dashbox table tbody img {
   width: 70px;
   height: 90px;
   margin-right: 40px;
 }
-.dashlarge table tbody .prodname {
+.dashbox table tbody .prodname {
   top: -40px;
   color: #333;
 }
-.dashlarge table tbody .hottag {
+.dashbox table tbody .hottag {
   color: #FF3737
 }
-.dashlarge table tbody .saletag {
+.dashbox table tbody .saletag {
   color: var(--color2)
 }
-.dashlarge .stockstatus {
+.dashbox table .stockstatus {
   padding: 15px 30px;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s;
   font-size: 14px;
 }
-.dashlarge .instock {
+.dashbox table .instock {
   background: var(--light);
   color: var(--color2);
 }
-.dashlarge .outstock {
-  background: rgba(255, 196, 196,1);
+.dashbox table .outstock {
+  background: rgba(255, 196, 196,0.4);
   color: #FF3737;
 }
-.dashlarge tfoot small {
+.dashbox table tfoot small {
   font-size: 12px;
   color: var(--color2);
   opacity: 0.8;
@@ -327,46 +338,222 @@ html,body {
   border-radius: 20px;
   white-space: nowrap;
 }
-.dashlarge tfoot small:hover {
+.dashbox table tfoot small:hover {
   background: var(--light)
 }
 
+h2.homepagetitle {
+  font-size: 24px;
+  color: #333;
+  font-weight: 500;
+}
+
 .addproductcont {
-  position: fixed;
-  top: 0;
-  left:220px;
-  width: 500px;
-  height: 100%;
-  background: #fff;
-  box-shadow: 21px 0px 13px -26px rgba(25,34,51,0.25);
-  z-index: 800;
-  text-align: center;
-  padding: 50px 20px;
-}
-.addproductcont h3 { 
-  color: var(--color2);
-  padding: 7px 20px;
-  background: var(--light);
-  display:inline-block;
-  border-radius: 15px;
-  opacity: 0.7;
-}
-.addform {
   position: relative;
-  padding: 50px 0;
-  text-align: left;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0px 10px 18px -21px rgba(25,34,51,0.15);
+  padding: 30px;
+  margin: 30px 0;
+} 
+.addproductcont .addform {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
 }
-.addform h6 {
-  padding: 20px 10px;
-  border: 1px solid #eee;
-  border-radius: 10px;
+.addproductcont .gsub {
+  border-right: 1px solid #f5f5f5;
+}
+.addproductcont .gsub:last-child {
+  border: none;
+}
+.addproductcont .gsub h4 {
   color: #777;
-  font-size: 13px;
+  font-size: 18px;
 }
-
-
-
-
+.addproductcont label, .addproductcont .label {
+  position: relative;
+  display: block;
+  margin-bottom: 30px;
+}
+.addproductcont label h6, .addproductcont .label h6 {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.addproductcont label input, .addproductcont label textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1.5px solid #e1e1e1;
+  width: 350px;
+  font-size: 14px;
+  color: #555;
+  resize: vertical;
+  font-family: inherit;
+}
+.addproductcont label input::placeholder, .addproductcont label textarea::placeholder {
+  color: #ddd;
+}
+.addproductcont label select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1.5px solid #e1e1e1;
+  width: 350px;
+  font-size: 14px;
+  color: #555;
+  font-weight: 600;
+  background: linear-gradient(180deg, rgba(252,253,255,1) 0%, rgba(246,247,251,1) 100%);
+}
+.addproductcont .priceinp {
+  width: 100px;
+  float: left;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.addproductcont .currencydiv {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 41px;
+  background: #fafafa;
+  border: 1.5px solid #e1e1e1;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-right: 0;
+  float: left;
+  color: #555;
+}
+.addproductcont .uploadpic {
+  display: none;
+}
+.addproductcont .uploadercont {
+  width: 300px;
+  height: 200px;
+  border: 1.5px dashed #e1e1e1;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #aaa;
+  cursor: pointer;
+  transition: all 0.3s;
+  float: left;
+} 
+.addproductcont .imgviewcont {
+  width: 150px;
+  height: 200px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  float: left;
+  margin-left: 30px;
+  background-position: center;
+  background-size: cover;
+}
+.addproductcont .imgviewcont:hover  {
+  opacity: 0.8;
+}
+.addproductcont .uploadercont:hover {
+  background: #fafafa
+}
+.addproductcont .uploadercont i {
+  font-size: 35px;
+  opacity: 0.4;
+}
+.addproductcont .uploadercont h5 {
+  color: #aaa;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.addproductcont .addform button {
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-right: 15px;
+  background: #f1f1f1;
+  color: #555;
+}
+.addproductcont .addform button:hover {
+  background: #e1e1e1;
+}
+.addproductcont .addform button.instock {
+  background: var(--light);
+  color: var(--color2);
+}
+.addproductcont .addform button.outstock {
+  background: rgba(255, 196, 196,0.4);
+  color: #FF3737;
+}
+.addproductcont .sizesbox {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: #fafafa;
+  border: 1px solid #e1e1e1;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+}
+.addproductcont .sizesbox:hover {
+  background: #eee;
+}
+.addproductcont .addform .confirmaddprod {
+  position: absolute;
+  bottom: 50px;
+}
+.addproductcont .addform .confirmaddprod button {
+  background: var(--color2);
+  color: #fff;
+}
+.addproductcont .addform .confirmaddprod button:hover {
+  filter: brightness(110%);
+  background: var(--color2)
+}
+.notifcont {
+  position: fixed;
+  bottom: 40px;
+  left: 50px;
+  z-index: 999;
+}
+.notifcont > div {
+  position: relative;
+  left: -40px;
+  min-width: 300px;
+  padding: 25px;
+  font-size: 14px;
+  color: #fff;
+  background: rgba(10, 157, 255,0.85);
+  border-radius: 10px;
+  opacity: 0;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notifcont > div p {
+  display: inline;
+  margin-right: 15px;
+}
+.notifcont > div i {
+  margin-right: 15px;
+  font-size: 18px;
+}
+.notifcont > div button {
+  padding: 5px 15px;
+  border-radius: 6px;
+  background: #eee;
+  color: var(--color2) 
+} 
+.notifcont > div button:hover {
+  background: #fff;
+}
 
 
 

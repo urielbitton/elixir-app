@@ -3,6 +3,7 @@ import Topbar from './Topbar'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 import Home from './Home'
 import Products from './Products'
+import AddProduct from './AddProduct';
 
 function Homecont(props) {
   return (
@@ -15,7 +16,12 @@ function Homecont(props) {
           <Route path="/products">
             <Products />
           </Route>
+          <Route path="/addproduct">
+            <AddProduct />
+          </Route>
         </Switch>
+        
+        <div className="notifcont"></div>
     </div>
   )
 }

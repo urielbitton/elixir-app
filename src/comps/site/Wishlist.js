@@ -13,7 +13,7 @@ function Wishlist(props) {
       return <tr data-wish={wish}>
         <td><i className="far fa-window-close" onClick={() => removeWish(prod)}></i><img src={prod.img} alt="prodwish" /></td>
         <td><Link to="/product" onClick={() => props.openproduct(prod,prod.id,prod.name,prod.img,prod.price,prod.descript,prod.color,prod.cat,prod.sizes,prod.units,prod.addcart,prod.wishlist)}>{prod.name}</Link></td>
-        <td className="pricetd">${prod.price}.00</td>
+        <td className="pricetd">${prod.price.toFixed(2)}</td>
         <td>{prod.instock?<p><i class='fas fa-check-circle'></i>In stock</p>:<p><i class='fas fa-window-close'></i>Out of stock</p>}</td>
         <td>{prod.cat[0]}</td>
       </tr> 

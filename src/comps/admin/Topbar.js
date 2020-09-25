@@ -10,7 +10,7 @@ function Topbar(props) {
             <i class="fas fa-external-link-alt"></i>Elixir Site
           </div>
         </Link>
-        <button className="addprodbtn"><i className="fas fa-plus"></i>Add Product</button>
+        <Link to="/addproduct"><button className="addprodbtn"><i className="fas fa-plus"></i>Add Product</button></Link>
         <label className="search">
           <i className="fas fa-search"></i>
           <input placeholder="Search"/>

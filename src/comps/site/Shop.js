@@ -15,7 +15,7 @@ function Shop(props) {
   const [gridview, setGridview] = useState(true)
 
   const allprods = products.map(prod => {
-      if(((prod.price >= pricefilt[0] && prod.price < pricefilt[1])|| pricefilt === "all") && (prod.cat.includes(catfilter) || catfilter === "all") && (prod.color.includes(colorfilt) || colorfilt === "all") && (prod.sizes.includes(sizesfilt) || sizesfilt === "all")) {
+      if(((prod.price >= pricefilt[0] && prod.price < pricefilt[1])|| pricefilt === "all") && (prod.cat.includes(catfilter) || catfilter === "all") && (prod.color.includes(colorfilt.toLowerCase()) || colorfilt === "all") && (prod.sizes.includes(sizesfilt) || sizesfilt === "all")) {
         return <Item prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} descript={prod.descript} hot={prod.hot} sale={prod.sale} color={prod.color} cat={prod.cat} sizes={prod.sizes} addcart={prod.addcart} wishlist={prod.wishlist} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} openproduct={props.openproduct} key={prod.id} resetunits={props.resetunits}/>
       }   
   }) 
@@ -101,11 +101,11 @@ function Shop(props) {
         </div>
         <div>
           <h4>Categories</h4> 
-          <ul><li className="activefilter" onClick={() => setCatfilter("all")}>All Categories</li><li onClick={() => setCatfilter('women')}>Women</li><li onClick={() => setCatfilter('men')}>Men</li><li onClick={() => setCatfilter('kids')}>Kids</li><li onClick={() => setCatfilter('shirt')}>Shirts</li><li onClick={() => setCatfilter('pants')}>Pants</li><li onClick={() => setCatfilter('jacket')}>Jackets</li><li onClick={() => setCatfilter('shoes')}>Shoes</li></ul>
+          <ul><li className="activefilter" onClick={() => setCatfilter("all")}>All Categories</li><li onClick={() => setCatfilter('women')}>Women</li><li onClick={() => setCatfilter('men')}>Men</li><li onClick={() => setCatfilter('kids')}>Kids</li><li onClick={() => setCatfilter('shirt')}>Shirts</li><li onClick={() => setCatfilter('pants')}>Pants</li><li onClick={() => setCatfilter('jacket')}>Jackets</li><li onClick={() => setCatfilter('shoes')}>Shoes</li><li onClick={() => setCatfilter('hat')}>Hats</li></ul>
         </div>
         <div>
           <h4>Colors</h4>
-          <ul><li className="activefilter" onClick={() => setColorfilt('all')}>All Colors</li><li onClick={() => setColorfilt('Black')}>Black</li><li onClick={() => setColorfilt('White')}>White</li><li onClick={() => setColorfilt('Blue')}>Blue</li><li onClick={() => setColorfilt('Gray')}>Gray</li><li onClick={() => setColorfilt('Red')}>Red</li><li onClick={() => setColorfilt('Brown')}>Brown</li><li onClick={() => setColorfilt('Pink')}>Pink</li></ul>
+          <ul><li className="activefilter" onClick={() => setColorfilt('all')}>All Colors</li><li onClick={() => setColorfilt('black')}>Black</li><li onClick={() => setColorfilt('white')}>White</li><li onClick={() => setColorfilt('blue')}>Blue</li><li onClick={() => setColorfilt('gray')}>Gray</li><li onClick={() => setColorfilt('red')}>Red</li><li onClick={() => setColorfilt('brown')}>Brown</li><li onClick={() => setColorfilt('pink')}>Pink</li><li onClick={() => setColorfilt('green')}>Green</li></ul>
         </div> 
         <div>
           <h4>Sizes</h4> 
@@ -113,7 +113,7 @@ function Shop(props) {
         </div> 
         <div>
           <h4>Sort By</h4>
-          <ul><li className="activefilter">All</li><li>Hot</li><li>Rating</li><li>New Products</li><li>Price: Low to High</li><li>Price: High to Low</li></ul>
+          <ul><li className="activefilter">All</li><li>New</li><li>Hot</li><li>Rating</li><li>New Products</li><li>Price: Low to High</li><li>Price: High to Low</li></ul>
         </div>
         <div className="appliedfilters">
           <h6 className="clearall" onClick={() => resetFilters()} style={{display: reset?"none":"inline-block"}}><i class="fas fa-times"></i>Reset</h6>

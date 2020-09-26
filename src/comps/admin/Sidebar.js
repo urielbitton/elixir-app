@@ -46,6 +46,7 @@ function Sidebar(props) {
           <span><i className="fas fa-shopping-bag"></i><el>Orders</el><i className="fas fa-angle-up"></i></span>
           <div className="clear">
             <h6><i class="fas fa-wallet"></i><el>Revenue</el></h6>
+            <h6><i class="fas fa-wallet"></i><el>Processed Orders</el></h6>
           </div>
         </h5>
         <h5> 

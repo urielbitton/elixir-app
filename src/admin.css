@@ -1,7 +1,4 @@
-html,body {
-  font-family: 'Varela', sans-serif;
-} 
-:root {
+ :root {
   --color2: #0a9dff;
   --light: rgba(10, 157, 255,0.08);
 }
@@ -366,7 +363,6 @@ h2.homepagetitle {
   width: 100%;
   background: #fff;
   box-shadow: 0px 10px 18px -21px rgba(25,34,51,0.15);
-  padding: 30px;
   margin: 30px 0;
 } 
 .addproductcont .addform {
@@ -376,6 +372,7 @@ h2.homepagetitle {
 }
 .addproductcont .gsub {
   border-right: 1px solid #f5f5f5;
+  padding: 30px;
 }
 .addproductcont .gsub:last-child {
   border: none;
@@ -491,13 +488,9 @@ h2.homepagetitle {
 .addproductcont .addform button:hover {
   background: #e1e1e1;
 }
-.addproductcont .addform button.instock {
+.addproductcont .addform button.stockopt {
   background: var(--light);
   color: var(--color2);
-}
-.addproductcont .addform button.outstock {
-  background: rgba(255, 196, 196,0.4);
-  color: #FF3737;
 }
 .addproductcont .sizesbox, .addproductcont .colorbox {
   width: 40px;
@@ -515,7 +508,7 @@ h2.homepagetitle {
   user-select: none;
   -webkit-user-select: none; 
 }
-.addproductcont .colorbox:hover {
+.addproductcont .colorbox:hover { 
   filter: brightness(80%)
 }
 .addproductcont .colorbox:nth-of-type(1) { background: #111;}
@@ -525,6 +518,7 @@ h2.homepagetitle {
 .addproductcont .colorbox:nth-of-type(5) { background: rgb(255, 238, 0)}
 .addproductcont .colorbox:nth-of-type(6) { background: rgb(255, 180, 255)}
 .addproductcont .colorbox:nth-of-type(7) { background: rgb(0, 174, 255)}
+.addproductcont .colorbox:nth-of-type(8) { background: rgb(255, 187, 0)}
 
 .addproductcont .sizesbox {
   background: #fafafa;
@@ -604,6 +598,10 @@ h2.homepagetitle {
   border: 1px solid #eee;
   color: #777;
   cursor: pointer;
+  transition: all 0.2s;
+} 
+.profilecont:hover {
+  background: var(--light)
 } 
 .profilecont img {
   position: relative;
@@ -621,7 +619,7 @@ h2.homepagetitle {
 }
 .profilecont i {
   float: left;
-  top: 9px;
+  top: 8px;
 }
 .quickactions {
   position: relative;
@@ -634,6 +632,7 @@ h2.homepagetitle {
 .quickactions i {
   transition: all 0.2s;
   cursor: pointer;
+  margin-left: 20px;
 }
 .quickactions i:hover {
   color: var(--color2)

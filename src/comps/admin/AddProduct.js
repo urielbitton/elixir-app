@@ -12,8 +12,8 @@ function AddProduct() {
   const [price, setPrice] = useState(0)
   const [img, setImg] = useState('')
   const [stock, setStock] = useState(false)
-  const [color, setColor] = useState([''])
-  const [sizes, setSizes] = useState([''])
+  const [color, setColor] = useState('')
+  const [sizes, setSizes] = useState('')
   const [cat, setCat] = useState('new')
   const [descript, setDescript] = useState('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.')
   const [person, setPerson] = useState('')
@@ -37,7 +37,17 @@ function AddProduct() {
   }
 
   function addAProduct() {
-    setProducts(prevProd => [...prevProd,{id:id, name: name, units:units,price:parseFloat(price), img:img, instock:stock,color:color, sizes:sizes, cat:cat.trim().split(','), descript:descript, purchased_status:purchased_status, purchased_qty:purchased_qty}])
+    const colors = []
+    const sizearr = []
+    document.querySelectorAll('.colorbox').forEach(el => {
+      if(el.classList.contains('coloradded')) 
+        colors.push(el.getAttribute('data-color'))
+    })
+    document.querySelectorAll('.sizesbox').forEach(el => {
+      if(el.classList.contains('sizeadd')) 
+        sizearr.push(el.getAttribute('data-size'))
+    })
+    setProducts(prevProd => [...prevProd,{id:id, name: name, units:units,price:parseFloat(price), img:img, instock:stock,color:colors, sizes:sizearr, cat:cat.trim().split(','), descript:descript, purchased_status:purchased_status, purchased_qty:purchased_qty}])
     
     const notif = document.createElement('div')
     notif.innerHTML = `<i class="fas fa-circle-notch"></i><p>Product "${name}" has been successfully created and added to your store.</p><button className="viewprodbtn">View</button>`
@@ -72,13 +82,13 @@ function AddProduct() {
     })
     document.querySelectorAll('.addproductcont .colorbox').forEach(box => {
       box.onclick = () => {
-        if(!box.classList.contains('sizeadd')) {
+        if(!box.classList.contains('coloradded')) {
           box.style.border = '2px solid var(--color2)'
-          box.classList.add('sizeadd')
+          box.classList.add('coloradded')
         }
         else {
           box.style.border = ''
-          box.classList.remove('sizeadd')
+          box.classList.remove('coloradded')
         }
       }
     })
@@ -110,8 +120,8 @@ function AddProduct() {
           <div className="gsub">
             <div className="label"> 
               <h6>Stock Status</h6>
-              <button onClick={() => setStock(true)}>In Stock</button>
-              <button onClick={() => setStock(false)}>Out Of Stock</button>
+              <button onClick={() => setStock(true)} className={stock?"stockopt":""}>In Stock</button>
+              <button onClick={() => setStock(false)} className={stock?"":"stockopt"}>Out Of Stock</button>
             </div>
             <label>
               <h6>Product Type</h6>
@@ -121,19 +131,19 @@ function AddProduct() {
             </label>
             <label>
               <h6>Product Colors</h6>
-              <div className="colorbox"></div><div className="colorbox"></div><div className="colorbox"></div><div className="colorbox"></div><div className="colorbox"></div><div className="colorbox"></div><div className="colorbox"></div>
+              <div className="colorbox" data-color="black"></div><div className="colorbox" data-color="red"></div><div className="colorbox" data-color="green"></div><div className="colorbox" data-color="brown"></div><div className="colorbox" data-color="yellow"></div><div className="colorbox" data-color="pink"></div><div className="colorbox" data-color="blue"></div><div className="colorbox" data-color="orange"></div>
             </label>
             <label>
               <h6>Product Sizes</h6>
-              <div className="sizesbox" onClick={(e) => setSizes(e.target.innerText)}>XS</div><div className="sizesbox">S</div><div className="sizesbox">M</div><div className="sizesbox">L</div><div className="sizesbox">XL</div>
+              <div className="sizesbox" data-size="XS">XS</div><div className="sizesbox" data-size="S">S</div><div className="sizesbox" data-size="M">M</div><div className="sizesbox" data-size="L">L</div><div className="sizesbox" data-size="XL">XL</div>
             </label>
             <label>
               <h6>Product Categories</h6>
-              <input placeholder="Seperate by commas" onClick={(e) => setCat(e.target.value)}/>
+              <input placeholder="Seperate by commas" onChange={(e) => setCat(e.target.value.trim())}/>
             </label>
             <label>
               <h6>Product Description</h6>
-              <textarea placeholder="Tight fit women's fall dress" onClick={(e) => setDescript(e.target.value)}></textarea>
+              <textarea placeholder="Tight fit women's fall dress" onChange={(e) => setDescript(e.target.value)}></textarea>
             </label> 
           </div>
           <div className="gsub"> 

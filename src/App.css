@@ -3,6 +3,7 @@ html, body {
   padding: 0;
   scroll-behavior: smooth;
   font-family: 'Poppins', sans-serif;
+  font-family: 'Varela', sans-serif;
 }   
 :root {
   --color: #84d8e3;  
@@ -200,9 +201,9 @@ nav h1 span {
   min-height: 300px;
   padding: 30px 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  transition: top 0.7s, opacity 0.4s, visibility 0.4s;
   background-position: center;
   background-size: cover; 
+  transition: top 0.7s, opacity 0.2s, visibility 0.2s;
 }
 .menu .shop-tab {
   background-image: url('https://i.imgur.com/2uWnG1P.jpg');
@@ -240,6 +241,7 @@ nav h1 span {
   visibility: visible;
   opacity: 1;
   top: 60px;
+  transition: top 0.7s, opacity 0.4s, visibility 0.4s;
 }
 nav .left, nav .right {
   position: relative;
@@ -545,13 +547,12 @@ section .secsubtitle {
 .sectiongrid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   grid-gap: 70px 50px;
   margin-top: 60px;
   justify-content: center;
   align-content: center;
-} 
+}  
 .sectiongrid h2 {
   font-size: 45px;
   font-weight:700;
@@ -561,9 +562,6 @@ section .secsubtitle {
   color:#333;
   display:inline-block;
 } 
-.sectiongrid .itemcont {
-  grid-row: span 1;
-}
 .itemcont {
   position: relative;
   text-align: center;
@@ -1674,7 +1672,7 @@ footer .socials > div i {
  
 .productsgrid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 50px 30px;
 }
 .productslist {
@@ -1848,7 +1846,7 @@ footer .socials > div i {
 .shoppage .shopoptions .right > div > i {
   color: #999;
   margin: auto 5px;
-  padding: 5px;
+  padding: 5px; 
   transition: all 0.2s;
   cursor: pointer;
 }
@@ -1868,7 +1866,7 @@ footer .socials > div i {
   opacity: 0;
 }
 .filterscont-on {
-  height: 360px;
+  height: 420px;
   opacity: 1;
 }
 .filterscont > div h4 {
@@ -2237,11 +2235,6 @@ footer .socials > div i {
     width: 1050px;
   } 
 }
-@media (max-width:1220px) {
-  .sectiongrid {
-    grid-template-columns:repeat(3,1fr);
-  }
-}
 @media (max-width:1080px) {
   footer .grid {
     grid-template-columns:repeat(2,1fr);
@@ -2254,9 +2247,6 @@ footer .socials > div i {
   }
   .checkoutgrid, .totalsgrid {
     grid-template-columns: 1fr;
-  }
-  .sectiongrid {
-    grid-template-columns:repeat(2,1fr);
   }
  
 }
@@ -2279,12 +2269,6 @@ footer .socials > div i {
   }
   .section4 .salediv small {
     letter-spacing: 5px;
-  }
-  .sectiongrid {
-    grid-template-columns: 1fr;
-  }
-  .sectiongrid .itemcont {
-    grid-column: span 6;
   }
  
 }

@@ -62,6 +62,7 @@ function Topbar(props) {
           <i className="fas fa-angle-down"></i>
         </div>
         <div className="quickactions">
+          <i class="fas fa-bell"></i>
           <i class="fas fa-adjust darkmodebtn" onClick={() => darkmode?setDarkmode(false):setDarkmode(true)}></i>
         </div>
       </div>

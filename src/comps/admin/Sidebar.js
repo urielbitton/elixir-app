@@ -26,47 +26,48 @@ function Sidebar(props) {
   return ( 
     <div className="sidebar">
       <div className="sidelogodiv"><img className="sidelogo" src="https://i.imgur.com/lYlrhuI.png" alt="sidelogo"/><h3>Elixir</h3></div>
+      <div className="sidebarinner">
       <div className="sidemenu">
         <h5 className="activesidelink">
-          <Link to="/dashhome"><span><i className="fas fa-home"></i>Dashboard<i className="fas fa-angle-up" style={{display:"none"}}></i></span></Link>
+          <Link to="/dashhome"><span><i className="fas fa-home"></i><el>Dashboard </el><i className="fas fa-angle-up" style={{display:"none"}}></i></span></Link>
           <div className="clear" style={{display:"none"}}></div>
         </h5>
         <h5>
-        <span><i className="fas fa-store"></i>Store<i className="fas fa-angle-up"></i></span>
+        <span><i className="fas fa-store"></i><el>Store</el><i className="fas fa-angle-up"></i></span>
           <div className="clear">
-            <Link to="/products"><h6><i class="fas fa-tshirt"></i>Products</h6></Link>
-            <h6><i class="fas fa-money-bill"></i>Coupons</h6> 
-            <h6><i class="fas fa-sync-alt"></i>Status</h6>
-            <h6><i class="fas fa-dollar-sign"></i>Taxes</h6>
-            <h6><i class="fas fa-chart-bar"></i>Analytics</h6>
+            <Link to="/products"><h6><i class="fas fa-tshirt"></i><el>Products</el></h6></Link>
+            <h6><i class="fas fa-money-bill"></i><el>Coupons</el></h6> 
+            <h6><i class="fas fa-sync-alt"></i><el>Status</el></h6>
+            <h6><i class="fas fa-dollar-sign"></i><el>Taxes</el></h6>
+            <h6><i class="fas fa-chart-bar"></i><el>Analytics</el></h6>
           </div>
         </h5>
         <h5>
-          <span><i className="fas fa-shopping-bag"></i>Orders<i className="fas fa-angle-up"></i></span>
+          <span><i className="fas fa-shopping-bag"></i><el>Orders</el><i className="fas fa-angle-up"></i></span>
           <div className="clear">
-            <h6><i class="fas fa-wallet"></i>Revenue</h6>
+            <h6><i class="fas fa-wallet"></i><el>Revenue</el></h6>
           </div>
         </h5>
         <h5> 
-        <span><i className="fas fa-user-tag"></i>Customers<i className="fas fa-angle-up"></i></span>
+        <span><i className="fas fa-user-tag"></i><el>Customers</el><i className="fas fa-angle-up"></i></span>
           <div className="clear">
-            <h6><i class="fas fa-mail-bulk"></i>Marketing</h6>
+            <h6><i class="fas fa-mail-bulk"></i><el>Marketing</el></h6>
           </div>
         </h5>
         <h5>
-        <span><i className="fas fa-cog"></i>Settings<i className="fas fa-angle-up"></i></span>
+        <span><i className="fas fa-cog"></i><el>Settings</el><i className="fas fa-angle-up"></i></span>
           <div className="clear">
-            <h6><i class="fas fa-sliders-h"></i>General</h6>
-            <h6><i class="fas fa-palette"></i>Appearance</h6>
-            <h6><i class="fas fa-store"></i>Store</h6>
-            <h6><i class="fas fa-user-circle"></i>Account</h6>
-            <h6><i class="fas fa-question"></i>Support</h6>
+            <h6><i class="fas fa-sliders-h"></i><el>General</el></h6>
+            <h6><i class="fas fa-palette"></i><el>Appearance</el></h6>
+            <h6><i class="fas fa-store"></i><el>Store</el></h6>
+            <h6><i class="fas fa-user-circle"></i><el>Account</el></h6>
+            <h6><i class="fas fa-question"></i><el>Support</el></h6>
           </div>
         </h5>
       </div>
 
-      <button className="logoutbtn" onClick={() => props.logout()}><i class="fas fa-sign-out-alt"></i>Logout</button>
-
+      <button className="logoutbtn" onClick={() => props.logout()}><i class="fas fa-sign-out-alt"></i><span>Logout</span></button>
+      </div>
     </div> 
   )
 }

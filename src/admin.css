@@ -20,6 +20,7 @@ button:active {
   display: grid;
   grid-template-columns: 220px auto;
   overflow-y: hidden;
+  transition: all 0.2s;
 }
 .dashboard > div {
   position: relative;
@@ -33,7 +34,7 @@ button:active {
   overflow: visible;
   box-shadow: 8px 0px 28px -21px rgba(25,34,51,0.15);
   z-index: 900;
-  resize: horizontal;
+  transition: all 0.3s;
 }
 .homecont {
   position: relative;
@@ -41,10 +42,20 @@ button:active {
   padding: 100px 20px 40px 20px;
   height: 100vh;
   overflow-y: scroll;
+  transition: all 0.3s;
 } 
 .sidelogodiv {
   margin: auto;
   text-align: center;
+}
+.sidebarinner {
+  position: relative;
+  height: 80vh;
+  width: 100%;
+  overflow-y: scroll;
+}
+.sidebarinner::-webkit-scrollbar {
+  display: none;
 }
 .sidebar h3 {
   font-size: 22px;
@@ -118,7 +129,7 @@ button:active {
   padding: 10px 17px;
   border-radius: 15px;
   transition: all 0.2s;
-  cursor: pointer;
+  cursor: pointer; 
 }
 .sidemenu h6:hover {
   background: var(--light);
@@ -145,14 +156,15 @@ button:active {
 .topbar {
   position: fixed;
   top: 0;
-  transform: translateX(-20px);
-  width: 100%;
+  right: 15px;
+  width: calc(100% - 235px);
   height: 70px;
   background: #fff;
   z-index: 999;
   box-shadow: 0px 10px 18px -21px rgba(25,34,51,0.15);
   border-left: 1px solid rgba(10, 157, 255,0.04);
   padding: 10px 20px;
+  transition: all 0.3s;
 }
 .sitelink {
   position: relative;
@@ -213,7 +225,7 @@ button:active {
   border: 1px solid var(--light)
 }
 .topbar .search input::placeholder {
-  color: #aaa;
+  opacity: 0.3;
 }
 
 .homegrid {
@@ -262,7 +274,7 @@ button:active {
   text-transform: uppercase;
   display: block;
   margin-top: 5px;
-} 
+}  
 .dashmed {
   grid-column: span 5;
   padding: 30px;
@@ -276,6 +288,7 @@ button:active {
 }
 .dashbox table {
   margin: 10px auto;
+  margin-top: 40px;
   width: 100%;
   text-align: left;
 }
@@ -388,11 +401,11 @@ h2.homepagetitle {
   width: 350px;
   font-size: 14px;
   color: #555;
-  resize: vertical;
+  resize: vertical; 
   font-family: inherit;
 }
 .addproductcont label input::placeholder, .addproductcont label textarea::placeholder {
-  color: #ddd;
+  opacity: 0.3;
 }
 .addproductcont label select {
   padding: 10px;
@@ -486,20 +499,35 @@ h2.homepagetitle {
   background: rgba(255, 196, 196,0.4);
   color: #FF3737;
 }
-.addproductcont .sizesbox {
+.addproductcont .sizesbox, .addproductcont .colorbox {
   width: 40px;
   height: 40px;
   border-radius: 6px;
-  background: #fafafa;
   border: 1px solid #e1e1e1;
   margin-right: 10px;
-  cursor: pointer;
-  transition: all 0.3s;
+  cursor: pointer; 
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 16px; 
   color: #333;
+  transition: all 0.3s;
+  user-select: none;
+  -webkit-user-select: none; 
+}
+.addproductcont .colorbox:hover {
+  filter: brightness(80%)
+}
+.addproductcont .colorbox:nth-of-type(1) { background: #111;}
+.addproductcont .colorbox:nth-of-type(2) { background: rgb(255, 0, 76)}
+.addproductcont .colorbox:nth-of-type(3) { background: rgb(187, 255, 0)}
+.addproductcont .colorbox:nth-of-type(4) { background: rgb(156, 0, 0)}
+.addproductcont .colorbox:nth-of-type(5) { background: rgb(255, 238, 0)}
+.addproductcont .colorbox:nth-of-type(6) { background: rgb(255, 180, 255)}
+.addproductcont .colorbox:nth-of-type(7) { background: rgb(0, 174, 255)}
+
+.addproductcont .sizesbox {
+  background: #fafafa;
 }
 .addproductcont .sizesbox:hover {
   background: #eee;
@@ -554,6 +582,79 @@ h2.homepagetitle {
 .notifcont > div button:hover {
   background: #fff;
 }
+.regrid {
+  float: left;
+  color: #aaa;
+  padding: 5px;
+  top: 16px;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.regrid:hover {
+  color: var(--color2)
+}
+.profilecont {
+  position: relative;
+  top: 5px;
+  float: right;
+  margin-left: 40px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  color: #777;
+  cursor: pointer;
+} 
+.profilecont img {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin-right: 10px;
+  top: 0px;
+  float: left;
+}
+.profilecont small {
+  float: left;
+  top: 6px;
+  margin-right: 5px;
+}
+.profilecont i {
+  float: left;
+  top: 9px;
+}
+.quickactions {
+  position: relative;
+  float: right;
+  padding: 5px;
+  top: 8px;
+  font-size: 19px;
+  color: #777;
+}
+.quickactions i {
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.quickactions i:hover {
+  color: var(--color2)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

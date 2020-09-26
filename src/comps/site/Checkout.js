@@ -20,10 +20,10 @@ function Checkout(props) {
     general.products_sold.push(props.cartitems)
     products.map(prod => {
       if(prod.addcart) {
-        prod.purchased.status = true 
-        prod.purchased.qty += prod.units
+        prod.purchased_status = true 
+        prod.purchased_qty += prod.units
       }
-      if(prod.purchased.qty > 8) {
+      if(prod.purchased_qty > 8) {
         prod.hot = true 
       }
     }) 

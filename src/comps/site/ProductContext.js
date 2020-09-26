@@ -22,10 +22,8 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","S","L"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
     { 
@@ -45,10 +43,8 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -68,10 +64,8 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","XL"], 
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0, 
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -91,10 +85,8 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L","XL"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -114,10 +106,8 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","S","M","L"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -137,10 +127,8 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -160,10 +148,8 @@ const ProductContextProvider = (props) => {
       sizes: ["L","XL"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -183,10 +169,8 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","S","L"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -206,10 +190,8 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },  
     {   
@@ -229,10 +211,8 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },  
     {   
@@ -252,10 +232,8 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","M","XL"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     {    
@@ -275,10 +253,8 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","XL"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
     {    
@@ -298,10 +274,8 @@ const ProductContextProvider = (props) => {
       sizes: ["S","M","L"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     {    
@@ -321,10 +295,8 @@ const ProductContextProvider = (props) => {
       sizes: ["XS","S","M"],
       selcolor: "",
       selsize: "",
-      purchased: {
-        status: false,
-        qty: 0,
-      },
+      purchased_status: false,
+      purchased_qty: 0,
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
   ])  

@@ -33,7 +33,7 @@ function CartPageItem(props) {
         </Link> 
         <small style={{color:"#aaa"}}>Size: {props.prod.selsize}</small>
       </td>
-      <td className="pricetd">${props.price}.00</td>
+      <td className="pricetd">${props.price.toFixed(2)}</td>
       <td>
         <div className="itemnum">
           <div className="subnum" onClick={() => subUnits()}>-</div>
@@ -42,7 +42,7 @@ function CartPageItem(props) {
         </div>
       </td>
       <td className="itemtotaltd">
-        ${props.price * (props.prod.units)}.00
+        ${(props.price * (props.prod.units)).toFixed(2)}
       </td>
       <td>
         <i className="far fa-window-close" onClick={removeItem}></i>

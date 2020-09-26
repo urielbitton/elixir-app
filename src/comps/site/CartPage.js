@@ -86,7 +86,7 @@ function CartPage(props) {
               </td>
               <td colSpan="1"></td>
               <td colSpan="3" className="subtotaltd"> 
-                <h4>Subtotal: <span>${subtotal}.00</span></h4>
+                <h4>Subtotal: <span>${subtotal.toFixed(2)}</span></h4>
               </td>
             </tr>
           </tfoot>

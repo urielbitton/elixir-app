@@ -10,13 +10,17 @@ function Home() {
   const prodsold = general.products_sold.reduce((a,b) => {return a+b},0)
   const earnings = general.earnings
   const profit = general.profit
-  const order_proc = general.order_proc
+  const order_proc = general.order_proc  
 
-  const topproducts = products.slice(0,prodshow).map(prod => {
-    if(prod.purchased.status)
-      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased.qty} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
+  const topproducts = products.map(prod => {
+    if(prod.purchased_qty > 5) 
+      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
   })
-   
+  const recentprods = products.map(prod => {
+    if(prod.id > 14 && prod.purchased_status === true)
+      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
+  }) 
+    
   return ( 
     <div className="homegrid">
       <div className="dashsmallgrid">
@@ -41,7 +45,7 @@ function Home() {
           <h3>{order_proc}<small>orders processed</small></h3>
         </div>
       </div>
-
+ 
       <div className="dashbox dashmed">
         <h5>Earnings Statistics</h5>
         <Charts type="line-chart" />
@@ -74,7 +78,7 @@ function Home() {
         </table>
       </div>
 
-      <div className="dashbox dashmed">
+      <div className="dashbox dashlarge">
         <h5>Recently Sold</h5>
         <table>
           <thead>
@@ -88,11 +92,10 @@ function Home() {
             </tr>
           </thead>
           <tbody>
-            {topproducts}
+            {recentprods}
           </tbody> 
           <tfoot>
             <div className="spacers"></div>
-            <small onClick={() => prodshow===5?setProdshow(Infinity):setProdshow(5)}>{prodshow===5?"Show All":"Show Less"}</small>
           </tfoot>
         </table>
       </div>

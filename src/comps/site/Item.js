@@ -66,12 +66,12 @@ function Item(props) {
         <Link to="/product" onClick={() => {props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.addcart,props.wishlist);window.scrollTo(0, 0)}}><img src={props.img} alt="item"/></Link>
         <div className="itemactions">
           <i className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart(props.name)}></i>
-          <i onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.addcart,props.wishlist)} className="fas fa-search-plus quickviewbtn"></i> 
+          <i onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist)} className="fas fa-search-plus quickviewbtn"></i> 
           <i className="fas fa-random"></i>
         </div> 
       </div> 
       <div className="iteminfodiv">
-        <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.addcart,props.wishlist)}><Link to="/product">{props.name}</Link></h5>
+        <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist)}><Link to="/product">{props.name}</Link></h5>
         <small>${props.price.toFixed(2)}</small> 
       </div>
     </div>  

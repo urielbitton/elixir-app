@@ -147,12 +147,13 @@ function Product(props) {
               } 
               </span>
               </h6>
-            <h6>Product ID: <span>elx{props.id+1000}</span></h6>
+            <h6>Product ID: <span>elx{parseInt(props.id,10)+1000}</span></h6>
+            <h6>Stock Status: <span>{props.prod.instock?"In Stock":"Out Of Stock"}</span></h6>
             <h6>Share Product</h6>
             <div><i class="fab fa-facebook-f"></i></div>
             <div><i class="fab fa-twitter"></i></div>
             <div><i class="fab fa-instagram"></i></div>
-            <div><i class="fab fa-linkedin-in"></i></div>
+            <div><i class="fab fa-linkedin-in"></i></div> 
           </div>
           <div className="clear"></div> 
           <small style={{display:"none"}}>{props.wishnum}</small> 

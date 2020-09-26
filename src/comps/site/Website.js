@@ -37,6 +37,7 @@ function Website(props) {
   const [units, setUnits] = useState(1)
   const [addcart, setAddcart] = useState(false)
   const [wishlist, setWishlist] = useState(false)
+  const [instock, setStock] = useState(false)
    
   function updateCartNum() {
     setCartitems(num => num+1)
@@ -77,7 +78,7 @@ function Website(props) {
     setSizeupdate(true)
   }
   
-  function openProduct(prod,id,name,img,price,descript,color,cat,sizes,units,addcart,wishlist) {
+  function openProduct(prod,id,name,img,price,descript,color,cat,sizes,units,addcart,wishlist,instock) {
     setProd(prod)
     setId(id)
     setName(name)
@@ -90,6 +91,7 @@ function Website(props) {
     setUnits(units)
     setWishlist(wishlist) 
     setAddcart(addcart)
+    setStock(instock)
   } 
 
   useEffect(() => {
@@ -137,7 +139,7 @@ function Website(props) {
           <Contact />
         </Route> 
         <Route path="/product"> 
-          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} setprodcolor={setProdColor} setprodsize={setProdSize}/>
+          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} instock={instock} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} setprodcolor={setProdColor} setprodsize={setProdSize}/>
         </Route> 
         <Route path="/cart">
           <CartPage prod={prod} subtotal={subtotal} cartitems={cartitems} connectsub={connectSub} subcartnum={subCartNum} zerocartnum={zeroCartNum} colorupdate={colorupdate} sizeupdate={sizeupdate} />

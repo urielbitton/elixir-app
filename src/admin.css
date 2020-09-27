@@ -709,11 +709,13 @@ h2.homepagetitle {
   height: 100%;
   margin-top: 40px;
 } 
-.innerprodopts label {
+.innerprodopts label, .innerprodopts .label {
+  position: relative;
+  display: block;
   display: block;
   margin: 20px auto;
 }
-.innerprodopts label h6 {
+.innerprodopts label h6, .innerprodopts .label h6 {
   font-size: 15px;
   color: #777;
   margin-bottom: 10px;
@@ -784,6 +786,58 @@ h2.homepagetitle {
   background-position: center;
   background-size: cover;
 }
+.innerprodopts .uploadercont:hover {
+  opacity: 0.7;
+}
+.innerprodopts .label button {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.innerprodopts .label button:hover {
+  background: var(--light);
+  color: var(--color)
+}
+.innerprodopts .label button.stock {
+  background: var(--light);
+  color: var(--color); 
+}
+.innerprodopts label .colorbox {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}  
+.innerprodopts label .colorbox:hover {
+  filter: brightness(90%)
+}
+.innerprodopts .colorcircle {
+  position: relative;
+  top: 2px;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

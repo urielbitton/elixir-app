@@ -1148,6 +1148,10 @@ footer .socials > div i {
 .product .addtocart:hover, .product .viewcart:hover {
   background: #444;
 }
+.cartdisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 .product .metaitem {
   position: relative;
   margin-top: 30px;

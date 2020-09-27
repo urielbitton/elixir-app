@@ -127,16 +127,20 @@ function Product(props) {
                 return <div className="sizebox" onClick={() => sizeUpdate(size)}>{size}</div>
               })
             } 
-            </div> 
+            </div>  
             <div className="clear"></div> 
           </label>
           <div className="clear"></div>
           <div className="itemnum">
-            <div className="subnum" onClick={() => subUnits()}>-</div>
+            <div className="subnum" onClick={() => props.prod.instock?subUnits():""}>-</div>
             <div className="num" data-units={units}>{props.prod.units}</div>
-            <div className="addnum" onClick={() => addUnits()}>+</div>
+            <div className="addnum" onClick={() => props.prod.instock?addUnits():""}>+</div>
           </div>
+          {
+          props.prod.instock?  
           <Link to={props.prod.addcart?"/cart":"#"}><button className={props.prod.addcart?"viewcart":"addtocart"} onClick={() => props.prod.addcart?"":addToCart()}><i class="fas fa-cart-plus"></i>{props.prod.addcart?"View Cart":"Add To Cart"}</button></Link>
+          : <button disabled className="addtocart cartdisabled"><i class="fas fa-cart-plus"></i>Add To Cart</button>
+          }
           <div className="metaitem">
             <h6>Categories:  
               <span>
@@ -148,7 +152,7 @@ function Product(props) {
               </span>
               </h6>
             <h6>Product ID: <span>elx{parseInt(props.id,10)+1000}</span></h6>
-            <h6>Stock Status: <span>{props.prod.instock?"In Stock":"Out Of Stock"}</span></h6>
+            <h6>Stock Status: <span style={{color: props.prod.instock?"":"#FF3737"}}>{props.prod.instock?"In Stock":"Out Of Stock"}</span></h6>
             <h6>Share Product</h6>
             <div><i class="fab fa-facebook-f"></i></div>
             <div><i class="fab fa-twitter"></i></div>

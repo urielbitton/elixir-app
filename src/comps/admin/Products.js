@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../../comps/site/ProductContext'
 import DashTableRow from './DashTableRow'
 
@@ -9,8 +9,9 @@ function Products() {
   const [id, setId] = useState(1)
   const [name, setName] = useState('')
   const [img, setImg] = useState('')
-  const [imgview, setImgview] = useState(img)
   const [price, setPrice] = useState(0)
+  const [instock, setInstock] = useState()
+  const [color, setColor] = useState([''])
 
   const [findname, setFindname] = useState('')
   const [updated, setUpdated] = useState()
@@ -35,23 +36,33 @@ function Products() {
     
   }).map(prod => {
       if(pattern.test(prod.name.toLowerCase()))
-        return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct} updated={updated}/>
+        return <DashTableRow img={prod.img} name={prod.name} price={prod.price} color={prod.color} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct} updated={updated}/>
   })
 
-  function openProduct(id, name, price, img) {
+  const colorarr = ["black","lightgray","red","orange","brown","green","yellow","pink","blue","white"]
+
+  function openProduct(id, name, price, img, instock, color) {
     setId(id)
     setName(name)
     setPrice(price)
     setImg(img)
-    setImgview(img)
-  } 
+    setInstock(instock)  
+    setColor(color)
+  }  
 
   function editProduct(id) {
+    const colors = []
+    document.querySelectorAll('.colorbox').forEach(el => {
+      if(el.classList.contains('coloradded')) 
+        colors.push(el.getAttribute('data-color'))
+    })
     products.map(prod => {
       if(prod.id === id) {
         prod.name = name
         prod.price = price
         prod.img = img
+        prod.instock = instock
+        prod.color = colors
       }
     })
     setUpdated(timeupdate.getSeconds())
@@ -62,12 +73,26 @@ function Products() {
     var reader = new FileReader();
     reader.onloadend = function(){
         setImg(reader.result) 
-        setImgview(reader.result)
     } 
     if(file) {
         reader.readAsDataURL(file);
       } 
   }
+
+  useEffect(() => {
+    document.querySelectorAll('.myproductsoptions .colorbox').forEach(box => {
+      box.onclick = () => {
+        if(!box.classList.contains('coloradded')) {
+          box.style.border = '2px solid var(--color)'
+          box.classList.add('coloradded')
+        }
+        else { 
+          box.style.border = ''
+          box.classList.remove('coloradded')
+        }
+      }
+    })
+  },[])
 
   return (
     <div className="myproductspage">
@@ -110,12 +135,28 @@ function Products() {
           </label>
           <label className="imguploadlabel">
             <h6>Product Image</h6>
-            <div className="uploadercont" style={{backgroundImage: "url("+imgview+")"}}><input className="uploadpic" type="file" onChange={uploadImg}/></div>
+            <div className="uploadercont" style={{backgroundImage: "url("+img+")"}}><input className="uploadpic" type="file" onChange={uploadImg}/></div>
           </label>
           <label>
             <h6>Price (CAD)</h6>
             <div className="currencydiv">$</div><input className="priceinp" value={parseFloat(price).toFixed(2)} onChange={(e) => setPrice(e.target.value)}/><div className="clear"></div>
           </label> 
+          <div className="label">
+            <h6>Stock Status</h6>
+            <button className={instock?"stock":""} onClick={() => setInstock(true)}>In Stock</button>
+            <button className={instock?"":"stock"} onClick={() => setInstock(false)}>Out of Stock</button>
+          </div>
+          <label>
+          <h6>Product Colors {color.map(color => {return <div className="colorcircle" style={{background: color}}></div>})}</h6>
+            {
+              colorarr.map(color => {
+                if(color === "white")
+                  return <div className="colorbox" data-color="#f7f7f7" style={{background: "#f7f7f7"}}></div>
+                else
+                  return <div className="colorbox" data-color={color} style={{background: color}}></div>
+              })
+            } 
+          </label>
 
           <button className="saveproduct" onClick={() => editProduct(id)}>Save Product</button>
         </div>

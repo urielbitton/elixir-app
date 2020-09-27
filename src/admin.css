@@ -1,12 +1,11 @@
  :root {
-  --color2: #0a9dff;
   --light: rgba(10, 157, 255,0.08);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color2)
+  background: var(--color)
 }
 ::selection {
-  background: var(--color2);
+  background: var(--color);
   color: #fff;
 } 
 
@@ -95,7 +94,7 @@ button:active {
 }
 .sidemenu h5 > div {
   position: relative;
-  transition: all 0.2s;
+  transition: all 0.2s; 
   height: 0;
   height:0;
   overflow: hidden;
@@ -105,7 +104,7 @@ button:active {
 }
 .sidemenu h5:hover span {
   background: var(--light);
-  color: var(--color2)
+  color: var(--color)
 }
 .sidemenu h5 i:first-child {
   margin-right: 10px;
@@ -116,7 +115,7 @@ button:active {
 }  
 .sidemenu .activesidelink span {
   background: var(--light);
-  color: var(--color2)
+  color: var(--color)
 }
 .sidemenu h6 {
   color: #666;
@@ -130,7 +129,7 @@ button:active {
 }
 .sidemenu h6:hover {
   background: var(--light);
-  color: var(--color2)
+  color: var(--color)
 }
 .sidemenu h6 i {
   margin-right: 5px;
@@ -140,13 +139,13 @@ button:active {
   width: 90%;
   margin: auto;
   border-radius: 20px;
-  color: var(--color2);
+  color: var(--color);
   background: var(--light);
   margin-top: 50px;
   font-size: 15px;
 }
 .sidebar .logoutbtn:hover {
-  background: var(--color2);
+  background: var(--color);
   color: #fff;
 }
  
@@ -187,7 +186,7 @@ button:active {
   top: 7px;
   padding: 12px 20px;
   border-radius: 20px;
-  background: var(--color2);
+  background: var(--color);
   color: #fff;
   float: left;
 }
@@ -280,7 +279,7 @@ button:active {
   color: #555;
   font-size: 19px;
 }
-.dashlarge {
+.homegrid .dashlarge {
   grid-column: span 10;
 }
 .dashbox table {
@@ -288,14 +287,35 @@ button:active {
   margin-top: 40px;
   width: 100%;
   text-align: left;
+  border-collapse: collapse;
 }
 .dashbox table h5 {
   margin-bottom: 30px;
 } 
 .dashbox table th {
-  font-size: 12px;
+  position: relative;
+  font-size: 13px;
   color: #aaa;
   font-weight: 600;
+}
+.dashbox table th h6 {
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+.dashbox table th h6:hover {
+  color: var(--color)
+}
+.dashbox table th i {
+  margin-left: 15px;
+  padding: 5px 10px;
+  border-radius: 100%;
+  cursor: pointer;
+} 
+.dashbox table th i:hover {
+  background: var(--light)
 }
 .dashbox table tbody {
   margin-top: 20px;
@@ -321,7 +341,7 @@ button:active {
   color: #FF3737
 }
 .dashbox table tbody .saletag {
-  color: var(--color2)
+  color: var(--color)
 }
 .dashbox table .stockstatus {
   padding: 15px 30px;
@@ -332,7 +352,7 @@ button:active {
 }
 .dashbox table .instock {
   background: var(--light);
-  color: var(--color2);
+  color: var(--color);
 }
 .dashbox table .outstock {
   background: rgba(255, 196, 196,0.4);
@@ -340,7 +360,7 @@ button:active {
 }
 .dashbox table tfoot small {
   font-size: 12px;
-  color: var(--color2);
+  color: var(--color);
   opacity: 0.8;
   cursor: pointer;
   transition: all 0.2s;
@@ -490,7 +510,7 @@ h2.homepagetitle {
 }
 .addproductcont .addform button.stockopt {
   background: var(--light);
-  color: var(--color2);
+  color: var(--color);
 }
 .addproductcont .sizesbox, .addproductcont .colorbox {
   width: 40px;
@@ -531,12 +551,12 @@ h2.homepagetitle {
   bottom: 50px;
 }
 .addproductcont .addform .confirmaddprod button {
-  background: var(--color2);
+  background: var(--color);
   color: #fff;
 }
 .addproductcont .addform .confirmaddprod button:hover {
   filter: brightness(110%);
-  background: var(--color2)
+  background: var(--color)
 }
 .notifcont {
   position: fixed;
@@ -571,7 +591,7 @@ h2.homepagetitle {
   padding: 5px 15px;
   border-radius: 6px;
   background: #eee;
-  color: var(--color2) 
+  color: var(--color) 
 } 
 .notifcont > div button:hover {
   background: #fff;
@@ -586,7 +606,7 @@ h2.homepagetitle {
   transition: all 0.2s;
 }
 .regrid:hover {
-  color: var(--color2)
+  color: var(--color)
 }
 .profilecont {
   position: relative;
@@ -635,15 +655,32 @@ h2.homepagetitle {
   margin-left: 20px;
 }
 .quickactions i:hover {
-  color: var(--color2)
+  color: var(--color)
 }
 
-
-
-
-
-
-
+.myproductsgrid {
+  display: grid;
+  grid-template-columns: auto 300px;
+  grid-gap: 20px;
+}
+.myproductsoptions {
+  background: #fff;
+  height:100%;
+}
+.myproductsoptions h4 {
+  font-size: 18px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+.myproductsgrid table tr:hover {
+  background: rgb(250, 250, 250)
+}
+.myproductsgrid table thead tr:hover {
+  background: #fff;
+}
+.myproductsgrid table tbody tr {
+  cursor: pointer;
+}
 
 
 

@@ -7,25 +7,46 @@ function Home() {
 
   const {products, general} = useContext(ProductContext)
   const [prodshow, setProdshow] = useState(5)
+  const [sort, setSort] = useState(0)
+
   const prodsold = general.products_sold.reduce((a,b) => {return a+b},0)
   const earnings = general.earnings
   const profit = general.profit
   const order_proc = general.order_proc  
-
-  const topproducts = products.map(prod => {
+  let topproducts
+ 
+  topproducts = products.sort((a,b) => {
+    return (b.purchased_qty) - (a.purchased_qty)
+  }).map(prod => {
     if(prod.purchased_qty > 5) 
       return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
   })
-  const recentprods = products.map(prod => {
-    if(prod.id > 14 && prod.purchased_status === true)
+  const recentprods = products.sort((a,b) => {
+    if(sort===0)
+      return a.id-b.id
+    else if(sort===1) {
+      if(a.name < b.name)
+        return -1
+      else if(a.name < b.name)
+        return 1
+    }
+    else if(sort===2)
+      return a.price-b.price
+    else if(sort===3)
+      return a.qty-b.qty
+    else if(sort===4)
+      return a.earnings-b.earnings
+    
+  }).map(prod => {
+    if(prod.purchased_status === true)
       return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
-  }) 
+  })
     
   return ( 
     <div className="homegrid">
       <div className="dashsmallgrid">
         <div className="dashbox smallbox">
-          <span style={{background:"rgba(10, 157, 255,0.1)"}}><i className="fas fa-box-open" style={{color:"var(--color2)"}}></i></span>
+          <span style={{background:"rgba(10, 157, 255,0.1)"}}><i className="fas fa-box-open" style={{color:"var(--color)"}}></i></span>
           <h3>{prodsold}<small>products sold</small></h3>
         </div>
         <div className="dashbox smallbox">
@@ -61,11 +82,11 @@ function Home() {
           <thead>
             <tr>
               <th>No.</th>
-              <th>Product Name</th>
-              <th>Unit Price</th>
-              <th>Quantity Sold</th>
-              <th>Earnings</th>
-              <th>Stock Status</th> 
+              <th>Product Name<i className="fas fa-sort"></i></th>
+              <th>Unit Price<i className="fas fa-sort"></i></th>
+              <th>Quantity Sold<i className="fas fa-sort"></i></th>
+              <th>Earnings<i className="fas fa-sort"></i></th>
+              <th>Stock Status<i className="fas fa-sort"></i></th> 
             </tr>
           </thead>
           <tbody>
@@ -83,17 +104,17 @@ function Home() {
         <table>
           <thead>
             <tr>
-              <th>No.</th>
-              <th>Product Name</th>
-              <th>Unit Price</th>
-              <th>Quantity Sold</th>
-              <th>Earnings</th>
-              <th>Stock Status</th> 
+              <th style={{color: sort===0?"var(--color)":""}} onClick={() => setSort(0)}><h6>No.<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort===1?"var(--color)":""}} onClick={() => setSort(1)}><h6>Product Name<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort===2?"var(--color)":""}} onClick={() => setSort(2)}><h6>Unit Price<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort===3?"var(--color)":""}} onClick={() => setSort(3)}><h6>Quantity Sold<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort===4?"var(--color)":""}} onClick={() => setSort(4)}><h6>Earnings<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort===5?"var(--color)":""}}><h6>Stock Status</h6></th>
             </tr>
           </thead>
           <tbody>
             {recentprods}
-          </tbody> 
+          </tbody>  
           <tfoot>
             <div className="spacers"></div>
           </tfoot>

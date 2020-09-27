@@ -38,7 +38,7 @@ function Topbar(props) {
       document.querySelectorAll('.topbar,.sidebar,.homecont,.addproductcont,input,select,textarea').forEach(el => el.style.background = '')
       document.querySelectorAll('.dashbox').forEach(el => el.style.background = '')
     }
-  },[darkmode])
+  },[darkmode]) 
 
   return (
     <div className="topbar"> 

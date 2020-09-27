@@ -22,6 +22,7 @@ function Checkout(props) {
       if(prod.addcart) {
         prod.purchased_status = true 
         prod.purchased_qty += prod.units
+        prod.earnings = (prod.price-(prod.price*taxrate))*prod.purchased_qty  
       }
       if(prod.purchased_qty > 8) {
         prod.hot = true 

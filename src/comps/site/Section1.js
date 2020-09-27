@@ -7,9 +7,9 @@ function Section1(props) {
   const {products} = useContext(ProductContext)
   const [catnum, setCatnum] = useState("new")
 
-  let newarrivals 
-
-  newarrivals = products.map(prod => {
+  const newarrivals = products.sort((a,b) => {
+    return a.id - b.id
+  }).map(prod => {
     if(prod.cat.includes(catnum.trim()))
       return <Item prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} cat={prod.cat} sizes={prod.sizes} units={prod.units} addcart={prod.addcart} instock={prod.instock} wishlist={prod.wishlist} descript={prod.descript} color={prod.color} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updateunits={props.updateunits} updatewish={props.updatewish} openproduct={props.openproduct} wishnum={props.wishnum} key={prod.id} />
   })   

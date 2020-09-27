@@ -83,7 +83,7 @@ function AddProduct() {
     document.querySelectorAll('.addproductcont .colorbox').forEach(box => {
       box.onclick = () => {
         if(!box.classList.contains('coloradded')) {
-          box.style.border = '2px solid var(--color2)'
+          box.style.border = '2px solid var(--color)'
           box.classList.add('coloradded')
         }
         else {

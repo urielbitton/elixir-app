@@ -6,9 +6,9 @@ html, body {
   font-family: 'Varela', sans-serif;
 }   
 :root {
-  --color: #84d8e3;  
+  --color: #0a9dff;  
 }   
-  
+   
 .grid {
   position: relative;
   margin: auto;

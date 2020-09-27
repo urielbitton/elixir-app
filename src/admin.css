@@ -40,6 +40,12 @@ button:active {
   overflow-y: scroll;
   transition: all 0.3s;
 } 
+.homecont input {
+  border: none;
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+}
 .sidelogodiv {
   margin: auto;
   text-align: center;
@@ -387,7 +393,7 @@ h2.homepagetitle {
 } 
 .addproductcont .addform {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   grid-gap: 20px;
 }
 .addproductcont .gsub {
@@ -459,8 +465,8 @@ h2.homepagetitle {
   display: none;
 }
 .addproductcont .uploadercont {
-  width: 300px;
-  height: 200px;
+  width: 350px;
+  height: 400px;
   border: 1.5px dashed #e1e1e1;
   border-radius: 6px;
   display: flex;
@@ -470,23 +476,15 @@ h2.homepagetitle {
   color: #aaa;
   cursor: pointer;
   transition: all 0.3s;
-  float: left;
-} 
-.addproductcont .imgviewcont {
-  width: 150px;
-  height: 200px;
-  border-radius: 6px;
-  transition: all 0.3s;
-  float: left;
-  margin-left: 30px;
   background-position: center;
   background-size: cover;
-}
-.addproductcont .imgviewcont:hover  {
-  opacity: 0.8;
+}  
+.addproductcont .imguploadlabel {
+  position: relative;
+  width: 350px;
 }
 .addproductcont .uploadercont:hover {
-  background: #fafafa
+  opacity: 0.8;
 }
 .addproductcont .uploadercont i {
   font-size: 35px;
@@ -548,7 +546,7 @@ h2.homepagetitle {
 }
 .addproductcont .addform .confirmaddprod {
   position: absolute;
-  bottom: 50px;
+  bottom: 100px;
 }
 .addproductcont .addform .confirmaddprod button {
   background: var(--color);
@@ -663,15 +661,6 @@ h2.homepagetitle {
   grid-template-columns: auto 300px;
   grid-gap: 20px;
 }
-.myproductsoptions {
-  background: #fff;
-  height:100%;
-}
-.myproductsoptions h4 {
-  font-size: 18px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #eee;
-}
 .myproductsgrid table tr:hover {
   background: rgb(250, 250, 250)
 }
@@ -681,22 +670,120 @@ h2.homepagetitle {
 .myproductsgrid table tbody tr {
   cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.headeropts h5 {
+  float: left;
+}
+.headeropts label {
+  position: relative;
+  float: left;
+  top: -5px;
+  margin-left: 50px;
+}
+.headeropts input {
+  padding: 10px;
+  border-radius: 20px;
+  color: #aaa;
+  padding-left: 40px;
+}
+.headeropts input::placeholder {
+  color: #aaa;
+}
+.headeropts label i {
+  left: 30px;
+  z-index: 10;
+  color: #ccc;
+  top: 1px;
+  font-size: 14px
+}
+.myproductsoptions {
+  background: #fff;
+  height:100%;
+}
+.myproductsoptions h4 {
+  font-size: 18px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+.innerprodopts {
+  position: relative;
+  height: 100%;
+  margin-top: 40px;
+} 
+.innerprodopts label {
+  display: block;
+  margin: 20px auto;
+}
+.innerprodopts label h6 {
+  font-size: 15px;
+  color: #777;
+  margin-bottom: 10px;
+} 
+.innerprodopts label input {
+  padding: 15px;
+  font-size: 16px;
+  color: #555;
+}
+.innerprodopts .currencydiv {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 41px;
+  background: #fafafa;
+  border: 1.5px solid #e1e1e1;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-right: 0;
+  float: left;
+  color: #555;
+}
+.innerprodopts .priceinp {
+  width: 100px;
+  padding: 10px;
+  margin-left: 0px;
+  float: left;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border: 1.5px solid #e1e1e1;
+  font-weight: 600;
+  color: #555;
+}
+.innerprodopts .saveproduct {
+  padding: 15px 30px;
+  border-radius: 20px;
+  background: var(--color);
+  color: #fff;
+  margin-top: 40px;
+}
+.innerprodopts .saveproduct:hover {
+  filter: brightness(110%)
+}
+.innerprodopts .imguploadlabel input {
+  display: none;
+}
+.innerprodopts .imguploadlabel i {
+  font-size: 24px;
+  opacity: 0.4;
+}
+.innerprodopts .imguploadlabel h5 {
+  color: #aaa;
+}
+.innerprodopts .uploadercont {
+  width: 90%;
+  height: 300px;
+  border: 1.5px dashed #e1e1e1;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #aaa;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-position: center;
+  background-size: cover;
+}
 
 
 

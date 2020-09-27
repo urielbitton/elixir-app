@@ -93,7 +93,7 @@ function AddProduct() {
       }
     })
   },[])
-
+ 
   return (
     <>
     <h2 className="homepagetitle">Add a Product</h2>
@@ -111,10 +111,9 @@ function AddProduct() {
               <h6>Price (CAD)</h6>
               <div className="currencydiv">$</div><input className="priceinp" placeholder="0.00" onChange={(e) => setPrice(e.target.value)}/><div className="clear"></div>
             </label>
-            <label>
+            <label className="imguploadlabel">
               <h6>Product Image</h6>
-              <div className="uploadercont"><input className="uploadpic" type="file" onChange={uploadImg}/><i class="fas fa-cloud-upload-alt"></i><h5>{imgview===""?"Upload an image":"Change Image"}</h5></div>
-              <div className="imgviewcont" style={{backgroundImage: "url("+imgview+")"}}></div><div className="clear"></div>
+              <div className="uploadercont" style={{backgroundImage: "url("+imgview+")"}}><input className="uploadpic" type="file" onChange={uploadImg}/>{!imgview?<><i class="fas fa-cloud-upload-alt"></i><h5>Upload an Image</h5></>:""}</div>
             </label>
           </div> 
           <div className="gsub">

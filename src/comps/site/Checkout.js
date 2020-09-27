@@ -90,7 +90,7 @@ function Checkout(props) {
                 <div>
                   {products.map((prod) => {
                     return prod.addcart ? (
-                      <div><h6>{prod.name}<span><span style={{fontSize:'10px'}}>&#10006; </span>{prod.units}</span></h6><h6>${prod.price.toFixed(2) * prod.units}</h6><div className="clear"></div></div>
+                      <div><h6>{prod.name}<span><span style={{fontSize:'10px'}}>&#10006; </span>{prod.units}</span></h6><h6>${parseFloat(prod.price).toFixed(2) * prod.units}</h6><div className="clear"></div></div>
                     ):""})}
                     <small className="seedetails" onClick={() => setDetails(true)}>See details</small>
                   <div className="clear"></div>
@@ -142,14 +142,14 @@ function Checkout(props) {
              <div className="innerdetails">
              {
                products.map((prod) => {
-                  return prod.addcart ? (
+                  return prod.addcart ? ( 
                     <div className="detailsrow">
                       <img src={prod.img} alt="detimg"/>
                       <h6>{prod.name}</h6>
                       <div className="detgrid">
                       <small>Price: {prod.price}</small>
                       <small>Units: {prod.units}</small>
-                      <small>Subtotal: {prod.price.toFixed(2) * prod.units}</small>
+                      <small>Subtotal: {parseFloat(prod.price).toFixed(2) * prod.units}</small>
                       <small>Color: {prod.selcolor}</small>
                       <small>Size: {prod.selsize}</small>
                       </div>

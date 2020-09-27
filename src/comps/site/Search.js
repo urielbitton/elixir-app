@@ -5,14 +5,15 @@ import { ProductContext } from "./ProductContext";
 function Search(props) {
 
   const { products, setProducts, general, setGeneral } = useContext(ProductContext)
-  const [keyword, setKeyword] = useState("noname") 
+  const [keyword, setKeyword] = useState('zzz') 
+  const pattern = new RegExp('\\b' + keyword, 'i')
 
   document.querySelectorAll('.resultrow').forEach(el => el.onclick = () => {
     document.querySelector('.searchcont .close').click()
     setTimeout(() => {
       document.querySelector('.searchcont input').value = ''
     }, 500)
-  })
+  })  
  
   return (
     <div className="searchcont">
@@ -25,7 +26,7 @@ function Search(props) {
           <div className="innersearchresults">
           {
             products.map(prod => {
-              if((prod.name.toLowerCase()).includes(keyword.toLowerCase()))
+              if(pattern.test(prod.name.toLowerCase()))
                 return <Link to="/product"><div className="resultrow" onClick={() => props.openproduct(prod,prod.id,prod.name,prod.img,prod.price,prod.descript,prod.color,prod.cat,prod.sizes,prod.units,prod.addcart,prod.wishlist)}><img src={prod.img} alt="searchimg"/><h5>{prod.name}</h5><small>${prod.price.toFixed(2)}</small><div className="clear"></div></div></Link>
             })
           }

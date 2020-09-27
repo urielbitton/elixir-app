@@ -94,7 +94,7 @@ function Product(props) {
     }
   })
 
-  return ( 
+  return (  
     <div className="product">
         <div>
           <img className="productimg" src={props.img} alt="productimg" />
@@ -105,7 +105,7 @@ function Product(props) {
         </div>
         <div>
           <h2>{props.name}</h2>
-          <h5>${props.price.toFixed(2)}</h5>
+          <h5>${parseFloat(props.price).toFixed(2)}</h5>
           <p>{props.descript}</p>  
           <hr/>
           <label> 

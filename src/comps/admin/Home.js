@@ -39,30 +39,32 @@ function Home() {
     
   }).map(prod => {
     if(prod.purchased_status === true)
-      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
+      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct}/>
   })
     
+  function openProduct() {}
+
   return ( 
-    <div className="homegrid">
+    <div className="homegrid">  
       <div className="dashsmallgrid">
         <div className="dashbox smallbox">
-          <span style={{background:"rgba(10, 157, 255,0.1)"}}><i className="fas fa-box-open" style={{color:"var(--color)"}}></i></span>
+          <span style={{background:"rgba(10, 157, 255,0.6)"}}><i className="fas fa-box-open" style={{color:"#fff"}}></i></span>
           <h3>{prodsold}<small>products sold</small></h3>
         </div>
         <div className="dashbox smallbox">
-          <span style={{background: "rgba(130, 107, 232,0.1"}}><i className="fas fa-chart-line" style={{color:"#826be8"}}></i></span>
+          <span style={{background: "rgba(130, 107, 232,0.6"}}><i className="fas fa-chart-line" style={{color:"#fff"}}></i></span>
           <h3>${earnings}<small>total earnings</small></h3>
         </div>
         <div className="dashbox smallbox">
-          <span style={{background: "rgba(242, 214, 78,0.1"}}><i className="fas fa-dollar-sign" style={{color:"#f2d64e"}}></i></span>
+          <span style={{background: "rgba(242, 214, 78,0.6"}}><i className="fas fa-dollar-sign" style={{color:"#fff"}}></i></span>
           <h3>${profit}<small>total profit</small></h3>
         </div>
         <div className="dashbox smallbox">
-          <span style={{background:"rgba(57, 230, 199,0.1)"}}><i className="fas fa-shopping-bag" style={{color:"#39e6c7"}}></i></span>
+          <span style={{background:"rgba(57, 230, 199,0.6)"}}><i className="fas fa-shopping-bag" style={{color:"#fff"}}></i></span>
           <h3>{products.length}<small>total products</small></h3>
         </div>
         <div className="dashbox smallbox">
-          <span style={{background:"rgba(255, 87, 115,0.1)"}}><i className="fas fa-print" style={{color:"#ff5773"}}></i></span>
+          <span style={{background:"rgba(255, 87, 115,0.6)"}}><i className="fas fa-print" style={{color:"#fff"}}></i></span>
           <h3>{order_proc}<small>orders processed</small></h3>
         </div>
       </div>

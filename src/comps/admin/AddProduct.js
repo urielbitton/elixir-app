@@ -8,7 +8,7 @@ function AddProduct() {
 
   const [name, setName] = useState('Product Name')
   const [units, setUnits] = useState(1)
-  const [id, setId] = useState('') 
+  const [id, setId] = useState(products.length+1) 
   const [price, setPrice] = useState(0)
   const [img, setImg] = useState('')
   const [stock, setStock] = useState(false)
@@ -46,7 +46,8 @@ function AddProduct() {
     document.querySelectorAll('.sizesbox').forEach(el => {
       if(el.classList.contains('sizeadd')) 
         sizearr.push(el.getAttribute('data-size'))
-    })
+    }) 
+    setId(previd => previd+1) 
     setProducts(prevProd => [...prevProd,{id:id, name: name, units:units,price:parseFloat(price), img:img, instock:stock,color:colors, sizes:sizearr, cat:cat.trim().split(','), descript:descript, purchased_status:purchased_status, purchased_qty:purchased_qty}])
     
     const notif = document.createElement('div')
@@ -105,7 +106,7 @@ function AddProduct() {
               <h6>Product Name</h6><input placeholder="e.g. Striped Summer Shirt" onChange={(e) => setName(e.target.value)}/>
             </label>
             <label>
-              <h6>SKU Number (optional)</h6><input placeholder="e.g. 1001" onChange={(e) => setId(e.target.value)}/>
+              <h6>SKU Number (optional)</h6><input placeholder="e.g. 1001"/>
             </label> 
             <label>
               <h6>Price (CAD)</h6>

@@ -19,7 +19,7 @@ function Home() {
     return (b.purchased_qty) - (a.purchased_qty)
   }).map(prod => {
     if(prod.purchased_qty > 5) 
-      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
+      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty_purch={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
   })
   const recentprods = products.sort((a,b) => {
     if(sort===0)

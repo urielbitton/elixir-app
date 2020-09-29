@@ -5,10 +5,11 @@ import { ProductContext } from '../../comps/site/ProductContext'
 function AddProduct() {
 
   const {products, setProducts} = useContext(ProductContext)
+  const newid = products[products.length-1]
 
   const [name, setName] = useState('Product Name')
   const [units, setUnits] = useState(1)
-  const [id, setId] = useState(products.length+1) 
+  const [id, setId] = useState(newid.id+1) 
   const [price, setPrice] = useState(0)
   const [img, setImg] = useState('')
   const [stock, setStock] = useState(false)

@@ -879,10 +879,12 @@ h2.homepagetitle {
   padding: 10px;
   color: #777;
 }
+.innerprodopts label textarea::placeholder {
+  color: #aaa;
+}
 
 
-
-
+ 
 
 
 

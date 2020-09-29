@@ -82,6 +82,7 @@ function Products() {
         prod.sizes = prodsizes
         prod.sale = sale
         prod.cat = cat
+        prod.descript = descript
       }  
     })
     setUpdated(prev => prev+1)
@@ -107,7 +108,8 @@ function Products() {
   function removeProduct(id) {
     products.map(prod => {
       if(prod.id === id) {
-         products.splice(prod.id-1,1) 
+        let prodindex = products.indexOf(prod)
+        products.splice(prodindex,1)
       }   
     })
     setUpdated(prev => prev+1) 
@@ -236,7 +238,7 @@ function Products() {
           </label>
           <label>
             <h6>Product Description</h6>
-            <textarea value={descript}></textarea>
+            <textarea placeholder={descript} onChange={(e) => setDescript(e.target.value)}></textarea>
           </label>
 
           <button className="saveproduct" onClick={() => editProduct(id)}>Save Product</button>

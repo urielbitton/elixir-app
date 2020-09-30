@@ -111,9 +111,11 @@ button:active {
 .sidemenu h5:hover span {
   background: var(--light);
   color: var(--color)
-}
+} 
 .sidemenu h5 i:first-child {
   margin-right: 10px;
+  font-size: 17px;
+  transition: all 0.2s;
 }
 .sidemenu h5 .fa-angle-up {
   float: right;
@@ -303,6 +305,7 @@ button:active {
   font-size: 13px;
   color: #aaa;
   font-weight: 600;
+  user-select: none;
 }
 .dashbox table th h6 {
   cursor: pointer;
@@ -342,6 +345,7 @@ button:active {
 .dashbox table tbody .prodname {
   top: -40px;
   color: #333;
+  user-select: none;
 }
 .dashbox table tbody .hottag {
   color: #FF3737
@@ -426,6 +430,9 @@ h2.homepagetitle {
   color: #555;
   resize: vertical; 
   font-family: inherit;
+}
+.addproductcont label textarea {
+  min-height: 150px;
 }
 .addproductcont label input::placeholder, .addproductcont label textarea::placeholder {
   opacity: 0.3;
@@ -516,6 +523,7 @@ h2.homepagetitle {
   border-radius: 6px;
   border: 1px solid #e1e1e1;
   margin-right: 10px;
+  margin-bottom: 10px;
   cursor: pointer; 
   display: inline-flex;
   justify-content: center;
@@ -529,15 +537,25 @@ h2.homepagetitle {
 .addproductcont .colorbox:hover { 
   filter: brightness(80%)
 }
-.addproductcont .colorbox:nth-of-type(1) { background: #111;}
-.addproductcont .colorbox:nth-of-type(2) { background: rgb(255, 0, 76)}
-.addproductcont .colorbox:nth-of-type(3) { background: rgb(187, 255, 0)}
-.addproductcont .colorbox:nth-of-type(4) { background: rgb(156, 0, 0)}
-.addproductcont .colorbox:nth-of-type(5) { background: rgb(255, 238, 0)}
-.addproductcont .colorbox:nth-of-type(6) { background: rgb(255, 180, 255)}
-.addproductcont .colorbox:nth-of-type(7) { background: rgb(0, 174, 255)}
-.addproductcont .colorbox:nth-of-type(8) { background: rgb(255, 187, 0)}
-
+.addproductcont .newcolorinp {
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.addproductcont .newcolorinp:hover {
+  background: #eee;
+} 
+.addcustomcolorbtn {
+  display: inline;
+  top: 2px;
+  margin-left: 20px;
+}
+small.customcolor {
+  display: block;
+  margin-bottom: 10px;
+}
 .addproductcont .sizesbox {
   background: #fafafa;
 }
@@ -655,18 +673,18 @@ h2.homepagetitle {
 .quickactions i:hover {
   color: var(--color)
 }
-
+ 
 .myproductsgrid {
   display: grid;
   grid-template-columns: auto 300px;
   grid-gap: 20px;
   width: 100%;
-}
+} 
 .myproductsgrid table th h6 {
   display: inline-block;
 }
 .myproductsgrid table tr:hover {
-  background: rgb(250, 250, 250)
+  background: rgba(10, 157, 255,0.03);
 }
 .myproductsgrid table thead tr:hover {
   background: #fff;
@@ -700,18 +718,30 @@ h2.homepagetitle {
   font-size: 14px
 }
 .myproductsoptions {
+  position: fixed;
+  top: 90px;
   background: #fff;
-  height:100%;
+  height:89%;
+  width: 300px;
+  right: 30px;
 }
 .myproductsoptions h4 {
   font-size: 18px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #eee;
 }
 .innerprodopts {
   position: relative;
-  height: 100%;
-  margin-top: 40px;
+  height: 75vh;
+  margin-top: 20px;
+  overflow-y: scroll;
+}
+.innerprodopts:hover::-webkit-scrollbar {
+  display: block;
+}
+.innerprodopts::-webkit-scrollbar {
+  width: 5px;
+  display: none;
 } 
 .innerprodopts label, .innerprodopts .label {
   position: relative;
@@ -726,10 +756,11 @@ h2.homepagetitle {
 } 
 .innerprodopts label input {
   color: #555;
+  width: 90%;
 }
 .innerprodopts label input::placeholder {
   color: #bbb;
-}
+} 
 .innerprodopts .prodnameinp, .innerprodopts .priceinp {
   padding: 15px;
   font-size: 16px;
@@ -819,10 +850,17 @@ h2.homepagetitle {
   background: var(--light);
   color: var(--color); 
 }
+.innerprodopts .prodqtyinp {
+  width: 70px;
+  font-weight: 600;
+  font-size: 15px;
+  padding-left: 15px;
+}
 .innerprodopts label .colorbox, .innerprodopts label .sizebox {
   position: relative;
   width: 40px;
   height: 40px;
+  border-radius: 5px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -837,6 +875,14 @@ h2.homepagetitle {
 }
 .innerprodopts label .colorbox:hover, .innerprodopts label .sizebox:hover {
   filter: brightness(90%)
+}
+.innerprodopts .coloradded {
+  border: 2px solid var(--color);
+}
+.innerprodopts label .sizeadded {
+  background:#111; 
+  color:#fff;
+  font-weight: 500;
 }
 .innerprodopts .colorcircle {
   position: relative;
@@ -871,17 +917,19 @@ h2.homepagetitle {
   font-size: 30px;
 }
 .innerprodopts label textarea {
-  min-width: 100%;
-  max-width: 100%;
+  min-width: 95%;
+  max-width: 95%;
   min-height: 220px;
   resize: vertical;
   font-family: inherit;
   padding: 10px;
   color: #777;
 }
-.innerprodopts label textarea::placeholder {
-  color: #aaa;
-}
+
+
+
+
+
 
 
  

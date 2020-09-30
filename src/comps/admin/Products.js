@@ -5,7 +5,7 @@ import DashTableRow from './DashTableRow'
 function Products() {
 
   const {products, setProducts,general} = useContext(ProductContext)
-  const [sort, setSort] = useState(0)
+  const [sort, setSort] = useState([0,0])
   const [id, setId] = useState(1)
   const [name, setName] = useState('')
   const [img, setImg] = useState('')
@@ -17,36 +17,57 @@ function Products() {
   const [sale, setSale] = useState(false)
   const [cat, setCat] = useState([''])
   const [descript, setDescript] = useState('')
-
+  const [qty, setQty] = useState(0)
+ 
   const [findname, setFindname] = useState('')
   const [updated, setUpdated] = useState(0)
   const pattern = new RegExp('\\b' + findname, 'i')
 
   const myproducts = products.sort((a,b) => {
-    if(sort===0)
-      return a.id-b.id
-    else if(sort===1) {
-      if(a.name < b.name)
-        return -1
-      else if(a.name < b.name)
-        return 1
+    if(sort[0]===0) {
+      if(sort[1]===0)
+        return a.id-b.id
+      else 
+        return b.id-a.id
     }
-    else if(sort===2)
-      return a.price-b.price
-    else if(sort===3)
-      return a.qty-b.qty
-    else if(sort===4)
-      return a.earnings-b.earnings
-    
+    else if(sort[0]===1) {
+      if(sort[1]===0) {
+        if(a.name < b.name)
+          return -1
+        else if(a.name < b.name)
+          return 1
+      }
+      else {
+       if(a.name < b.name)
+        return 1
+       else if(a.name < b.name)
+        return -1
+      }
+    }
+    else if(sort[0]===2) {
+      if(sort[1]===0)
+        return a.price-b.price
+      else
+        return b.price-a.price
+    }
+    else if(sort[0]===3) {
+      if(sort[1]===0)
+        return a.qty-b.qty
+      else 
+      return b.qty-a.qty
+    }
+    else if(sort[0]===4) {
+      if(sort[1]===0)
+        return a.earnings-b.earnings
+      else
+        return b.earnings-a.earnings
+    }
   }).map(prod => {
       if(pattern.test(prod.name.toLowerCase()))
-        return <DashTableRow img={prod.img} name={prod.name} price={prod.price} color={prod.color} sizes={prod.sizes} sale={prod.sale} cat={prod.cat} descript={prod.descript} qty_purch={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct} updated={updated}/>
-  })
+        return <DashTableRow img={prod.img} name={prod.name} price={prod.price} color={prod.color} sizes={prod.sizes} sale={prod.sale} cat={prod.cat} descript={prod.descript} qty={prod.qty} qty_purch={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct} updated={updated}/>
+  }) 
 
-  const colorarr = ["black","lightgray","red","orange","brown","green","yellow","pink","blue","white"]
-  const sizesarr = ["XS","S","M","L","XL"]
-
-  function openProduct(id, name, price, img, instock, color, sizes, sale, cat, descript) {
+  function openProduct(id, name, price, img, instock, color, sizes, sale, cat, descript,qty) {
     setProdsel(true)
     setId(id)
     setName(name)
@@ -58,6 +79,7 @@ function Products() {
     setSale(sale)
     setCat(cat)
     setDescript(descript)
+    setQty(qty)
   }  
 
   function editProduct(id) {
@@ -83,13 +105,10 @@ function Products() {
         prod.sale = sale
         prod.cat = cat
         prod.descript = descript
+        prod.qty = qty
       }  
     })
     setUpdated(prev => prev+1)
-    colors = []
-    prodsizes = []
-    document.querySelectorAll('.colorbox').forEach(el => { el.classList.remove('coloradded');el.style.border = '' })
-    document.querySelectorAll('.sizebox').forEach(el => { el.classList.remove('sizeadded');el.style.cssText += 'background:#f1f1f1;color:#555' })
 
     const notif = document.createElement('div')
     notif.innerHTML = `<i className="fas fa-circle-notch"></i><p>Product "${name}" has been successfully edited.</p><button className="viewprodbtn">View</button>`
@@ -130,28 +149,14 @@ function Products() {
   useEffect(() => {
     document.querySelectorAll('.myproductsoptions .colorbox').forEach(box => {
       box.onclick = () => {
-        if(!box.classList.contains('coloradded')) {
-          box.style.border = '2px solid var(--color)'
-          box.classList.add('coloradded')
-        }
-        else { 
-          box.style.border = ''
-          box.classList.remove('coloradded')
-        }
+        box.classList.toggle('coloradded')
       }
     })
     document.querySelectorAll('.myproductsoptions .sizebox').forEach(box => {
       box.onclick = () => {
-        if(!box.classList.contains('sizeadded')) {
-          box.style.cssText += 'background:#111;color:#fff'
-          box.classList.add('sizeadded')
-        }
-        else { 
-          box.style.cssText += 'background:#f1f1f1;color:#555'
-          box.classList.remove('sizeadded')
-        }
-      }
-    })
+        box.classList.toggle('sizeadded')
+      } 
+    }) 
   },[])
 
   return (
@@ -166,15 +171,16 @@ function Products() {
           <label><i className="fas fa-search" aria-hidden="true"></i><input placeholder="Find a product" onChange={(e) => setFindname(e.target.value.toLowerCase())}/></label>
           <div className="clear"></div>
         </div>
-        <table>
-          <thead>
+        <table>  
+          <thead>    
             <tr>
-              <th style={{color: sort===0?"var(--color)":""}}><h6 onClick={() => setSort(0)}>No.<i className="fas fa-sort"></i></h6></th>
-              <th style={{color: sort===1?"var(--color)":""}}><h6 onClick={() => setSort(1)}>Product Name<i className="fas fa-sort"></i></h6></th>
-              <th style={{color: sort===2?"var(--color)":""}}><h6 onClick={() => setSort(2)}>Unit Price<i className="fas fa-sort"></i></h6></th>
-              <th style={{color: sort===3?"var(--color)":""}}><h6 onClick={() => setSort(3)}>Quantity Sold<i className="fas fa-sort"></i></h6></th>
-              <th style={{color: sort===4?"var(--color)":""}}><h6 onClick={() => setSort(4)}>Earnings<i className="fas fa-sort"></i></h6></th>
-              <th style={{color: sort===5?"var(--color)":""}}><h6>Stock Status</h6></th> 
+              <th style={{color: sort[0]===0?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([0,1]):setSort([0,0])}>No.<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===1?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([1,1]):setSort([1,0])}>Product Name<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===2?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([2,1]):setSort([2,0])}>Unit Price<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===3?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([3,1]):setSort([3,0])}>Qty<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===4?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([4,1]):setSort([4,0])}>Quantity Sold<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===5?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([5,1]):setSort([5,0])}>Earnings<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===6?"var(--color)":""}}><h6>Stock Status</h6></th> 
             </tr>
           </thead>  
           <tbody>
@@ -186,7 +192,7 @@ function Products() {
         </table>
       </div>
 
-      <div className="myproductsoptions dashbox">
+      <div className="myproductsoptions dashbox" data-updated={updated}>
         <h4>Manage Products</h4>
         <div className="innerprodopts" style={{display: prodsel?"block":"none"}}>
           <label>
@@ -207,21 +213,28 @@ function Products() {
             <button className={instock?"":"stock"} onClick={() => setInstock(false)}>Out of Stock</button>
           </div>
           <label>
-          <h6>Product Colors {color.map(color => {return <div className="colorcircle" style={{background: color}}></div>})}</h6>
+            <h6>Product Quantity</h6>
+            <input type="number" value={qty} className="prodqtyinp" onChange={(e) => setQty(e.target.value)}/>
+          </label>
+          <label>
+          <h6>Product Colors</h6>
             {
-              colorarr.map(color => {
-                if(color === "white")
-                  return <div className="colorbox" data-color="#f7f7f7" style={{background: "#f7f7f7"}}></div>
-                else
-                  return <div className="colorbox" data-color={color} style={{background: color}}></div>
+              general.colorarr.map(allcolor => {
+                if(color.includes(allcolor))
+                  return <div className="colorbox coloradded" data-color={allcolor} style={{background: allcolor}}></div>
+                else 
+                  return <div className="colorbox" data-color={allcolor} style={{background: allcolor}}></div>
               })
             } 
           </label>
           <label>
-            <h6>Product Sizes - {sizes.map(size=> {return <small className="smallsizes">{size}</small>})}</h6>
+            <h6>Product Sizes</h6> 
             {
-              sizesarr.map(size => {
-                return <div className="sizebox" data-size={size}>{size}</div>
+              general.sizesarr.map(allsize => {
+                if(sizes.includes(allsize))
+                  return <div className="sizebox sizeadded" data-size={allsize}>{allsize}</div>
+                else 
+                  return <div className="sizebox" data-size={allsize}>{allsize}</div>
               })
             } 
           </label>
@@ -232,13 +245,11 @@ function Products() {
           </div> 
           <label>
             <h6>Categories</h6>
-            {cat.map(el => {return <small>{el}, </small>})}
-            <br/><br/>
-            <input placeholder="Seperate by commas" onChange={(e) => setCat(e.target.value.split(','))}/>
+            <input value={cat.map(el => {return el})} onChange={(e) => setCat(e.target.value.split(','))}/>
           </label>
           <label>
             <h6>Product Description</h6>
-            <textarea placeholder={descript} onChange={(e) => setDescript(e.target.value)}></textarea>
+            <textarea value={descript} onChange={(e) => setDescript(e.target.value)}></textarea>
           </label>
 
           <button className="saveproduct" onClick={() => editProduct(id)}>Save Product</button>

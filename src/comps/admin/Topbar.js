@@ -16,6 +16,7 @@ function Topbar(props) {
       document.querySelector('.sidelogo').style.margin = 'auto'
       document.querySelector('.topbar').style.width = 'calc(100% - 85px)'
       dashboard.classList.add('minidash')
+      document.querySelectorAll('.sidemenu h5 i:first-child').forEach(el => el.style.fontSize = '19px')
     } 
     else { 
       dashboard.style.gridTemplateColumns = ''
@@ -26,6 +27,7 @@ function Topbar(props) {
       document.querySelector('.topbar').style.width = 'calc(100% - 235px)'
       document.querySelector('.sidelogo').style.margin = ''
       dashboard.classList.remove('minidash')
+      document.querySelectorAll('.sidemenu h5 i:first-child').forEach(el => el.style.fontSize = '')
     }
   }
 

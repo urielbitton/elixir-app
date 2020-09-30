@@ -5,6 +5,8 @@ function CartPageItem(props) {
   const [rem, setRem] = useState(0)
   let temp //dummy var
  
+  let colormap = {"#111":"Black","#b0b0b0":"Gray","#ff004c":"Red","#bbff00":"Green","#9c0000":"Brown","#ffbb00":"Orange","#ffee00":"Yellow","#ffb4ff":"Pink","#00aeff":"Blue","#f5f5f5":"White"}
+    
   function addUnits() {
     if (props.prod.units < 10) {
       props.updatedadd(props.price)
@@ -24,12 +26,20 @@ function CartPageItem(props) {
     props.removeitem(props.price, props.units)
   } 
 
+  function replaceAll(str,mapObj){
+    var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
+
+    return str.replace(re, function(matched){
+        return mapObj[matched.toLowerCase()]
+    })
+  }
+
   return (
     <tr>
       <td>
         <img src={props.img} alt="cartprod" />
         <Link to="/product">
-          <h6 data-update={props.colorupdate}>{props.name} - {props.prod.selcolor}</h6>
+          <h6 data-update={props.colorupdate}>{props.name} - {replaceAll(props.prod.selcolor, colormap)}</h6>
         </Link> 
         <small style={{color:"#aaa"}}>Size: {props.prod.selsize}</small>
       </td>

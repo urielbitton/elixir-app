@@ -20,6 +20,15 @@ function Shop(props) {
       }   
   }) 
 
+  let colormap = {"#111":"Black","#b0b0b0":"Gray","#ff004c":"Red","#bbff00":"Green","#9c0000":"Brown","#ffbb00":"Orange","#ffee00":"Yellow","#ffb4ff":"Pink","#00aeff":"Blue","#f5f5f5":"White"}
+  function replaceAll(str,mapObj){
+    var re = new RegExp(Object.keys(mapObj).join("|"),"gi");
+
+    return str.replace(re, function(matched){
+        return mapObj[matched.toLowerCase()]
+    })
+  }
+
   function resetFilters() {
     setPricefilt("all")
     setCatfilter("all")
@@ -105,9 +114,9 @@ function Shop(props) {
         </div>
         <div>
           <h4>Colors</h4>
-          <ul><li className="activefilter" onClick={() => setColorfilt('all')}>All Colors</li><li onClick={() => setColorfilt('black')}>Black</li><li onClick={() => setColorfilt('white')}>White</li><li onClick={() => setColorfilt('blue')}>Blue</li><li onClick={() => setColorfilt('gray')}>Gray</li><li onClick={() => setColorfilt('red')}>Red</li><li onClick={() => setColorfilt('brown')}>Brown</li><li onClick={() => setColorfilt('pink')}>Pink</li><li onClick={() => setColorfilt('green')}>Green</li></ul>
+          <ul><li className="activefilter" onClick={() => setColorfilt('all')}>All Colors</li><li onClick={() => setColorfilt('#111')}>Black</li><li onClick={() => setColorfilt('#f5f5f5')}>White</li><li onClick={() => setColorfilt('#00aeff')}>Blue</li><li onClick={() => setColorfilt('#b0b0b0')}>Gray</li><li onClick={() => setColorfilt('#ff004c')}>Red</li><li onClick={() => setColorfilt('#9c0000')}>Brown</li><li onClick={() => setColorfilt('#ffb4ff')}>Pink</li><li onClick={() => setColorfilt('#bbff00')}>Green</li><li onClick={() => setColorfilt('#ffbb00')}>Orange</li></ul>
         </div> 
-        <div>
+        <div> 
           <h4>Sizes</h4> 
           <ul><li className="activefilter" onClick={() => setSizesfilt('all')}>All Sizes</li><li onClick={() => setSizesfilt('XS')}>Extra Small</li><li onClick={() => setSizesfilt('S')}>Small</li><li onClick={() => setSizesfilt('M')}>Medium</li><li onClick={() => setSizesfilt('L')}>Large</li><li onClick={() => setSizesfilt('XL')}>Extra Large</li></ul>
         </div> 
@@ -119,7 +128,7 @@ function Shop(props) {
           <h6 className="clearall" onClick={() => resetFilters()} style={{display: reset?"none":"inline-block"}}><i class="fas fa-times"></i>Reset</h6>
           <h6 className="priceclear" onClick={() => resetPrice()} style={{display: pricefilt==='all'?"none":"inline-block"}}><i class="fas fa-times"></i>Price: {pricefilt[0]+"-"+pricefilt[1]}</h6>
           <h6 className="categclear" onClick={() => resetCateg()} style={{display: catfilter==='all'?"none":"inline-block"}}><i class="fas fa-times"></i>Category: {catfilter}</h6>
-          <h6 className="colorclear" onClick={() => resetColor()} style={{display: colorfilt==='all'?"none":"inline-block"}}><i class="fas fa-times"></i>Color: {colorfilt}</h6>
+          <h6 className="colorclear" onClick={() => resetColor()} style={{display: colorfilt==='all'?"none":"inline-block"}}><i class="fas fa-times"></i>Color: {replaceAll(colorfilt,colormap)}</h6>
           <h6 className="sizeclear" onClick={() => resetSize()} style={{display: sizesfilt==='all'?"none":"inline-block"}}><i class="fas fa-times"></i>Size: {sizesfilt}</h6>
         </div>
       </div> 

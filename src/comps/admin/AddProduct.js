@@ -4,7 +4,7 @@ import { ProductContext } from '../../comps/site/ProductContext'
 
 function AddProduct() {
 
-  const {products, setProducts} = useContext(ProductContext)
+  const {products, setProducts, general} = useContext(ProductContext)
   const newid = products[products.length-1]
 
   const [name, setName] = useState('Product Name')
@@ -23,6 +23,8 @@ function AddProduct() {
  
   const history = useHistory()
   const [imgview, setImgview] = useState('')
+  const [newcolor, setNewcolor] = useState('')
+  const [update, setUpdate] = useState(0)
 
  
   function uploadImg() {
@@ -35,6 +37,12 @@ function AddProduct() {
     if(file) {
         reader.readAsDataURL(file);
       } 
+  }
+
+  function addCustomColor() {
+    general.colorarr.push(newcolor)
+    setNewcolor(newcolor)
+    setUpdate(prev => prev+1) 
   }
 
   function addAProduct() {
@@ -129,12 +137,16 @@ function AddProduct() {
               <select>
                 <option disabled>Choose a Type</option><option value="women">Women</option><option value="men">Men</option><option value="kids">Kids</option><option value="unisex">Unisex</option>
               </select>
-            </label>
-            <label>
+            </label>  
+            <div className="label"> 
               <h6>Product Colors</h6>
-              <div className="colorbox" data-color="black"></div><div className="colorbox" data-color="red"></div><div className="colorbox" data-color="green"></div><div className="colorbox" data-color="brown"></div><div className="colorbox" data-color="yellow"></div><div className="colorbox" data-color="pink"></div><div className="colorbox" data-color="blue"></div><div className="colorbox" data-color="orange"></div>
-            </label>
-            <label>
+              {general.colorarr.map(color => {
+                return <div className="colorbox" data-color={color} style={{background: color}}></div>
+              })} 
+              <small className="customcolor">Custom Color</small><input className="newcolorinp" value={newcolor} onChange={(e) => setNewcolor(e.target.value)} type="color"/>
+              <button className="addcustomcolorbtn" onClick={() => addCustomColor()}>Add Color</button>
+            </div>
+            <label> 
               <h6>Product Sizes</h6>
               <div className="sizesbox" data-size="XS">XS</div><div className="sizesbox" data-size="S">S</div><div className="sizesbox" data-size="M">M</div><div className="sizesbox" data-size="L">L</div><div className="sizesbox" data-size="XL">XL</div>
             </label>

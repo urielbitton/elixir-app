@@ -3,12 +3,12 @@ import Charts from './Charts'
 import { ProductContext } from '../../comps/site/ProductContext'
 import DashTableRow from './DashTableRow'
 
-function Home() {  
+function Home() {   
 
   const {products, general} = useContext(ProductContext)
   const [prodshow, setProdshow] = useState(5)
-  const [sort, setSort] = useState(0)
-
+  const [sort, setSort] = useState([0,0])
+ 
   const prodsold = general.products_sold.reduce((a,b) => {return a+b},0)
   const earnings = general.earnings
   const profit = general.profit
@@ -22,21 +22,44 @@ function Home() {
       return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty_purch={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
   })
   const recentprods = products.sort((a,b) => {
-    if(sort===0)
-      return a.id-b.id
-    else if(sort===1) {
-      if(a.name < b.name)
-        return -1
-      else if(a.name < b.name)
-        return 1
+    if(sort[0]===0) {
+      if(sort[1]===0)
+        return a.id-b.id
+      else 
+        return b.id-a.id
     }
-    else if(sort===2)
-      return a.price-b.price
-    else if(sort===3)
-      return a.qty-b.qty
-    else if(sort===4)
-      return a.earnings-b.earnings
-    
+    else if(sort[0]===1) {
+      if(sort[1]===0) {
+        if(a.name < b.name)
+          return -1
+        else if(a.name < b.name)
+          return 1
+      }
+      else {
+       if(a.name < b.name)
+        return 1
+       else if(a.name < b.name)
+        return -1
+      }
+    }
+    else if(sort[0]===2) {
+      if(sort[1]===0)
+        return a.price-b.price
+      else
+        return b.price-a.price
+    }
+    else if(sort[0]===3) {
+      if(sort[1]===0)
+        return a.qty-b.qty
+      else 
+      return b.qty-a.qty
+    }
+    else if(sort[0]===4) {
+      if(sort[1]===0)
+        return a.earnings-b.earnings
+      else
+        return b.earnings-a.earnings
+    }
   }).map(prod => {
     if(prod.purchased_status === true)
       return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct}/>
@@ -83,12 +106,13 @@ function Home() {
         <table>
           <thead>
             <tr>
-              <th>No.</th>
-              <th>Product Name<i className="fas fa-sort"></i></th>
-              <th>Unit Price<i className="fas fa-sort"></i></th>
-              <th>Quantity Sold<i className="fas fa-sort"></i></th>
-              <th>Earnings<i className="fas fa-sort"></i></th>
-              <th>Stock Status<i className="fas fa-sort"></i></th> 
+              <th style={{color: sort[0]===0?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([0,1]):setSort([0,0])}>No.<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===1?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([1,1]):setSort([1,0])}>Product Name<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===2?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([2,1]):setSort([2,0])}>Unit Price<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===3?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([3,1]):setSort([3,0])}>Qty<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===4?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([4,1]):setSort([4,0])}>Quantity Sold<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===5?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([5,1]):setSort([5,0])}>Earnings<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===6?"var(--color)":""}}><h6>Stock Status</h6></th> 
             </tr>
           </thead>
           <tbody>
@@ -106,12 +130,13 @@ function Home() {
         <table>
           <thead>
             <tr>
-              <th style={{color: sort===0?"var(--color)":""}} onClick={() => setSort(0)}><h6>No.<i className="fas fa-sort"></i></h6></th>
-              <th style={{color: sort===1?"var(--color)":""}} onClick={() => setSort(1)}><h6>Product Name<i className="fas fa-sort"></i></h6></th>
-              <th style={{color: sort===2?"var(--color)":""}} onClick={() => setSort(2)}><h6>Unit Price<i className="fas fa-sort"></i></h6></th>
-              <th style={{color: sort===3?"var(--color)":""}} onClick={() => setSort(3)}><h6>Quantity Sold<i className="fas fa-sort"></i></h6></th>
-              <th style={{color: sort===4?"var(--color)":""}} onClick={() => setSort(4)}><h6>Earnings<i className="fas fa-sort"></i></h6></th>
-              <th style={{color: sort===5?"var(--color)":""}}><h6>Stock Status</h6></th>
+              <th style={{color: sort[0]===0?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([0,1]):setSort([0,0])}>No.<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===1?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([1,1]):setSort([1,0])}>Product Name<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===2?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([2,1]):setSort([2,0])}>Unit Price<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===3?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([3,1]):setSort([3,0])}>Qty<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===4?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([4,1]):setSort([4,0])}>Quantity Sold<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===5?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([5,1]):setSort([5,0])}>Earnings<i className="fas fa-sort"></i></h6></th>
+              <th style={{color: sort[0]===6?"var(--color)":""}}><h6>Stock Status</h6></th> 
             </tr>
           </thead>
           <tbody>

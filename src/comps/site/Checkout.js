@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom"
+import { BrowserRouter as Router,Switch,Route,Link, useHistory  } from "react-router-dom"
 import PageBanner from "./PageBanner";
 import { ProductContext } from "./ProductContext";
  
@@ -10,9 +10,12 @@ function Checkout(props) {
   const [total, setTotal] = useState((props.subtotal + props.subtotal * taxrate).toFixed(2))
   const [subtotal, setSubtotal] = useState(props.subtotal.toFixed(2))
   const [details, setDetails] = useState(false)
+  const [disable, setDisable] = useState(false)
 
+  let history = useHistory()
 
   function placeOrder() {   
+    setDisable(true)
     general.order_proc += 1
     general.profit += parseInt(total-(subtotal*taxrate),10)
     general.earnings += parseInt(total,10)
@@ -22,15 +25,20 @@ function Checkout(props) {
       if(prod.addcart) {
         prod.purchased_status = true 
         prod.purchased_qty += prod.units
+        prod.qty -= prod.units
         prod.earnings = (prod.price-(prod.price*taxrate))*prod.purchased_qty  
       }
       if(prod.purchased_qty > 8) {
         prod.hot = true 
       }
     }) 
-    setTimeout(() => {
+    setTimeout(() => { 
       props.zerocartnum()
-    }, 500)
+    }, 500) 
+    setTimeout(() => {
+      history.push('/shop')
+      setDisable(false)
+    }, 3000);
   } 
  
 
@@ -112,7 +120,7 @@ function Checkout(props) {
                 <label><input name="payment" type="radio"/><small>Bank Transfer</small></label><label><input name="payment" type="radio"/><small>Cash On Delivery</small></label>
               </div>
               <div>
-                <button className="placeorderbtn" onClick={() => placeOrder()}>Place Order</button>
+                <button className="placeorderbtn" onClick={() => !disable?placeOrder():""}>Place Order</button>
               </div>
             </div>
           </div>

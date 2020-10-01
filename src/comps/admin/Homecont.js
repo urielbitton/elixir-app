@@ -4,6 +4,7 @@ import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 import Home from './Home'
 import Products from './Products'
 import AddProduct from './AddProduct';
+import Coupons from './Coupons'
 
 function Homecont(props) {
   return (
@@ -15,6 +16,9 @@ function Homecont(props) {
           </Route>
           <Route path="/products">
             <Products />
+          </Route>
+          <Route path="/coupons">
+            <Coupons />
           </Route>
           <Route path="/addproduct">
             <AddProduct />

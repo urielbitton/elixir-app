@@ -174,10 +174,8 @@ function Products() {
   return (
     <div className="myproductspage">
       <h2 className="homepagetitle">My Products</h2>
-      <div className="spacer"></div>
-
       <div className="myproductsgrid">
-      <div className="dashbox dashlarge">
+      <div className="dashbox dashlarge dashtable">
         <div className="headeropts">
           <h5>All Products</h5>
           <label><i className="fas fa-search" aria-hidden="true"></i><input placeholder="Find a product" onChange={(e) => setFindname(e.target.value.toLowerCase())}/></label>
@@ -205,7 +203,7 @@ function Products() {
       </div>
 
       <div className="myproductsoptions dashbox" data-updated={updated}>
-        <h4>Manage Products</h4>
+        <h4 className="rightbartitle">Manage Products</h4>
         <div className="innerprodopts" style={{display: prodsel?"block":"none"}}>
           <label>
             <h6>Product Name</h6>

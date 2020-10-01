@@ -9,6 +9,8 @@ function CartPage(props) {
   const {products, general, setGeneral} = useContext(ProductContext)
   const [taxrate, setTaxrate] = useState(general.taxrate)
   const [subtotal, setSubtotal] = useState(props.subtotal)
+  const [goodcoupon, setGoodcoupon] = useState(false)
+  const [couponname, setCouponname] = useState('')
   general.taxrate = taxrate
 
   const cartitem = products.map(prod => {
@@ -37,12 +39,26 @@ function CartPage(props) {
     props.zerocartnum()
     setSubtotal(0)
   }
+  function verifyCoupon() {
+    for(let i=0;i<general.coupons.length;i++) {
+      if (general.coupons[i].name === couponname) {
+        setGoodcoupon(true)
+      } 
+    } 
+  }
 
   const total = (subtotal + subtotal * taxrate).toFixed(2)
 
   useEffect(() => {
+    let couponinp = document.querySelector('.couponinp')
     document.querySelector('.proceeddiv .b1').onclick = () => {
       document.querySelector('.scrollpos').scrollIntoView()
+    }
+    document.querySelector('.viewcoupons').onclick = () => {
+      document.querySelector('.availcouponsdiv').style.display = 'block'
+      setTimeout(() => {
+        document.querySelector('.availcouponsdiv').style.opacity = '1'
+      }, 100);
     }
   },[])
 
@@ -66,17 +82,25 @@ function CartPage(props) {
           <tbody>
             {cartitem}
           </tbody>
-          <tfoot>
-          <tr>
+          <tfoot> 
+          <tr> 
               <td colSpan="1">
-               <input placeholder="Enter coupon code"/> 
-                <button className="b1">Apply Coupon</button>
+               <input placeholder="Enter coupon code" value={couponname} className="couponinp" onKeyDown={(e) => e.key==="Backspace"?setCouponname():""}/> 
+                <button className={goodcoupon?"b1 goodcoupon":"b1"} onClick={() => verifyCoupon()}>Apply Coupon</button>
+                <small className="viewcoupons">View available coupons</small>
               </td>
               <td colSpan="1"></td>
               <td colSpan="3" className="subtotaltd"> 
               <div className="proceeddiv"><button className="b1">Proceed To Checkout</button></div>
               </td>
             </tr> 
+            <div className="availcouponsdiv">
+              {
+                general.coupons.map(el => {
+                  return <small onClick={() => setCouponname(el.name)}>{el.name}</small>
+                })
+              }
+            </div>
           </tfoot>
           <tfoot> 
             <tr>

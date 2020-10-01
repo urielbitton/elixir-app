@@ -29,15 +29,15 @@ function Sidebar(props) {
       <div className="sidebarinner">
       <div className="sidemenu">
         <h5 className="activesidelink">
-          <Link to="/dashhome"><span><i className="fas fa-home"></i><el>Dashboard </el><i className="fas fa-angle-up" style={{display:"none"}}></i></span></Link>
+          <Link to="/dashhome"><span><i className="fas fa-home"></i><el>Dashboard </el><i className="fas fa-angle-up dasharrow" style={{display:"none"}}></i></span></Link>
           <div className="clear" style={{display:"none"}}></div>
         </h5>
         <h5>
         <span><i className="fas fa-store"></i><el>Store</el><i className="fas fa-angle-up"></i></span>
           <div className="clear">
             <Link to="/products"><h6><i class="fas fa-tshirt"></i><el>Products</el></h6></Link>
-            <h6><i class="fas fa-money-bill"></i><el>Coupons</el></h6> 
-            <h6><i class="fas fa-sync-alt"></i><el>Status</el></h6>
+            <Link to="/coupons"><h6><i class="fas fa-money-bill"></i><el>Coupons</el></h6></Link>
+            <h6><i class="fas fa-truck"></i><el>Shipping</el></h6>
             <h6><i class="fas fa-dollar-sign"></i><el>Taxes</el></h6>
             <h6><i class="fas fa-chart-bar"></i><el>Analytics</el></h6>
           </div>

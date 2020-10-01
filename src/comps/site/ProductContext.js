@@ -342,7 +342,9 @@ const ProductContextProvider = (props) => {
       products_sold: [],
       colorarr: ["#111","#b0b0b0","#ff004c","#bbff00","#9c0000","#ffbb00","#ffee00","#ffb4ff","#00aeff","#f5f5f5"],
       sizesarr: ["XS","S","M","L","XL"],
-    } 
+      coupons: [],
+      customers: [],
+    }   
   )
   
   return (

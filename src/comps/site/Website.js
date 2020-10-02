@@ -15,6 +15,7 @@ import Checkout from './Checkout';
 import Search from './Search'
 import Wishlist from './Wishlist';
 import Login from '../Login'
+import OrderConfirm from './OrderConfirm';
 
 function Website(props) { 
  
@@ -24,6 +25,8 @@ function Website(props) {
   const [wishnum, setWishnum] = useState(0)
   const [colorupdate, setColorupdate] = useState(false)
   const [sizeupdate, setSizeupdate] = useState(false)
+  const [couponname, setCouponname] = useState('')
+  const [couponamount, setCouponamount] = useState(0)
 
   const [prod, setProd] = useState("")
   const [id, setId] = useState(0)
@@ -76,6 +79,10 @@ function Website(props) {
   }
   function setProdSize() {
     setSizeupdate(true)
+  }
+  function applyCoupon(couponname, couponamount) {
+    setCouponname(couponname)
+    setCouponamount(couponamount)
   }
   
   function openProduct(prod,id,name,img,price,descript,color,cat,sizes,units,addcart,wishlist,instock) {
@@ -142,14 +149,17 @@ function Website(props) {
           <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} instock={instock} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} setprodcolor={setProdColor} setprodsize={setProdSize}/>
         </Route> 
         <Route path="/cart">
-          <CartPage prod={prod} subtotal={subtotal} cartitems={cartitems} connectsub={connectSub} subcartnum={subCartNum} zerocartnum={zeroCartNum} colorupdate={colorupdate} sizeupdate={sizeupdate} />
+          <CartPage prod={prod} subtotal={subtotal} cartitems={cartitems} connectsub={connectSub} subcartnum={subCartNum} zerocartnum={zeroCartNum} colorupdate={colorupdate} sizeupdate={sizeupdate} applycoupon={applyCoupon}/>
         </Route> 
         <Route path="/checkout">
-          <Checkout subtotal={subtotal} zerocartnum={zeroCartNum} cartitems={cartitems} />
+          <Checkout subtotal={subtotal} zerocartnum={zeroCartNum} cartitems={cartitems} couponname={couponname} couponamount={couponamount}/>
         </Route>
         <Route path="/wishlist">
           <Wishlist subwishnum={subWishnum} zerowishnum={zeroWishnum} openproduct={openProduct}/>
-        </Route>   
+        </Route> 
+        <Route path="/orderconfirm">
+          <OrderConfirm />
+        </Route>    
       </Switch> 
    
       <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} setprodcolor={setProdColor} setprodsize={setProdSize} />

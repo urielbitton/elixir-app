@@ -7,13 +7,18 @@ function Checkout(props) {
   const { products, setProducts, general, setGeneral } = useContext(ProductContext)
 
   const [taxrate, setTaxrate] = useState(general.taxrate)
-  const [total, setTotal] = useState((props.subtotal + props.subtotal * taxrate).toFixed(2))
+  const [total, setTotal] = useState(((props.subtotal + props.subtotal * taxrate).toFixed(2))-props.couponamount)
   const [subtotal, setSubtotal] = useState(props.subtotal.toFixed(2))
   const [details, setDetails] = useState(false)
   const [disable, setDisable] = useState(false)
-
+ 
   let history = useHistory()
-
+  
+  function genDate() {
+    let date = new Date()
+    return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()<10?('0'+date.getDate()):date.getDate())
+  }
+ 
   function placeOrder() {   
     setDisable(true)
     general.order_proc += 1
@@ -21,11 +26,16 @@ function Checkout(props) {
     general.earnings += parseInt(total,10)
     general.revenue_range.push(subtotal)
     general.products_sold.push(props.cartitems)
+    //reset neworder products
+    products.map(prod => {prod.neworder=false;prod.tempqty=0})
     products.map(prod => {
       if(prod.addcart) {
         prod.purchased_status = true 
+        prod.neworder = true
         prod.purchased_qty += prod.units
         prod.qty -= prod.units
+        prod.tempqty = prod.units
+        prod.datesold = genDate()
         prod.earnings = (prod.price-(prod.price*taxrate))*prod.purchased_qty  
       }
       if(prod.purchased_qty > 8) {
@@ -36,9 +46,9 @@ function Checkout(props) {
       props.zerocartnum()
     }, 500) 
     setTimeout(() => {
-      history.push('/shop')
+      history.push('/orderconfirm')
       setDisable(false)
-    }, 3000);
+    }, 2000);
   } 
  
 
@@ -49,9 +59,6 @@ function Checkout(props) {
       document.querySelector(".msgnotif").style.display = "block"
       setTimeout(() => {
         document.querySelector(".msgnotif").style.opacity = "1"
-        setTimeout(() => {
-          document.querySelector('.msgbox2').style.opacity = '1'
-        }, 500)
       }, 100)
     }
     
@@ -59,11 +66,7 @@ function Checkout(props) {
 
   return (
     <div className="checkoutpage">
-      <PageBanner
-        title="Checkout"
-        subtitle="Checkout your products"
-        bgimg="https://i.imgur.com/hgx84Pw.jpg"
-      />
+      <PageBanner title="Checkout" subtitle="Checkout your products" bgimg="https://i.imgur.com/hgx84Pw.jpg"/>
       <div className="grid xgrid pgrid">
         <div className="logreg">
           <p>
@@ -113,6 +116,9 @@ function Checkout(props) {
               <div>
                 <h6>Shipping Fees</h6><h6>Free Shipping</h6><div className="clear"></div>
               </div>
+              <div style={{display: props.couponamount>0?"block":"none"}}>
+                <h6>Coupon Code</h6><h6 style={{color: "var(--color)"}}>{props.couponname}: -${parseFloat(props.couponamount).toFixed(2)}</h6><div className="clear"></div>
+              </div> 
               <div>
                 <h6>Order Total</h6><h6 className="ordertotal">${total}</h6><div className="clear"></div>
               </div>
@@ -123,7 +129,7 @@ function Checkout(props) {
                 <button className="placeorderbtn" onClick={() => !disable?placeOrder():""}>Place Order</button>
               </div>
             </div>
-          </div>
+          </div> 
         </div> 
  
         <div className="spacerl"></div>
@@ -137,9 +143,6 @@ function Checkout(props) {
               successfully! Your order confirmation has been sent to your email.
             </p>
           </div>
-          <div className="msgbox2 msgbox">
-            <p><i className="fas fa-check-circle"></i>Thank you for shopping with elixir.</p>
-          </div> 
         </div>
       </div>
  

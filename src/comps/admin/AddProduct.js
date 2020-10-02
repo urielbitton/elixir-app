@@ -72,7 +72,7 @@ function AddProduct() {
       notif.style.cssText += 'opacity:0;left:-40px'
       setTimeout(() => {
         notif.style.display = 'none'
-      }, 100);
+      }, 100); 
     }, 4000);
     
   } 

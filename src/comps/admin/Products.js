@@ -76,7 +76,7 @@ function Products() {
     } 
   }).map(prod => {
       if(pattern.test(prod.name.toLowerCase()))
-        return <DashTableRow img={prod.img} name={prod.name} price={prod.price} color={prod.color} sizes={prod.sizes} sale={prod.sale} cat={prod.cat} descript={prod.descript} qty={prod.qty} qty_purch={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct} updated={updated}/>
+        return <DashTableRow img={prod.img} name={prod.name} price={prod.price} color={prod.color} sizes={prod.sizes} sale={prod.sale} cat={prod.cat} descript={prod.descript} qty={prod.qty} qty_purch={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct} updated={updated} hide="none"/>
   }) 
 
   function openProduct(id, name, price, img, instock, color, sizes, sale, cat, descript,qty) {
@@ -170,7 +170,7 @@ function Products() {
       } 
     }) 
   },[])
-
+ 
   return (
     <div className="myproductspage">
       <h2 className="homepagetitle">My Products</h2>

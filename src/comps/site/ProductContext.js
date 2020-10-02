@@ -11,7 +11,7 @@ const ProductContextProvider = (props) => {
       price: 699,
       img: "https://i.imgur.com/OztKcJN.jpg",
       hot: true, 
-      sale: false,
+      sale: false, 
       addcart: false,
       wishlist: false, 
       units: 1, 
@@ -26,6 +26,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
     { 
@@ -49,6 +52,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -72,6 +78,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -95,6 +104,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -118,6 +130,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -141,6 +156,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -164,6 +182,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -187,6 +208,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -210,6 +234,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },  
     {   
@@ -233,6 +260,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },  
     {   
@@ -256,6 +286,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     {    
@@ -279,6 +312,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
     {    
@@ -302,6 +338,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     {     
@@ -325,6 +364,9 @@ const ProductContextProvider = (props) => {
       purchased_status: false,
       purchased_qty: 0,
       earnings: 0,
+      neworder: false,
+      tempqty: 0,
+      datesold: '',
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
   ])  

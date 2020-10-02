@@ -601,6 +601,7 @@ small.customcolor {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 .notifcont > div p {
   display: inline;
@@ -1073,10 +1074,29 @@ h4.rightbartitle {
 .createcouponbtn:hover {
   filter: brightness(110%);
 }
-
-
-
-
+.couponbox {
+  position: relative;
+  margin-top: 10px;
+  width: 100%;
+  padding: 15px 10px;
+  background: #fafafa;
+  border-radius: 10px;
+}
+.couponbox p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+.couponbox p span {
+  margin-left: 10px;
+  color: var(--color);
+  text-transform: uppercase;
+}
+.couponbox small {
+  display: block;
+  color: #555;
+}
 
 
 

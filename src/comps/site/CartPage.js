@@ -10,7 +10,8 @@ function CartPage(props) {
   const [taxrate, setTaxrate] = useState(general.taxrate)
   const [subtotal, setSubtotal] = useState(props.subtotal)
   const [goodcoupon, setGoodcoupon] = useState(false)
-  const [couponname, setCouponname] = useState('')
+  const [couponname, setCouponname] = useState()
+  const [couponamount, setCouponamount] = useState(0)
   general.taxrate = taxrate
 
   const cartitem = products.map(prod => {
@@ -43,12 +44,14 @@ function CartPage(props) {
     for(let i=0;i<general.coupons.length;i++) {
       if (general.coupons[i].name === couponname) {
         setGoodcoupon(true)
-      } 
+        setCouponamount(general.coupons[i].amount)
+        props.applycoupon(general.coupons[i].name, general.coupons[i].amount)
+      }   
     } 
   }
 
-  const total = (subtotal + subtotal * taxrate).toFixed(2)
-
+  const total = ((subtotal + subtotal * taxrate).toFixed(2)) - couponamount
+ 
   useEffect(() => {
     let couponinp = document.querySelector('.couponinp')
     document.querySelector('.proceeddiv .b1').onclick = () => {
@@ -86,7 +89,7 @@ function CartPage(props) {
           <tr> 
               <td colSpan="1">
                <input placeholder="Enter coupon code" value={couponname} className="couponinp" onKeyDown={(e) => e.key==="Backspace"?setCouponname():""}/> 
-                <button className={goodcoupon?"b1 goodcoupon":"b1"} onClick={() => verifyCoupon()}>Apply Coupon</button>
+                <button className={goodcoupon?"b1 goodcoupon":"b1"} onClick={() => verifyCoupon()}>{goodcoupon?"Coupon Applied":"Apply Coupon"}{goodcoupon?<i className="fas fa-check"></i>:""}</button>
                 <small className="viewcoupons">View available coupons</small>
               </td>
               <td colSpan="1"></td>
@@ -148,7 +151,8 @@ function CartPage(props) {
             <div><h6>Subtotal</h6><h6>${subtotal}.00</h6><div className="clear"></div></div>
             <div><h6>Tax Rate ({taxrate*100}%)</h6><h6>${(subtotal * taxrate).toFixed(2)}</h6><div className="clear"></div></div>
             <div><h6>Shipping Fees</h6><h6>{subtotal>200?"Free Shipping":"Flat Rate: 30$"}</h6><div className="clear"></div></div>
-            <div><h6>Order Total</h6><h6 className="ordertotal">${subtotal<1?0:(subtotal>100?total:(total+30))}</h6><div className="clear"></div></div>
+            <div style={{display: goodcoupon?"block":"none"}}><h6>Coupon Code</h6><h6 style={{color:"var(--color)"}}>{couponname}: -${parseFloat(couponamount).toFixed(2)}</h6><div className="clear"></div></div>
+            <div><h6>Order Total</h6><h6 className="ordertotal">${(subtotal<1?0:(subtotal>100?total:(total+30)))<0?parseFloat(0).toFixed(2):(subtotal<1?0:(subtotal>100?total:(total+30)))}</h6><div className="clear"></div></div>
             <div><Link to="/checkout"><button onClick={() => window.scrollTo(0, 0)}>Proceed To Checkout</button></Link></div>
           </div> 
         </div>  
@@ -161,7 +165,7 @@ function CartPage(props) {
           <Link to="/shop"><button>Return To Shop</button></Link>
         </div>
  
-      </div> 
+      </div>  
 
 
     </div>

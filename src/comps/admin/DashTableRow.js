@@ -15,6 +15,7 @@ function DashTableRow(props) {
       <td>{props.qty}</td>
       <td>{props.qty_purch}</td>
       <td>${earnings<0?"0":earnings}</td>
+      <td style={{display:props.hide}}>{props.datesold}</td>
       <td><span className={props.instock?"stockstatus instock":"stockstatus outstock"}>{props.instock?"In Stock":"Out Of Stock"}</span></td>
     </tr>
   )

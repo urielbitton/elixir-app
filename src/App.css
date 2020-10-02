@@ -477,12 +477,15 @@ nav .right > div {
   margin-top:50px;
   background: #333;
   color: #fff;
-  padding: 15px 30px;
+  font-size: 15px;
+  padding: 20px 40px;
   box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+  top: 0;
+  transition: all 0.3s;
 }
 .bgcont button:hover {
   background: var(--color);
-  color: #333;
+  top: -10px;
 }
 .bgnav {
   position: absolute;
@@ -1350,7 +1353,7 @@ footer .socials > div i {
 }
 .carttable button {
   margin: auto 20px;
-  padding: 17px 25px;
+  padding: 17px 20px;
   font-size: 15px;
   border: 1px solid #111;
 }
@@ -1360,6 +1363,7 @@ footer .socials > div i {
 }
 .carttable button.b1:hover {
   background: #333;
+  border: 1px solid #333;
 }
 .carttable button.b2 {
   background: none;
@@ -1408,9 +1412,15 @@ footer .socials > div i {
   background: var(--color);
   border: 1px solid var(--color);
 }
+.carttable button.goodcoupon i {
+  margin-left: 10px;
+}
 .couponinp {
   text-transform: uppercase;
   width: 200px;
+}
+.couponname {
+  color: var(--color);
 }
 .subtotaltd h4 {
   text-align: right;
@@ -1517,6 +1527,16 @@ footer .socials > div i {
 }
 .msgcont .msgbox  i {
   margin-right: 20px;
+}
+.msgcont .msgbox small {
+  color: #777;
+  text-decoration: underline;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.msgcont .msgbox small:hover {
+  color: #111;
 }
 .msgcont .msgbox2 {
   opacity: 0;
@@ -2267,10 +2287,45 @@ footer .socials > div i {
 .backtosite:hover i {
   margin-left: 13px;
 }
-
-
-
-
+.orderconfirmpage h2 {
+  font-size: 30px;
+  color: #333;
+  margin-bottom: 15px;
+}
+.orderconfirmpage h2+h6 {
+  font-size: 14px;
+  color: #777;
+}
+.orderconfirmpage table {
+  position: relative;
+  margin: 50px auto;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.orderconfirmpage table td, .orderconfirmpage table th {
+  padding: 10px 5px;
+}
+.orderconfirmpage table img {
+  width: 60px;
+  height: 60px;
+} 
+.orderconfirmpage table tbody tr:nth-child(odd) {
+  background: #fafafa;
+}
+.orderconfirmpage button {
+  margin-top: 30px;
+  background: var(--color);
+  color: #fff;
+  padding: 15px 20px;
+}
+.orderconfirmpage button:hover {
+  filter: brightness(110%);
+}
+.orderconfirmpage h5 {
+  font-size: 18px;
+  color: #555;
+}
 
  
 

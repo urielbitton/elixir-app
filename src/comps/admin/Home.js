@@ -74,7 +74,7 @@ function Home() {
     }
   }).map(prod => {
     if(prod.purchased_status === true)
-      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct}/>
+      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct} datesold={prod.datesold}/>
   })
     
   function openProduct() {}
@@ -124,6 +124,7 @@ function Home() {
               <th style={{color: sort[0]===3?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([3,1]):setSort([3,0])}>Qty<i className="fas fa-sort"></i></h6></th>
               <th style={{color: sort[0]===4?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([4,1]):setSort([4,0])}>Quantity Sold<i className="fas fa-sort"></i></h6></th>
               <th style={{color: sort[0]===5?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([5,1]):setSort([5,0])}>Earnings<i className="fas fa-sort"></i></h6></th>
+              <th><h6>Date Sold<i className="fas fa-sort"></i></h6></th>
               <th style={{color: sort[0]===6?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([6,1]):setSort([6,0])}>Stock Status<i className="fas fa-sort"></i></h6></th> 
             </tr>
           </thead>
@@ -148,6 +149,7 @@ function Home() {
               <th style={{color: sort[0]===3?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([3,1]):setSort([3,0])}>Qty<i className="fas fa-sort"></i></h6></th>
               <th style={{color: sort[0]===4?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([4,1]):setSort([4,0])}>Quantity Sold<i className="fas fa-sort"></i></h6></th>
               <th style={{color: sort[0]===5?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([5,1]):setSort([5,0])}>Earnings<i className="fas fa-sort"></i></h6></th>
+              <th><h6>Date Sold<i className="fas fa-sort"></i></h6></th>
               <th style={{color: sort[0]===6?"var(--color)":""}}><h6 onClick={() => sort[1]===0?setSort([6,1]):setSort([6,0])}>Stock Status<i className="fas fa-sort"></i></h6></th> 
             </tr>
           </thead>

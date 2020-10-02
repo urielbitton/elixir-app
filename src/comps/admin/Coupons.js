@@ -9,6 +9,7 @@ function Coupons() {
   const [coupname, setCoupname] = useState('')
   const [coupamount, setCoupamount] = useState(0)
   const [update, setUpdate] = useState(0)
+  const [exist, setExist] = useState(false)
 
 
   function generateCode() {
@@ -16,22 +17,33 @@ function Coupons() {
     setCoupname(coupongen)
   }
   function createCoupon() {
-    let newcoupon = {name:coupname,amount:coupamount}
-    general.coupons.push(newcoupon)
-    setUpdate(prev => prev+1)
-  } 
- 
+    if(coupamount>0) {
+      let newcoupon = {name:coupname,amount:coupamount}
+      general.coupons.push(newcoupon)
+      setUpdate(prev => prev+1)
+    }
+    else {
+      const notif = document.createElement('div')
+      notif.innerHTML = '<i class="fas fa-exclamation-circle"></i>Coupon amount must be greater than 0 to be created'
+      document.querySelector('.notifcont').appendChild(notif)
+      setTimeout(() => {notif.style.cssText += 'opacity:1;left:0'}, 100);
+      setTimeout(() => {
+        notif.style.cssText += 'opacity:0;left:-40px'
+        setTimeout(() => {notif.style.display = 'none'}, 100)
+      }, 4000) 
+    }
+  }  
  
   return (
-    <div className="couponspage" style={{display: general.coupons.length===0?"flex":"block"}}>
-      <h2 className="homepagetitle" style={{display: general.coupons.length===0?"none":"block"}}>My Products</h2>
-      <div className="nocouponsdiv" style={{display: general.coupons.length===0?"block":"none"}}>
+    <div className="couponspage" style={{display: exist?"block":"flex"}}>
+      <h2 className="homepagetitle" style={{display: exist?"block":"none"}}>My Coupons</h2>
+      <div className="nocouponsdiv" style={{display: exist?"none":"block"}}>
         <h5>You have no coupons</h5>
         <h2>Create your first coupon</h2>
-        <button onClick={() => {general.coupons.length=10;setUpdate(prev => prev+1)}}>Create Coupon</button>
-      </div>
+        <button onClick={() => {setExist(true);setUpdate(prev => prev+1)}}>Create Coupon</button>
+      </div> 
 
-      <div className="createcouponcont" style={{display: general.coupons.length>0?"grid":"none"}}>
+      <div className="createcouponcont" style={{display: exist?"grid":"none"}}>
 
         <div className="dashbox">
           <h5>Coupon Code</h5>  
@@ -68,10 +80,10 @@ function Coupons() {
           <h4 className="rightbartitle">My Coupons</h4>
           {
             general.coupons.map(el => {
-              return <p>{el.name} <span> {el.amount}</span></p>
+              return <div className="couponbox"><p>Coupon: <span>{el.name}</span></p><small>Amount: {el.amount}</small><small>Expiry Date: June 12 2022</small></div>
             }) 
           } 
-        </div>
+        </div> 
       </div>
 
     </div>

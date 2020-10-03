@@ -25,12 +25,12 @@ function Product(props) {
     props.updatewish() 
   }
   function addUnits() {
-    if(props.prod.units<=9) {
+    if(props.prod.units < props.prod.qty) {
       props.prod.addcart?temp=1:props.prod.units += 1
       setUnits(prev => prev+1)
-    }
+    } 
     //props.prod.addcart = false //uncomment if you want to allow post addcart adding units
-  }    
+  }     
   function subUnits() { 
     if(props.prod.units > 1) {
       props.prod.addcart?temp=1:props.prod.units -= 1

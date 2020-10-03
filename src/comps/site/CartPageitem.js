@@ -7,8 +7,8 @@ function CartPageItem(props) {
  
   let colormap = {"#111":"Black","#b0b0b0":"Gray","#ff004c":"Red","#bbff00":"Green","#9c0000":"Brown","#ffbb00":"Orange","#ffee00":"Yellow","#ffb4ff":"Pink","#00aeff":"Blue","#f5f5f5":"White"}
     
-  function addUnits() {
-    if (props.prod.units < 10) {
+  function addUnits() { 
+    if (props.prod.units < props.prod.qty) {
       props.updatedadd(props.price)
       props.prod.units += 1
     }
@@ -35,11 +35,11 @@ function CartPageItem(props) {
   }
 
   return (
-    <tr>
+    <tr> 
       <td>
         <img src={props.img} alt="cartprod" />
         <Link to="/product">
-          <h6 data-update={props.colorupdate}>{props.name} - {replaceAll(props.prod.selcolor, colormap)}</h6>
+          <h6  data-update={props.colorupdate} onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty)}>{props.name} - {replaceAll(props.prod.selcolor, colormap)}</h6>
         </Link> 
         <small style={{color:"#aaa"}}>Size: {props.prod.selsize}</small>
       </td>

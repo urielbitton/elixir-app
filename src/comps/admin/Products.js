@@ -10,7 +10,7 @@ function Products() {
   const [name, setName] = useState('')
   const [img, setImg] = useState('')
   const [price, setPrice] = useState(0)
-  const [instock, setInstock] = useState()
+  const [instock, setStock] = useState()
   const [color, setColor] = useState([''])
   const [sizes, setSizes] = useState([''])
   const [prodsel, setProdsel] = useState(false)
@@ -22,6 +22,7 @@ function Products() {
   const [findname, setFindname] = useState('')
   const [updated, setUpdated] = useState(0)
   const pattern = new RegExp('\\b' + findname, 'i')
+  let allcount = 0, allqtypurch = 0, allearnings = 0, allavgprice = 0
 
   const myproducts = products.sort((a,b) => {
     if(sort[0]===0) {
@@ -85,7 +86,7 @@ function Products() {
     setName(name)
     setPrice(price)
     setImg(img)
-    setInstock(instock)  
+    setStock(instock)  
     setColor(color)
     setSizes(sizes)
     setSale(sale)
@@ -197,8 +198,21 @@ function Products() {
             {myproducts}
           </tbody>  
           <tfoot>
-            <div className="spacers"></div>
-          </tfoot>
+            {
+              products.map(prod => {
+                allcount++
+                allearnings += prod.earnings
+                allqtypurch += prod.purchased_qty
+                allavgprice += prod.price 
+              })
+            } 
+            <td className="tfootdetails" colSpan="7">
+              <h6>{allcount} <span>Products</span></h6>
+              <h6>${allearnings} <span>Total earnings</span></h6>
+              <h6>{allqtypurch} <span>Quantities sold</span></h6>
+              <h6>${(allavgprice/allcount).toFixed(2)} <span>Average price</span></h6>
+            </td>
+          </tfoot>  
         </table>
       </div>
 
@@ -219,12 +233,12 @@ function Products() {
           </label> 
           <div className="label">
             <h6>Stock Status</h6>
-            <button className={instock?"stock":""} onClick={() => setInstock(true)}>In Stock</button>
-            <button className={instock?"":"stock"} onClick={() => setInstock(false)}>Out of Stock</button>
+            <button className={instock?"stock":""} onClick={() => setStock(true)}>In Stock</button>
+            <button className={instock?"":"stock"} onClick={() => setStock(false)}>Out of Stock</button>
           </div>
           <label>
             <h6>Product Quantity</h6>
-            <input type="number" value={qty} className="prodqtyinp" onChange={(e) => setQty(e.target.value)}/>
+            <input type="number" value={qty} className="prodqtyinp" onChange={(e) => {setQty((e.target.value)>0?e.target.value:0); qty>0?setStock(true):""}}/>
           </label>
           <label>
           <h6>Product Colors</h6>
@@ -268,7 +282,7 @@ function Products() {
         <div className="defaultinnerprod" style={{display: prodsel?"none":"block"}}>
           <h6>Select a product to manage<i className="fas fa-th"></i></h6>
         </div>
-      </div>
+      </div> 
  
       </div> 
     </div>

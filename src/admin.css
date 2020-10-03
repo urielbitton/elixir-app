@@ -309,7 +309,7 @@ input::placeholder {
 .dashbox table th {
   position: relative;
   font-size: 13px;
-  color: #aaa;
+  color: #555;
   font-weight: 600;
   user-select: none;
 }
@@ -1122,8 +1122,29 @@ h4.rightbartitle {
   display: block;
   color: #555;
 }
+.dashbox .tfootdetails {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  border-top: 1px solid #eee;
+  padding: 3px;
+} 
+.dashbox .tfootdetails h6 {
+  font-size: 13px;
+  color: #333;
+  top: 15px;
+  margin: auto 20px;
+  display: inline-block;
+}
+.dashbox .tfootdetails h6 span {
+  font-weight: 500;
+  color: #777;
+}
 
-
+.customerspage table {
+  width: 100%;
+  text-align: left;
+}
 
 
 

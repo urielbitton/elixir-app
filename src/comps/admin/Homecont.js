@@ -5,6 +5,7 @@ import Home from './Home'
 import Products from './Products'
 import AddProduct from './AddProduct';
 import Coupons from './Coupons'
+import Customers from './Customers'
 
 function Homecont(props) {
   return (
@@ -22,6 +23,9 @@ function Homecont(props) {
           </Route>
           <Route path="/addproduct">
             <AddProduct />
+          </Route>
+          <Route path="/customers">
+            <Customers />
           </Route>
         </Switch>
         

@@ -20,6 +20,7 @@ function AddProduct() {
   const [person, setPerson] = useState('')
   const [purchased_status, setPurchasedStatus] = useState(false)
   const [purchased_qty, setPurchasedQty] = useState(0)
+  const [qty, setQty] = useState(10)
  
   const history = useHistory()
   const [imgview, setImgview] = useState('')
@@ -38,7 +39,6 @@ function AddProduct() {
         reader.readAsDataURL(file);
       } 
   }
-
   function addCustomColor() {
     general.colorarr.push(newcolor)
     setNewcolor(newcolor)
@@ -57,7 +57,7 @@ function AddProduct() {
         sizearr.push(el.getAttribute('data-size'))
     }) 
     setId(previd => previd+1) 
-    setProducts(prevProd => [...prevProd,{id:id, name: name, units:units,price:parseFloat(price), img:img, instock:stock,color:colors, sizes:sizearr, cat:cat.trim().split(','), descript:descript, purchased_status:purchased_status, purchased_qty:purchased_qty}])
+    setProducts(prevProd => [...prevProd,{id:id, name: name, units:units,price:parseFloat(price), img:img, instock:stock,color:colors, sizes:sizearr, cat:cat.trim().split(','), descript:descript, purchased_status:purchased_status, purchased_qty:purchased_qty, qty:qty}])
     
     const notif = document.createElement('div')
     notif.innerHTML = `<i class="fas fa-circle-notch"></i><p>Product "${name}" has been successfully created and added to your store.</p><button className="viewprodbtn">View</button>`
@@ -120,8 +120,12 @@ function AddProduct() {
             <label>
               <h6>Price (CAD)</h6>
               <div className="currencydiv">$</div><input className="priceinp" placeholder="0.00" onChange={(e) => setPrice(e.target.value)}/><div className="clear"></div>
+            </label> 
+            <label> 
+              <h6>Product Quantity</h6> 
+              <input className="qtyinp" type="number" value={qty} placeholder="0" onChange={(e) => {setQty((e.target.value)>0?e.target.value:0); qty>0?setStock(true):""}}/><div className="clear"></div>
             </label>
-            <label className="imguploadlabel">
+            <label className="imguploadlabel"> 
               <h6>Product Image</h6>
               <div className="uploadercont" style={{backgroundImage: "url("+imgview+")"}}><input className="uploadpic" type="file" onChange={uploadImg}/>{!imgview?<><i class="fas fa-cloud-upload-alt"></i><h5>Upload an Image</h5></>:""}</div>
             </label>

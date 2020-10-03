@@ -9,11 +9,11 @@ function OrderConfirm() {
 
   return (
     <div className="orderconfirmpage">
-      <PageBanner title="Order Confirmation" subtitle="Confirmation of your order with Elixir" bgimg="https://i.imgur.com/sB2efa9.jpg"/>
+      <PageBanner title="Order Confirmation" subtitle="Confirmation of your order with Elixir" bgimg="https://i.imgur.com/fmUs80b.jpg"/>
 
       <div className="grid xgrid pgrid">
         <h2>Thank you for your order.</h2>
-        <h6>Here is your order summary</h6>
+        <h6>Here is your order summary.</h6>
 
         <table>
           <thead>
@@ -34,8 +34,9 @@ function OrderConfirm() {
           </tbody>
         </table> 
         <div className="ordertotalsdiv">
-             <h5>Subtotal: {general.subtotal}</h5>
-             <h5>Total: {general.total}</h5>
+             <h6>Tax Amount ({general.taxrate*100}%): <span>${parseFloat((general.taxrate*general.subtotal)+general.subtotal).toFixed(2)}</span></h6>
+             <h6>Subtotal: <span>${parseFloat(general.subtotal).toFixed(2)}</span><i className="clear"></i></h6>
+             <h6>Total: <span>${parseFloat(general.total).toFixed(2)}</span><i className="clear"></i></h6>
         </div>
         <div className="spacer"></div>  
         <div className="msgcont">

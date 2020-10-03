@@ -14,13 +14,15 @@ function Home() {
   const profit = general.profit
   const order_proc = general.order_proc  
   let topproducts
+  let reccount = 0, recqtypurch = 0, recearnings = 0, recavgprice = 0
+  let topcount = 0, topqtypurch = 0, topearnings = 0, topavgprice = 0
  
   topproducts = products.sort((a,b) => {
     return (b.purchased_qty) - (a.purchased_qty)
   }).map(prod => {
     if(prod.purchased_qty > 5) 
-      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty_purch={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id}/>
-  })
+      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.qty} qty_purch={prod.purchased_qty} earnings={prod.earnings} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} datesold={prod.datesold}/>
+  }) 
   const recentprods = products.sort((a,b) => {
     if(sort[0]===0) {
       if(sort[1]===0)
@@ -74,10 +76,10 @@ function Home() {
     }
   }).map(prod => {
     if(prod.purchased_status === true)
-      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.purchased_qty} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct} datesold={prod.datesold}/>
+      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.qty} qty_purch={prod.purchased_qty} earnings={prod.earnings} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} openproduct={openProduct} datesold={prod.datesold}/>
   })
     
-  function openProduct() {}
+  function openProduct() {} 
 
   return ( 
     <div className="homegrid">  
@@ -132,8 +134,22 @@ function Home() {
             {topproducts}
           </tbody> 
           <tfoot>
-            <div className="spacers"></div>
-            <small onClick={() => prodshow===5?setProdshow(Infinity):setProdshow(5)}>{prodshow===5?"Show All":"Show Less"}</small>
+          { 
+              products.map(prod => {
+                if(prod.purchased_qty > 5) {
+                  topcount++
+                  topearnings += prod.earnings
+                  topqtypurch += prod.purchased_qty
+                  topavgprice += prod.price 
+                }
+              })
+            } 
+            <td className="tfootdetails" colSpan="8">
+              <h6>{topcount} <span>Products</span></h6>
+              <h6>${topearnings.toFixed(2)} <span>Total earnings</span></h6>
+              <h6>{topqtypurch} <span>Quantities sold</span></h6>
+              <h6>${isNaN(topavgprice/topcount)?0:(topavgprice/topcount).toFixed(2)} <span>Average price</span></h6>
+            </td>
           </tfoot>
         </table>
       </div>
@@ -158,7 +174,26 @@ function Home() {
           </tbody>  
           <tfoot>
             <div className="spacers"></div>
+            <small onClick={() => prodshow===5?setProdshow(Infinity):setProdshow(5)}>{prodshow===5?"Show All":"Show Less"}</small>
           </tfoot>
+          <tfoot>
+            {
+              products.map(prod => {
+                if(prod.purchased_status===true) {
+                  reccount++
+                  recearnings += prod.earnings
+                  recqtypurch += prod.purchased_qty
+                  recavgprice += prod.price 
+                }
+              })  
+            } 
+            <td className="tfootdetails" colSpan="8">
+              <h6>{reccount} <span>Products</span></h6>
+              <h6>${recearnings.toFixed(2)} <span>Total earnings</span></h6>
+              <h6>{recqtypurch} <span>Quantities sold</span></h6>
+              <h6>${isNaN(recavgprice/reccount)?0:(recavgprice/reccount).toFixed(2)} <span>Average price</span></h6>
+            </td>
+          </tfoot> 
         </table>
       </div>
       <div className="dashbox dashmed">

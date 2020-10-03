@@ -17,10 +17,10 @@ function CartPage(props) {
   const cartitem = products.map(prod => {
     if(prod.addcart) {   
       return ( 
-        <CartPageItem prod={prod} name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={prod.id} updatedadd={updatedAdd} updatedsub={updatedSub} removeitem={removeItem} colorupdate={props.colorupdate} sizeupdate={props.sizeupdate} />
+        <CartPageItem prod={prod} name={prod.name} img={prod.img} price={prod.price} units={prod.units} qty={prod.qty} color={prod.color} cat={prod.cat} sizes={prod.sizes} addcart={prod.addcart} instock={prod.instock} wishlist={prod.wishlist} descript={prod.descript} key={prod.id} updatedadd={updatedAdd} updatedsub={updatedSub} removeitem={removeItem} colorupdate={props.colorupdate} sizeupdate={props.sizeupdate} openproduct={props.openproduct}/>
       )   
     }      
-  })    
+  })     
  
   function updatedAdd(price) {
     setSubtotal(prev => prev+price)
@@ -152,7 +152,7 @@ function CartPage(props) {
             <div><h6>Tax Rate ({taxrate*100}%)</h6><h6>${(subtotal * taxrate).toFixed(2)}</h6><div className="clear"></div></div>
             <div><h6>Shipping Fees</h6><h6>{subtotal>200?"Free Shipping":"Flat Rate: 30$"}</h6><div className="clear"></div></div>
             <div style={{display: goodcoupon?"block":"none"}}><h6>Coupon Code</h6><h6 style={{color:"var(--color)"}}>{couponname}: -${parseFloat(couponamount).toFixed(2)}</h6><div className="clear"></div></div>
-            <div><h6>Order Total</h6><h6 className="ordertotal">${(subtotal<1?0:(subtotal>100?total:(total+30)))<0?parseFloat(0).toFixed(2):(subtotal<1?0:(subtotal>100?total:(total+30)))}</h6><div className="clear"></div></div>
+            <div><h6>Order Total</h6><h6 className="ordertotal">${(subtotal<1?0:(subtotal>100?parseFloat(total).toFixed(2):parseFloat(total+30).toFixed(2)))<0?parseFloat(0).toFixed(2):(subtotal<1?0:(subtotal>100?parseFloat(total).toFixed(2):parseFloat(total+30).toFixed(2)))}</h6><div className="clear"></div></div>
             <div><Link to="/checkout"><button onClick={() => window.scrollTo(0, 0)}>Proceed To Checkout</button></Link></div>
           </div> 
         </div>  

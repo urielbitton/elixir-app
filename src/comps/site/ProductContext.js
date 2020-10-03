@@ -197,7 +197,7 @@ const ProductContextProvider = (props) => {
       addcart: false,
       wishlist: false,
       units: 1,
-      qty: 17,
+      qty: 0,
       person: "men",
       instock: false,
       color: ["#111","#9c0000","#ffee00","#f5f5f5"],
@@ -389,6 +389,9 @@ const ProductContextProvider = (props) => {
       customers: [],
     }   
   )
+  const [customers, setCustomer] = useState([
+    
+  ])
   
   return (
     <ProductContext.Provider value={{products, setProducts,general,setGeneral}}>

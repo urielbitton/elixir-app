@@ -9,27 +9,28 @@ function Coupons() {
   const [coupname, setCoupname] = useState('')
   const [coupamount, setCoupamount] = useState(0)
   const [update, setUpdate] = useState(0)
-  const [exist, setExist] = useState(false)
+  const [open, setOpen] = useState(general.coupons.length>0?true:false)
   const [resetform, setResetform] = useState(false)
+  const [coupdate, setCoupdate] = useState('')
   const formRef = useRef()
-
 
   function generateCode() {
     let coupongen = Math.random().toString(36).substring(7)
     setCoupname(coupongen)
   }
-  function createCoupon() {
-    if(coupamount>0) {
-      let newcoupon = {name:coupname,amount:coupamount}
+  function createCoupon() { 
+    if(coupamount>0 && coupname && coupname.indexOf(' ')<0) {
+      let newcoupon = {name:coupname,amount:coupamount,date:coupdate}
       general.coupons.push(newcoupon)
       setUpdate(prev => prev+1)
       setResetform(true)
       setCoupname()
       setCoupamount()
+      setCoupdate()
     }
     else {
       const notif = document.createElement('div')
-      notif.innerHTML = '<i class="fas fa-exclamation-circle"></i>Coupon amount must be greater than 0 to be created'
+      notif.innerHTML = '<i class="fas fa-exclamation-circle"></i>Coupon name must be set and amount must be greater than 0 to be created'
       document.querySelector('.notifcont').appendChild(notif)
       setTimeout(() => {notif.style.cssText += 'opacity:1;left:0'}, 100);
       setTimeout(() => {
@@ -45,15 +46,15 @@ function Coupons() {
   }
   
   return (
-    <div className="couponspage" style={{display: exist?"block":"flex"}}>
-      <h2 className="homepagetitle" style={{display: exist?"block":"none"}}>My Coupons</h2>
-      <div className="nocouponsdiv" style={{display: exist?"none":"block"}}>
+    <div className="couponspage" style={{display: open?"block":"flex"}}>
+      <h2 className="homepagetitle" style={{display: open?"block":"none"}}>My Coupons</h2>
+      <div className="nocouponsdiv" style={{display: open?"none":"block"}}>
         <h5>You have no coupons</h5>
         <h2>Create your first coupon</h2>
-        <button onClick={() => {setExist(true);setUpdate(prev => prev+1)}}>Create Coupon</button>
+        <button onClick={() => {setOpen(true);setUpdate(prev => prev+1)}}>Create Coupon</button>
       </div> 
 
-      <div className="createcouponcont" style={{display: exist?"grid":"none"}}>
+      <div className="createcouponcont" style={{display: open?"grid":"none"}}>
 
         <div className="dashbox">
           <form ref={formRef}>
@@ -81,7 +82,7 @@ function Coupons() {
             </label>
             <label>
               <h6>Coupon Expiry Date</h6>
-              <input type="date"/>
+              <input type="date" onChange={(e) => setCoupdate(e.target.value)}/>
               <div className="clear"></div> 
             </label>
           </div>
@@ -93,7 +94,7 @@ function Coupons() {
           <div className="mycouponsinner">
           {
             general.coupons.map(el => {
-              return <div className="couponbox"><p>Coupon: <span>{el.name}</span></p><small>Amount: {el.amount}</small><small>Expiry Date: June 12 2022</small><i className="fas fa-trash" onClick={() => deleteCoupon(el)}></i></div>
+              return <div className="couponbox"><p>Coupon: <span>{el.name}</span></p><small>Amount: {el.amount}</small><small>Expiry Date: {el.date}</small><i className="fas fa-trash" onClick={() => deleteCoupon(el)}></i></div>
             }) 
           } 
           </div>

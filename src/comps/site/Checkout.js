@@ -38,17 +38,21 @@ function Checkout(props) {
         prod.qty -= prod.units
         prod.tempqty = prod.units
         prod.datesold = genDate()
-        prod.earnings = (prod.price-(prod.price*taxrate))*prod.purchased_qty  
-      }
+        prod.earnings = prod.price*prod.purchased_qty  
+      }  
       if(prod.purchased_qty > 8) {
         prod.hot = true 
       }
+      if(prod.purchased_qty > prod.qty) {
+        prod.instock = false
+      } 
     }) 
     setTimeout(() => { 
       props.zerocartnum()
     }, 500) 
     setTimeout(() => {
       history.push('/orderconfirm')
+      window.scrollTo(0,0)
       setDisable(false)
     }, 2000);
   } 

@@ -46,12 +46,13 @@ function Sidebar(props) {
           <span><i className="fas fa-shopping-bag"></i><el>Orders</el><i className="fas fa-angle-up"></i></span>
           <div className="clear">
             <h6><i class="fas fa-wallet"></i><el>Revenue</el></h6>
-            <h6><i class="fas fa-wallet"></i><el>Processed Orders</el></h6>
+            <h6><i class="fas fa-money-check"></i><el>Processed Orders</el></h6>
           </div>
         </h5>
         <h5> 
         <span><i className="fas fa-user-tag"></i><el>Customers</el><i className="fas fa-angle-up"></i></span>
           <div className="clear">
+            <Link to="customers"><h6><i class="fas fa-user-friends"></i><el>Customers</el></h6></Link>
             <h6><i class="fas fa-mail-bulk"></i><el>Marketing</el></h6>
           </div>
         </h5>

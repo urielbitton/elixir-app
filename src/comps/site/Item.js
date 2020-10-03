@@ -4,7 +4,7 @@ import { ProductContext } from './ProductContext'
 
 function Item(props) {    
  
-  const {products, setProducts, setGeneral} = useContext(ProductContext)
+  const {products, setProducts} = useContext(ProductContext)
 
   function addToCart() { 
     products.map(prod => {   
@@ -54,7 +54,7 @@ function Item(props) {
           }, 3000);
         }
       })  
-   
+    
  
   },[]) 
  
@@ -65,15 +65,15 @@ function Item(props) {
         <Link to={props.wishlist?"/wishlist":"#"} className="heartlink" onClick={() => props.wishlist?scrollUp():"#"}><i className={props.wishlist?"fas fa-heart":"far fa-heart"} onClick={() => props.wishlist?"":addToWishlist()}></i></Link>
         <Link to="/product" onClick={() => {props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.addcart,props.wishlist);window.scrollTo(0, 0)}}><img src={props.img} alt="item"/></Link>
         <div className="itemactions">
-          <i className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart(props.name)}></i>
-          <i onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist)} className="fas fa-search-plus quickviewbtn"></i> 
+          <i style={{display: props.instock?"inline-block":"none"}} className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart(props.name)}></i>
+          <i onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty)} className="fas fa-search-plus quickviewbtn"></i> 
           <i className="fas fa-random"></i>
         </div> 
       </div> 
       <div className="iteminfodiv">
-        <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist)}><Link to="/product">{props.name}</Link></h5>
+        <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty)}><Link to="/product">{props.name}</Link></h5>
         <small>${parseFloat(props.price).toFixed(2)}</small> 
-      </div>
+      </div> 
     </div>  
   )  
 } 

@@ -2326,6 +2326,32 @@ footer .socials > div i {
   font-size: 18px;
   color: #555;
 }
+.ordertotalsdiv {
+  position: relative;
+  width: 400px;
+  background: #f1f1f1;
+  padding: 15px; 
+}
+.ordertotalsdiv h6 {
+  font-size: 14px;
+  color: #777;
+  margin: 15px 0;
+} 
+.ordertotalsdiv h6:last-child {
+  font-size: 17px;
+  color: #333;
+  text-transform: uppercase; 
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+.ordertotalsdiv h6:last-child span {
+  font-weight: 600;
+}
+.ordertotalsdiv h6 span {
+  font-weight: 500;
+  float: right;
+}
 
  
 

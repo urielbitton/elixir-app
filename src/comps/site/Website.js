@@ -124,7 +124,7 @@ function Website(props) {
     document.querySelectorAll('.backtop').forEach(el => el.onclick = () => window.scrollTo(0, 0))
        
   },[])  
-   
+    
   return (  
     <> 
       <Navbar cartitems={cartitems} subtotal={subtotal} units={units} wishnum={wishnum} adminon={props.adminon} />  
@@ -149,7 +149,7 @@ function Website(props) {
           <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} instock={instock} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} setprodcolor={setProdColor} setprodsize={setProdSize}/>
         </Route> 
         <Route path="/cart">
-          <CartPage prod={prod} subtotal={subtotal} cartitems={cartitems} connectsub={connectSub} subcartnum={subCartNum} zerocartnum={zeroCartNum} colorupdate={colorupdate} sizeupdate={sizeupdate} applycoupon={applyCoupon}/>
+          <CartPage prod={prod} subtotal={subtotal} cartitems={cartitems} connectsub={connectSub} subcartnum={subCartNum} zerocartnum={zeroCartNum} colorupdate={colorupdate} sizeupdate={sizeupdate} applycoupon={applyCoupon} openproduct={openProduct}/>
         </Route> 
         <Route path="/checkout">
           <Checkout subtotal={subtotal} zerocartnum={zeroCartNum} cartitems={cartitems} couponname={couponname} couponamount={couponamount}/>

@@ -32,7 +32,11 @@ function OrderConfirm() {
                })
              }
           </tbody>
-        </table>
+        </table> 
+        <div className="ordertotalsdiv">
+             <h5>Subtotal: {general.subtotal}</h5>
+             <h5>Total: {general.total}</h5>
+        </div>
         <div className="spacer"></div>  
         <div className="msgcont">
           <div className="msgbox"><p><i class="fas fa-envelope"></i>A copy of your order has been sent to your email. <small>Add Another Email</small></p></div>

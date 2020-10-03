@@ -986,6 +986,31 @@ h4.rightbartitle {
   height:89%;
   right: 30px;
 }
+.mycouponsinner {
+  position: relative;
+  height: 97%;
+  overflow-y: scroll;
+}
+.mycouponsinner::-webkit-scrollbar {
+  width: 7px;
+  display: none;
+}
+.mycouponsinner:hover::-webkit-scrollbar {
+  display: block;
+}
+.mycouponsbox .fa-trash {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #aaa;
+  font-size: 15px;
+  color: var(--color);
+  display: none;
+  cursor: pointer;
+}
+.couponbox:hover i {
+  display: block;
+}
 .createcouponcont h5 {
   font-size: 15px;
   color: #777;

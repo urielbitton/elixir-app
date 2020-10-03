@@ -375,6 +375,7 @@ const ProductContextProvider = (props) => {
       wishnum: 0,
       cartitems: 0,
       subtotal: 0,
+      total: 0,
       taxrate: 0.15,
       order_proc: 0,
       active_order: 0,

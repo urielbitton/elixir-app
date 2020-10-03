@@ -18,12 +18,14 @@ function Checkout(props) {
     let date = new Date()
     return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()<10?('0'+date.getDate()):date.getDate())
   }
- 
+  
   function placeOrder() {   
     setDisable(true)
     general.order_proc += 1
     general.profit += parseInt(total-(subtotal*taxrate),10)
     general.earnings += parseInt(total,10)
+    general.total = total
+    general.subtotal = subtotal
     general.revenue_range.push(subtotal)
     general.products_sold.push(props.cartitems)
     //reset neworder products
@@ -120,7 +122,7 @@ function Checkout(props) {
                 <h6>Coupon Code</h6><h6 style={{color: "var(--color)"}}>{props.couponname}: -${parseFloat(props.couponamount).toFixed(2)}</h6><div className="clear"></div>
               </div> 
               <div>
-                <h6>Order Total</h6><h6 className="ordertotal">${total}</h6><div className="clear"></div>
+                <h6>Order Total</h6><h6 className="ordertotal">${parseFloat(total).toFixed(2)}</h6><div className="clear"></div>
               </div>
               <div>
                 <label><input name="payment" type="radio"/><small>Bank Transfer</small></label><label><input name="payment" type="radio"/><small>Cash On Delivery</small></label>

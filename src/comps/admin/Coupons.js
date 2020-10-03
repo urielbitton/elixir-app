@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
 import { ProductContext } from '../../comps/site/ProductContext'
 
 function Coupons() {
@@ -10,6 +10,8 @@ function Coupons() {
   const [coupamount, setCoupamount] = useState(0)
   const [update, setUpdate] = useState(0)
   const [exist, setExist] = useState(false)
+  const [resetform, setResetform] = useState(false)
+  const formRef = useRef()
 
 
   function generateCode() {
@@ -21,6 +23,9 @@ function Coupons() {
       let newcoupon = {name:coupname,amount:coupamount}
       general.coupons.push(newcoupon)
       setUpdate(prev => prev+1)
+      setResetform(true)
+      setCoupname()
+      setCoupamount()
     }
     else {
       const notif = document.createElement('div')
@@ -34,6 +39,11 @@ function Coupons() {
     }
   }  
  
+  function deleteCoupon(coupon) {
+    general.coupons.splice(general.coupons.indexOf(coupon),1)
+    setUpdate(prev => prev+1)
+  }
+  
   return (
     <div className="couponspage" style={{display: exist?"block":"flex"}}>
       <h2 className="homepagetitle" style={{display: exist?"block":"none"}}>My Coupons</h2>
@@ -46,9 +56,10 @@ function Coupons() {
       <div className="createcouponcont" style={{display: exist?"grid":"none"}}>
 
         <div className="dashbox">
+          <form ref={formRef}>
           <h5>Coupon Code</h5>  
           <input className="couponcodeinp" value={coupname} placeholder="Coupon Name" onKeyDown={(e) => e.key==="Backspace"?setCoupname():""} onChange={(e) => setCoupname(e.target.value)}/>
-          <button className="generatebtn" onClick={() => generateCode()}>Generate Code</button>
+          <button className="generatebtn" onClick={(e) => {e.preventDefault(); generateCode()}}>Generate Code</button>
           <textarea placeholder="Description (optional)">
             
           </textarea>
@@ -62,27 +73,30 @@ function Coupons() {
                 <option>Cart Percentage</option>
               </select>
               <div className="clear"></div>
-            </label>
+            </label> 
             <label>
               <h6>Coupon Amount</h6>
-              <input placeholder="0" onChange={(e) => setCoupamount(e.target.value)}/>
+              <input placeholder="0" onChange={(e) => setCoupamount(e.target.value)} value={coupamount}/>
               <div className="clear"></div>
             </label>
             <label>
               <h6>Coupon Expiry Date</h6>
               <input type="date"/>
-              <div className="clear"></div>
+              <div className="clear"></div> 
             </label>
           </div>
-          <button className="createcouponbtn" onClick={() => createCoupon()}>Create Coupon</button>
+          <button className="createcouponbtn" onClick={(e) => {e.preventDefault(); createCoupon(); formRef.current.reset()}}>Create Coupon</button>
+          </form>
         </div>
         <div className="dashbox mycouponsbox" data-update={update}>
           <h4 className="rightbartitle">My Coupons</h4>
+          <div className="mycouponsinner">
           {
             general.coupons.map(el => {
-              return <div className="couponbox"><p>Coupon: <span>{el.name}</span></p><small>Amount: {el.amount}</small><small>Expiry Date: June 12 2022</small></div>
+              return <div className="couponbox"><p>Coupon: <span>{el.name}</span></p><small>Amount: {el.amount}</small><small>Expiry Date: June 12 2022</small><i className="fas fa-trash" onClick={() => deleteCoupon(el)}></i></div>
             }) 
           } 
+          </div>
         </div> 
       </div>
 

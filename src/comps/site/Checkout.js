@@ -4,19 +4,44 @@ import PageBanner from "./PageBanner";
 import { ProductContext } from "./ProductContext";
  
 function Checkout(props) {
-  const { products, setProducts, general, setGeneral } = useContext(ProductContext)
+  const { products, general, customers, setCustomers, orders, setOrders } = useContext(ProductContext)
 
   const [taxrate, setTaxrate] = useState(general.taxrate)
   const [total, setTotal] = useState(((props.subtotal + props.subtotal * taxrate).toFixed(2))-props.couponamount)
   const [subtotal, setSubtotal] = useState(props.subtotal.toFixed(2))
   const [details, setDetails] = useState(false)
   const [disable, setDisable] = useState(false)
+
+  const [id, setId] = useState(customers.length)
+  const [fname, setFname] = useState('')
+  const [lname, setLname] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [signup, setSignup] = useState('')
+  const [order, setOrder] = useState(0)
+  const [country, setCountry] = useState('')
+  const [city, setCity] = useState('')
+  const [postal, setPostal] = useState('')
+  const [address, setAddress] = useState('')
+  const [spent, setSpent] = useState(0)
+
+  const [number, setNumber] = useState(Math.floor(Math.random()* 9999) + 1000)
+  const [custname, setCustname] = useState('')
+  const [date, setDate] = useState(genDate())
+  const [status, setStatus] = useState('Pending Payment') 
+  const [ordtotal, setOrdtotal] = useState(total)
  
   let history = useHistory()
   
   function genDate() {
     let date = new Date()
     return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()<10?('0'+date.getDate()):date.getDate())
+  } 
+  function createCustomer() {
+    setCustomers(prevCust => [...prevCust, {id:id, name:fname+" "+lname, email:email, phone:phone, signup:genDate(), orders:1, country:country, city:city, postal:postal, address:address, spent:total}])
+  } 
+  function createOrder() {
+    setOrders(prevOrder => [...prevOrder, {number:number, custname:fname+" "+lname, date:date, status:status, total:ordtotal}])
   }
   
   function placeOrder() {   
@@ -87,15 +112,15 @@ function Checkout(props) {
           <div className="billingdiv">
             <h2>Billing Details</h2>
             <div className="billinggrid">
-              <label className="span1"><h6>First Name</h6><input/></label>
-              <label className="span1"><h6>Last Name</h6><input/></label>
-              <label><h6>Country</h6><input/></label>
-              <label><h6>Street Address</h6><input placeholder="House Address"/><input placeholder="Apt, Unit #"/></label>
-              <label><h6>City</h6><input/></label>
+              <label className="span1"><h6>First Name</h6><input onChange={(e) => setFname(e.target.value)}/></label>
+              <label className="span1"><h6>Last Name</h6><input onChange={(e) => setLname(e.target.value)}/></label>
+              <label><h6>Country</h6><input onChange={(e) => setCountry(e.target.value)}/></label>
+              <label><h6>Street Address</h6><input placeholder="House Address" onChange={(e) => setAddress(e.target.value)}/><input placeholder="Apt, Unit #"/></label>
+              <label><h6>City</h6><input onChange={(e) => setCity(e.target.value)}/></label>
               <label><h6>State/Province</h6><input/></label>
-              <label><h6>Postal Code/ZIP</h6><input/></label>
-              <label><h6>Phone Number</h6><input/></label>
-              <label><h6>Email</h6><input/></label>
+              <label><h6>Postal Code/ZIP</h6><input onChange={(e) => setPostal(e.target.value)}/></label>
+              <label><h6>Phone Number</h6><input onChange={(e) => setPhone(e.target.value)}/></label>
+              <label><h6>Email</h6><input onChange={(e) => setEmail(e.target.value)}/></label>
               <label><h6>Order Notes</h6><textarea placeholder="Add notes about your order..."></textarea></label>
             </div> 
           </div> 
@@ -132,7 +157,7 @@ function Checkout(props) {
                 <label><input name="payment" type="radio"/><small>Bank Transfer</small></label><label><input name="payment" type="radio"/><small>Cash On Delivery</small></label>
               </div>
               <div>
-                <button className="placeorderbtn" onClick={() => !disable?placeOrder():""}>Place Order</button>
+                <button className="placeorderbtn" onClick={() => {!disable?placeOrder():""; !disable?createCustomer():""; !disable?createOrder():"";}}>Place Order</button>
               </div>
             </div>
           </div> 

@@ -116,7 +116,7 @@ function Home() {
       </div>
 
       <div className="dashbox dashlarge">
-        <h5>Top Selling Products</h5>
+        <h5>Popular Selling Products</h5>
         <table>
           <thead>
             <tr>
@@ -133,6 +133,7 @@ function Home() {
           <tbody>
             {topproducts}
           </tbody> 
+          <tfoot><td colSpan="8"><small className="footnote">* based on products that sold 6 or more units</small></td></tfoot>
           <tfoot>
           { 
               products.map(prod => {
@@ -145,7 +146,7 @@ function Home() {
               })
             } 
             <td className="tfootdetails" colSpan="8">
-              <h6>{topcount} <span>Products</span></h6>
+              <h6>{topcount} <span>{topcount===1?"Product":"Products"}</span></h6>
               <h6>${topearnings.toFixed(2)} <span>Total earnings</span></h6>
               <h6>{topqtypurch} <span>Quantities sold</span></h6>
               <h6>${isNaN(topavgprice/topcount)?0:(topavgprice/topcount).toFixed(2)} <span>Average price</span></h6>
@@ -188,7 +189,7 @@ function Home() {
               })  
             } 
             <td className="tfootdetails" colSpan="8">
-              <h6>{reccount} <span>Products</span></h6>
+              <h6>{reccount} <span>{reccount===1?"Product":"Products"}</span></h6>
               <h6>${recearnings.toFixed(2)} <span>Total earnings</span></h6>
               <h6>{recqtypurch} <span>Quantities sold</span></h6>
               <h6>${isNaN(recavgprice/reccount)?0:(recavgprice/reccount).toFixed(2)} <span>Average price</span></h6>

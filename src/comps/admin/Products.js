@@ -207,12 +207,12 @@ function Products() {
               })
             } 
             <td className="tfootdetails" colSpan="7">
-              <h6>{allcount} <span>Products</span></h6>
+              <h6>{allcount} <span>{allcount===1?"Product":"Products"}</span></h6>
               <h6>${allearnings} <span>Total earnings</span></h6>
               <h6>{allqtypurch} <span>Quantities sold</span></h6>
               <h6>${(allavgprice/allcount).toFixed(2)} <span>Average price</span></h6>
             </td>
-          </tfoot>  
+          </tfoot>   
         </table>
       </div>
 

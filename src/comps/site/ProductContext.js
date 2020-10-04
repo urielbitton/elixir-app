@@ -389,12 +389,15 @@ const ProductContextProvider = (props) => {
       customers: [],
     }   
   )
-  const [customers, setCustomer] = useState([
+  const [customers, setCustomers] = useState([
     
   ])
+  const [orders, setOrders] = useState([
+
+  ]) 
   
   return (
-    <ProductContext.Provider value={{products, setProducts,general,setGeneral}}>
+    <ProductContext.Provider value={{products, setProducts,general,setGeneral, customers, setCustomers, orders, setOrders}}>
       {props.children}
     </ProductContext.Provider>
   )

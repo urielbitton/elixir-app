@@ -256,7 +256,7 @@ input::placeholder {
   padding: 30px 20px;
   background: #fff;
   transition: all 0.3s;
-}
+} 
 .smallbox:hover {
   box-shadow: 0px 20px 18px -21px rgba(25,34,51,0.25);
 }
@@ -297,11 +297,16 @@ input::placeholder {
   grid-column: span 10;
 }
 .dashbox table {
+  position: relative;
+  width: 100%;
+  min-width: 1200px;
   margin: 10px auto;
   margin-top: 40px;
-  width: 100%;
   text-align: left;
   border-collapse: collapse;
+}
+.dashbox table::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 .dashbox table h5 {
   margin-bottom: 30px;
@@ -688,6 +693,11 @@ small.customcolor {
   grid-gap: 20px;
   width: 100%;
 } 
+.myproductsgrid table {
+  min-width: 1000px;
+  width: 100%;
+  overflow-x: scroll;
+}
 .myproductsgrid table th h6 {
   display: inline-block;
 }
@@ -700,6 +710,12 @@ small.customcolor {
 .myproductsgrid table tbody tr {
   cursor: pointer;
 }
+.myproductsgrid table tbody td:first-child  {
+  border-radius: 15px 0 0 15px;
+}
+.myproductsgrid table tbody td:last-child {
+  border-radius: 0 15px 15px 0;
+}
 .headeropts h5 {
   float: left;
   margin-right: 30px;
@@ -709,6 +725,7 @@ small.customcolor {
   position: relative;
   float: left;
   top: -5px;
+  margin-right: 15px; 
 }
 .headeropts input {
   padding: 10px;
@@ -939,9 +956,6 @@ h4.rightbartitle {
   position: relative;
   overflow-x: scroll;
 }
-.dashtable::-webkit-scrollbar {
-  display: none;
-}
 .dasharrow {
   display: none;
 }
@@ -1141,15 +1155,83 @@ h4.rightbartitle {
   color: #777;
 }
 
-.customerspage table {
-  width: 100%;
+.addcustomerbtn {
+  padding: 15px 25px;
+  float: left;
+  top: -8px;
+  border-radius: 40px;
+  background: var(--light);
+  color: var(--color);
+}
+.addcustomerbtn:hover {
+  background: var(--color);
+  color: #fff;
+}
+.createcustomerbtn {
+  margin-left: 30px;
+  border-radius: 40px;
+  background: var(--color);
+  color: #fff;
+  padding: 15px 20px;
+}
+.createcustomerbtn:hover {
+  filter: brightness(110%);
+}
+.dashbox .customerstable {
+  min-width: 1200px; 
+  position: relative;
   text-align: left;
+  overflow-x: scroll;
+  border-collapse: collapse;
+}  
+.dashbox .customerstable tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: all 0.2s;
+}
+.dashbox .customerstable tbody tr:hover {
+  background:  rgba(10, 157, 255,0.03);
+}
+.dashbox .customerstable thead th, .dashbox .orderstable thead th {
+  padding-bottom: 10px;
+}
+.dashbox .customerstable tbody td, .dashbox .orderstable tbody td {
+  padding: 25px 5px;
+  min-width: 140px;
+}
+.dashbox .customerstable tbody td a {
+  color: var(--color);
+  text-decoration: underline;
+}
+.customerspage .dashtable::-webkit-scrollbar-track, .orderspage .dashtable::-webkit-scrollbar-track {
+  background:#f1f1f1;
+}
+.dashbox .footnote {
+  position: relative;
+  display: block;
+  color: #aaa;
+  margin-top: 10px;
+  cursor: auto;
+}
+.dashbox .footnote:hover {
+  background: none;
 }
 
-
-
-
-
+.createorderbtn {
+  padding: 15px 25px;
+  border-radius: 40px;
+  margin-left: 30px;
+  background: var(--color);
+  color: #fff;
+}
+.createorderbtn:hover {
+  filter: brightness(110%)
+}
+.dashbox .orderstable tbody .orderstatus span {
+  background: var(--light);
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
 
 

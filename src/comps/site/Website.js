@@ -16,6 +16,7 @@ import Search from './Search'
 import Wishlist from './Wishlist';
 import Login from '../Login'
 import OrderConfirm from './OrderConfirm';
+import CompareView from './CompareView'
 
 function Website(props) { 
  
@@ -41,6 +42,7 @@ function Website(props) {
   const [addcart, setAddcart] = useState(false)
   const [wishlist, setWishlist] = useState(false)
   const [instock, setStock] = useState(false)
+  const [qty, setQty] = useState(0)
    
   function updateCartNum() {
     setCartitems(num => num+1)
@@ -85,7 +87,7 @@ function Website(props) {
     setCouponamount(couponamount)
   }
   
-  function openProduct(prod,id,name,img,price,descript,color,cat,sizes,units,addcart,wishlist,instock) {
+  function openProduct(prod,id,name,img,price,descript,color,cat,sizes,units,addcart,wishlist,instock,qty) {
     setProd(prod)
     setId(id)
     setName(name)
@@ -99,6 +101,7 @@ function Website(props) {
     setWishlist(wishlist) 
     setAddcart(addcart)
     setStock(instock)
+    setQty(qty)
   } 
 
   useEffect(() => {
@@ -146,7 +149,7 @@ function Website(props) {
           <Contact />
         </Route> 
         <Route path="/product"> 
-          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} instock={instock} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} setprodcolor={setProdColor} setprodsize={setProdSize}/>
+          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} instock={instock} addcart={addcart} qty={qty} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} setprodcolor={setProdColor} setprodsize={setProdSize}/>
         </Route> 
         <Route path="/cart">
           <CartPage prod={prod} subtotal={subtotal} cartitems={cartitems} connectsub={connectSub} subcartnum={subCartNum} zerocartnum={zeroCartNum} colorupdate={colorupdate} sizeupdate={sizeupdate} applycoupon={applyCoupon} openproduct={openProduct}/>
@@ -163,6 +166,7 @@ function Website(props) {
       </Switch> 
    
       <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} setprodcolor={setProdColor} setprodsize={setProdSize} />
+      <CompareView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} addcart={addcart}/>
       <Footer /> 
     </>
   )

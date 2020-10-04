@@ -41,20 +41,29 @@ function Item(props) {
       }
     }) 
      
-      const addtocart = document.querySelectorAll('.itemcont .addtocart')
-      addtocart.forEach(el => {
-        el.onclick = () => {
-          document.querySelector('.cartcont').style.opacity = '1'
-          document.querySelector('.cartcont').style.visibility = 'visible'
-          document.querySelector('.cartcont').style.top = '45px'
-          setTimeout(() => {
-            document.querySelector('.cartcont').style.opacity = ''
-          document.querySelector('.cartcont').style.visibility = ''
-          document.querySelector('.cartcont').style.top = ''
-          }, 3000);
-        }
-      })  
-    
+    const addtocart = document.querySelectorAll('.itemcont .addtocart')
+    addtocart.forEach(el => {
+      el.onclick = () => {
+        document.querySelector('.cartcont').style.opacity = '1'
+        document.querySelector('.cartcont').style.visibility = 'visible'
+        document.querySelector('.cartcont').style.top = '45px'
+        setTimeout(() => {
+          document.querySelector('.cartcont').style.opacity = ''
+        document.querySelector('.cartcont').style.visibility = ''
+        document.querySelector('.cartcont').style.top = ''
+        }, 3000);
+      }
+    })  
+    const comparebtn = document.querySelectorAll('.comparebtn')
+    const comparecont = document.querySelector('.comparecont')
+    comparebtn.forEach(el => {
+      el.onclick = () => {
+        comparecont.style.display = 'flex'
+        setTimeout(() => {
+          comparecont.style.opacity = '1'
+        }, 100);
+      }
+    })
  
   },[]) 
  
@@ -66,8 +75,8 @@ function Item(props) {
         <Link to="/product" onClick={() => {props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.addcart,props.wishlist);window.scrollTo(0, 0)}}><img src={props.img} alt="item"/></Link>
         <div className="itemactions">
           <i style={{display: props.instock?"inline-block":"none"}} className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart(props.name)}></i>
-          <i onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty)} className="fas fa-search-plus quickviewbtn"></i> 
-          <i className="fas fa-random"></i>
+          <i className="fas fa-search-plus quickviewbtn" onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty)}></i> 
+          <i className="fas fa-random comparebtn" onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist)}></i>
         </div> 
       </div> 
       <div className="iteminfodiv">

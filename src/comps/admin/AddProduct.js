@@ -123,7 +123,7 @@ function AddProduct() {
             </label> 
             <label> 
               <h6>Product Quantity</h6> 
-              <input className="qtyinp" type="number" value={qty} placeholder="0" onChange={(e) => {setQty((e.target.value)>0?e.target.value:0); qty>0?setStock(true):""}}/><div className="clear"></div>
+              <input className="qtyinp" type="number" value={qty} placeholder="0" onChange={(e) => {setQty((e.target.value)>0?e.target.value:0); /*qty>0?setStock(true):""*/}}/><div className="clear"></div>
             </label>
             <label className="imguploadlabel"> 
               <h6>Product Image</h6>

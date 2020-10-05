@@ -676,7 +676,7 @@ section .secsubtitle {
   top: 50px;
   transition-delay: 0.3s;
 }
-.productsgrid .itemactions i:hover {
+.itemactions i:hover {
   background: #f1f1f1;
   color: #333;
 }
@@ -2393,7 +2393,8 @@ footer .socials > div i {
 }
 .compareinner {
   position: relative;
-  height: 85%;
+  margin-top: 20px;
+  height: 95%;
   padding-top: 20px;
   overflow-y: scroll;
 }
@@ -2402,8 +2403,13 @@ footer .socials > div i {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   height: 100%;
+  width: 200%;
   text-align: left;
   border-collapse: collapse;
+}
+.compareinner::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
 .compareview table .compareheader {
   grid-column: span 1;
@@ -2422,7 +2428,7 @@ footer .socials > div i {
   height: 60px;
   font-size: 15px;
   text-align: left;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
 } 
 .compareview table td {
   position: relative;
@@ -2462,7 +2468,7 @@ footer .socials > div i {
 }
 .compareview table td button {
   padding: 10px 20px;
-  background: var(--color);
+  background: #111;
   color: #fff;
 }
 .compareview table tr img {
@@ -2472,12 +2478,15 @@ footer .socials > div i {
   margin-bottom: 20px;
 }
 .compareview table tr:nth-child(odd) {
-  background: #f5f5f5;
+  background: #f7f7f7;
 }
 .compareview table tr th:first-child {
   height: 300px;
 }
-.compareview table th, td { 
+.compareview table tr:first-child {
+  background: #f1f1f1;
+}
+.compareview table th, .compareview table th td { 
   display: block; 
 }
 .compareview table td p {
@@ -2496,8 +2505,15 @@ footer .socials > div i {
   background: #ddd;
   cursor: auto;
 }
-
-
+.compareview table td .removecompare {
+  font-size: 30px;
+  padding: 10px;
+  cursor: pointer;
+  color: #f01645;
+}
+.compareview table td .removecompare:hover {
+  filter: brightness(120%);
+}
 
 
 

@@ -16,7 +16,7 @@ function Shop(props) {
  
   const allprods = products.map(prod => {
       if(((prod.price >= pricefilt[0] && prod.price < pricefilt[1])|| pricefilt === "all") && (prod.cat.includes(catfilter) || catfilter === "all") && (prod.color.includes(colorfilt.toLowerCase()) || colorfilt === "all") && (prod.sizes.includes(sizesfilt) || sizesfilt === "all")) {
-        return <Item prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} descript={prod.descript} hot={prod.hot} sale={prod.sale} color={prod.color} cat={prod.cat} sizes={prod.sizes} addcart={prod.addcart} wishlist={prod.wishlist} qty={prod.qty} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} openproduct={props.openproduct} key={prod.id} resetunits={props.resetunits}/>
+        return <Item prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} descript={prod.descript} hot={prod.hot} sale={prod.sale} color={prod.color} cat={prod.cat} sizes={prod.sizes} addcart={prod.addcart} instock={prod.instock} wishlist={prod.wishlist} qty={prod.qty} compared={prod.compared} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} openproduct={props.openproduct} key={prod.id} resetunits={props.resetunits} updatecompare={props.updatecompare} updatecompstatus={props.updatecompstatus}/>
       }   
   }) 
 

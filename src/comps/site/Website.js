@@ -28,6 +28,8 @@ function Website(props) {
   const [sizeupdate, setSizeupdate] = useState(false)
   const [couponname, setCouponname] = useState('')
   const [couponamount, setCouponamount] = useState(0)
+  const [update, setUpdate] = useState(0)
+  const [updatestat, setUpdateStat] = useState(0)
 
   const [prod, setProd] = useState("")
   const [id, setId] = useState(0)
@@ -86,6 +88,12 @@ function Website(props) {
     setCouponname(couponname)
     setCouponamount(couponamount)
   }
+  function updateCompare() {
+    setUpdate(prev => prev+1)
+  }
+  function updateCompStatus() {
+    setUpdateStat(prev => prev+1)
+  }
   
   function openProduct(prod,id,name,img,price,descript,color,cat,sizes,units,addcart,wishlist,instock,qty) {
     setProd(prod)
@@ -134,10 +142,10 @@ function Website(props) {
       <Search openproduct={openProduct}/>
       <Switch>  
         <Route exact path="/">
-          <Home updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} />
+          <Home updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} updatecompare={updateCompare} updatecompstatus={updatestat}/>
         </Route>   
         <Route path="/shop">
-          <Shop updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} openproduct={openProduct} />
+          <Shop updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} openproduct={openProduct} updatecompare={updateCompare} updatecompstatus={updatestat}/>
         </Route> 
         <Route path="/about">
           <About />
@@ -166,7 +174,7 @@ function Website(props) {
       </Switch> 
    
       <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} addcart={addcart} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} setprodcolor={setProdColor} setprodsize={setProdSize} />
-      <CompareView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} addcart={addcart}/>
+      <CompareView update={update} updatecompstatus={updateCompStatus}/>
       <Footer /> 
     </>
   )

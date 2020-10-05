@@ -404,6 +404,9 @@ const ProductContextProvider = (props) => {
       compareprods: []
     }    
   )
+  const [cart, setCart] = useState([
+    
+  ])
   const [customers, setCustomers] = useState([
     
   ])
@@ -412,7 +415,7 @@ const ProductContextProvider = (props) => {
   ]) 
   
   return (
-    <ProductContext.Provider value={{products, setProducts,general,setGeneral, customers, setCustomers, orders, setOrders}}>
+    <ProductContext.Provider value={{products, setProducts,general,setGeneral, customers, setCustomers, orders, setOrders, cart, setCart}}>
       {props.children}
     </ProductContext.Provider>
   )

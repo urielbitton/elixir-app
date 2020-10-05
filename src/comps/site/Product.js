@@ -127,15 +127,15 @@ function Product(props) {
                 return <div className="sizebox" onClick={() => sizeUpdate(size)}>{size}</div>
               })
             } 
-            </div>  
+            </div>   
             <div className="clear"></div> 
-          </label>
+          </label> 
           <div className="clear"></div>
           <div className="itemnum">
             <div className="subnum" onClick={() => props.prod.instock?subUnits():""}>-</div>
             <div className="num" data-units={units}>{props.prod.units}</div>
             <div className="addnum" onClick={() => props.prod.instock?addUnits():""}>+</div>
-          </div>
+          </div> 
           {
           props.prod.instock?  
           <Link to={props.prod.addcart?"/cart":"#"}><button className={props.prod.addcart?"viewcart":"addtocart"} onClick={() => props.prod.addcart?"":addToCart()}><i class="fas fa-cart-plus"></i>{props.prod.addcart?"View Cart":"Add To Cart"}</button></Link>

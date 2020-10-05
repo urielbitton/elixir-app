@@ -6,9 +6,10 @@ function AddOrder() {
 
   const {customers, orders, setOrders} = useContext(ProductContext)
 
+  const [id, setId] = useState(orders.length)
   const [number, setNumber] = useState(0)
   const [custname, setCustname] = useState('')
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState('Pending Payment')
   const [total, setTotal] = useState(0)
 
   const history = useHistory()
@@ -17,7 +18,7 @@ function AddOrder() {
   const [date, setDate] = useState(today)
 
   function createOrder() {
-    setOrders(prevOrder => [...prevOrder, {number:number, custname:custname, date:date, status:status, total:total}])
+    setOrders(prevOrder => [...prevOrder, {id:id,number:number, custname:custname, date:date, status:status, total:total}])
     const notif = document.createElement('div')
     notif.innerHTML = `<i class="fas fa-circle-notch"></i><p>Product "Order #${number}" has been successfully created and added to your store.</p><button className="viewprodbtn">View</button>`
     document.querySelector('.notifcont').appendChild(notif)
@@ -43,7 +44,7 @@ function AddOrder() {
           <div className="gsub">
             <label>
               <h6>Order Number</h6>
-              <input placeholder="#3549" type="number" min="0" onChange={(e) => setNumber(e.target.value)}/>
+              <input placeholder="#3549" type="number" min="0" onChange={(e) => setNumber(parseInt(e.target.value,10))}/>
             </label>
             <label>
               <h6>Customer Name</h6>

@@ -1232,11 +1232,35 @@ h4.rightbartitle {
   border-radius: 6px;
   cursor: pointer;
 }
-
-
-
-
-
+.orderstatusbtn {
+  padding: 12px 20px;
+  border-radius: 5px;
+  background: #111;
+  border: none;
+  color: #fff;
+  appearance:none;
+  text-align-last:center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.orderstatusbtn:hover {
+  background: #333;
+}
+.orderspage .currencydiv {
+  height: 44px;
+}
+.orderspage .innerprodopts button {
+  margin-top: 30px;
+  padding: 15px 30px;
+  color: #fff;
+  border-radius: 40px;
+}
+.orderspage .innerprodopts button.saveorderbtn {
+  background: var(--color);
+}
+.orderspage .innerprodopts button.removeorderbtn {
+  background: #FF3737;
+}
 
 
 

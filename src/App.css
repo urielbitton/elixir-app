@@ -1010,7 +1010,9 @@ footer .socials > div i {
   width: 100%;
 }
 .productpage .productimg {
+  position: relative;
   height: 600px;
+  cursor: url('https://i.imgur.com/q0ZCkCH.png'), auto;
 }
 .productimg {
   height: 500px;
@@ -1018,7 +1020,7 @@ footer .socials > div i {
   transition: all 0.3s;
 }
 .productimg:hover {
-  filter: brightness(60%);
+  filter: brightness(70%);
 }
 .product .otherimg {
   position: relative;
@@ -1033,6 +1035,29 @@ footer .socials > div i {
 }
 .product .otherimg:hover {
   background: #eee;
+}
+.product .otherimg img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s;
+}
+.product .otherimg img:hover {
+  opacity: 0.75;
+}
+#zoomresult {
+  position: absolute;
+  left: 540px;
+  width: 70%;
+  height: 90%;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.2);
+  z-index: 900;
+  display: none;
+} 
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  width: 40px;
+  height: 40px;
 }
 .product h2 {
   margin-top: 10px;

@@ -138,7 +138,7 @@ function Website(props) {
     
   return (  
     <> 
-      <Navbar cartitems={cartitems} subtotal={subtotal} units={units} wishnum={wishnum} adminon={props.adminon} />  
+      <Navbar cartitems={cartitems} subtotal={subtotal} units={units} wishnum={wishnum} adminon={props.adminon} openproduct={openProduct}/>  
       <Search openproduct={openProduct}/>
       <Switch>  
         <Route exact path="/">

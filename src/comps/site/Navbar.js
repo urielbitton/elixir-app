@@ -7,11 +7,11 @@ import Menu from './Menu'
 function Navbar(props) { 
  
   const {products} = useContext(ProductContext)
- 
+  
   const cartprods = products.map(prod => {
     if(prod.addcart) {     
       return ( 
-        <CartItem prod={prod} name={prod.name} img={prod.img} price={prod.price} units={prod.units} key={prod.id}/>
+        <CartItem prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} cat={prod.cat} sizes={prod.sizes} units={prod.units} addcart={prod.addcart} instock={prod.instock} wishlist={prod.wishlist} descript={prod.descript} color={prod.color} qty={prod.qty} key={prod.id} openproduct={props.openproduct}/>
       )   
     }      
   })  

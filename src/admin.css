@@ -207,14 +207,14 @@ input::placeholder {
 .addprodbtn:hover {
   filter: brightness(110%);
 }
-.topbar .search {
+.topbar .search { 
   position: relative;
   margin-left: 20px;
   float: left;
 }
 .topbar .search i {
   position: absolute;
-  top: 18px;
+  top: 21px;
   z-index: 10;
   left: 20px;
   color: #aaa;

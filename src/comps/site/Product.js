@@ -92,18 +92,78 @@ function Product(props) {
           }, 200)
       }
     }
-  })
+    const otherimg = document.querySelectorAll('.otherimg img')
+    const productimg = document.querySelector('.productimg')
+    otherimg.forEach(el => { 
+      el.onclick = () => {
+        let imgattr = el.getAttribute('src')
+        productimg.setAttribute('src',imgattr)
+      }
+    }) 
+    
+    const zoomresult = document.querySelector('#zoomresult')
+    productimg.onmouseover = () => {
+      imageZoom("prodimgid", "zoomresult")
+    }
+    productimg.onmouseout = () => {
+      zoomresult.style.display = 'none'
+    }
 
+    function imageZoom(imgID, resultID) {
+      zoomresult.style.display = 'block'
+      var img, lens, result, cx, cy;
+      img = document.getElementById(imgID);
+      result = document.getElementById(resultID);
+      lens = document.createElement("DIV");
+      lens.setAttribute("class", "img-zoom-lens");
+      img.parentElement.insertBefore(lens, img);
+      cx = result.offsetWidth / lens.offsetWidth;
+      cy = result.offsetHeight / lens.offsetHeight;
+      result.style.backgroundImage = "url('" + img.src + "')";
+      result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+      lens.addEventListener("mousemove", moveLens);
+      img.addEventListener("mousemove", moveLens);
+      lens.addEventListener("touchmove", moveLens);
+      img.addEventListener("touchmove", moveLens);
+      function moveLens(e) {
+        var pos, x, y;    
+        e.preventDefault(); 
+        pos = getCursorPos(e);
+        x = pos.x - (lens.offsetWidth / 2);
+        y = pos.y - (lens.offsetHeight / 2);
+        if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+        if (x < 0) {x = 0;}
+        if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+        if (y < 0) {y = 0;}
+        lens.style.left = x + "px";
+        lens.style.top = y + "px";
+        result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+      }
+      function getCursorPos(e) {
+        var a, x = 0, y = 0;
+        e = e || window.event;
+        a = img.getBoundingClientRect();
+        x = e.pageX - a.left;
+        y = e.pageY - a.top;
+        x = x - window.pageXOffset+20;
+        y = y - window.pageYOffset+30;
+        return {x : x, y : y};
+      }
+    }
+  })
+ 
   return (  
     <div className="product">
-        <div>
-          <img className="productimg" src={props.img} alt="productimg" />
-          <div className="otherimg"></div>
+        <div style={{position: "relative"}}>
+          <img id="prodimgid" className="productimg" src={props.img} alt="productimg" />
+          <div className="otherimg"><img src="https://i.imgur.com/lYlrhuI.png" alt=""/></div>
+          <div className="otherimg"><img src={props.img} alt="" /></div>
           <div className="otherimg"></div>
           <div className="otherimg"></div>
           <div className="otherimg"></div>
         </div>
-        <div>
+        <div id="zoomresult" class="img-zoom-result"></div>
+        <div> 
           <h2>{props.name}</h2>
           <h5>${parseFloat(props.price).toFixed(2)}</h5>
           <p>{props.descript}</p>  

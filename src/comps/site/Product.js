@@ -177,6 +177,7 @@ function Product(props) {
                 })
               } 
             </div> 
+            <hr />
             <div className="clear"></div> 
           </label> 
           <label>
@@ -188,6 +189,7 @@ function Product(props) {
               })
             } 
             </div>   
+            <hr />
             <div className="clear"></div> 
           </label> 
           <div className="clear"></div>
@@ -202,22 +204,14 @@ function Product(props) {
           : <button disabled className="addtocart cartdisabled"><i class="fas fa-cart-plus"></i>Add To Cart</button>
           }
           <div className="metaitem">
-            <h6>Categories:  
-              <span>
-              {
-                props.cat.map(cat => {
-                  return cat+", "
-                })
-              } 
-              </span>
-              </h6>
+            <h6>Categories: <span>{props.cat.map(cat => {return cat+", "})}</span></h6>
             <h6>Product ID: <span>elx{parseInt(props.id,10)+1000}</span></h6>
-            <h6>Stock Status: <span style={{color: props.prod.instock?"":"#FF3737"}}>{props.prod.instock?"In Stock":"Out Of Stock"}</span></h6>
-            <h6>Share Product</h6>
-            <div><i class="fab fa-facebook-f"></i></div>
-            <div><i class="fab fa-twitter"></i></div>
-            <div><i class="fab fa-instagram"></i></div>
-            <div><i class="fab fa-linkedin-in"></i></div> 
+            <h6>Stock Status: <span style={{color: props.prod.instock?"#7deb00":"#FF3737"}}>{props.prod.instock?"In Stock":"Out Of Stock"}</span></h6>
+            <h6>Ratings: <span>{props.prod.ratings}</span></h6>
+            <h6>Share Product <span className="socialsgroup"><i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin-in"></i></span></h6> 
           </div>
           <div className="clear"></div> 
           <small style={{display:"none"}}>{props.wishnum}</small> 

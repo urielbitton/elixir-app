@@ -1059,8 +1059,11 @@ footer .socials > div i {
   width: 40px;
   height: 40px;
 }
+.quickviewcont #zoomresult {
+  display: none;
+  visibility: hidden;
+}
 .product h2 {
-  margin-top: 10px;
   font-size: 35px;
   font-weight: 500;
   color: #666;
@@ -1098,13 +1101,12 @@ footer .socials > div i {
 }
 .product label .sizesboxdiv, .product label .colorboxcont {
   float: right;
-  margin-bottom: 10px;
-}
+  margin-bottom: 5px;
+} 
 .colorboxcont .colorbox {
   position: relative;
   width: 40px;
   height: 40px;
-  border: 1px solid #f5f5f5;
   display: inline-flex;
   margin: auto 5px;
   font-size: 14px;
@@ -1198,16 +1200,15 @@ footer .socials > div i {
   text-transform: lowercase;
   margin-left: 20px;
 }
-.product .metaitem > div {
-  float: left;
-  margin-right: 20px;
+.product .metaitem .socialsgroup i {
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 5px;
   padding: 5px;
+  font-size: 17px;
   color: #aaa;
 }
-.product .metaitem > div i {
-  cursor: pointer;
-}
-.product .metaitem > div i:hover {
+.product .metaitem .socialsgroup i:hover {
   color: #333;
 }
 .product .addtowish {

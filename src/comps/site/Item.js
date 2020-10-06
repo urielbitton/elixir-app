@@ -79,15 +79,15 @@ function Item(props) {
       <div className="imgcont"> 
         <div className="labelcont"><small className="sale" style={{display: (props.sale?"block":"none")}}>Sale</small><small style={{display: (props.hot?"block":"none") }} className="hot">Hot</small></div>
         <Link to={props.wishlist?"/wishlist":"#"} className="heartlink" onClick={() => props.wishlist?scrollUp():"#"}><i className={props.wishlist?"fas fa-heart":"far fa-heart"} onClick={() => props.wishlist?"":addToWishlist()}></i></Link>
-        <Link to="/product" onClick={() => {props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty);window.scrollTo(0, 0)}}><img src={props.img} alt="item"/></Link>
+        <Link to="/product" onClick={() => {props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings);window.scrollTo(0, 0)}}><img src={props.img} alt="item"/></Link>
         <div className="itemactions">
           <i style={{display: props.instock?"inline-block":"none"}} className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart(props.name)}></i>
-          <i className="fas fa-search-plus quickviewbtn" onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty)}></i> 
+          <i className="fas fa-search-plus quickviewbtn" onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings)}></i> 
           <i className="fas fa-random comparebtn" onClick={() => props.compared?"":addToCompare(props.prod)} style={{color: props.compared?"var(--color)":""}}></i>
         </div> 
       </div> 
       <div className="iteminfodiv">
-        <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty)}><Link to="/product">{props.name}</Link></h5>
+        <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings)}><Link to="/product">{props.name}</Link></h5>
         <small>${parseFloat(props.price).toFixed(2)}</small> 
       </div> 
     </div>  

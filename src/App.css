@@ -118,10 +118,13 @@ hr {
 }
 .spacerl {
   height: 100px;
-} 
+}  
 [re-tab] {
   display: none;
-} 
+}
+[re-tab="description"] {
+  display: block;
+}
 
 nav {
   position: fixed;
@@ -1223,9 +1226,6 @@ footer .socials > div i {
   background: #444;
 }
 
-[re-taber="acc1"] {
-  display: block;
-} 
 .productpage .prodaccordion {
   text-align: center;
   width: 60%;
@@ -2570,12 +2570,49 @@ footer .socials > div i {
   grid-row: span 2;
 }
 
-
-
-
-
-
-
+.ratingscont {
+  padding: 30px 0;
+  text-align: center;
+}
+.ratingscont h2 {
+  font-size: 30px;
+  display: inline-block;
+  color: #333;
+}
+.reviewstab {
+  text-align: center;
+}
+.reviewstab p {
+  margin-bottom: 30px;
+}
+.reviewstab textarea, .reviewstab input {
+  padding: 15px 10px;
+  font-family: inherit;
+  width: 500px;
+  resize: vertical;
+  border: none;
+  background: #f5f5f5;
+  display: block;
+  margin: auto;
+  margin-bottom: 15px;
+}
+.reviewstab textarea {
+  min-height:100px;
+}
+.reviewstab button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  background: #111;
+  color: #fff;
+}
+.reviewstab button:hover {
+  background: #333;
+}
+.reviewscont {
+  position: relative;
+  width: 600px;
+  padding: 30px;
+}
 
  
 

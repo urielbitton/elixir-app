@@ -222,17 +222,17 @@ input::placeholder {
 .topbar .search input {
   padding: 12px 20px;
   top: 7px;
-  border: none;
   background: #f2f7fa;
   border-radius: 20px;
   padding-left: 50px;
-  max-width: 200px;
+  width: 200px;
   transition: all 0.3s;
   border: 1px solid transparent;
 }
 .topbar .search input:focus {
-  max-width: 250px;
-  border: 1px solid var(--light)
+  width: 300px;
+  border: 1px solid var(--light);
+  transition: all 0.3s;
 }
 .topbar .search input::placeholder {
   opacity: 0.3;
@@ -1261,6 +1261,97 @@ h4.rightbartitle {
 .orderspage .innerprodopts button.removeorderbtn {
   background: #FF3737;
 }
+
+.searchbar {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  height: 500px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+  display: none;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.searchbar .close {
+  font-size: 26px;
+  position: absolute;
+  right: 30px;
+  top: 10px;
+  cursor: pointer;
+  z-index: 100;
+}
+.innersearchbar {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 30px;
+  padding: 30px;
+  height: 98%;
+  width: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.innersearchbar::-webkit-scrollbar {
+  width: 10px; 
+}
+.searchbar h3 {
+  font-size: 22px;
+  color: #999;
+  white-space: nowrap;
+}
+.searchbar .sbox {
+  position: relative;
+  background: #fafafa;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  height: 140px;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+.searchbar .sbox:hover {
+  box-shadow: 0 6px 10px rgba(0,0,0,0.12);
+}
+.searchbar .sbox h4 {
+  font-size: 18px;
+  color: #333;
+}
+.searchbar .sbox small {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 0;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  display: block;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: capitalize;
+}
+.searchbar .sbox h6 {
+  font-size: 13px;
+  color: #aaa;
+  font-weight: 500;
+  margin-top: 10px;
+}
+[data-stype="product"] {
+  background: var(--color);
+} 
+[data-stype="coupon"] {
+  background: rgb(88, 219, 0);
+} 
+[data-stype="order"] {
+  background: rgb(219, 0, 66);
+} 
+[data-stype="customer"] {
+  background: rgb(255, 196, 2);
+} 
 
 
 

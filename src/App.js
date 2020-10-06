@@ -8,8 +8,8 @@ import Login from './comps/Login'
 
 function App() {
  
-  const [login, setLogin] = useState(false)
-  const [admin, setAdmin] = useState(false)
+  const [login, setLogin] = useState(true)
+  const [admin, setAdmin] = useState(true)
   const history = useHistory()
 
   function logIn() {

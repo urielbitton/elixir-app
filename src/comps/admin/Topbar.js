@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
+import Search from './Search';
 
 function Topbar(props) { 
 
   const [darkmode, setDarkmode] = useState(false)
+  const [keyword, setKeyword] = useState()
+  const pattern = new RegExp('\\b' + keyword, 'i')
 
   function slideGrid() {
     const dashboard = document.querySelector('.dashboard')
@@ -30,6 +33,22 @@ function Topbar(props) {
       document.querySelectorAll('.sidemenu h5 i:first-child').forEach(el => el.style.fontSize = '')
     }
   }
+  function openSearch() {
+    const searchbar = document.querySelector('.searchbar') 
+    searchbar.style.display = 'block'
+    setTimeout(() => {
+      searchbar.style.top = '70px'
+      searchbar.style.opacity = '1'
+    }, 100);
+  } 
+  function closeSearch() {
+    const searchbar = document.querySelector('.searchbar') 
+    searchbar.style.opacity = ''
+    searchbar.style.top = ''
+    setTimeout(() => { 
+      searchbar.style.display = ''
+    }, 150);
+  }
 
   useEffect(() => {
     if(darkmode === true) {
@@ -40,7 +59,16 @@ function Topbar(props) {
       document.querySelectorAll('.topbar,.sidebar,.homecont,.addproductcont,input,select,textarea').forEach(el => el.style.background = '')
       document.querySelectorAll('.dashbox').forEach(el => el.style.background = '')
     }
-  },[darkmode]) 
+    const searchbar = document.querySelector('.searchbar')
+    const close = document.querySelector('.searchbar .close')
+    close.onclick = () => {
+      searchbar.style.cssText += 'opacity:0;top:90px'
+      setTimeout(() => {
+        searchbar.style.display = 'none'
+      }, 100);
+    } 
+
+  },[]) 
 
   return (
     <div className="topbar"> 
@@ -54,7 +82,7 @@ function Topbar(props) {
         <Link to="/addproduct"><button className="addprodbtn"><i className="fas fa-plus"></i>Add Product</button></Link>
         <label className="search">
           <i className="fas fa-search"></i>
-          <input placeholder="Search"/>
+          <input placeholder="Search" onFocus={() => openSearch()} onKeyUp={(e) => setKeyword(e.target.value)} />
         </label>
       </div>
       <div className="right">
@@ -70,6 +98,9 @@ function Topbar(props) {
       </div>
 
       <div className="clear"></div>
+
+      <Search pattern={pattern} />
+
     </div>
   )
 }

@@ -1,28 +1,13 @@
 import React, { useContext, useEffect, useState } from "react"
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory
-} from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom"
 import PageBanner from "./PageBanner"
 import { ProductContext } from "./ProductContext"
-
+ 
 function Checkout(props) {
-  const {
-    products,
-    general,
-    customers,
-    setCustomers,
-    orders,
-    setOrders
-  } = useContext(ProductContext)
+  const {products, general, customers, setCustomers, orders, setOrders} = useContext(ProductContext)
 
   const [taxrate, setTaxrate] = useState(general.taxrate)
-  const [total, setTotal] = useState(
-    (props.subtotal + props.subtotal * taxrate).toFixed(2) - props.couponamount
-  )
+  const [total, setTotal] = useState((props.subtotal + props.subtotal * taxrate).toFixed(2) - props.couponamount)
   const [subtotal, setSubtotal] = useState(props.subtotal.toFixed(2))
   const [details, setDetails] = useState(false)
   const [disable, setDisable] = useState(false)
@@ -50,17 +35,10 @@ function Checkout(props) {
 
   function genDate() {
     let date = new Date()
-    return (
-      date.getFullYear() +
-      "-" +
-      (date.getMonth() + 1) +
-      "-" +
-      (date.getDate() < 10 ? "0" + date.getDate() : date.getDate())
-    )
+    return (date.getFullYear() +"-" +(date.getMonth() + 1) +"-" +(date.getDate() < 10 ? "0" + date.getDate() : date.getDate()))
   }
   function createCustomer() {
-    setCustomers((prevCust) => [
-      ...prevCust,
+    setCustomers((prevCust) => [...prevCust,
       {
         id: id,
         name: fname + " " + lname,
@@ -310,10 +288,7 @@ function Checkout(props) {
         </div>
       </div>
 
-      <div
-        className={details ? "detailscont opendetails" : "detailscont"}
-        onClick={() => setDetails(false)}
-      >
+      <div className={details ? "detailscont opendetails" : "detailscont"} onClick={() => setDetails(false)}>
         <i className="close"></i>
         <div className="details" onClick={(e) => e.stopPropagation()}>
           <h3>Product Details</h3>

@@ -17,15 +17,20 @@ function ProductPage(props) {
       return <Item prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} descript={prod.descript} hot={prod.hot} sale={prod.sale} color={prod.color} cat={prod.cat} sizes={prod.sizes} addcart={prod.addcart} instock={prod.instock} units={prod.units} wishlist={prod.wishlist} qty={prod.qty} compared={prod.compared} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updatewish={props.updatewish} openproduct={props.openproduct} key={prod.id} resetunits={props.resetunits} updatecompare={props.updatecompare} updatecompstatus={props.updatecompstatus}/> 
     }
   }) 
-  let reviewsarr = []
-  function addReview() {
+  function addReview(id) {
     const reviewobj = {'name':name, 'text':text}
-    reviewsarr.push(reviewobj)
+    products.map(prod => {
+      if(prod.id === id) {
+        prod.reviews.push(reviewobj)
+      }
+    })
     setUpdate(prev => prev+1)
-  }
-  const prodreviews = reviewsarr.map(rev => {
-    return <div className="reviewbox">{rev.name}<br/>{rev.text}</div>
-  })
+  } 
+  const prodreviews = products.map(prod => {
+    if(prod.id === props.prod.id) {
+      return <div className="reviewbox">{prod.reviews.name}<br/>{prod.reviews.text}</div>
+    } 
+  }) 
 
   useEffect(() => {
     const taber = document.querySelectorAll('[re-taber]')
@@ -69,7 +74,7 @@ function ProductPage(props) {
                 <textarea placeholder="Add your review here..." onChange={(e) => setText(e.target.value)}/>
               </form>
               <br/> 
-              <button onClick={() => addReview()}>Add Review</button>
+              <button onClick={() => addReview(props.prod.id)}>Add Review</button>
 
               <div className="reviewscont">
                 {prodreviews}

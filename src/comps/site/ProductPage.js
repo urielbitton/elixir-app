@@ -11,8 +11,15 @@ function ProductPage(props) {
   const [name, setName] = useState('')
   const [title, setTitle] = useState('')
   const [update, setUpdate] = useState(0)
+  const [rating, setRating] = useState(1)
+  const [ratenum, setRatenum] = useState(props.prod.reviews.length)
   const formRef = useRef()
-  let mapcount = 0
+  let mapcount = 0, avgrating = 0, totalratenum = 0
+
+  const thetotalrates = props.prod.reviews.map(rev => {
+    return parseFloat(totalratenum += rev.rating)
+  })   
+  avgrating = thetotalrates / ratenum
 
   const similarprods = products.map(prod => {
     if(props.cat.some(el => prod.cat.includes(el)) && props.id !== prod.id && mapcount<4) {
@@ -23,15 +30,21 @@ function ProductPage(props) {
   function addReview() {
     let date = new Date()
     date = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()
-    setId(prev => prev+1) 
-    const reviewobj = {'id':id,'name':name, 'text':text,'title':title,'date':date,'display':'none','edit':false}
+    setId(id) 
+    const reviewobj = {'id':id,'name':name, 'text':text,'title':title,'date':date,'display':'none','edit':false, 'textcopy':text,'rating':parseFloat(rating)}
     products.map(prod => { 
       if(prod.id === props.prod.id) {
-        prod.reviews.push(reviewobj)
+        prod.reviews.unshift(reviewobj)
       }
-    })
+    }) 
+    setRatenum(prev => prev+1)
     setUpdate(prev => prev+1)
-  } 
+    setName('')
+    setText('')
+    setTitle('')
+    setRating(1)
+    setId(prev => prev+1)
+  }  
   function editReview(revid) {
     props.prod.reviews.map(rev => {
       if(revid === rev.id) {
@@ -46,27 +59,49 @@ function ProductPage(props) {
       if(revid === rev.id) {
         rev.edit = false
         rev.display = 'none'
-        setText(text)
+        rev.text = rev.textcopy
         setUpdate(prev => prev+1)
       }
     }) 
   }
+  function deleteReview(revid) {
+    props.prod.reviews.map(rev => {
+      if(revid === rev.id) {
+        let index = props.prod.reviews.indexOf(rev)
+        props.prod.reviews.splice(index, 1) 
+        setUpdate(prev => prev+1)
+      }
+    })
+    setRatenum(prev => prev-1)
+  } 
 
   const prodreviews = products.map(prod => { 
     return (prod.id === props.prod.id)?
       prod.reviews.map(rev => {
-        return <div className="reviewbox" data-id={rev.id}>
+        return <div className="reviewbox" data-id={rev.id} data-starnum={rev.rating}>
           <div className="left">
             <img src="https://i.imgur.com/g7JKbDk.png" alt=""/>
             <h6>{rev.name}</h6>
             <div className="clear"></div>
-            <h4>{rev.title}</h4> 
+            <div className="starsrated">
+            { 
+             Array.apply(null, { length: rev.rating }).map((el) => (
+                <i className="fas fa-star"></i>
+              )) 
+            } 
+            {
+             Array.apply(null, { length: 5-rev.rating }).map((el) => (
+                <i className="far fa-star"></i>
+              )) 
+            }   
+            </div><h4>{rev.title}</h4> 
+            <div className="clear"/>
             <span>Reviewed On: <i>{rev.date}</i></span> 
             <p>{rev.text}</p>
             <div className="reviewsactions">
-              <small onClick={() => rev.edit?saveReview(rev.id):editReview(rev.id)}>{rev.edit?"Save":"Edit"}</small><small>|</small><small>Delete</small><small>|</small><small>Report</small>
+              <small onClick={() => rev.edit?saveReview(rev.id):editReview(rev.id)}>{rev.edit?"Save":"Edit"}</small><small onClick={() => deleteReview(rev.id)}>Delete</small><small>Report</small>
             </div>
-            <textarea className="editreviewtext" value={rev.text} onChange={(e) => {rev.text = e.target.value;setUpdate(prev => prev+1)}} style={{display:rev.display}}></textarea>
+            <textarea className="editreviewtext" value={rev.textcopy} onChange={(e) => {rev.textcopy = e.target.value;setUpdate(prev => prev+1)}} style={{display:rev.display}}></textarea>
           </div>    
           <div className="clear"></div>
           </div>
@@ -83,7 +118,32 @@ function ProductPage(props) {
         document.querySelectorAll('[re-tab]').forEach(el2 => el2.style.display = 'none')
         document.querySelector('[re-tab="'+el.getAttribute('re-taber')+'"]').style.display = 'block'
       }
+    }) 
+    const allstars = document.querySelectorAll('.starratings i')
+    allstars.forEach(el => {
+      el.onclick = () => {
+        setRating(el.getAttribute('data-star'))
+        let starlevel = el.getAttribute('data-star')
+        allstars.forEach(el2 => {
+          if(starlevel < el2.getAttribute('data-star')) {
+            el2.classList.remove('fas')
+            el2.classList.add('far')
+          }
+          else {
+            el2.classList.remove('far')
+            el2.classList.add('fas')
+          }
+        })
+      }
     })
+    document.querySelector('.addreviewbtn').onclick = () => {
+      allstars.forEach(star => {
+          star.classList.remove('fas')
+          star.classList.add('far') 
+          document.querySelector('[data-star="1"]').classList.add('fas') 
+          document.querySelector('[data-star="1"]').classList.remove('far') 
+      })
+    }
     
   })
 
@@ -96,6 +156,12 @@ function ProductPage(props) {
         <hr />
         <div className="ratingscont">
           <h2>Ratings</h2>
+          <div className="ratingscontinner">
+            <h5>
+            {parseFloat(avgrating)}
+            </h5>
+            <h6>{ratenum} total product ratings</h6>
+          </div>
         </div>
         <hr />
         <div className="prodaccordion">
@@ -112,12 +178,22 @@ function ProductPage(props) {
             <div re-tab="reviews" className="reviewstab" data-update={update}>
               <p>{props.prod.reviews.length<1?"There are no reviews yet. Add the first review.":""}</p> 
               <form ref={formRef}> 
+              <label>
+                <h5>Overall Rating</h5>
+                <div className="starratings">
+                  <i className="fas fa-star" data-star="1"></i>
+                  <i className="far fa-star" data-star="2"></i>
+                  <i className="far fa-star" data-star="3"></i>
+                  <i className="far fa-star" data-star="4"></i>
+                  <i className="far fa-star" data-star="5"></i>
+                </div>
+              </label>
                 <label><h6>Name</h6><input placeholder="Your Name" onChange={(e) => setName(e.target.value)}/></label>
                 <label><h6>Title</h6><input placeholder="Review Title" onChange={(e) => setTitle(e.target.value)}/></label>
                 <label><h6>Review</h6><textarea placeholder="Add your review here..." onChange={(e) => setText(e.target.value)}/></label>
               </form>
               <br/> 
-              <button onClick={() => {formRef.current.reset(); addReview()}}>Add Review</button>
+              <button className="addreviewbtn" onClick={() => {formRef.current.reset(); addReview()}}>Add Review</button>
               <div className="reviewscont">
                 <h5>{props.prod.reviews.length>0?"Product Reviews":""}</h5>
                 {prodreviews} 

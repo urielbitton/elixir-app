@@ -2574,6 +2574,10 @@ footer .socials > div i {
   padding: 30px 0;
   text-align: center;
 }
+.ratingscontinner {
+  display:block;
+  margin-top: 20px;
+}
 .ratingscont h2 {
   font-size: 30px;
   display: inline-block;
@@ -2596,6 +2600,20 @@ footer .socials > div i {
   color: #555;
   text-align: left;
   margin-bottom: 10px;
+}
+.reviewstab label h5 {
+  text-align: left;
+  font-size: 18px;
+}
+.starratings {
+  position: relative;
+  padding: 20px 0;
+  text-align: left;
+}
+.starratings i {
+  font-size: 30px;
+  color: #ffc505; 
+  cursor: pointer;
 }
 .reviewstab textarea, .reviewstab input {
   position: relative;
@@ -2665,26 +2683,41 @@ footer .socials > div i {
 }
 .reviewbox h4 {
   margin-top: 10px;
+  float: left;
+} 
+.reviewbox .starsrated {
+  position: relative;
+  float: left;
+  margin-right: 15px;
+  top: 9px;
+  font-size: 17px;
+  color: #ffc505;
 } 
 .productpage  .reviewbox p {
   font-size: 13px;
   margin-top: 5px;
   margin-bottom: 0;
   color: #111;
+  white-space: pre-wrap;
 }
 .reviewsactions small {
+  display: inline-block;
   margin-right: 10px;
+  margin-top: 5px;
   font-size: 11px;
   cursor: pointer;
-  color: #aaa;
+  color: #111;
+  background: #eee;
+  padding: 5px 10px;
 }
 .reviewsactions small:hover {
-  color: var(--color);
+  background: #e1e1e1;
 }
 .reviewbox .editreviewtext {
   display: none;
   width: 400px;
   margin-top: 5px;
+  white-space: pre-wrap;
 }
  
 

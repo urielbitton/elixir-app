@@ -122,7 +122,7 @@ hr {
 [re-tab] {
   display: none;
 }
-[re-tab="description"] {
+[re-tab="reviews"] {
   display: block;
 }
 
@@ -1053,12 +1053,12 @@ footer .socials > div i {
   width: 70%;
   height: 90%;
   box-shadow: 0 1px 10px rgba(0,0,0,0.2);
-  z-index: 900;
+  z-index: 800;
   display: none;
-} 
+}  
 .img-zoom-lens {
   position: absolute;
-  border: 1px solid #d4d4d4;
+  border: none;
   width: 40px;
   height: 40px;
 }
@@ -2585,36 +2585,123 @@ footer .socials > div i {
 .reviewstab p {
   margin-bottom: 30px;
 }
+.reviewstab label {
+  position: relative;
+  width: 500px;
+  display: block;
+  margin: auto;
+}
+.reviewstab label h6 {
+  font-size: 14px;
+  color: #555;
+  text-align: left;
+  margin-bottom: 10px;
+}
 .reviewstab textarea, .reviewstab input {
+  position: relative;
   padding: 15px 10px;
   font-family: inherit;
-  width: 500px;
+  width: 100%;
   resize: vertical;
   border: none;
   background: #f5f5f5;
   display: block;
-  margin: auto;
   margin-bottom: 15px;
 }
 .reviewstab textarea {
   min-height:100px;
 }
 .reviewstab button {
-  margin-top: 20px;
   padding: 15px 30px;
   background: #111;
   color: #fff;
+  margin-bottom: 30px;
 }
 .reviewstab button:hover {
   background: #333;
 }
 .reviewscont {
   position: relative;
-  width: 600px;
+  width: 100%;
   padding: 30px;
+  text-align: center;
+  margin: 20px auto;
 }
-
+.reviewscont h5 {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 10px;
+}
+.reviewbox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  margin: auto;
+}
+.reviewbox .left {
+  text-align: left;
+}
+.reviewbox .left:first-child {
+  margin-right:30px;
+}
+.reviewbox img {
+  width: 35px;
+  opacity: 0.8;
+  float: left;
+  margin-right: 15px;
+}
+.reviewbox h6 {
+  font-size: 14px;
+  font-weight: 500;
+  top: 8px;
+} 
+.reviewbox span {
+  color: #111;
+  font-size: 12px;
+}
+.reviewbox span i {
+  font-style: normal;
+  color: #999;
+}
+.reviewbox h4 {
+  margin-top: 10px;
+} 
+.productpage  .reviewbox p {
+  font-size: 13px;
+  margin-top: 5px;
+  margin-bottom: 0;
+  color: #111;
+}
+.reviewsactions small {
+  margin-right: 10px;
+  font-size: 11px;
+  cursor: pointer;
+  color: #aaa;
+}
+.reviewsactions small:hover {
+  color: var(--color);
+}
+.reviewbox .editreviewtext {
+  display: none;
+  width: 400px;
+  margin-top: 5px;
+}
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width:1650px) {
   .grid {

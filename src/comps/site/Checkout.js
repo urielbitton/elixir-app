@@ -123,11 +123,7 @@ function Checkout(props) {
 
   return (
     <div className="checkoutpage">
-      <PageBanner
-        title="Checkout"
-        subtitle="Checkout your products"
-        bgimg="https://i.imgur.com/hgx84Pw.jpg"
-      />
+      <PageBanner title="Checkout" subtitle="Checkout your products" bgimg="https://i.imgur.com/hgx84Pw.jpg" />
       <div className="grid xgrid pgrid">
         <div className="logreg">
           <p>
@@ -136,7 +132,7 @@ function Checkout(props) {
           <p>
             Want to create an account? <a href="#">Click here to register</a>
           </p>
-        </div>
+        </div> 
 
         <div className="checkoutgrid">
           <div className="billingdiv">

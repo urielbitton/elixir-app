@@ -13,9 +13,9 @@ function Reviews(props) {
   const [ratenum, setRatenum] = useState(props.prod.reviews.length)
   const [totalrates, setTotalrates] = useState(props.prod.avgrating.total)
   const formRef = useRef()
-  let rateamount5 = 0, rateamount4 = 0, rateamount3 = 0, rateamount2 = 0, rateamount1 = 0
+  let ratearr1 = [0], ratearr2 = [0], ratearr3 = [0], ratearr4 = [0], ratearr5 = [0] 
   let numarr = [0,0,0,0,0]
- 
+  
   props.prod.avgrating.avg = totalrates / ratenum
 
   function addReview() {
@@ -93,22 +93,20 @@ function Reviews(props) {
           </div>
       }) 
       :"" 
-  }) 
-  rateamount5 = props.prod.reviews.map(rev => {
-    if(rev.rating===5) return 1
-  }) 
-  rateamount4 = props.prod.reviews.map(rev => {
-    if(rev.rating===4) return 1 
   })
-  rateamount3 = props.prod.reviews.map(rev => {
-    if(rev.rating===3) return 1 
-  }) 
-  rateamount2 = props.prod.reviews.map(rev => {
-    if(rev.rating===2) return 1 
-  })
-  rateamount1 = props.prod.reviews.map(rev => {
-    if(rev.rating===1) return 1
-  })
+  props.prod.reviews.map(rev => {
+    if(rev.rating===5) ratearr5.push(1)
+    if(rev.rating===4) ratearr4.push(1)
+    if(rev.rating===3) ratearr3.push(1)
+    if(rev.rating===2) ratearr2.push(1)
+    if(rev.rating===1) ratearr1.push(1)
+  })   
+  let rate5 = ratearr5.reduce((a,b) => a+b)
+  let rate4 = ratearr4.reduce((a,b) => a+b)
+  let rate3 = ratearr3.reduce((a,b) => a+b)
+  let rate2 = ratearr2.reduce((a,b) => a+b)
+  let rate1 = ratearr1.reduce((a,b) => a+b)
+  
 
   useEffect(() => {
     const allstars = document.querySelectorAll('.starratings i')
@@ -153,15 +151,14 @@ function Reviews(props) {
           </h5>
           <div className="reviewsflex" style={{display: isNaN(props.prod.avgrating.avg)?"none":"block"}}>
             <div className="reviewsinner">
-              <div><h6>5 stars</h6><div></div><span>{rateamount5}</span></div>
-              <div><h6>4 stars</h6><div></div><span>{rateamount4}</span></div>
-              <div><h6>3 stars</h6><div></div><span>{rateamount3}</span></div>
-              <div><h6>2 stars</h6><div></div><span>{rateamount2}</span></div>
-              <div><h6>1 star</h6><div></div><span>{rateamount1}</span></div>
-              {console.log(rateamount5)}
+              <div><h6>5 stars</h6><div><div className="meter" style={{width: ((rate5/ratenum)*100)+"%"}}></div></div><span>{rate5 }&nbsp;({((rate5/ratenum)*100).toFixed(1)}%)</span></div>
+              <div><h6>4 stars</h6><div><div className="meter" style={{width: ((rate4/ratenum)*100)+"%"}}></div></div><span>{rate4}&nbsp;({((rate4/ratenum)*100).toFixed(1)}%)</span></div>
+              <div><h6>3 stars</h6><div><div className="meter" style={{width: ((rate3/ratenum)*100)+"%"}}></div></div><span>{rate3}&nbsp;({((rate3/ratenum)*100).toFixed(1)}%)</span></div>
+              <div><h6>2 stars</h6><div><div className="meter" style={{width: ((rate2/ratenum)*100)+"%"}}></div></div><span>{rate2}&nbsp;({((rate2/ratenum)*100).toFixed(1)}%)</span></div>
+              <div><h6>1 star</h6><div><div className="meter" style={{width: ((rate1/ratenum)*100)+"%"}}></div></div><span>{rate1}&nbsp;({((rate1/ratenum)*100).toFixed(1)}%)</span></div>
             </div>
-          </div>
-          <h6>{ratenum===0?"":(ratenum+" total ratings")} </h6>
+          </div> 
+          <h6>{ratenum===0?"":ratenum>1?(ratenum+" total ratings"):(ratenum+" total rating")} </h6>
         </div> 
       </div>  
       <hr />

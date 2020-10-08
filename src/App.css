@@ -2763,7 +2763,7 @@ footer .socials > div i {
   margin-bottom: 10px;
 }
 .reviewsinner > div h6 {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
 }
 .reviewsinner > div i {
@@ -2776,16 +2776,47 @@ footer .socials > div i {
   border-radius: 1px;
   box-shadow: inset 0 1px 2px rgba(0,0,0,.4), inset 0 0 0 1px rgba(0,0,0,.1);
   background: #fafafa;
+  border: 1px solid #eee;
+  padding: 1px;
 }
 .reviewsinner span {
-  color: #ffc505;
+  color: #333;
+  margin-left: 20px;
+  font-size: 15px; 
+}
+.reviewsinner .meter {
+  background: linear-gradient(to bottom,#ffce00,#ffa700);
+  width: 0;
+  height: 100%;
+  transition: all 0.5s;
 }
 
-
-
- 
-
-
+.contactgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  margin-top: 60px;
+}
+.contactgrid i {
+  font-size: 60px;
+  color: #ccc;
+} 
+.contactgrid hr {
+  height: 100px;
+  width: 1px;
+  background: #eee;
+}
+.contactgrid > div i {
+  margin-top: 20px;
+}
+.contactgrid > div h4 {
+  margin-top: 20px;
+  font-size: 19px;
+  color: #555;
+}
 
 
 

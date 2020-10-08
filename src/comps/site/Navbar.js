@@ -87,9 +87,9 @@ function Navbar(props) {
         <div className="right">
           <div onClick={() => scrollUp()} className="wishicondiv" style={{display:props.wishnum>0?"block":"none"}}><Link to="wishlist"><i className="fas fa-heart"></i><small><span>{props.wishnum}</span></small></Link></div>
           <div className="searchdiv searchbtn">
-          <i class="fas fa-search"></i>
+          <i className="fas fa-search"></i>
           </div>
-          <div className="logindiv" onClick={() => props.adminon()}><Link to="/login"><i class="fas fa-user-alt"></i></Link></div>
+          <div className="logindiv" onClick={() => props.adminon()}><Link to="/login"><i className="fas fa-user-alt"></i></Link></div>
           <div className="cartdiv"> 
           <small className="quicksubtotal">${props.subtotal.toFixed(2)}</small>
           <i className="fas fa-shopping-cart"></i>

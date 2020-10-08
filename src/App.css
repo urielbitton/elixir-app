@@ -2574,11 +2574,14 @@ footer .socials > div i {
   color: #ffc505;
 }
 .ratingscont {
+  position: relative;
   padding: 30px 0;
   text-align: center;
 }
 .ratingscontinner {
-  display:block;
+  position: relative;
+  text-align: center;
+  margin: auto;
   margin-top: 20px;
 }
 .ratingscontinner h5 {
@@ -2593,9 +2596,10 @@ footer .socials > div i {
   font-weight: 500;
 }
 .ratingscontinner > h6 {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: #333;
+  margin-top: 20px;
 }
 .ratingscont h2 {
   font-size: 30px;
@@ -2738,30 +2742,48 @@ footer .socials > div i {
 }
 .reviewsflex {
   position: relative;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  margin: auto;
+  text-align: center;
   padding: 10px 0;
+  width: 100%;
 } 
-.reviewsflex > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.reviewsinner {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  display: grid;
+  justify-items: center;
 }
-.reviewsflex > div h6 {
+.reviewsinner > div {
+  display: grid;
+  grid-template-columns: 50px 260px 50px;
+  grid-gap: 10px 0;
+  position: relative;
+  margin-bottom: 10px;
+}
+.reviewsinner > div h6 {
   font-size: 14px;
+  font-weight: 500;
 }
-.reviewsflex > div i {
+.reviewsinner > div i {
   margin-left: 5px;
   top: -1px;
 }
+.reviewsinner > div > div {
+  width: 100%;
+  margin-left: 10px;
+  border-radius: 1px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.4), inset 0 0 0 1px rgba(0,0,0,.1);
+  background: #fafafa;
+}
+.reviewsinner span {
+  color: #ffc505;
+}
+
+
+
  
-
-
-
-
-
 
 
 

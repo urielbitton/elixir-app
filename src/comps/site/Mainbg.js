@@ -15,86 +15,11 @@ function Mainbg() {
     setTimeout(() => { document.querySelector('.slide1 h6').style.cssText += 'opacity:1;left:0' },700)
     setTimeout(() => { document.querySelector('.slide1 h1').style.cssText += 'opacity:1;top:0' },1200)
     setTimeout(() => { document.querySelector('.slide1 button').style.cssText += 'opacity:1;left:0' },1700)
-    setTimeout(() => {
-      setSlide1(false)  
-      setSlide2(true)
-      doSlide1()
-      setTimeout(() => {
-        setSlide2(false) 
-        setSlide3(true)
-        doSlide2()
-        setTimeout(() => {
-          setSlide3(false)
-          setSlide1(true)
-          doSlide3() 
-        }, timeout); 
-      }, timeout);
-    }, timeout)
-    setInterval(() => { 
-      setTimeout(() => {
-        setSlide1(false) 
-        setSlide2(true)
-        doSlide1()
-        setTimeout(() => {
-          setSlide2(false) 
-          setSlide3(true)
-          doSlide2()
-          setTimeout(() => {
-            setSlide3(false)
-            setSlide1(true)
-            doSlide3()
-          }, timeout); 
-        }, timeout);
-      }, timeout)
-    }, interval)
 
   },[]) 
 
-  function doSlide1() {
-    setTimeout(() => { document.querySelector('.slide1 h6').style.cssText += 'opacity:0;left:-50px' },900)
-    setTimeout(() => { document.querySelector('.slide1 h1').style.cssText += 'opacity:0;top:-50px' },700)
-    setTimeout(() => { document.querySelector('.slide1 button').style.cssText += 'opacity:0;left:-50px' },500)
-    setTimeout(() => {
-      document.querySelector('.slide1').style.opacity = '0'
-      setTimeout(() => {document.querySelector('.slide1').style.display = 'none'},500)
-      document.querySelector('.slide2').style.display = 'block'
-      setTimeout(() => { document.querySelector('.slide2').style.opacity = '1' }, 200)
-      setTimeout(() => { document.querySelector('.slide2 h6').style.cssText += 'opacity:1;left:0' },700)
-      setTimeout(() => { document.querySelector('.slide2 h1').style.cssText += 'opacity:1;top:0' },1200)
-      setTimeout(() => { document.querySelector('.slide2 button').style.cssText += 'opacity:1;left:0' },1700)
-    }, 800);
-  }
-  function doSlide2() {
-    setTimeout(() => { document.querySelector('.slide2 h6').style.cssText += 'opacity:0;left:-50px' },900)
-    setTimeout(() => { document.querySelector('.slide2 h1').style.cssText += 'opacity:0;top:-50px' },700)
-    setTimeout(() => { document.querySelector('.slide2 button').style.cssText += 'opacity:0;left:-50px' },500)
-    setTimeout(() => {
-      document.querySelector('.slide2').style.opacity = '0' 
-      setTimeout(() => {document.querySelector('.slide2').style.display = 'none'},500)
-      document.querySelector('.slide3').style.display = 'block'
-      setTimeout(() => { document.querySelector('.slide3').style.opacity = '1' }, 200)
-      setTimeout(() => { document.querySelector('.slide3 h6').style.cssText += 'opacity:1;left:0' },700)
-      setTimeout(() => { document.querySelector('.slide3 h1').style.cssText += 'opacity:1;top:0' },1200)
-      setTimeout(() => { document.querySelector('.slide3 button').style.cssText += 'opacity:1;left:0' },1700)
-    }, 800);
-  }
-  function doSlide3() {
-    setTimeout(() => { document.querySelector('.slide3 h6').style.cssText += 'opacity:0;left:-50px' },900)
-    setTimeout(() => { document.querySelector('.slide3 h1').style.cssText += 'opacity:0;top:-50px' },700)
-    setTimeout(() => { document.querySelector('.slide3 button').style.cssText += 'opacity:0;left:-50px' },500)
-    setTimeout(() => {
-      document.querySelector('.slide3').style.opacity = '0'
-      setTimeout(() => {document.querySelector('.slide3').style.display = 'none'},500)
-      document.querySelector('.slide1').style.display = 'block'
-      setTimeout(() => { document.querySelector('.slide1').style.opacity = '1' }, 200)
-      setTimeout(() => { document.querySelector('.slide1 h6').style.cssText += 'opacity:1;left:0' },700)
-      setTimeout(() => { document.querySelector('.slide1 h1').style.cssText += 'opacity:1;top:0' },1200)
-      setTimeout(() => { document.querySelector('.slide1 button').style.cssText += 'opacity:1;left:0' },1700)
-    }, 800);
-  }
-
   
-  return (
+  return ( 
     <div className="bgcont">
       <div className="slide1 slide">
         <div className="bgimg"></div>
@@ -103,29 +28,29 @@ function Mainbg() {
           <h1>Shop<br/>Promos 2020</h1>
           <Link to="shop" onClick={() => window.scrollTo(0, 0)}><button>Shop Now</button></Link>
         </div>
-      </div>
+      </div> 
       <div className="slide2 slide">
         <div className="bgimg"></div>
         <div className="grid">
           <h6>#onsale2020</h6>
-          <h1>Shop<br/>Promos 2020</h1>
-          <Link to="shop" onClick={() => window.scrollTo(0, 0)}><button>Shop Now</button></Link>
+          <h1>Find<br/>The Best Deals</h1>
+          <Link to="shop" onClick={() => window.scrollTo(0, 0)}><button>Get Deals</button></Link>
         </div>
-      </div>
+      </div> 
       <div className="slide3 slide">
         <div className="bgimg"></div>
         <div className="grid">
           <h6>#hot2020</h6>
-          <h1>Shop<br/>Promos 2020</h1>
-          <Link to="shop" onClick={() => window.scrollTo(0, 0)}><button>Shop Now</button></Link>
+          <h1>Shop<br/>Trending Fashion</h1>
+          <Link to="shop" onClick={() => window.scrollTo(0, 0)}><button>View Collection</button></Link>
         </div> 
-      </div>
+      </div> 
       
-      <div className="pgrid">
+      <div className="pgrid"> 
         <div className="bgnav"> 
-          <div style={{opacity: slide1?"1":""}}></div>
-          <div style={{opacity: slide2?"1":""}}></div>
-          <div style={{opacity: slide3?"1":""}}></div>
+          <div className="nav1" style={{opacity: slide1?"1":""}}></div>
+          <div className="nav2" style={{opacity: slide2?"1":""}}></div>
+          <div className="nav3" style={{opacity: slide3?"1":""}}></div>
         </div>
       </div>
       

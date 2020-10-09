@@ -75,6 +75,20 @@ function Navbar(props) {
     }
     document.querySelectorAll('.menu a').forEach(el => el.onclick = () => window.scrollTo(0,0))
 
+    document.querySelector('.mobbtn').onclick = () => openMobMenu()
+    document.querySelector('.mobmenu .fa-times').onclick = () => closeMobMenu()
+    document.querySelectorAll('.mobmenu a').forEach(el => {
+      el.onclick = () => {
+        closeMobMenu()
+      }
+    })
+    function openMobMenu() {
+      document.querySelector('.mobmenu').style.top = '0'
+    }
+    function closeMobMenu() {
+      document.querySelector('.mobmenu').style.top = ''
+    }
+
   },[])
 
   return (
@@ -83,16 +97,16 @@ function Navbar(props) {
         <div className="left">
           <Link to="/"><h1 className="logo">elixir<span>.</span></h1></Link>
           <Menu />
-        </div>
+        </div> 
         <div className="right">
-          <div onClick={() => scrollUp()} className="wishicondiv" style={{display:props.wishnum>0?"block":"none"}}><Link to="wishlist"><i className="fas fa-heart"></i><small><span>{props.wishnum}</span></small></Link></div>
+          <div onClick={() => scrollUp()} className="wishicondiv" style={{display:props.wishnum>0?"block":"none"}}><Link to="wishlist"><i className="fa fa-heart"></i><small><span>{props.wishnum}</span></small></Link></div>
           <div className="searchdiv searchbtn">
-          <i className="fas fa-search"></i>
+          <i class="fad fa-search"></i>
           </div>
-          <div className="logindiv" onClick={() => props.adminon()}><Link to="/login"><i className="fas fa-user-alt"></i></Link></div>
+          <div className="logindiv" onClick={() => props.adminon()}><Link to="/login"><i class="fad fa-user-alt"></i></Link></div>
           <div className="cartdiv"> 
           <small className="quicksubtotal">${props.subtotal.toFixed(2)}</small>
-          <i className="fas fa-shopping-cart"></i>
+          <i class="fad fa-shopping-cart"></i>
           <small className="cartitemsnum"><span>{props.cartitems}</span></small>
           <div className="cartcont"> 
           <div style={{display: props.cartitems>0?"block":"none"}}>
@@ -111,8 +125,18 @@ function Navbar(props) {
             </div>
           </div>
           </div> 
-        </div>
+          <div className="mobbtn"><i class="fad fa-bars"></i></div>
+        </div> 
       </div>  
+
+      <div className="mobmenu">
+        <i class="fal fa-times"></i>
+        <Link to="/">Home<hr/></Link>
+        <Link to="shop">Shop<hr/></Link>
+        <Link to="about">About<hr/></Link>
+        <Link to="gallery">Gallery<hr/></Link>
+        <Link to="contact">Contact<hr/></Link>
+      </div>
     </nav>
   ) 
 }

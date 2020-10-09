@@ -69,19 +69,19 @@ function Topbar(props) {
     } 
 
   },[]) 
-
+ 
   return (
     <div className="topbar"> 
       <div className="left">
-      <i class="fas fa-stream regrid" onClick={() => slideGrid()}></i>
+      <i class="fad fa-stream regrid" onClick={() => slideGrid()}></i>
         <Link to="/" onClick={() => props.adminoff()}>
           <div className="sitelink">
-            <i class="fas fa-external-link-alt"></i>Elixir Site
+            <i class="fad fa-external-link-alt"></i>Elixir Site
           </div>
         </Link>
         <Link to="/addproduct"><button className="addprodbtn"><i className="fas fa-plus"></i>Add Product</button></Link>
         <label className="search">
-          <i className="fas fa-search"></i>
+          <i className="fad fa-search"></i>
           <input placeholder="Search" onFocus={() => openSearch()} onKeyUp={(e) => setKeyword(e.target.value)} />
         </label>
       </div>
@@ -92,8 +92,8 @@ function Topbar(props) {
           <i className="fas fa-angle-down"></i>
         </div>
         <div className="quickactions">
-          <i class="fas fa-bell"></i>
-          <i class="fas fa-adjust darkmodebtn" onClick={() => darkmode?setDarkmode(false):setDarkmode(true)}></i>
+          <i class="fad fa-bell"></i>
+          <i class="fad fa-adjust darkmodebtn" onClick={() => darkmode?setDarkmode(false):setDarkmode(true)}></i>
         </div>
       </div>
 

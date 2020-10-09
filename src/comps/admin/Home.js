@@ -85,11 +85,11 @@ function Home() {
     <div className="homegrid">  
       <div className="dashsmallgrid">
         <div className="dashbox smallbox">
-          <span style={{background:"rgba(10, 157, 255,0.6)"}}><i className="fas fa-box-open" style={{color:"#fff"}}></i></span>
+          <span style={{background:"rgba(10, 157, 255,0.6)"}}><i className="fad fa-box-open" style={{color:"#fff"}}></i></span>
           <h3>{prodsold}<small>products sold</small></h3>
         </div>
         <div className="dashbox smallbox">
-          <span style={{background: "rgba(130, 107, 232,0.6"}}><i className="fas fa-chart-line" style={{color:"#fff"}}></i></span>
+          <span style={{background: "rgba(130, 107, 232,0.6"}}><i className="fad fa-chart-line" style={{color:"#fff"}}></i></span>
           <h3>${earnings}<small>total earnings</small></h3>
         </div>
         <div className="dashbox smallbox">
@@ -101,10 +101,10 @@ function Home() {
           <h3>{products.length}<small>total products</small></h3>
         </div>
         <div className="dashbox smallbox">
-          <span style={{background:"rgba(255, 87, 115,0.6)"}}><i className="fas fa-print" style={{color:"#fff"}}></i></span>
+          <span style={{background:"rgba(255, 87, 115,0.6)"}}><i className="fad fa-print" style={{color:"#fff"}}></i></span>
           <h3>{order_proc}<small>orders processed</small></h3>
         </div>
-      </div>
+      </div> 
  
       <div className="dashbox dashmed">
         <h5>Earnings Statistics</h5>

@@ -20,7 +20,7 @@ function Search(props) {
       <i className="close"></i>
       <div className="grid pgrid">
         <div className="searchbox">
-          <label><input onChange={(e) => setKeyword(e.target.value)} placeholder="Search by product, tag, category or price"/><i className="fas fa-search"></i></label>
+          <label><input onChange={(e) => setKeyword(e.target.value)} placeholder="Search by product, tag, category or price"/><i className="fad fa-search"></i></label>
         </div>
         <div className="searchresults">
           <div className="innersearchresults">

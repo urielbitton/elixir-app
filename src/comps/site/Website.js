@@ -133,9 +133,8 @@ function Website(props) {
           document.querySelector(`[re-tab="${tabselector}"]`).style.opacity = '1'
         }, 50);
       }
-    })  
-    document.querySelectorAll('.backtop').forEach(el => el.onclick = () => window.scrollTo(0, 0))
-       
+    })   
+
   },[])  
     
   return (  

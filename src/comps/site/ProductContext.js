@@ -429,7 +429,7 @@ const ProductContextProvider = (props) => {
   const [general, setGeneral] = useState(
     {
       wishnum: 0,
-      cartitems: 0,
+      cartitems: 0, 
       subtotal: 0,
       total: 0,
       taxrate: 0.15,
@@ -446,14 +446,14 @@ const ProductContextProvider = (props) => {
       compareprods: []
     }    
   )
-  const [cart, setCart] = useState([
+  const [cart, setCart] = useState(
       {
         products: [], 
-        cartitems: 0,
+        cartnum: 0,
         subtotal: 0,
         total: 0,
       }
-  ])
+  ) 
   const [customers, setCustomers] = useState([
     
   ])

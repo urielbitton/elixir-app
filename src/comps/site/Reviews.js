@@ -56,12 +56,15 @@ function Reviews(props) {
         setUpdate(prev => prev+1)
       }
     }) 
-  } 
+  }  
+ 
   function deleteReview(revid) {
     props.prod.reviews.map(rev => {
       if(revid === rev.id) {
         let index = props.prod.reviews.indexOf(rev)
-        props.prod.reviews.splice(index, 1) 
+        let lasttotal = props.prod.reviews[index].rating
+        setTotalrates(prev => prev-lasttotal)
+        props.prod.reviews.splice(index, 1)  
         setUpdate(prev => prev+1)
       }
     })
@@ -201,7 +204,7 @@ function Reviews(props) {
         </div>
       </div> 
     </>
-  )
+  ) 
 }
 
 export default Reviews

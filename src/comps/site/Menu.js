@@ -65,7 +65,6 @@ function Menu() {
             </li>
             <li>
               <Link to="gallery">Gallery<i className="fas fa-caret-down"></i><hr/></Link>
-              <div className="tab gal-tab"></div>
             </li>
             <li>
               <Link to="contact">Contact<hr/></Link>

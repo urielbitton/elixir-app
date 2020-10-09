@@ -27,6 +27,14 @@ function Contact() {
             <h6></h6>
           </div>  
         </div>
+        <div>
+          <form>
+            <input placeholder="Email" />
+            <input placeholder="Phone"/>
+            <textarea placeholder="Message"/>
+            <button>Send</button>
+          </form>
+        </div>
       </div>
     </div>
   )

@@ -6,7 +6,7 @@ function Gallery() {
 
   const {products} = useContext(ProductContext)
   const gallery = products.map(prod => {
-    return <img src={prod.img} className={prod.id===7?"horiz":prod.id===3?"vert":prod.id===12?"big":prod.id===10?"horiz":""} alt="" />
+    return <img src={prod.img} className={prod.id===7?"horiz":prod.id===3?"vert":prod.id===12?"big":prod.id===10?"horiz":prod.id===6?"vert":""} alt="" />
   })
 
   return (

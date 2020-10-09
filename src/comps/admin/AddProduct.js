@@ -57,7 +57,7 @@ function AddProduct() {
         sizearr.push(el.getAttribute('data-size'))
     }) 
     setId(previd => previd+1) 
-    setProducts(prevProd => [...prevProd,{id:id, name: name, units:units,price:parseFloat(price), img:img, instock:stock,color:colors, sizes:sizearr, cat:cat.trim().split(','), descript:descript, purchased_status:purchased_status, purchased_qty:purchased_qty, qty:qty}])
+    setProducts(prevProd => [...prevProd,{id:id, name: name, price:parseFloat(price),units:units, img:img, instock:stock,color:colors, sizes:sizearr, cat:cat.trim().split(','), descript:descript, purchased_status:purchased_status, purchased_qty:purchased_qty, qty:qty, selcolor:"", selsize:"",earnings:0, tempqty:0,datesold:'', ratings:0, reviews:[], avgrating:{'avg':0.0,'num':0,'total':0}}])
     
     const notif = document.createElement('div')
     notif.innerHTML = `<i class="fas fa-circle-notch"></i><p>Product "${name}" has been successfully created and added to your store.</p><button className="viewprodbtn">View</button>`

@@ -2840,24 +2840,87 @@ footer .socials > div i {
   margin: auto;
   margin-top: 60px;
 }
+.contactpage h2 {
+  text-align: center;
+  font-size: 27px;
+  color: #333;
+}
 .contactgrid i {
-  font-size: 60px;
+  font-size: 50px;
   color: #ccc;
 } 
 .contactgrid hr {
-  height: 100px;
+  height: 160px;
   width: 1px;
   background: #eee;
 }
 .contactgrid > div i {
   margin-top: 20px;
+  transition: all 0.3s;
+}
+.contactgrid > div:hover i {
+  color: var(--color)
 }
 .contactgrid > div h4 {
   margin-top: 20px;
   font-size: 19px;
   color: #555;
 }
- 
+.contactgrid > div h6 {
+  font-size: 16px;
+  margin-top: 20px;
+  color: #555;
+  font-weight: 500;
+}
+.contactdiv {
+  margin: 30px auto;
+  text-align: center;
+  width: 75%;
+}
+.contactdiv p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin-top: 30px;
+}
+.contactdiv form {
+  position: relative;
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 30px;
+  text-align: center;
+} 
+.contactdiv input, .contactdiv textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #f1f1f1;
+}
+.contactdiv textarea {
+  min-height: 170px;
+}
+.contactdiv textarea, .contactdiv button {
+  grid-column: span 3;
+}
+.contactdiv button {
+  padding: 15px 25px;
+  text-transform: uppercase;
+  font-size: 15px;
+  background: #111;
+  color: #fff;
+  width: 140px;
+  margin: auto;
+}
+.contactdiv button:hover {
+  background: #333;
+}
+
+
+
+
+
+
+
 
 
 

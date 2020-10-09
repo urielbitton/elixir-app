@@ -121,7 +121,7 @@ function Mainbg() {
         </div> 
       </div>
       
-      <div className="grid">
+      <div className="pgrid">
         <div className="bgnav"> 
           <div style={{opacity: slide1?"1":""}}></div>
           <div style={{opacity: slide2?"1":""}}></div>

@@ -8,7 +8,7 @@ html, body {
 :root {
   --color: #0a9dff;  
 }   
-   
+    
 .grid {
   position: relative;
   margin: auto;
@@ -441,12 +441,25 @@ nav .right > div {
   width: 100%;
   height: 100vh;
 }
+.bgcont .slide {
+  position: absolute; 
+  display: none;
+  width: 100%;
+  height: 100vh;
+  transition: all 1s;
+  opacity: 0;
+}
+.bgcont .slide1 {
+  display: block;
+  opacity: 0;
+} 
 .bgcont .grid {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   height: 100%;
+  transition: all 0.5s;
 }
 .bgimg {
   position: absolute;
@@ -456,17 +469,22 @@ nav .right > div {
   background-attachment: fixed;
   background-size: cover;
 }
-.bgimg1 {
+.slide1 .bgimg {
   background-image: url('https://i.imgur.com/pQMkqZc.png')
 }
-.bgimg2 {
-  background-image: url('https://i.imgur.com/CL6IwfM.png');
+.slide2 .bgimg {
+  background-image: url('https://i.imgur.com/4WAJOxr.jpg')
+}
+.slide3 .bgimg {
+  background-image: url('https://i.imgur.com/w58aREK.jpg')
 }
 .bgcont h1 {
   font-size: 80px;
   font-weight: 700;
   color: #333;
-  position: sticky;
+  opacity: 0;
+  top: 50px;
+  transition: all 0.7s;
 }
 .bgcont h6 {
   font-size: 14px;
@@ -475,6 +493,9 @@ nav .right > div {
   letter-spacing: 5px;
   text-transform: uppercase;
   margin-bottom: 30px;
+  opacity: 0;
+  left: -50px;
+  transition: all 0.7s;
 }
 .bgcont button {
   margin-top:50px;
@@ -484,7 +505,9 @@ nav .right > div {
   padding: 20px 40px;
   box-shadow: 0 8px 15px rgba(0,0,0,0.25);
   top: 0;
-  transition: all 0.3s;
+  opacity: 0; 
+  left: -50px;
+  transition: background 0.3s, top 0.3s, left 0.7s, opacity 0.5s;
 }
 .bgcont button:hover {
   background: var(--color);
@@ -494,24 +517,22 @@ nav .right > div {
   position: absolute;
   bottom: 80px;
   z-index: 10;
-}
+} 
 .bgnav > div {
   margin: auto 10px;
   display: inline-block;
-  width: 28px;
-  height: 25px;
-  opacity: 0.9;
-  cursor: pointer;
-  transition: all 0.3s;
+  width: 100px;
+  background: #222;
+  height: 3px;
+  opacity: 0.2;
+  cursor: pointer; 
+  transition: all 0.5s;
+  transition-delay: 1s;
 }
 .bgnav > div:hover {
   opacity: 1;
 }
-.bgnav small {
-  padding: 10px 13px;
-  background: rgba(0,0,0,0.7);
-  color: #fff;
-}
+
 
 section {
   width: 100%;
@@ -819,7 +840,6 @@ section .secsubtitle {
   left: 0;
   right: 0;
   margin: auto;
-  text-align: center;
   padding: 10px 30px;
   width: 400px;
   height: 220px;

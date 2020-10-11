@@ -12,7 +12,7 @@ function DashTableRow(props) {
       <td>${parseFloat(props.price).toFixed(2)}</td>
       <td>{props.qty}</td>
       <td>{props.qty_purch}</td>
-      <td>${isNaN(props.earnings)?0:(props.earnings)}</td>
+      <td>${isNaN(props.earnings)?0:(props.earnings.toFixed(2) )}</td>
       <td style={{display:props.hide}}>{props.datesold}</td>
       <td><span className={props.instock?"stockstatus instock":"stockstatus outstock"}>{props.instock?"In Stock":"Out Of Stock"}</span></td>
     </tr>

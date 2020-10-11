@@ -10,10 +10,10 @@ function Navbar(props) {
   
   const cartprods = cart.map(item => {   
     return ( 
-      <CartItem item={item} id={item.id} name={item.name} img={item.img} price={item.price} hot={item.hot} sale={item.sale} cat={item.cat} sizes={item.sizes} units={item.units} addcart={item.addcart} instock={item.instock} wishlist={item.wishlist} descript={item.descript} color={item.color} qty={item.qty} ratings={item.ratings} reviews={item.reviews} avgrating={item.avgrating} key={item.id} openproduct={props.openproduct}/>
+      <CartItem item={item} id={item.id} name={item.name} img={item.img} price={item.price} hot={item.hot} sale={item.sale} cat={item.cat} sizes={item.sizes} units={item.units} addcart={item.addcart} instock={item.instock} wishlist={item.wishlist} descript={item.descript} color={item.color} qty={item.qty} ratings={item.ratings} reviews={item.reviews} avgrating={item.avgrating} key={item.id} updatecarts={props.updatecarts} openproduct={props.openproduct}/>
     )       
   })     
-
+ 
   function scrollUp() {
     window.scrollTo(0, 0)
   }
@@ -105,9 +105,9 @@ function Navbar(props) {
           <div className="cartdiv" data-update={props.update}> 
           <small className="quicksubtotal">${general.subtotal.toFixed(2)}</small>
           <i class="fad fa-shopping-cart"></i>
-          <small className="cartitemsnum"><span>{cart.length}</span></small>
+          <small className="cartitemsnum"><span>{general.cartitems}</span></small>
           <div className="cartcont"> 
-          <div style={{display: cart.length>0?"block":"none"}}>
+          <div style={{display: general.cartitems>0?"block":"none"}}>
             <div className="innercart">
               {cartprods}
             </div>  
@@ -117,7 +117,7 @@ function Navbar(props) {
             <Link to="/cart"><button className="viewcartbtn" onClick={() => scrollUp()}>View Cart</button></Link>
             <Link to="/checkout"><button className="checkoutbtn" onClick={() => scrollUp()}>Checkout</button></Link>
           </div>
-            <div className="emptycart" style={{display: cart.length>0?"none":"block",textAlign:"center"}}>
+            <div className="emptycart" style={{display: general.cartitems>0?"none":"block",textAlign:"center"}}>
               <p>No items in your cart.</p>
               <Link to="/shop"><small>Add Items</small></Link>
             </div>

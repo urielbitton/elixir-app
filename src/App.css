@@ -335,6 +335,7 @@ nav .right > div {
 }
 .innercart::-webkit-scrollbar {
   display:none;
+  width: 5px;
 } 
 .innercart:hover::-webkit-scrollbar {
   display: block;
@@ -354,6 +355,15 @@ nav .right > div {
   font-weight: 500;
   color: #aaa;
 }
+.cartitem .fa-times {
+  position: absolute;
+  font-size: 18px;
+  color: #777;
+  padding: 2px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 100;
+}
 .cartitem img {
   float: left;
   width: 65px;
@@ -362,7 +372,7 @@ nav .right > div {
   margin-bottom: 15px;
 }
 .cartitem h5 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
 }
 .cartitem h5 a {

@@ -4,40 +4,42 @@ import { ProductContext } from './ProductContext'
 
 function Product(props) {
  
-  const {products, general,  cart} = useContext(ProductContext)
+  const {products, general, cart, wishes} = useContext(ProductContext)
   const [prodsize, setProdsize] = useState("")
   const [units, setUnits] = useState(1)
   let temp = 1
 
-  function addToCart() { 
+  function addToCart() {    
     products.map(prod => {    
-      return (prod.id === props.prod.id)?(props.prod.addcart = true):""
+      return (prod.id === props.prod.id)?(props.prod.addcart = true):"" 
     })  
-    let cartobj = {id:props.id,name:props.name,img:props.img,price:props.price,units:props.prod.units,qty:props.qty,color:props.color,sizes:props.sizes,addcart:props.addcart,wishlist:props.wishlist,descript:props.descript,selcolor:props.prod.selcolor,selsize:props.prod.selsize}
+    let cartobj = {id:props.prod.id,name:props.prod.name,img:props.prod.img,price:props.prod.price,units:props.prod.units,qty:props.prod.qty,cat:props.prod.cat,color:props.prod.color,sizes:props.prod.sizes,instock:props.prod.instock,addcart:props.prod.addcart,wishlist:props.prod.wishlist,descript:props.prod.descript,selcolor:props.prod.selcolor,selsize:props.prod.selsize,compared:props.prod.compared,ratings:props.prod.ratings,reviews:props.prod.reviews,avgrating:props.prod.avgrating}
     cart.push(cartobj) 
-    general.subtotal += props.prod.price*props.prod.units  
-    general.cartitems += 1
-    props.updatesub()
-  }    
-  function addToWishlist() {
+    general.cartitems += props.prod.units
+    general.subtotal += (props.prod.price*props.prod.units) 
+    general.total = general.total+(general.subtotal+(general.subtotal*general.taxrate)) 
+    props.updatesub() 
+  }   
+  function addToWishlist() { 
     products.map(prod => {
       return (prod.id === props.prod.id)?(props.prod.wishlist = true):""
-    }) 
-    props.updatewish() 
-  }
+    })
+    let wishobj = {id:props.prod.id,name:props.prod.name,img:props.prod.img,price:props.prod.price,units:props.prod.units,qty:props.prod.qty,cat:props.prod.cat,color:props.prod.color,sizes:props.prod.sizes,instock:props.prod.instock,addcart:props.prod.addcart,wishlist:props.prod.wishlist,descript:props.prod.descript,selcolor:props.prod.selcolor,selsize:props.prod.selsize,compared:props.prod.compared,ratings:props.prod.ratings,reviews:props.prod.reviews,avgrating:props.prod.avgrating}
+    wishes.push(wishobj)  
+    general.wishnum += 1
+    props.addwishnum() 
+  } 
   function addUnits() {
     if(props.prod.units < props.prod.qty) {
       props.prod.addcart?temp=1:props.prod.units += 1
       setUnits(prev => prev+1)
     } 
-    //props.prod.addcart = false //uncomment if you want to allow post addcart adding units
-  }     
+  }      
   function subUnits() { 
     if(props.prod.units > 1) {
       props.prod.addcart?temp=1:props.prod.units -= 1
       setUnits(prev => prev-1)
     }
-    //props.prod.addcart = false //uncomment if you want to allow post addcart adding units
   }
   function colorUpdate(color) {
     props.prod.selcolor = color
@@ -48,15 +50,19 @@ function Product(props) {
     props.setprodsize()  
   }
   
-  const addtocart = document.querySelectorAll('.quickview .addtocart')
-    addtocart.forEach(el => {
-      el.onclick = () => {
-        Object.assign(document.querySelector('.cartcont').style, {opacity:'1',visibility:'visible',top:'45px'})
-        setTimeout(() => {
-          Object.assign(document.querySelector('.cartcont').style, {opacity:'',visibility:'',top:''})
-        }, 3000);
-      }
-  })  
+  const addtocart = document.querySelectorAll('.itemcont .addtocart')
+  addtocart.forEach(el => {
+    el.onclick = () => {
+      document.querySelector('.cartcont').style.opacity = '1'
+      document.querySelector('.cartcont').style.visibility = 'visible'
+      document.querySelector('.cartcont').style.top = '45px'
+      setTimeout(() => {
+        document.querySelector('.cartcont').style.opacity = ''
+      document.querySelector('.cartcont').style.visibility = ''
+      document.querySelector('.cartcont').style.top = ''
+      }, 3000); 
+    } 
+  }) 
 
   const quickviewcont = document.querySelector('.quickviewcont')
   const quickview = document.querySelector('.quickview')

@@ -31,12 +31,12 @@ function OrderConfirm() {
                   return <tr><td><img src={prod.img} alt=""/></td><td>{prod.name}</td><td>${prod.price.toFixed(2)}</td><td>{prod.tempqty}</td><td>{prod.datesold}</td><td>${parseFloat(prod.price*prod.tempqty).toFixed(2)}</td></tr>
                })
              }
-          </tbody>
+          </tbody> 
         </table> 
         <div className="ordertotalsdiv">
-             <h6>Tax Amount ({general.taxrate*100}%): <span>${parseFloat((general.taxrate*general.subtotal)+general.subtotal).toFixed(2)}</span></h6>
-             <h6>Subtotal: <span>${parseFloat(general.subtotal).toFixed(2)}</span><i className="clear"></i></h6>
-             <h6>Total: <span>${parseFloat(general.total).toFixed(2)}</span><i className="clear"></i></h6>
+             <h6>Tax Amount ({general.taxrate*100}%): <span>${parseFloat(general.taxrate*general.order_subtotal).toFixed(2)}</span></h6>
+             <h6>Subtotal: <span>${parseFloat(general.order_subtotal).toFixed(2)}</span><i className="clear"></i></h6>
+             <h6>Total: <span>${parseFloat(general.order_total).toFixed(2)}</span><i className="clear"></i></h6>
         </div>
         <div className="spacer"></div>  
         <div className="msgcont">

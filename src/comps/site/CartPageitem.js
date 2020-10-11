@@ -11,7 +11,8 @@ function CartPageItem(props) {
     
   function addUnits() { 
     if (props.item.units < props.item.qty) {
-      props.item.units += 1
+      props.item.units += 1  
+      general.cartitems += 1
       general.subtotal += props.item.price
       products.map(prod =>  {
         if(prod.id === props.item.id) {
@@ -25,6 +26,7 @@ function CartPageItem(props) {
   function subUnits() {
     if (props.item.units > 1) { 
       props.item.units -= 1 
+      general.cartitems -= 1
       general.subtotal -= props.item.price
       products.map(prod =>  {
         if(prod.id === props.item.id) {

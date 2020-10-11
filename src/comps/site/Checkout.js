@@ -4,7 +4,7 @@ import PageBanner from "./PageBanner"
 import { ProductContext } from "./ProductContext"
  
 function Checkout(props) {
-  const {products, general, customers, setCustomers, setOrders} = useContext(ProductContext)
+  const {products, general, customers, setCustomers, setOrders, cart} = useContext(ProductContext)
 
   const [details, setDetails] = useState(false)
   const [disable, setDisable] = useState(false)
@@ -75,6 +75,7 @@ function Checkout(props) {
     general.products_sold.push(props.cartitems)
     //reset neworder products
     products.map((prod) => {
+      prod.purchased_status = false
       prod.neworder = false
       prod.tempqty = 0
     })
@@ -94,9 +95,17 @@ function Checkout(props) {
       if (prod.purchased_qty > prod.qty) {
         prod.instock = false
       }
-    })
+    }) 
     setTimeout(() => {
+      general.order_subtotal = general.subtotal
+      general.order_total = general.total
+      products.map(prod => prod.addcart = false)
       general.cartitems = 0
+      general.subtotal = 0
+      general.total = 0
+      cart.splice(0,cart.length)
+      props.updatecarts()
+      props.updatesub()
     }, 500)
     setTimeout(() => {
       history.push("/orderconfirm")
@@ -185,39 +194,20 @@ function Checkout(props) {
               <div className="totalprods">
                 <h4>Products</h4>
                 <div>
-                  {products.map((prod) => {
-                    return prod.addcart ? (
-                      <div>
-                        <h6>
-                          {prod.name}
-                          <span>
-                            <span style={{ fontSize: "10px" }}>&#10006; </span>
-                            {prod.units}
-                          </span>
-                        </h6>
-                        <h6>
-                          ${parseFloat(prod.price).toFixed(2) * prod.units}
-                        </h6>
-                        <div className="clear"></div>
-                      </div>
-                    ) : (
-                      ""
-                    )
-                  })}
-                  <small
-                    className="seedetails"
-                    onClick={() => setDetails(true)}
-                  >
-                    See details
-                  </small>
+                  {
+                    cart.map(item => {
+                      return <div><h6>{item.name}<span> <span style={{fontSize: "10px"}}>&#10006; </span>{item.units}</span></h6><h6> ${(parseFloat(item.price) * item.units).toFixed(2)}</h6><div className="clear"></div></div>
+                    })
+                  } 
+                  <small className="seedetails" onClick={() => setDetails(true)}>See details</small>
                   <div className="clear"></div>
                 </div>
               </div>
               <div>
                 <h6>Subtotal</h6>
-                <h6>${general.subtotal}</h6>
+                <h6>${(general.subtotal).toFixed(2)}</h6>
                 <div className="clear"></div>
-              </div>
+              </div> 
               <div>
                 <h6>Tax Rate ({general.taxrate * 100}%)</h6>
                 <h6>${(general.subtotal * general.taxrate).toFixed(2)}</h6>
@@ -228,16 +218,13 @@ function Checkout(props) {
                 <h6>Free Shipping</h6>
                 <div className="clear"></div>
               </div>
-              <div
-                style={{ display: props.couponamount > 0 ? "block" : "none" }}
-              >
+              <div style={{ display: props.couponamount > 0 ? "block" : "none" }}>
                 <h6>Coupon Code</h6>
                 <h6 style={{ color: "var(--color)" }}>
-                  {props.couponname}: -$
-                  {parseFloat(props.couponamount).toFixed(2)}
+                  {props.couponname}: -${parseFloat(props.couponamount).toFixed(2)}
                 </h6>
                 <div className="clear"></div>
-              </div>
+              </div> 
               <div>
                 <h6>Order Total</h6>
                 <h6 className="ordertotal">${parseFloat(general.total).toFixed(2)}</h6>
@@ -279,26 +266,25 @@ function Checkout(props) {
         <div className="details" onClick={(e) => e.stopPropagation()}>
           <h3>Product Details</h3>
           <div className="innerdetails">
-            {products.map((prod) => {
-              return prod.addcart ? (
+            {
+              cart.map(item => {
+                return (
                 <div className="detailsrow">
-                  <img src={prod.img} alt="detimg" />
-                  <h6>{prod.name}</h6>
+                  <img src={item.img} alt="detimg" />
+                  <h6>{item.name}</h6>
                   <div className="detgrid">
-                    <small>Price: {prod.price}</small>
-                    <small>Units: {prod.units}</small>
+                    <small>Price: {item.price.toFixed(2) }</small>
+                    <small>Units: {item.units}</small>
                     <small>
-                      Subtotal: {parseFloat(prod.price).toFixed(2) * prod.units}
+                      Subtotal: {(parseFloat(item.price) * item.units).toFixed(2) }
                     </small>
-                    <small>Color: {prod.selcolor}</small>
-                    <small>Size: {prod.selsize}</small>
+                    <small>Color: {item.selcolor}</small>
+                    <small>Size: {item.selsize}</small>
                   </div>
                   <div className="clear"></div>
-                </div>
-              ) : (
-                ""
-              )
-            })}
+                </div> )
+            })
+            }
           </div>
           <button onClick={() => setDetails(false)}>Done</button>
           <Link to="/cart">

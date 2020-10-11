@@ -95,8 +95,8 @@ function Reviews(props) {
           <div className="clear"></div>
           </div>
       }) 
-      :"" 
-  })
+      :""   
+  }) 
   props.prod.reviews.map(rev => {
     if(rev.rating===5) ratearr5.push(1)
     if(rev.rating===4) ratearr4.push(1)

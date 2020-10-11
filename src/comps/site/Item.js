@@ -14,6 +14,7 @@ function Item(props) {
     cart.push(cartobj) 
     general.cartitems += 1
     general.subtotal += props.price
+    general.total = general.total+(general.subtotal+(general.subtotal*general.taxrate)) 
     props.updatesub() 
   }       
   function addToWishlist() { 
@@ -63,7 +64,7 @@ function Item(props) {
         document.querySelector('.cartcont').style.visibility = ''
         document.querySelector('.cartcont').style.top = ''
         }, 3000); 
-      }
+      } 
     })  
     const comparebtn = document.querySelectorAll('.comparebtn')
     const comparecont = document.querySelector('.comparecont')

@@ -140,7 +140,7 @@ function Website(props) {
     
   return (  
     <> 
-      <Navbar cartitems={cartitems} subtotal={subtotal} update={update} units={units} wishnum={wishnum} adminon={props.adminon} openproduct={openProduct}/>  
+      <Navbar cartitems={cartitems} updatecarts={updateCarts} subtotal={subtotal} update={update} units={units} wishnum={wishnum} adminon={props.adminon} openproduct={openProduct}/>  
       <Search openproduct={openProduct}/>
       <Switch>  
         <Route exact path="/">
@@ -165,7 +165,7 @@ function Website(props) {
           <CartPage prod={prod} cartitems={cartitems} updatecarts={updateCarts} updatesub={updateSub} subcartnum={subCartNum} zerocartnum={zeroCartNum} colorupdate={colorupdate} sizeupdate={sizeupdate} applycoupon={applyCoupon} openproduct={openProduct}/>
         </Route> 
         <Route path="/checkout">
-          <Checkout zerocartnum={zeroCartNum} cartitems={cartitems} couponname={couponname} couponamount={couponamount}/>
+          <Checkout zerocartnum={zeroCartNum} updatecarts={updateCarts} updatesub={updateSub} cartitems={cartitems} couponname={couponname} couponamount={couponamount}/>
         </Route>
         <Route path="/wishlist">
           <Wishlist openproduct={openProduct} addwishnum={addWishnum} zerowishnum={zeroWishnum}/>

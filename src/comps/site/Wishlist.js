@@ -5,27 +5,41 @@ import PageBanner from './PageBanner'
 
 function Wishlist(props) {
 
-  const {products, setProducts, setGeneral} = useContext(ProductContext)
-  const [wish, setWish] = useState(false)
+  const {products, wishes, general} = useContext(ProductContext)
+  const [wish, setWish] = useState(true)
   
-  let wishitems = products.map(prod => {
-    if(prod.wishlist)
-      return <tr data-wish={wish}>
-        <td><i className="far fa-window-close" onClick={() => removeWish(prod)}></i><img src={prod.img} alt="prodwish" /></td>
-        <td><Link to="/product" onClick={() => props.openproduct(prod,prod.id,prod.name,prod.img,prod.price,prod.descript,prod.color,prod.cat,prod.sizes,prod.units,prod.addcart,prod.wishlist)}>{prod.name}</Link></td>
-        <td className="pricetd">${parseFloat(prod.price).toFixed(2)}</td>
-        <td>{prod.instock?<p><i class='fas fa-check-circle'></i>In stock</p>:<p><i class='fas fa-window-close'></i>Out of stock</p>}</td>
-        <td>{prod.cat[0]}</td>
+  let wishitems = wishes.map(wish => {
+      return (
+      <tr>
+        <td><i className="far fa-window-close" onClick={() => removeWish(wish.id, wish)}></i><img src={wish.img} alt="prodwish" /></td>
+        <td><Link to="/product">{wish.name}</Link></td>
+        <td className="pricetd">${parseFloat(wish.price).toFixed(2)}</td>
+        <td>{wish.instock?<p><i class='fas fa-check-circle'></i>In stock</p>:<p><i class='fas fa-window-close'></i>Out of stock</p>}</td>
+        <td>{wish.cat[0]}</td>
       </tr> 
-  })
-
-  function removeWish(prod) {
-    prod.wishlist = false
-    setWish(true)
-    props.subwishnum()
+      )
+  })  
+ 
+  function removeWish(wishid, wish) {
+    products.map(prod => { 
+      if(prod.id === wishid) { 
+        prod.wishlist = false
+      }
+    })
+    wishes.map(el => {
+      if(el.id === wishid) {
+        let index = wishes.indexOf(el)
+        wishes.splice(index,1)
+        setWish(false)
+        general.wishnum -= 1
+        props.addwishnum() 
+      }
+    })
   }
   function resetWishnum() {
     products.map(prod => prod.wishlist = false)
+    wishes.splice(0,wishes.length)
+    general.wishnum = 0
     setWish(false)
     props.zerowishnum()
   }
@@ -45,9 +59,9 @@ function Wishlist(props) {
               <th>Stock Status</th>
               <th>Category</th>
             </thead>
-            <tbody>
+            <tbody data-wish={wish}>
               {wishitems}
-            </tbody>
+            </tbody>  
             <tfoot>
               <div className="spacer"></div>
               <button onClick={() => resetWishnum()}>Clear Items</button>

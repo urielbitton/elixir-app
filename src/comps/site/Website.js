@@ -47,6 +47,12 @@ function Website(props) {
   const [qty, setQty] = useState(0)
   const [ratings, setRatings] = useState(0)
    
+  function updateSub() {
+    setUpdate(prev => prev+1) 
+  }
+  function updateCarts() {
+    setUpdate(prev => prev+1)
+  }
   function updateCartNum() {
     setCartitems(num => num+1)
   }
@@ -61,24 +67,15 @@ function Website(props) {
       prod.units = 1
     })
   }
-  function updateSubtotal(current) {
-    setSubtotal(sub => sub+current)
+  function addWishnum() {
+    setWishnum(prev => prev+1)
+  }
+  function zeroWishnum() {
+    setWishnum(0)
   } 
   function updateUnits(current) {
     setUnits(prev => prev+current) 
   }
-  function updateWishnum() {
-    setWishnum(wish => wish+1)
-  }
-  function subWishnum() {
-    setWishnum(wish => wish-1) 
-  }
-  function zeroWishnum() {
-    setWishnum(0)
-  }
-  function connectSub(updatedsub) {
-    setSubtotal(updatedsub) 
-  } 
   function setProdColor() {
     setColorupdate(true)
   }
@@ -133,48 +130,48 @@ function Website(props) {
           document.querySelector(`[re-tab="${tabselector}"]`).style.opacity = '1'
         }, 50);
       }
-    })   
+    })    
 
   },[])  
     
   return (  
     <> 
-      <Navbar cartitems={cartitems} subtotal={subtotal} units={units} wishnum={wishnum} adminon={props.adminon} openproduct={openProduct}/>  
+      <Navbar cartitems={cartitems} subtotal={subtotal} update={update} units={units} wishnum={wishnum} adminon={props.adminon} openproduct={openProduct}/>  
       <Search openproduct={openProduct}/>
       <Switch>  
         <Route exact path="/">
-          <Home updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} updatecompare={updateCompare} updatecompstatus={updatestat}/>
+          <Home updatecartnum={updateCartNum} updatesub={updateSub} updateunits={updateUnits}  openproduct={openProduct} updatecompare={updateCompare} updatecompstatus={updatestat} addwishnum={addWishnum}/>
         </Route>   
         <Route path="/shop">
-          <Shop updatecartnum={updateCartNum} updatesub={updateSubtotal} updatewish={updateWishnum} openproduct={openProduct} updatecompare={updateCompare} updatecompstatus={updatestat}/>
+          <Shop updatecartnum={updateCartNum} addwishnum={addWishnum} updatesub={updateSub} openproduct={openProduct} updatecompare={updateCompare} updatecompstatus={updatestat}/>
         </Route> 
         <Route path="/about">
           <About />
         </Route> 
         <Route path="/gallery">
-          <Gallery />
+          <Gallery /> 
         </Route> 
         <Route path="/contact">
           <Contact />
         </Route> 
         <Route path="/product"> 
-          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} instock={instock} addcart={addcart} qty={qty} ratings={ratings} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} openproduct={openProduct} setprodcolor={setProdColor} setprodsize={setProdSize}/>
+          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} instock={instock} addcart={addcart} qty={qty} ratings={ratings} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSub} addwishnum={addWishnum} updateunits={updateUnits} openproduct={openProduct} setprodcolor={setProdColor} setprodsize={setProdSize}/>
         </Route> 
         <Route path="/cart">
-          <CartPage prod={prod} subtotal={subtotal} cartitems={cartitems} connectsub={connectSub} subcartnum={subCartNum} zerocartnum={zeroCartNum} colorupdate={colorupdate} sizeupdate={sizeupdate} applycoupon={applyCoupon} openproduct={openProduct}/>
+          <CartPage prod={prod} cartitems={cartitems} updatecarts={updateCarts} updatesub={updateSub} subcartnum={subCartNum} zerocartnum={zeroCartNum} colorupdate={colorupdate} sizeupdate={sizeupdate} applycoupon={applyCoupon} openproduct={openProduct}/>
         </Route> 
         <Route path="/checkout">
-          <Checkout subtotal={subtotal} zerocartnum={zeroCartNum} cartitems={cartitems} couponname={couponname} couponamount={couponamount}/>
+          <Checkout zerocartnum={zeroCartNum} cartitems={cartitems} couponname={couponname} couponamount={couponamount}/>
         </Route>
         <Route path="/wishlist">
-          <Wishlist subwishnum={subWishnum} zerowishnum={zeroWishnum} openproduct={openProduct}/>
+          <Wishlist openproduct={openProduct} addwishnum={addWishnum} zerowishnum={zeroWishnum}/>
         </Route> 
         <Route path="/orderconfirm">
           <OrderConfirm />
         </Route>    
       </Switch> 
    
-      <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} addcart={addcart} ratings={ratings} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSubtotal} updateunits={updateUnits} updatewish={updateWishnum} wishnum={wishnum} setprodcolor={setProdColor} setprodsize={setProdSize} />
+      <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} qty={qty} units={units} addcart={addcart} ratings={ratings} wishlist={wishlist} updatesub={updateSub} updateunits={updateUnits} setprodcolor={setProdColor} setprodsize={setProdSize} />
       <CompareView update={update} updatecompstatus={updateCompStatus}/>
       <Footer /> 
     </>

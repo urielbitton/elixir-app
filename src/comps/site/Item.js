@@ -4,21 +4,27 @@ import { ProductContext } from './ProductContext'
 
 function Item(props) {    
  
-  const {products, setProducts, general, setGeneral} = useContext(ProductContext)
+  const {products, general, wishes, cart} = useContext(ProductContext)
   
-  function addToCart() { 
-    products.map(prod => {   
+  function addToCart() {  
+    products.map(prod => {    
       return (prod.id === props.prod.id)?(props.prod.addcart = true):""
     })  
-    props.updatecartnum()
-    props.updatesub(props.price) 
-  }     
-  function addToWishlist() {
+    let cartobj = {id:props.id,name:props.name,img:props.img,price:props.price,units:props.units,qty:props.qty,color:props.color,sizes:props.sizes,addcart:props.addcart,wishlist:props.wishlist,descript:props.descript,selcolor:props.prod.selcolor,selsize:props.prod.selsize}
+    cart.push(cartobj) 
+    general.cartitems += 1
+    general.subtotal += props.price
+    props.updatesub()
+  }      
+  function addToWishlist() { 
+    let wishobj = {id:props.id,name:props.name,img:props.img,price:props.price,instock:props.instock,cat:props.cat}
+    wishes.push(wishobj) 
     products.map(prod => {
       return (prod.id === props.prod.id)?(props.prod.wishlist = true):""
-    })
-    props.updatewish() 
-  } 
+    }) 
+    general.wishnum += 1
+    props.addwishnum() 
+  }  
   function scrollUp() {
     window.scrollTo(0,0)
   } 
@@ -81,7 +87,7 @@ function Item(props) {
         <Link to={props.wishlist?"/wishlist":"#"} className="heartlink" onClick={() => props.wishlist?scrollUp():"#"}><i className={props.wishlist?"fas fa-heart":"far fa-heart"} onClick={() => props.wishlist?"":addToWishlist()}></i></Link>
         <Link to="/product" onClick={() => {props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings);window.scrollTo(0, 0)}}><img src={props.img} alt="item"/></Link>
         <div className="itemactions">
-          <i style={{display: props.instock?"inline-block":"none"}} className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart(props.name)}></i>
+          <i style={{display: props.instock?"inline-block":"none"}} className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart()}></i>
           <i className="fas fa-search-plus quickviewbtn" onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings)}></i> 
           <i className="fas fa-random comparebtn" onClick={() => props.compared?"":addToCompare(props.prod)} style={{color: props.compared?"var(--color)":""}}></i>
         </div> 

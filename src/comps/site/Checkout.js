@@ -4,11 +4,8 @@ import PageBanner from "./PageBanner"
 import { ProductContext } from "./ProductContext"
  
 function Checkout(props) {
-  const {products, general, customers, setCustomers, orders, setOrders} = useContext(ProductContext)
+  const {products, general, customers, setCustomers, setOrders} = useContext(ProductContext)
 
-  const [taxrate, setTaxrate] = useState(general.taxrate)
-  const [total, setTotal] = useState((props.subtotal + props.subtotal * taxrate).toFixed(2) - props.couponamount)
-  const [subtotal, setSubtotal] = useState(props.subtotal.toFixed(2))
   const [details, setDetails] = useState(false)
   const [disable, setDisable] = useState(false)
 
@@ -16,7 +13,7 @@ function Checkout(props) {
   const [fname, setFname] = useState("")
   const [lname, setLname] = useState("")
   const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
+  const [phone, setPhone] = useState("") 
   const [signup, setSignup] = useState("")
   const [order, setOrder] = useState(0)
   const [country, setCountry] = useState("")
@@ -29,7 +26,7 @@ function Checkout(props) {
   const [custname, setCustname] = useState("")
   const [date, setDate] = useState(genDate())
   const [status, setStatus] = useState("Pending Payment")
-  const [ordtotal, setOrdtotal] = useState(total)
+  const [ordtotal, setOrdtotal] = useState(general.total)
 
   let history = useHistory()
 
@@ -38,7 +35,7 @@ function Checkout(props) {
     return (date.getFullYear() +"-" +(date.getMonth() + 1) +"-" +(date.getDate() < 10 ? "0" + date.getDate() : date.getDate()))
   }
   function createCustomer() {
-    setCustomers((prevCust) => [...prevCust,
+    setCustomers((newCust) => [...newCust,
       {
         id: id,
         name: fname + " " + lname,
@@ -50,13 +47,13 @@ function Checkout(props) {
         city: city,
         postal: postal,
         address: address,
-        spent: total
+        spent: general.total
       }
     ])
   }
   function createOrder() {
-    setOrders((prevOrder) => [
-      ...prevOrder,
+    setOrders((newOrder) => [
+      ...newOrder,
       {
         number: number,
         custname: fname + " " + lname,
@@ -72,11 +69,9 @@ function Checkout(props) {
     createOrder()
     setDisable(true)
     general.order_proc += 1
-    general.profit += parseInt(total - subtotal * taxrate, 10)
-    general.earnings += parseInt(total, 10)
-    general.total = total
-    general.subtotal = subtotal
-    general.revenue_range.push(subtotal)
+    general.profit += parseInt(general.total - general.subtotal * general.taxrate, 10)
+    general.earnings += parseInt(general.total, 10)
+    general.revenue_range.push(general.subtotal)
     general.products_sold.push(props.cartitems)
     //reset neworder products
     products.map((prod) => {
@@ -101,7 +96,7 @@ function Checkout(props) {
       }
     })
     setTimeout(() => {
-      props.zerocartnum()
+      general.cartitems = 0
     }, 500)
     setTimeout(() => {
       history.push("/orderconfirm")
@@ -220,12 +215,12 @@ function Checkout(props) {
               </div>
               <div>
                 <h6>Subtotal</h6>
-                <h6>${subtotal}</h6>
+                <h6>${general.subtotal}</h6>
                 <div className="clear"></div>
               </div>
               <div>
-                <h6>Tax Rate ({taxrate * 100}%)</h6>
-                <h6>${(subtotal * taxrate).toFixed(2)}</h6>
+                <h6>Tax Rate ({general.taxrate * 100}%)</h6>
+                <h6>${(general.subtotal * general.taxrate).toFixed(2)}</h6>
                 <div className="clear"></div>
               </div>
               <div>
@@ -245,7 +240,7 @@ function Checkout(props) {
               </div>
               <div>
                 <h6>Order Total</h6>
-                <h6 className="ordertotal">${parseFloat(total).toFixed(2)}</h6>
+                <h6 className="ordertotal">${parseFloat(general.total).toFixed(2)}</h6>
                 <div className="clear"></div>
               </div>
               <div>
@@ -259,12 +254,7 @@ function Checkout(props) {
                 </label>
               </div>
               <div>
-                <button
-                  className="placeorderbtn"
-                  onClick={() => (!disable ? placeOrder() : "")}
-                >
-                  Place Order
-                </button>
+                <button className="placeorderbtn" onClick={() => (!disable ? placeOrder() : "")}>Place Order</button>
               </div>
             </div>
           </div>

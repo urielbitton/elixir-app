@@ -48,6 +48,6 @@ function OrderConfirm() {
       </div>
     </div>
   )
-}
+} 
 
 export default OrderConfirm

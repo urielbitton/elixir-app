@@ -4,7 +4,7 @@ import { ProductContext } from './ProductContext'
 
 function Product(props) {
  
-  const {products, setProducts, setGeneral} = useContext(ProductContext)
+  const {products, general,  cart} = useContext(ProductContext)
   const [prodsize, setProdsize] = useState("")
   const [units, setUnits] = useState(1)
   let temp = 1
@@ -13,10 +13,11 @@ function Product(props) {
     products.map(prod => {    
       return (prod.id === props.prod.id)?(props.prod.addcart = true):""
     })  
-    props.updatecartnum()
-    props.updatesub(props.prod.price*props.prod.units)  
-    props.updateunits(props.prod.units)
-    setUnits(1)
+    let cartobj = {id:props.id,name:props.name,img:props.img,price:props.price,units:props.prod.units,qty:props.qty,color:props.color,sizes:props.sizes,addcart:props.addcart,wishlist:props.wishlist,descript:props.descript,selcolor:props.prod.selcolor,selsize:props.prod.selsize}
+    cart.push(cartobj) 
+    general.subtotal += props.prod.price*props.prod.units  
+    general.cartitems += 1
+    props.updatesub()
   }    
   function addToWishlist() {
     products.map(prod => {

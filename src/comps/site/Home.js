@@ -10,7 +10,7 @@ function Home(props) {
   return (
     <div className="homepage">
       <Mainbg />
-      <Section1 updatecartnum={props.updatecartnum} updatesub={props.updatesub} updateunits={props.updateunits} updatewish={props.updatewish} openproduct={props.openproduct} wishnum={props.wishnum} updatecompare={props.updatecompare} updatecompstatus={props.updatecompstatus}/>
+      <Section1 updatecartnum={props.updatecartnum} updatesub={props.updatesub} updateunits={props.updateunits} addwishnum={props.addwishnum} openproduct={props.openproduct} wishnum={props.wishnum} updatecompare={props.updatecompare} updatecompstatus={props.updatecompstatus}/>
       <Section2 /> 
       <Section3 />
       <Section4 />

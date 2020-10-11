@@ -6,40 +6,31 @@ import { ProductContext } from './ProductContext'
 
 function CartPage(props) {
 
-  const {products, general, setGeneral} = useContext(ProductContext)
-  const [taxrate, setTaxrate] = useState(general.taxrate)
-  const [subtotal, setSubtotal] = useState(props.subtotal)
+  const {products, general, cart} = useContext(ProductContext)
+
+  const [update, setUpdate] = useState(0)
   const [goodcoupon, setGoodcoupon] = useState(false)
   const [couponname, setCouponname] = useState()
   const [couponamount, setCouponamount] = useState(0)
-  general.taxrate = taxrate
-
-  const cartitem = products.map(prod => {
-    if(prod.addcart) {   
+   
+  const cartitem = cart.map(item => { 
       return ( 
-        <CartPageItem prod={prod} name={prod.name} img={prod.img} price={prod.price} units={prod.units} qty={prod.qty} color={prod.color} cat={prod.cat} sizes={prod.sizes} addcart={prod.addcart} instock={prod.instock} wishlist={prod.wishlist} descript={prod.descript} key={prod.id} updatedadd={updatedAdd} updatedsub={updatedSub} removeitem={removeItem} colorupdate={props.colorupdate} sizeupdate={props.sizeupdate} openproduct={props.openproduct}/>
-      )   
-    }      
-  })     
+        <CartPageItem item={item} key={item.id} updatesub={props.updatesub} updatecarts={props.updatecarts} colorupdate={props.colorupdate} sizeupdate={props.sizeupdate} openproduct={props.openproduct}/>
+      )         
+  })        
  
-  function updatedAdd(price) {
-    setSubtotal(prev => prev+price)
-    props.connectsub(subtotal+price) 
-  }
-  function updatedSub(price) {
-    setSubtotal(prev => prev-price)
-    props.connectsub(subtotal-price)
-  } 
-  function removeItem(price, qty) {
-    setSubtotal(subtotal-(price*qty))
-    props.connectsub(subtotal-(price*qty))
-    props.subcartnum()
-  }
   function clearCart() {
-    products.map(prod => prod.addcart = false)
-    props.zerocartnum()
-    setSubtotal(0)
-  }
+    products.map(prod =>  {
+      if(prod.id === props.item.id) {
+        prod.units = props.item.units
+      }
+    })  
+    cart.splice(0,cart.length)
+    general.cartitems = 0
+    general.subtotal = 0
+    setUpdate(prev => prev-1)
+    props.updatecarts() 
+  } 
   function verifyCoupon() {
     for(let i=0;i<general.coupons.length;i++) {
       if (general.coupons[i].name === couponname) {
@@ -50,10 +41,9 @@ function CartPage(props) {
     } 
   }
 
-  const total = ((subtotal + subtotal * taxrate).toFixed(2)) - couponamount
+  general.total = ((general.subtotal + (general.subtotal * general.taxrate)).toFixed(2)) - couponamount
  
   useEffect(() => {
-    let couponinp = document.querySelector('.couponinp')
     document.querySelector('.proceeddiv .b1').onclick = () => {
       document.querySelector('.scrollpos').scrollIntoView()
     }
@@ -69,10 +59,10 @@ function CartPage(props) {
     <div className="cartpage">
       <PageBanner title="Cart" subtitle="Products in your cart" bgimg="https://i.imgur.com/qy9wB4B.jpg"/>
  
-      <div className="grid pgrid xgrid">
-        <div className="cartpageinner" style={{display: (props.cartitems<1?"none":"block")}}>
+      <div className="grid pgrid xgrid"> 
+        <div className="cartpageinner" style={{display: (cart.length<1?"none":"block")}}>
         
-        <table className="carttable">
+        <table className="carttable" data-update={update}>
           <thead>
             <tr>
               <th>Product</th>
@@ -113,12 +103,12 @@ function CartPage(props) {
               </td>
               <td colSpan="1"></td>
               <td colSpan="3" className="subtotaltd"> 
-                <h4>Subtotal: <span>${subtotal.toFixed(2)}</span></h4>
+                <h4>Subtotal: <span>${general.subtotal.toFixed(2)}</span></h4>
               </td>
             </tr>
           </tfoot>
-        </table> 
-
+        </table>  
+ 
         <div className="scrollpos"></div>
         <div className="spacerl"></div>
 
@@ -127,8 +117,8 @@ function CartPage(props) {
             <h2>Shipping</h2>
             <select> 
               <option>Canada</option>
-            </select>
-            <select onChange={(e) => setTaxrate(e.target.value/100)}> 
+            </select> 
+            <select onChange={(e) => {general.taxrate = e.target.value/100; setUpdate(prev => prev+1)}}> 
               <option disabled selected>Choose a Province</option>
               <option value="5">Alberta</option>
               <option value="12">British Columbia</option>
@@ -146,13 +136,13 @@ function CartPage(props) {
             </select>
             <input placeholder="Postal Code"/> 
           </div>  
-          <div className="carttotals"> 
+          <div className="carttotals" data-update={update}> 
             <h2>Cart Totals</h2>
-            <div><h6>Subtotal</h6><h6>${subtotal}.00</h6><div className="clear"></div></div>
-            <div><h6>Tax Rate ({taxrate*100}%)</h6><h6>${(subtotal * taxrate).toFixed(2)}</h6><div className="clear"></div></div>
-            <div><h6>Shipping Fees</h6><h6>{subtotal>200?"Free Shipping":"Flat Rate: 30$"}</h6><div className="clear"></div></div>
+            <div><h6>Subtotal</h6><h6>${general.subtotal}.00</h6><div className="clear"></div></div>
+            <div><h6>Tax Rate ({general.taxrate*100}%)</h6><h6>${(general.subtotal * general.taxrate).toFixed(2)}</h6><div className="clear"></div></div>
+            <div><h6>Shipping Fees</h6><h6>{general.subtotal>200?"Free Shipping":"Flat Rate: 30$"}</h6><div className="clear"></div></div>
             <div style={{display: goodcoupon?"block":"none"}}><h6>Coupon Code</h6><h6 style={{color:"var(--color)"}}>{couponname}: -${parseFloat(couponamount).toFixed(2)}</h6><div className="clear"></div></div>
-            <div><h6>Order Total</h6><h6 className="ordertotal">${(subtotal<1?0:(subtotal>100?parseFloat(total).toFixed(2):parseFloat(total+30).toFixed(2)))<0?parseFloat(0).toFixed(2):(subtotal<1?0:(subtotal>100?parseFloat(total).toFixed(2):parseFloat(total+30).toFixed(2)))}</h6><div className="clear"></div></div>
+            <div><h6>Order Total</h6><h6 className="ordertotal">${(general.subtotal<1?0:(general.subtotal>100?parseFloat(general.total).toFixed(2):parseFloat(general.total+30).toFixed(2)))<0?parseFloat(0).toFixed(2):(general.subtotal<1?0:(general.subtotal>100?parseFloat(general.total).toFixed(2):parseFloat(general.total+30).toFixed(2)))}</h6><div className="clear"></div></div>
             <div><Link to="/checkout"><button onClick={() => window.scrollTo(0, 0)}>Proceed To Checkout</button></Link></div>
           </div> 
         </div>  

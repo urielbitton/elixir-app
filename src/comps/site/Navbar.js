@@ -6,15 +6,13 @@ import Menu from './Menu'
 
 function Navbar(props) { 
  
-  const {products} = useContext(ProductContext)
+  const {general, cart} = useContext(ProductContext)
   
-  const cartprods = products.map(prod => {
-    if(prod.addcart) {     
-      return ( 
-        <CartItem prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} cat={prod.cat} sizes={prod.sizes} units={prod.units} addcart={prod.addcart} instock={prod.instock} wishlist={prod.wishlist} descript={prod.descript} color={prod.color} qty={prod.qty} key={prod.id} openproduct={props.openproduct}/>
-      )   
-    }      
-  })  
+  const cartprods = cart.map(item => {   
+    return ( 
+      <CartItem item={item} id={item.id} name={item.name} img={item.img} price={item.price} hot={item.hot} sale={item.sale} cat={item.cat} sizes={item.sizes} units={item.units} addcart={item.addcart} instock={item.instock} wishlist={item.wishlist} descript={item.descript} color={item.color} qty={item.qty} key={item.id} openproduct={props.openproduct}/>
+    )       
+  })    
 
   function scrollUp() {
     window.scrollTo(0, 0)
@@ -96,30 +94,30 @@ function Navbar(props) {
       <div className="grid">
         <div className="left">
           <Link to="/"><h1 className="logo">elixir<span>.</span></h1></Link>
-          <Menu />
-        </div> 
+          <Menu /> 
+        </div>  
         <div className="right">
-          <div onClick={() => scrollUp()} className="wishicondiv" style={{display:props.wishnum>0?"block":"none"}}><Link to="wishlist"><i className="fa fa-heart"></i><small><span>{props.wishnum}</span></small></Link></div>
+          <div data-wishnum={props.wishnum} onClick={() => scrollUp()} className="wishicondiv"><Link to="wishlist"><i className="fa fa-heart"></i><small><span>{general.wishnum}</span></small></Link></div>
           <div className="searchdiv searchbtn">
           <i class="fad fa-search"></i>
           </div>
           <div className="logindiv" onClick={() => props.adminon()}><Link to="/login"><i class="fad fa-user-alt"></i></Link></div>
-          <div className="cartdiv"> 
-          <small className="quicksubtotal">${props.subtotal.toFixed(2)}</small>
+          <div className="cartdiv" data-update={props.update}> 
+          <small className="quicksubtotal">${general.subtotal.toFixed(2)}</small>
           <i class="fad fa-shopping-cart"></i>
-          <small className="cartitemsnum"><span>{props.cartitems}</span></small>
+          <small className="cartitemsnum"><span>{cart.length}</span></small>
           <div className="cartcont"> 
-          <div style={{display: props.cartitems>0?"block":"none"}}>
+          <div style={{display: cart.length>0?"block":"none"}}>
             <div className="innercart">
               {cartprods}
-            </div>
+            </div>  
             <h4>Subtotal:</h4> 
-            <h3>${(props.subtotal).toFixed(2)}</h3>
+            <h3>${(general.subtotal).toFixed(2)}</h3>
             <hr/> 
             <Link to="/cart"><button className="viewcartbtn" onClick={() => scrollUp()}>View Cart</button></Link>
             <Link to="/checkout"><button className="checkoutbtn" onClick={() => scrollUp()}>Checkout</button></Link>
           </div>
-            <div className="emptycart" style={{display: props.cartitems>0?"none":"block",textAlign:"center"}}>
+            <div className="emptycart" style={{display: cart.length>0?"none":"block",textAlign:"center"}}>
               <p>No items in your cart.</p>
               <Link to="/shop"><small>Add Items</small></Link>
             </div>

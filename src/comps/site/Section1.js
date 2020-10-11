@@ -11,7 +11,7 @@ function Section1(props) {
     return a.id - b.id
   }).map(prod => {
     if(prod.cat.includes(catnum.trim()))
-      return <Item prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} cat={prod.cat} sizes={prod.sizes} units={prod.units} addcart={prod.addcart} instock={prod.instock} wishlist={prod.wishlist} descript={prod.descript} color={prod.color} qty={prod.qty} compared={prod.compared} ratings={prod.ratings} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updateunits={props.updateunits} openproduct={props.openproduct} addwishnum={props.addwishnum} updatecompare={props.updatecompare} updatecompstatus={props.updatecompstatus} key={prod.id} />
+      return <Item prod={prod} id={prod.id} name={prod.name} img={prod.img} price={prod.price} hot={prod.hot} sale={prod.sale} cat={prod.cat} sizes={prod.sizes} units={prod.units} addcart={prod.addcart} instock={prod.instock} wishlist={prod.wishlist} descript={prod.descript} color={prod.color} qty={prod.qty} compared={prod.compared} ratings={prod.ratings} reviews={prod.reviews} avgrating={prod.avgrating} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updateunits={props.updateunits} openproduct={props.openproduct} addwishnum={props.addwishnum} updatecompare={props.updatecompare} updatecompstatus={props.updatecompstatus} key={prod.id} />
   })   
    
    

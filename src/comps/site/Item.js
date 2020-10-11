@@ -8,23 +8,23 @@ function Item(props) {
   
   function addToCart() {  
     products.map(prod => {    
-      return (prod.id === props.prod.id)?(props.prod.addcart = true):""
+      return (prod.id === props.prod.id)?(props.prod.addcart = true):"" 
     })  
-    let cartobj = {id:props.id,name:props.name,img:props.img,price:props.price,units:props.units,qty:props.qty,color:props.color,sizes:props.sizes,addcart:props.addcart,wishlist:props.wishlist,descript:props.descript,selcolor:props.prod.selcolor,selsize:props.prod.selsize}
+    let cartobj = {id:props.id,name:props.name,img:props.img,price:props.price,units:props.units,qty:props.qty,cat:props.cat,color:props.color,sizes:props.sizes,instock:props.instock,addcart:props.prod.addcart,wishlist:props.wishlist,descript:props.descript,selcolor:props.prod.selcolor,selsize:props.prod.selsize,compared:props.compared,ratings:props.ratings,reviews:props.reviews,avgrating:props.avgrating}
     cart.push(cartobj) 
     general.cartitems += 1
     general.subtotal += props.price
-    props.updatesub()
-  }      
+    props.updatesub() 
+  }       
   function addToWishlist() { 
-    let wishobj = {id:props.id,name:props.name,img:props.img,price:props.price,instock:props.instock,cat:props.cat}
-    wishes.push(wishobj) 
     products.map(prod => {
       return (prod.id === props.prod.id)?(props.prod.wishlist = true):""
-    }) 
+    })
+    let wishobj = {id:props.id,name:props.name,img:props.img,price:props.price,units:props.units,qty:props.qty,cat:props.cat,color:props.color,sizes:props.sizes,instock:props.instock,addcart:props.prod.addcart,wishlist:props.wishlist,descript:props.descript,selcolor:props.prod.selcolor,selsize:props.prod.selsize,compared:props.compared,ratings:props.ratings,reviews:props.reviews,avgrating:props.avgrating}
+    wishes.push(wishobj)  
     general.wishnum += 1
     props.addwishnum() 
-  }  
+  }   
   function scrollUp() {
     window.scrollTo(0,0)
   } 
@@ -62,7 +62,7 @@ function Item(props) {
           document.querySelector('.cartcont').style.opacity = ''
         document.querySelector('.cartcont').style.visibility = ''
         document.querySelector('.cartcont').style.top = ''
-        }, 3000);
+        }, 3000); 
       }
     })  
     const comparebtn = document.querySelectorAll('.comparebtn')
@@ -79,21 +79,21 @@ function Item(props) {
     })
  
   },[]) 
- 
+  
   return (  
     <div className="itemcont" data-update={props.updatecompstatus}> 
       <div className="imgcont"> 
         <div className="labelcont"><small className="sale" style={{display: (props.sale?"block":"none")}}>Sale</small><small style={{display: (props.hot?"block":"none") }} className="hot">Hot</small></div>
         <Link to={props.wishlist?"/wishlist":"#"} className="heartlink" onClick={() => props.wishlist?scrollUp():"#"}><i className={props.wishlist?"fas fa-heart":"far fa-heart"} onClick={() => props.wishlist?"":addToWishlist()}></i></Link>
-        <Link to="/product" onClick={() => {props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings);window.scrollTo(0, 0)}}><img src={props.img} alt="item"/></Link>
+        <Link to="/product" onClick={() => {props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings,props.compared,props.reviews,props.avgrating);window.scrollTo(0, 0)}}><img src={props.img} alt="item"/></Link>
         <div className="itemactions">
           <i style={{display: props.instock?"inline-block":"none"}} className={props.addcart?"fas fa-check removefromcart":"fas fa-shopping-cart addtocart"} onClick={props.addcart?"":() => addToCart()}></i>
-          <i className="fas fa-search-plus quickviewbtn" onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings)}></i> 
+          <i className="fas fa-search-plus quickviewbtn" onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings,props.compared,props.reviews,props.avgrating)}></i> 
           <i className="fas fa-random comparebtn" onClick={() => props.compared?"":addToCompare(props.prod)} style={{color: props.compared?"var(--color)":""}}></i>
         </div> 
       </div> 
       <div className="iteminfodiv">
-        <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings)}><Link to="/product">{props.name}</Link></h5>
+        <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings,props.compared,props.reviews,props.avgrating)}><Link to="/product">{props.name}</Link></h5>
         <small>${parseFloat(props.price).toFixed(2)}</small> 
       </div> 
     </div>  

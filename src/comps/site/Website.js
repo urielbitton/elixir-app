@@ -46,6 +46,8 @@ function Website(props) {
   const [instock, setStock] = useState(false)
   const [qty, setQty] = useState(0)
   const [ratings, setRatings] = useState(0)
+  const [reviews, setReviews] = useState([])
+  const [avgrating, setAvgrating] = useState({})
    
   function updateSub() {
     setUpdate(prev => prev+1) 
@@ -93,7 +95,7 @@ function Website(props) {
     setUpdateStat(prev => prev+1)
   }
   
-  function openProduct(prod,id,name,img,price,descript,color,cat,sizes,units,addcart,wishlist,instock,qty,ratings) {
+  function openProduct(prod,id,name,img,price,descript,color,cat,sizes,units,addcart,wishlist,instock,qty,ratings,reviews,avgrating) {
     setProd(prod)
     setId(id)
     setName(name)
@@ -109,6 +111,8 @@ function Website(props) {
     setStock(instock)
     setQty(qty)
     setRatings(ratings)
+    setReviews(reviews)
+    setAvgrating(avgrating)
   } 
 
   useEffect(() => {
@@ -155,7 +159,7 @@ function Website(props) {
           <Contact />
         </Route> 
         <Route path="/product"> 
-          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} instock={instock} addcart={addcart} qty={qty} ratings={ratings} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSub} addwishnum={addWishnum} updateunits={updateUnits} openproduct={openProduct} setprodcolor={setProdColor} setprodsize={setProdSize}/>
+          <ProductPage prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} units={units} instock={instock} addcart={addcart} qty={qty} ratings={ratings} reviews={reviews} avgrating={avgrating} wishlist={wishlist} updatecartnum={updateCartNum} updatesub={updateSub} addwishnum={addWishnum} updateunits={updateUnits} openproduct={openProduct} setprodcolor={setProdColor} setprodsize={setProdSize}/>
         </Route> 
         <Route path="/cart">
           <CartPage prod={prod} cartitems={cartitems} updatecarts={updateCarts} updatesub={updateSub} subcartnum={subCartNum} zerocartnum={zeroCartNum} colorupdate={colorupdate} sizeupdate={sizeupdate} applycoupon={applyCoupon} openproduct={openProduct}/>

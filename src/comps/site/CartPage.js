@@ -13,18 +13,19 @@ function CartPage(props) {
   const [couponname, setCouponname] = useState()
   const [couponamount, setCouponamount] = useState(0)
    
+  general.total = ((general.subtotal + (general.subtotal * general.taxrate)).toFixed(2)) - couponamount
+  
   const cartitem = cart.map(item => { 
       return ( 
         <CartPageItem item={item} key={item.id} updatesub={props.updatesub} updatecarts={props.updatecarts} colorupdate={props.colorupdate} sizeupdate={props.sizeupdate} openproduct={props.openproduct}/>
       )         
   })        
- 
+  
   function clearCart() {
-    products.map(prod =>  {
-      if(prod.id === props.item.id) {
-        prod.units = props.item.units
-      }
-    })  
+    products.map(prod => {
+      prod.addcart = false
+      prod.units = 1
+    })   
     cart.splice(0,cart.length)
     general.cartitems = 0
     general.subtotal = 0
@@ -40,8 +41,6 @@ function CartPage(props) {
       }   
     } 
   }
-
-  general.total = ((general.subtotal + (general.subtotal * general.taxrate)).toFixed(2)) - couponamount
  
   useEffect(() => {
     document.querySelector('.proceeddiv .b1').onclick = () => {
@@ -150,7 +149,7 @@ function CartPage(props) {
         <div className="spacerl"></div>
         </div>
 
-        <div className="msgcont" style={{display: (props.cartitems>0?"none":"block")}}>
+        <div className="msgcont" style={{display: (general.cartitems>0?"none":"block")}}>
           <div className="msgbox"><p><i class="fas fa-shopping-cart"></i>Your cart is currently empty.</p></div>
           <Link to="/shop"><button>Return To Shop</button></Link>
         </div>

@@ -4,7 +4,7 @@ import { ProductContext } from './ProductContext'
 function Reviews(props) {
 
   const {products} = useContext(ProductContext)
-  const [id, setId] = useState(props.prod.reviews.length)
+  const [id, setId] = useState(props.prod.reviews.length) 
   const [text, setText] = useState('')
   const [name, setName] = useState('')
   const [title, setTitle] = useState('')

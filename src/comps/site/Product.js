@@ -180,10 +180,10 @@ function Product(props) {
             </div> 
             <hr />
             <div className="clear"></div> 
-          </label> 
+          </label>  
           <label>
             <small>Size</small>
-            <div className="sizesboxdiv">
+            <div className="sizesboxdiv"> 
             { 
               props.sizes.map(size => {
                 return <div className="sizebox" onClick={() => sizeUpdate(size)}>{size}</div>

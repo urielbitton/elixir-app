@@ -37,6 +37,7 @@ function CartPageItem(props) {
   }   
   function removeItem() {
     general.subtotal -= (props.item.price*props.item.units) 
+    general.cartitems -= 1 
     products.map(prod => {
       if(prod.id === props.item.id) {
         prod.addcart = false
@@ -52,7 +53,7 @@ function CartPageItem(props) {
       props.updatecarts()
       props.item.units = 0 
       props.item.addcart = false
-    })
+    }) 
 
   } 
 
@@ -68,7 +69,7 @@ function CartPageItem(props) {
       <td>
         <img src={props.item.img} alt="cartprod" /> 
         <Link to="/product">
-          <h6  data-update={props.colorupdate} onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty)}>{props.item.name} - {replaceAll(props.item.selcolor, colormap)}</h6>
+          <h6  data-update={props.colorupdate} onClick={() => props.openproduct(props.item,props.item.id,props.item.name,props.item.img,props.item.price,props.item.descript,props.item.color,props.item.cat,props.item.sizes,props.item.units,props.item.instock,props.item.addcart,props.item.wishlist,props.item.qty,props.item.ratings,props.item.reviews,props.item.avgrating)}>{props.item.name} - {replaceAll(props.item.selcolor, colormap)}</h6>
         </Link> 
         <small style={{color:"#aaa"}}>Size: {props.item.selsize}</small>
       </td>

@@ -17,7 +17,7 @@ function Mainbg() {
     setTimeout(() => { document.querySelector('.slide1 button').style.cssText += 'opacity:1;left:0' },1700)
 
   },[]) 
-
+ 
   
   return ( 
     <div className="bgcont">

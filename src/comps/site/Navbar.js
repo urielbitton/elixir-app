@@ -10,9 +10,9 @@ function Navbar(props) {
   
   const cartprods = cart.map(item => {   
     return ( 
-      <CartItem item={item} id={item.id} name={item.name} img={item.img} price={item.price} hot={item.hot} sale={item.sale} cat={item.cat} sizes={item.sizes} units={item.units} addcart={item.addcart} instock={item.instock} wishlist={item.wishlist} descript={item.descript} color={item.color} qty={item.qty} key={item.id} openproduct={props.openproduct}/>
+      <CartItem item={item} id={item.id} name={item.name} img={item.img} price={item.price} hot={item.hot} sale={item.sale} cat={item.cat} sizes={item.sizes} units={item.units} addcart={item.addcart} instock={item.instock} wishlist={item.wishlist} descript={item.descript} color={item.color} qty={item.qty} ratings={item.ratings} reviews={item.reviews} avgrating={item.avgrating} key={item.id} openproduct={props.openproduct}/>
     )       
-  })    
+  })     
 
   function scrollUp() {
     window.scrollTo(0, 0)

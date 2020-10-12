@@ -1,0 +1,126 @@
+.clientdash {
+  display: grid;
+  grid-template-columns: 300px auto;
+}
+.clientdash .sidebar {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.05);
+}
+.clientdash .homecont {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}  
+.innersidebar {
+  position: relative;
+  height: 95%;
+  width: 100%;
+  overflow-y: scroll;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.innersidebar::-webkit-scrollbar {
+  display: none;
+}
+.sidebar h4 {
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+  color: #333;
+}
+.sidemenu h5 {
+  font-size: 16px;
+  color: #ccc;
+  margin: 25px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sidemenu h5:hover {
+  color: #555;
+}
+.sidemenu h5 i {
+  margin-right: 20px;
+  font-size: 18px;
+}
+.promodiv {
+  text-align: center;
+}
+.promodiv img {
+  width: 120px;
+}
+.promodiv h6 {
+  font-size: 12px;
+  margin: 20px 0;
+  color: #777; 
+}
+.promodiv h6 span {
+  color: var(--color);
+}
+.promodiv hr {
+  position: relative;
+  width: 80px;
+  height: 1px;
+  background: #ccc;
+}
+.sidebarfoot {
+  text-align: center;
+}
+.sidebarfoot button {
+  padding: 15px 40px;
+  background: #333;
+  color: #fff;
+  border-radius: 40px;
+}
+.sidebarfoot button:hover {
+  background: #111;
+} 
+.clientdash .topbar {
+  position: fixed;
+  top: 0;
+  right: 15px;
+  width: calc(100% - 315px);
+  height: 120px;
+  background: #fff;
+  z-index: 999;
+  box-shadow: 0px 10px 18px -21px rgba(25,34,51,0.15);
+  border-left: 1px solid rgba(10, 157, 255,0.04);
+  padding: 10px 20px;
+  transition: all 0.3s;
+}
+.clientdash .topbar .left, .clientdash .topbar .right {
+  position: relative;
+  top: 25px;
+}
+.clientdash .topbar .sitelink:hover {
+  background: rgba(0,0,0,0.03); 
+}
+.clientdash .topbar input {
+  background: #f5f5f5;
+}
+.clientdash .topbar .profilecont:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

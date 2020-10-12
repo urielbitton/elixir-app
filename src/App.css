@@ -2,11 +2,10 @@ html, body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  font-family: 'Poppins', sans-serif;
   font-family: 'Varela', sans-serif;
 }   
 :root {
-  --color: #0a9dff;  
+  --color: #0a9dff;   
 }   
     
 .grid {
@@ -2221,8 +2220,7 @@ footer .socials > div i {
 .abouts1 h6:hover {
   border-color: var(--color)
 }
-
-.loginpage {
+.loginpage, .registerpage {
   position: relative;
   display: grid;
   grid-template-columns: 55% 45%;
@@ -2230,13 +2228,19 @@ footer .socials > div i {
   width: 100%;
   transition: all 0.7s;
 } 
+.registerpage {
+  grid-template-columns: 45% 55%;
+}
 .loginimgcont img {
   height: 100vh;
   width: 100%;
 }
 .logininfo {
   position: relative;
-  padding: 60px 50px;
+  padding: 0px 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .logininfo h3 {
   font-size: 45px;
@@ -2249,8 +2253,9 @@ footer .socials > div i {
 }
 .logininfo .loginform input {
   border: none;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #e1e1e1;
+  padding: 12px;
+  background: #f5f5f5;
+  border-radius: 6px;
   width: 320px;
   color: #aaa;
   transition: all 0.2s;
@@ -2291,9 +2296,10 @@ footer .socials > div i {
   background: #333;
 }
 .logininfo .loginform h6 {
-  margin-top: 40px;
+  margin-top: 20px;
   font-size: 13px;
   font-weight: 500;
+  margin-bottom: 20px;
 }
 .logininfo .loginform h6 a {
   font-weight: 600;
@@ -2301,7 +2307,7 @@ footer .socials > div i {
 .logininfo .loginform a:hover {
   text-decoration: underline;
 }
-.loginpage .loader {
+.loginpage .loader, .registerpage .loader {
   position: fixed;
   top:0;
   left: 0;
@@ -2313,7 +2319,7 @@ footer .socials > div i {
 }
 .loginmsg {
   position: relative;
-  margin-top: 60px;
+  margin-top: 30px;
   padding: 15px;
   font-size: 14px;
   color: #333;
@@ -2330,7 +2336,6 @@ footer .socials > div i {
   background: rgba(255, 46, 46,0.3);
 } 
 .backtosite {
-  margin-top: 50px;
   color: #aaa;
   cursor: pointer;
   display: inline-block;
@@ -2347,6 +2352,37 @@ footer .socials > div i {
 .backtosite:hover i {
   margin-left: 13px;
 }
+.registerform {
+  display: grid;
+  grid-template-columns: 300px;
+  grid-gap: 30px;
+} 
+.registerform input {
+  padding: 12px;
+  border: none;
+  background: #f5f5f5;
+  border-radius: 6px;
+}
+.registerform button {
+  padding: 15px 30px;
+  background: #333;
+  color: #fff;
+  width: 160px;
+}
+.registerform button:hover {
+  background: #111;
+}
+.registerform h6 {
+  font-size: 13px;
+  font-weight: 500;
+}
+.registerform h6 a {
+  font-weight: 600;
+}
+.registerform h6 a:hover {
+  text-decoration: underline;
+}
+
 .orderconfirmpage h2 {
   font-size: 30px;
   color: #333;
@@ -2378,7 +2414,7 @@ footer .socials > div i {
   background: var(--color);
   color: #fff;
   padding: 15px 20px;
-}
+} 
 .orderconfirmpage button:hover {
   filter: brightness(110%);
 }

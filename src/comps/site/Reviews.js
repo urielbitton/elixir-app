@@ -163,7 +163,7 @@ function Reviews(props) {
           </div> 
           <h6>{ratenum===0?"":ratenum>1?(ratenum+" total ratings"):(ratenum+" total rating")} </h6>
         </div> 
-      </div>  
+      </div>   
       <hr />
       <div className="prodaccordion">
       <h2 style={{color:"#333"}} re-taber="reviews">Reviews</h2>
@@ -174,6 +174,8 @@ function Reviews(props) {
             <table>
               <tr><th>Colors</th><td>Pink, black</td></tr>
               <tr><th>Sizes</th><td>Large, Small, Extra Small</td></tr>
+              <tr><th>Warranty</th><td>1 Year</td></tr>
+              <tr><th>Exchanges</th><td>Returns & refund available for this item</td></tr>
             </table>
           </div>
           <div re-tab="reviews" className="reviewstab" data-update={update}>

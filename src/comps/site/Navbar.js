@@ -26,12 +26,12 @@ function Navbar(props) {
     window.onscroll = () => {navSlide()}
     function navSlide() {
       if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        navbar.style.cssText = 'height:80px;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,0.07)'
+        navbar.style.cssText += 'height:80px;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,0.07)'
         navleft.style.top = '-15px'
         navright.style.top = '-15px'
       }  
       else {
-        navbar.style.cssText = 'height: 130px;background:none;box-shadow:none'
+        navbar.style.cssText += 'height: 130px;background:none;box-shadow:none'
         navleft.style.top = ''
         navright.style.top = ''
       }

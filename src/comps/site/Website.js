@@ -14,7 +14,6 @@ import Footer from './Footer'
 import Checkout from './Checkout';
 import Search from './Search'
 import Wishlist from './Wishlist';
-import Login from '../Login'
 import OrderConfirm from './OrderConfirm';
 import CompareView from './CompareView'
 

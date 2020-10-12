@@ -18,17 +18,17 @@ input {
 input::placeholder {
   color: #aaa;
 }
-.dashboard {
+.adminapp .dashboard {
   display: grid;
   grid-template-columns: 220px auto;
   overflow-y: hidden;
   transition: all 0.2s;
 }
-.dashboard > div {
+.adminapp .dashboard > div {
   position: relative;
   height: 100vh;
 }
-.sidebar {
+.adminapp .sidebar {
   position: relative;
   background: #fff;
   padding: 10px;
@@ -38,7 +38,7 @@ input::placeholder {
   z-index: 900;
   transition: all 0.3s;
 }
-.homecont {
+.adminapp .homecont {
   position: relative;
   background: #f4f7fd;
   padding: 100px 20px 40px 20px;
@@ -46,7 +46,7 @@ input::placeholder {
   overflow-y: scroll;
   transition: all 0.3s;
 } 
-.homecont input {
+.adminapp .homecont input {
   border: none;
   background: #f5f5f5;
   padding: 10px;
@@ -65,7 +65,7 @@ input::placeholder {
 .sidebarinner::-webkit-scrollbar {
   display: none;
 }
-.sidebar h3 {
+.adminapp .sidebar h3 {
   font-size: 22px;
   color: #777;
   text-align: center;
@@ -74,23 +74,23 @@ input::placeholder {
   margin-top: 20px;
   display: inline-block;
 }
-.sidebar .sidelogo {
+.adminapp .sidebar .sidelogo {
   width: 40px;
   border-radius: 15px;
   margin-right: 10px;
   top: 9px;
 }
-.sidemenu {
+.adminapp .sidemenu {
   position: relative;
   margin-top: 50px;
   text-align: left;
   height: 70%;
   overflow-y: scroll;
 }
-.sidemenu::-webkit-scrollbar {
+.adminapp .sidemenu::-webkit-scrollbar {
   display: none;
 }
-.sidemenu h5 {
+.adminapp .sidemenu h5 {
   color: #666;
   font-size: 14px;
   font-weight: 500; 
@@ -98,13 +98,13 @@ input::placeholder {
   border-radius: 15px;
   transition: all 0.2s;
 }
-.sidemenu h5 span {
+.adminapp .sidemenu h5 span {
   display: block;
   cursor: pointer;
   padding: 12px 17px;
   border-radius: 15px;
 }
-.sidemenu h5 > div {
+.adminapp .sidemenu h5 > div {
   position: relative;
   transition: all 0.2s; 
   height: 0;
@@ -114,24 +114,24 @@ input::placeholder {
   border-radius: 12px;
   background: rgba(10, 157, 255,0.04);
 }
-.sidemenu h5:hover span {
+.adminapp .sidemenu h5:hover span {
   background: var(--light);
   color: var(--color)
 } 
-.sidemenu h5 i:first-child {
+.adminapp .sidemenu h5 i:first-child {
   margin-right: 10px;
   font-size: 17px;
   transition: all 0.2s;
 }
-.sidemenu h5 .fa-angle-up {
+.adminapp .sidemenu h5 .fa-angle-up {
   float: right;
   transition: all 0.2s;
 }  
-.sidemenu .activesidelink span {
+.adminapp .sidemenu .activesidelink span {
   background: var(--light);
   color: var(--color)
 }
-.sidemenu h6 {
+.adminapp .sidemenu h6 {
   color: #666;
   font-size: 14px;
   font-weight: 500; 
@@ -141,14 +141,14 @@ input::placeholder {
   transition: all 0.2s;
   cursor: pointer; 
 }
-.sidemenu h6:hover {
+.adminapp .sidemenu h6:hover {
   background: var(--light);
   color: var(--color)
 }
-.sidemenu h6 i {
+.adminapp .sidemenu h6 i {
   margin-right: 5px;
 }
-.sidebar .logoutbtn {
+.adminapp .sidebar .logoutbtn {
   padding: 15px 30px;
   width: 90%;
   margin: auto;
@@ -158,12 +158,12 @@ input::placeholder {
   margin-top: 50px;
   font-size: 15px;
 }
-.sidebar .logoutbtn:hover {
+.adminapp .sidebar .logoutbtn:hover {
   background: var(--color);
   color: #fff;
 }
  
-.topbar {
+.adminapp .topbar {
   position: fixed;
   top: 0;
   right: 15px;
@@ -275,7 +275,7 @@ input::placeholder {
   float: right;
   font-size: 30px;
   font-weight: 700;
-  color: #555;
+  color: #555; 
 }
 .smallbox h3 small {
   font-size: 12px;
@@ -327,7 +327,7 @@ input::placeholder {
 }
 .dashbox table th h6:hover {
   color: var(--color)
-}
+} 
 .dashbox table th i {
   margin-left: 15px;
   padding: 5px 10px;

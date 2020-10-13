@@ -499,7 +499,7 @@ const ProductContextProvider = (props) => {
       pic: 'https://i.imgur.com/UMv6hbM.jpg',
     } 
   ])
-  
+   
   return (
     <ProductContext.Provider value={{products, setProducts,general,setGeneral, customers, setCustomers, orders, setOrders, cart, setCart, wishes, setWishes, accounts, setAccounts}}>
       {props.children}

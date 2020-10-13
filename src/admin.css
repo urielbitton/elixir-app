@@ -257,11 +257,11 @@ input::placeholder {
   background: #fff;
   transition: all 0.3s;
 } 
-.smallbox:hover {
+.adminapp .smallbox:hover {
   box-shadow: 0px 20px 18px -21px rgba(25,34,51,0.25);
 }
-.smallbox span {
-  float: left;
+.adminapp .smallbox span {
+  float: left; 
   width: 60px;
   height: 60px;
   display: flex;
@@ -271,13 +271,13 @@ input::placeholder {
   margin-right: 40px;
   font-size: 23px;
 }
-.smallbox h3 {
+.adminapp .smallbox h3 {
   float: right;
   font-size: 30px;
   font-weight: 700;
   color: #555; 
 }
-.smallbox h3 small {
+.adminapp .smallbox h3 small {
   font-size: 12px;
   color: #aaa;
   font-weight: 500;
@@ -296,7 +296,7 @@ input::placeholder {
 .homegrid .dashlarge {
   grid-column: span 10;
 }
-.dashbox table {
+.adminapp .dashbox table {
   position: relative;
   width: 100%;
   min-width: 1200px;
@@ -305,81 +305,81 @@ input::placeholder {
   text-align: left;
   border-collapse: collapse;
 }
-.dashbox table::-webkit-scrollbar-track {
+.adminapp .dashbox table::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
-.dashbox table h5 {
+.adminapp .dashbox table h5 {
   margin-bottom: 30px;
 } 
-.dashbox table th {
+.adminapp .dashbox table th {
   position: relative;
   font-size: 13px;
   color: #555;
   font-weight: 600;
   user-select: none;
 }
-.dashbox table th h6 {
+.adminapp .dashbox table th h6 {
   cursor: pointer;
   font-size: 13px;
   transition: all 0.2s;
   margin-bottom: 15px;
   display: inline-block;
 }
-.dashbox table th h6:hover {
+.adminapp .dashbox table th h6:hover {
   color: var(--color)
 } 
-.dashbox table th i {
+.adminapp .dashbox table th i {
   margin-left: 15px;
   padding: 5px 10px;
   border-radius: 100%;
   cursor: pointer;
 } 
-.dashbox table th i:hover {
+.adminapp .dashbox table th i:hover {
   background: var(--light)
 }
-.dashbox table tbody {
+.adminapp .dashbox table tbody {
   margin-top: 20px;
   color: #555;
 }
-.dashbox table tbody td {
+.adminapp .dashbox table tbody td {
   padding: 10px 5px;
   font-size: 14px;
 }
-.dashbox table tbody td:first-child {
+.adminapp .dashbox table tbody td:first-child {
   width: 80px;
 }
-.dashbox table tbody img {
+.adminapp .dashbox table tbody img {
   width: 70px;
   height: 90px;
   margin-right: 40px;
 }
-.dashbox table tbody .prodname {
+.adminapp .dashbox table tbody .prodname {
   top: -40px;
   color: #333;
   user-select: none;
 }
-.dashbox table tbody .hottag {
+.adminapp .dashbox table tbody .hottag {
   color: #FF3737
 }
 .dashbox table tbody .saletag {
   color: var(--color)
 }
-.dashbox table .stockstatus {
+.adminapp .dashbox table .stockstatus {
   padding: 15px 30px;
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.2s;
   font-size: 14px;
 }
-.dashbox table .instock {
+.adminapp .dashbox table .instock {
   background: var(--light);
   color: var(--color);
 }
-.dashbox table .outstock {
+.adminapp .dashbox table .outstock {
   background: rgba(255, 196, 196,0.4);
   color: #FF3737;
 }
-.dashbox table tfoot small {
+.adminapp .dashbox table tfoot small {
   font-size: 12px;
   color: var(--color);
   opacity: 0.8;
@@ -389,7 +389,7 @@ input::placeholder {
   border-radius: 20px;
   white-space: nowrap;
 }
-.dashbox table tfoot small:hover {
+.adminapp .dashbox table tfoot small:hover {
   background: var(--light)
 }
 
@@ -773,7 +773,6 @@ h4.rightbartitle {
 .innerprodopts label, .innerprodopts .label {
   position: relative;
   display: block;
-  display: block;
   margin: 20px auto; 
 }
 .innerprodopts label h6, .innerprodopts .label h6 {
@@ -1016,7 +1015,6 @@ h4.rightbartitle {
   position: absolute;
   top: 10px;
   right: 15px;
-  color: #aaa;
   font-size: 15px;
   color: var(--color);
   display: none;

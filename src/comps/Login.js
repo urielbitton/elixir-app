@@ -17,14 +17,6 @@ function Login(props) {
   const loginpage = document.querySelector('.loginpage')
   const loader = document.querySelector('.loginpage .loader')
   const loginmsg = document.querySelector('.loginmsg')
- 
-  function changeToClient() {
-    const found = accounts.some(el =>  el.username === username && el.password === password)
-    if(found===true) {
-      setAdmin(false)
-      setClient(true) 
-    }  
-  } 
 
   function loginSubmit() {
     if(admin === true) {
@@ -44,9 +36,9 @@ function Login(props) {
       else {
         setCorrect(2)
       }
-    }
-    else if (client === true) {
-      setCorrect(1)
+    } 
+    if(accounts.some(el =>  username===el.username && password===el.password)) {
+      setCorrect(1) 
       loader.style.width = '0'
       loader.style.width = '100%'
       setTimeout(() => {
@@ -70,8 +62,8 @@ function Login(props) {
       <div className="logininfo">
         <h3>Hello,<br/>Welcome Back</h3>
         <div className="loginform">
-          <input placeholder="Username or Email" onChange={(e) => {setUsername(e.target.value);changeToClient()}}/>
-          <input placeholder="Password" type="password" onChange={(e) => {setPassword(e.target.value);changeToClient()}}/>
+          <input placeholder="Username or Email" onChange={(e) => setUsername(e.target.value)}/>
+          <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
           <label>
             <input type="checkbox"/>
             <small>Remember Me</small>

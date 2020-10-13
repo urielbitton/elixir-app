@@ -82,11 +82,11 @@
   position: fixed;
   top: 0;
   right: 15px;
-  width: calc(100% - 315px);
+  width: calc(100% - 315px); 
   height: 120px;
-  background: #fff;
+  background: #fafafa;
   z-index: 999;
-  box-shadow: 0px 10px 18px -21px rgba(25,34,51,0.15);
+  box-shadow: none;
   border-left: 1px solid rgba(10, 157, 255,0.04);
   padding: 10px 20px;
   transition: all 0.3s;
@@ -105,6 +105,165 @@
   background: rgba(0,0,0,0.03);
 }
 
+.clientdash .homecont {
+  padding: 30px;
+  background: #fafafa;
+}
+.clientdash .homegrid {
+  grid-template-columns: repeat(12, 1fr);
+}
+.clientdash .homecont .dashbox {
+  box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+  background: #fff;
+  padding: 25px 20px;
+  overflow: hidden;
+}
+.clientdash .homecont .statusbox {
+  grid-column: span 4;
+  height: 350px;
+}
+.clientdash .homecont .productsbox {
+  grid-column: span 5
+}
+.clientdash .homecont .updatesbox {
+  grid-column: span 3
+}
+.clientdash .homecont .statusbox h4 {
+  color: #333;
+  font-size: 17px;
+  font-weight: 500;
+}
+.clientdash .homecont .dashbox small {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  font-size: 12px;
+  color: var(--color);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.clientdash .homecont .dashbox small i {
+  top: 1px;
+  left: 2px;
+  transition: all 0.3s;
+}
+.clientdash .homecont .dashbox small:hover i {
+  left: 5px;
+}
+.clientdash .homecont .smallbox {
+  grid-column: span 3;
+  height: 250px;
+}
+.clientdash .homecont .smallbox h5 {
+  font-size: 14px;
+  font-weight: 500;
+}
+.clientdash .homecont .smallbox small {
+  top: 27px;
+}
+.clientdash .homecont .trackerbox {
+  background: var(--color);
+}
+.clientdash .homecont .trackerbox h5 {
+  color: #fff;
+}
+.clientdash .homecont .trackerbox h6 {
+  color: #fff;
+  font-weight: 500;
+  font-size: 13px;
+}
+.clientdash .homecont .trackerbox h6 span {
+  font-size: 13px;
+  float: right;
+}
+.clientdash .homecont .trackerbox small {
+  color: #fff;
+}
+.clientdash .homecont .dashbox table {
+  width: 100%;
+  margin-top: 25px;
+  text-align: left;
+  border-collapse: collapse;
+}
+.clientdash .homecont .dashbox table th {
+  position: relative;
+  font-size: 12px;
+  color: #333;
+  padding-bottom: 20px;
+}
+.clientdash .homecont .dashbox table td {
+  font-size: 13px;
+  color: #777;
+  padding: 7px 0;
+  padding-bottom: 20px;
+}
+.clientdash .homecont .dashbox table button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: var(--color);
+  color: #fff;
+}
+.clientdash .homecont .dashbox table .orderlink:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--color)
+}
+.clientdash .homecont .dashbox table img {
+  width: 50px;
+}
+.clientdash .homecont .dashbox table .prodnametd {
+  max-width: 60px;
+}
+
+.trackprog {
+  position: relative;
+  margin-top: 70px;
+  width: 100%;
+} 
+.progtube {
+  position: relative;
+  width: 100%;
+  height: 7px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.4);
+  overflow: hidden;
+}
+.progfill {
+  position: absolute;
+  left: 0;
+  height:100%;
+  width: 80%;
+  background: #fff;
+}
+.trackpointers {
+  position: absolute;
+  width: 100%;
+}
+.trackpointers i {
+  color: #eee;
+  font-size: 11px;
+  font-style: normal;
+  position: relative;
+  text-align: center;
+  line-height: 1.1;
+  display: flex;
+}
+.trackpointers i:nth-of-type(1) {
+  left: 7%;
+  top: -35px;
+}
+.trackpointers i:nth-of-type(2) {
+  left: 32%;
+  top: -7px;
+} 
+.trackpointers i:nth-of-type(3) {
+  left: 60%;
+  top: -82px;
+}
+.trackpointers i:nth-of-type(4) {
+  left: 85%;
+  top: -55px;
+}
 
 
 
@@ -124,3 +283,15 @@
 
 
 
+
+
+
+
+@media (max-width: 1700px) {
+  .clientdash .homegrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  .clientdash .homecont .dashbox {
+    grid-column: span 2;
+  }
+}

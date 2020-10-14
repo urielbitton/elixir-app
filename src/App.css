@@ -2985,6 +2985,77 @@ footer .socials > div i {
   background: #333;
 }
 
+.paymentcont {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 20px 10px;
+}
+.paymentcont h4 {
+  grid-column: span 2;
+}
+.paymentcont img {
+  width: 130px;
+  margin: auto;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.paymentcont > div {
+  position: relative;
+  width: 100%;
+}
+.paymentcont form {
+  position: relative;
+  display: grid;
+  grid-template-columns: 70% 100%;
+  grid-gap: 0px 30px;
+  width: 100%;
+}
+.paymentcont label {
+  position: relative;
+  width: 100%;
+}
+.paymentcont label input {
+  border: none;
+  background: none;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+.paymentcont label input::placeholder {
+  color: #ccc;
+}
+.paymentcont .fullinp {
+  grid-column: span 2;
+}
+.paymentcont label small {
+  display: block;
+  font-size: 12px;
+  margin-left: 0;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

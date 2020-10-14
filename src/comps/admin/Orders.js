@@ -83,29 +83,28 @@ function Orders() {
             </label>
             <label>
               <h6>Date</h6>
-              <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
+              <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/> 
             </label>
             <label>
               <h6>Order Status</h6>
               <select className="orderstatusbtn" onChange={(e) => setStatus(e.target.value)}>
                 <option selected={status==="Pending Payment"?true:false} value="Pending Payment">Pending Payment</option>
                 <option selected={status==="Processing"?true:false} value="Processing">Processing</option>
-                <option selected={status==="Ready to Ship"?true:false} value="Ready to Ship">Ready to Ship</option>
                 <option selected={status==="Shipped"?true:false} value="Shipped">Shipped</option>
                 <option selected={status==="Delivered"?true:false} value="Delivered">Delivered</option>
                 <option selected={status==="Refunded"?true:false} value="Refunded">Refunded</option>
               </select>
-            </label>
+            </label> 
             <label>  
-              <h6>Total</h6> <div className="currencydiv">$</div> <input className="priceinp" value={parseFloat(total).toFixed(2)} onChange={(e) => setTotal(e.target.value)} /> <div className="clear"></div>
+              <h6>Total</h6> <div className="currencydiv">$</div> <input className="priceinp" value={parseFloat(total).toFixed(2)} onChange={(e) => setTotal(parseFloat(e.target.value))} /> <div className="clear"></div>
             </label>
             <button className="saveorderbtn" onClick={() => saveOrder(id)}>Save Order</button>
             <button className="removeorderbtn">Remove Order</button>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
   )
-}
+}  
 
 export default Orders

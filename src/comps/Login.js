@@ -20,6 +20,7 @@ function Login(props) {
 
   function loginSubmit() {
     if(admin === true) {
+      props.clientoff()
       if(username === creds[0] && password === creds[1]) {
         setCorrect(1)
         loader.style.width = '0'

@@ -1,11 +1,42 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ProductContext } from '../site/ProductContext'
 
 function Homecont(props) {
 
-  const {products} = useContext(ProductContext)
+  const {products, orders} = useContext(ProductContext)
 
-  return (
+  const orderrows = orders.map(ord => {
+    return <tr><td className="orderlink">#{ord.number}</td><td>{ord.products}</td><td>${ord.total.toFixed(2)}</td><td><button className="statusbtn">{ord.status}</button></td></tr>
+  })
+  const cardinfo = orders.slice(0,1).map(ord => {
+    return <><i className="cardnums">*****{ord.cardnumber.slice(12)}</i><i className="expdate">exp: {ord.expdate}</i></>
+  })
+  const ordertrack = orders.slice(0,1).map(ord => {
+    return <div> <h6>Order: #{ord.number}<span>{ord.date}</span></h6> <div className="trackprog"> <div className="trackpointers"> <i className="top">Pending<br/>|</i> <i className="bottom">|<br/>Processing</i> <i className="top">Shipped<br/>|</i> <i className="bottom">|<br/>Delivered</i> </div><div className="progtube"> <div className="progfill"></div></div></div></div>
+  }) 
+  const recentpurch = products.slice(0,4).map(prod => {
+    if(prod.purchased_status===true)
+      return <tr><td><img src={prod.img} alt=""/></td><td className="prodnametd">{prod.name}</td><td>${prod.price.toFixed(2)}</td><td>{prod.units}</td><td>${(prod.price*prod.units).toFixed(2)}</td><td style={{color:prod.instock?"var(--color)":"#FF3737"}}>{prod.instock?"In Stock":"Out of Stock"}</td></tr>
+  })
+   
+  useEffect(() => {
+    const progfill = document.querySelector('.progfill')
+    setTimeout(() => {
+      if(document.body.contains(progfill)) {
+      let orderstatus = orders[0].status
+        switch(orderstatus) {
+          case "Payment Pending": progfill.style.width = '20%'; break
+          case "Processing": progfill.style.width = '50%'; break
+          case "Shipped": progfill.style.width = '70%'; break
+          case "Delivered": progfill.style.width = '100%'; break
+          case "Refunded": progfill.style.width = '100%'; break
+          default: progfill.style.width = '15%' 
+        }
+      } 
+    }, 500);
+  },[]) 
+
+  return ( 
     <div className="homecont">
       <div className="spacerl"></div>
       <div className="spacers"></div>
@@ -22,9 +53,7 @@ function Homecont(props) {
               <th>Status</th>
             </thead>
             <tbody>
-              <tr><td className="orderlink">#1591</td><td>5</td><td>$2,129.00</td><td><button className="statusbtn">Shipped</button></td></tr>
-              <tr><td className="orderlink">#1539</td><td>2</td><td>$1,439.00</td><td><button className="statusbtn">Refunded</button></td></tr>
-              <tr><td className="orderlink">#1598</td><td>1</td><td>$629.00</td><td><button className="statusbtn">Processed</button></td></tr>
+            {orderrows}  
             </tbody>
           </table>
         </div>
@@ -41,8 +70,7 @@ function Homecont(props) {
               <th>Status</th>
             </thead>
             <tbody>
-              <tr><td><img src={products[0].img} alt=""/></td><td className="prodnametd">{products[0].name}</td><td>${products[0].price.toFixed(2)}</td><td>{products[0].units}</td><td>${(products[0].price*products[0].units).toFixed(2)}</td><td style={{color:products[0].instock?"var(--color)":"#FF3737"}}>{products[0].instock?"In Stock":"Out of Stock"}</td></tr>
-              <tr><td><img src={products[7].img} alt=""/></td><td className="prodnametd">{products[7].name}</td><td>${products[7].price.toFixed(2)}</td><td>{products[7].units}</td><td>${(products[7].price*products[7].units).toFixed(2)}</td><td style={{color:products[7].instock?"var(--color)":"#FF3737"}}>{products[7].instock?"In Stock":"Out of Stock"}</td></tr>
+              {recentpurch}              
             </tbody>
           </table>
         </div>
@@ -54,26 +82,41 @@ function Homecont(props) {
           <h5>Track Your Orders</h5>
           <small>More<i className="fas fa-long-arrow-alt-right"></i></small>
           <div className="spacers"></div>
-          <h6>Order: #1591<span>Jan 14 2020</span></h6>
-          <div className="trackprog">
-            <div className="trackpointers">
-              <i className="top">Pending<br/>|</i>
-              <i className="bottom">|<br/>Processing</i>
-              <i className="top">Shipped<br/>|</i>
-              <i className="bottom">|<br/>Delivered</i>
-            </div> 
-            <div className="progtube">
-              <div className="progfill"></div>
-            </div>
-          </div>
+          {ordertrack}
         </div> 
         <div className="dashbox paymentsbox smallbox">
         <h5>Your Payments</h5>
           <small>More<i className="fas fa-long-arrow-alt-right"></i></small>
+          <div className="paycard">
+            {cardinfo}
+            <h6>Visa</h6>
+            <div className="c1 circle"></div>  
+            <div className="c2 circle"></div>
+            <div className="triangle"></div>
+          </div> 
         </div>
         <div className="dashbox addressbox smallbox">
           <h5>Your Addresses</h5>
           <small>More<i className="fas fa-long-arrow-alt-right"></i></small>
+          <div className="addressrow">
+            <i class="far fa-map-marker-alt"></i>
+            <h6>Alison Hayley</h6>
+            <h6>6509 Walden Ave.</h6>
+            <h6>H1B 5N3</h6>
+            <h6>Montreal, Quebec</h6>
+            <h6>Canada</h6>
+            <h6>Phone: 15149803441</h6>
+          </div>
+          <div className="addressrow">
+            <i class="far fa-map-marker-alt"></i>
+            <h6>Jane Hayley</h6>
+            <h6>6509 Walden Ave.</h6>
+            <h6>H1B 5N3</h6>
+            <h6>Montreal, Quebec</h6>
+            <h6>Canada</h6>
+            <h6>Phone: 15147761091</h6>
+          </div>
+          <div className="circle"></div>
         </div>
         <div className="dashbox recommendbox smallbox">
           <h5>Recommended For You</h5>

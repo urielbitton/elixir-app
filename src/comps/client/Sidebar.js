@@ -19,7 +19,7 @@ function Sidebar(props) {
           <hr/>
         </div>
         <div className="sidebarfoot">
-          <button><i class="fad fa-sign-out-alt"></i>Log Out</button>
+          <button onClick={() => props.logout()}><i class="fad fa-sign-out-alt"></i>Log Out</button>
         </div>
       </div>
     </div>

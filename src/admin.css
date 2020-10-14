@@ -783,28 +783,32 @@ h4.rightbartitle {
 .innerprodopts label input {
   color: #555;
   width: 90%;
-}
+} 
 .innerprodopts label input::placeholder {
   color: #bbb;
 } 
-.innerprodopts .prodnameinp, .innerprodopts .priceinp {
-  padding: 15px;
+.adminapp .homecont .innerprodopts .prodnameinp, .adminapp .homecont .innerprodopts .priceinp {
+  padding: 10px;
   font-size: 16px;
+  background: none;
+  border: 1px solid #ddd;
+  border-top-left-radius: 0; 
+  border-bottom-left-radius: 0;
 } 
-.innerprodopts .currencydiv {
+.adminapp .homecont .innerprodopts .currencydiv {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 35px;
-  height: 41px;
+  height: 43px;
   background: #fafafa;
   border: 1.5px solid #e1e1e1;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   border-right: 0;
   float: left;
-  color: #555;
+  color: #555; 
 }
 .innerprodopts .priceinp {
   width: 100px;

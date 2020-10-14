@@ -20,7 +20,9 @@ function Checkout(props) {
   const [city, setCity] = useState("")
   const [postal, setPostal] = useState("")
   const [address, setAddress] = useState("")
-  const [spent, setSpent] = useState(0)
+  const [spent, setSpent] = useState(0) 
+  const [cardnumber, setCardnumber] = useState()
+  const [expdate, setExpdate] = useState('')
 
   const [number, setNumber] = useState(Math.floor(Math.random() * 9999) + 1000)
   const [custname, setCustname] = useState("")
@@ -59,7 +61,10 @@ function Checkout(props) {
         custname: fname + " " + lname,
         date: date,
         status: status,
-        total: ordtotal
+        total: ordtotal,
+        products: general.cartitems,
+        cardnumber: cardnumber,
+        expdate: expdate,
       }
     ])
   }
@@ -230,15 +235,17 @@ function Checkout(props) {
                 <h6 className="ordertotal">${parseFloat(general.total).toFixed(2)}</h6>
                 <div className="clear"></div>
               </div>
-              <div>
-                <label>
-                  <input name="payment" type="radio" />
-                  <small>Bank Transfer</small>
-                </label>
-                <label>
-                  <input name="payment" type="radio" />
-                  <small>Cash On Delivery</small>
-                </label>
+              <div className="paymentcont">
+                <h4>Payment Details</h4>
+                <div>
+                  <img src="https://i.imgur.com/3IFuGdZ.png" alt=""/>
+                  <form>
+                    <label className="fullinp"><small>Name on Card</small><input placeholder="i.e. Hades Smith"/></label>
+                    <label className="fullinp"><small>Card Number</small><input placeholder="i.e 4012 0394 1020 0001" onChange={(e) => setCardnumber(e.target.value)}/></label>
+                    <label><small>Expiry Date</small><input placeholder="01/23" onChange={(e) => setExpdate(e.target.value)}/></label>
+                    <label><small>CVV</small><input placeholder="i.e. 209"/></label>
+                  </form>
+                </div> 
               </div>
               <div>
                 <button className="placeorderbtn" onClick={() => (!disable ? placeOrder() : "")}>Place Order</button>

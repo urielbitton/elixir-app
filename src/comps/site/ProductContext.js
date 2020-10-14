@@ -494,7 +494,7 @@ const ProductContextProvider = (props) => {
     {
       id: 0,
       username: 'client',
-      password: 'bittex',
+      password: 'uriel',
       name: 'Alison Hayley',
       pic: 'https://i.imgur.com/UMv6hbM.jpg',
     } 

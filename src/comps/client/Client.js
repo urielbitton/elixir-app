@@ -9,7 +9,7 @@ function Client(props) {
   return (
     <div className="clientdash">
       <Navbar adminoff={props.adminoff}/>
-      <Sidebar />
+      <Sidebar logout={props.logout}/>
       <Homecont /> 
     </div> 
   )

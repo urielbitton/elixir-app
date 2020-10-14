@@ -27,7 +27,7 @@ function App() {
   function clientOff() {
     setClient(false)
   }
-  function adminOn() {
+  function adminOn() { 
     setAdmin(true)
     document.body.style.overflowY = 'hidden'
   } 
@@ -40,7 +40,7 @@ function App() {
     <>    
       <Router>  
         <ProductContextProvider>  
-          { admin?login?client?<Client adminoff={adminOff} clientoff={clientOff}/>:<Admin adminoff={adminOff} logout={logOut}/>:<Login clienton={clientOn} logged={logIn} adminoff={adminOff}/>:<Website adminon={adminOn}/> } 
+          { admin?login?client?<Client adminoff={adminOff} logout={logOut} clientoff={clientOff}/>:<Admin adminoff={adminOff} logout={logOut}/>:<Login clienton={clientOn} clientoff={clientOff} logged={logIn} adminoff={adminOff}/>:<Website adminon={adminOn}/> } 
           <Route path="/register">
             <Register adminon={adminOn}/>
           </Route>

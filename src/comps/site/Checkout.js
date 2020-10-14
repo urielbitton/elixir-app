@@ -24,6 +24,8 @@ function Checkout(props) {
   const [cardnumber, setCardnumber] = useState()
   const [expdate, setExpdate] = useState('')
 
+  general.total = general.subtotal + (general.subtotal*general.taxrate)
+
   const [number, setNumber] = useState(Math.floor(Math.random() * 9999) + 1000)
   const [custname, setCustname] = useState("")
   const [date, setDate] = useState(genDate())
@@ -67,14 +69,14 @@ function Checkout(props) {
         expdate: expdate,
       }
     ])
-  }
+  } 
 
   function placeOrder() {
     createCustomer()
     createOrder()
     setDisable(true)
     general.order_proc += 1
-    general.profit += parseInt(general.total - general.subtotal * general.taxrate, 10)
+    general.profit += parseInt(general.total - (general.subtotal * general.taxrate), 10)
     general.earnings += parseInt(general.total, 10)
     general.revenue_range.push(general.subtotal)
     general.products_sold.push(props.cartitems)

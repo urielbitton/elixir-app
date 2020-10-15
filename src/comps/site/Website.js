@@ -136,7 +136,7 @@ function Website(props) {
     })    
 
   },[])  
-    
+     
   return (  
     <> 
       <Navbar cartitems={cartitems} updatecarts={updateCarts} subtotal={subtotal} update={update} units={units} wishnum={wishnum} adminon={props.adminon} openproduct={openProduct}/>  
@@ -174,7 +174,7 @@ function Website(props) {
         </Route>    
       </Switch> 
    
-      <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} qty={qty} units={units} addcart={addcart} ratings={ratings} wishlist={wishlist} updatesub={updateSub} updateunits={updateUnits} setprodcolor={setProdColor} setprodsize={setProdSize} />
+      <QuickView prod={prod} id={id} name={name} img={img} price={price} descript={descript} color={color} cat={cat} sizes={sizes} qty={qty} units={units} addcart={addcart} ratings={ratings} wishlist={wishlist} updatesub={updateSub} addwishnum={addWishnum} updateunits={updateUnits} setprodcolor={setProdColor} setprodsize={setProdSize} />
       <CompareView update={update} updatecompstatus={updateCompStatus}/>
       <Footer /> 
     </>

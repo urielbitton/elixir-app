@@ -138,10 +138,10 @@ function Checkout(props) {
       <div className="grid xgrid pgrid">
         <div className="logreg">
           <p>
-            Returning customer? <a href="#">Click here to login</a>
+            Returning customer? <Link to="/login">Click here to login</Link>
           </p>
           <p>
-            Want to create an account? <a href="#">Click here to register</a>
+            Want to create an account? <Link to="/register">Click here to register</Link>
           </p>
         </div> 
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 
 function Section2() {
   return (
@@ -9,7 +10,7 @@ function Section2() {
             <big>Elixir</big>
             <h4>#Collection</h4>
             <p>Discover our featured elixir collection of 2021</p>
-            <a href="#">Shop Featured<hr/></a>
+            <Link to="/shop" onClick={() => window.scrollTo(0,0)}>Shop Featured<hr/></Link>
           </div>
           
         </div>

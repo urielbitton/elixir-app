@@ -32,7 +32,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0, 
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':4.1,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
     { 
@@ -62,7 +62,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':3.7,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -92,7 +92,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':3.0,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -122,7 +122,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':2.0,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -152,7 +152,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':1.0,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -182,7 +182,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':5.0,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -212,7 +212,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':5.0,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -242,7 +242,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':2.3,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     { 
@@ -272,7 +272,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':4.3,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },  
     {   
@@ -302,7 +302,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':4.3,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },  
     {   
@@ -332,7 +332,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':3.9,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     {    
@@ -362,7 +362,7 @@ const ProductContextProvider = (props) => {
       compared: false, 
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':2.6,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
     {    
@@ -392,7 +392,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':3.5,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     {     
@@ -422,7 +422,7 @@ const ProductContextProvider = (props) => {
       compared: false,
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':4.1,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     },
     {     
@@ -449,10 +449,10 @@ const ProductContextProvider = (props) => {
       neworder: false,
       tempqty: 0,
       datesold: '',
-      compared: false,
+      compared: false, 
       ratings: 0,
       reviews: [],
-      avgrating: {'avg':0.0,'num':0,'total':0},
+      avgrating: {'avg':4.9,'num':0,'total':0},
       descript: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus enim ultricies est volutpat, sed pellentesque mauris volutpat. Duis efficitur facilisis justo, sed vehicula tortor suscipit sit amet. Suspendisse potenti. Morbi fringilla tempor velit eget varius.",
     }, 
   ])   

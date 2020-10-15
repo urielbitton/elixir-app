@@ -94,8 +94,17 @@ function Item(props) {
         </div> 
       </div> 
       <div className="iteminfodiv">
-        <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings,props.compared,props.reviews,props.avgrating)}><Link to="/product">{props.name}</Link></h5>
-        <small>${parseFloat(props.price).toFixed(2)}</small> 
+        <div>
+          <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings,props.compared,props.reviews,props.avgrating)}><Link to="/product">{props.name}</Link></h5>
+          <small style={{color: props.instock?"#62d900":"#ff0040"}}>{props.instock?"In Stock":"Out Of Stock"}</small>
+          </div>
+        <div>
+          <small>${parseFloat(props.price).toFixed(2)}</small>
+          <small>
+            { Array.apply(null, { length: Math.round(props.prod.avgrating.avg) }).map((el) => <i className="fas fa-star"></i> ) } 
+            { Array.apply(null, { length: 5-Math.round(props.prod.avgrating.avg) }).map((el) => ( <i className="far fa-star"></i> )) }
+          </small>
+        </div> 
       </div> 
     </div>  
   )  

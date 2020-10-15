@@ -49,16 +49,17 @@ function Topbar(props) {
       searchbar.style.display = ''
     }, 150);
   }
-
+ 
+  if(darkmode === true) {
+    document.querySelectorAll('.topbar, .sidebar, .homecont,.addproductcont,input,select,textarea').forEach(el => el.style.background = '#171f24')
+    document.querySelectorAll('.dashbox').forEach(el => el.style.background = '#212a30')
+  }
+  else {
+    document.querySelectorAll('.topbar,.sidebar,.homecont,.addproductcont,input,select,textarea').forEach(el => el.style.background = '')
+    document.querySelectorAll('.dashbox').forEach(el => el.style.background = '')
+  }
+  
   useEffect(() => {
-    if(darkmode === true) {
-      document.querySelectorAll('.topbar,.sidebar,.homecont,.addproductcont,input,select,textarea').forEach(el => el.style.background = '#171f24')
-      document.querySelectorAll('.dashbox').forEach(el => el.style.background = '#212a30')
-    }
-    else {
-      document.querySelectorAll('.topbar,.sidebar,.homecont,.addproductcont,input,select,textarea').forEach(el => el.style.background = '')
-      document.querySelectorAll('.dashbox').forEach(el => el.style.background = '')
-    }
     const searchbar = document.querySelector('.searchbar')
     const close = document.querySelector('.searchbar .close')
     close.onclick = () => {
@@ -67,8 +68,8 @@ function Topbar(props) {
         searchbar.style.display = 'none'
       }, 100);
     } 
+  },[])
 
-  },[]) 
  
   return (
     <div className="topbar"> 

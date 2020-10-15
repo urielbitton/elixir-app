@@ -28,12 +28,12 @@ function ProductPage(props) {
     }) 
     
   }) 
-
+ 
   return ( 
     <div className="productpage"> 
       <div className="grid xgrid pgrid">
         <div className="spacer"></div>
-        <Product prod={props.prod} id={props.id} name={props.name} img={props.img} price={props.price} descript={props.descript} color={props.color} cat={props.cat} sizes={props.sizes} units={props.units} addcart={props.addcart} wishlist={props.wishlist} instock={props.instock} qty={props.qty} compared={props.compared} ratings={props.ratings} reviews={props.reviews} avgrating={props.avgrating} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updateunits={props.updateunits} updatewish={props.updatewish} wishnum={props.wishnum} setprodcolor={props.setprodcolor} setprodsize={props.setprodsize} key={props.prod.id}/>
+        <Product prod={props.prod} id={props.id} name={props.name} img={props.img} price={props.price} descript={props.descript} color={props.color} cat={props.cat} sizes={props.sizes} units={props.units} addcart={props.addcart} wishlist={props.wishlist} instock={props.instock} qty={props.qty} compared={props.compared} ratings={props.ratings} reviews={props.reviews} avgrating={props.avgrating} updatecartnum={props.updatecartnum} updatesub={props.updatesub} updateunits={props.updateunits} updatewish={props.updatewish} addwishnum={props.addwishnum} setprodcolor={props.setprodcolor} setprodsize={props.setprodsize} key={props.prod.id}/>
         <div className="spacer"></div>
         <hr /> 
         <Reviews prod={props.prod} />

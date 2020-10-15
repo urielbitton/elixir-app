@@ -21,7 +21,7 @@ function Navbar(props) {
       </div> 
       <div className="right">
         <div className="profilecont">
-          <img src={accounts[accounts.length-1].pic} alt="profile"/>
+          <img src={accounts[accounts.length-1].pic} alt=""/>
           <small>{accounts[accounts.length-1].name}</small>
           <i className="fas fa-angle-down"></i>
         </div>

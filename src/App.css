@@ -1865,6 +1865,33 @@ footer .socials > div i {
 .productslist .imgcont img {
   position: relative;
 }
+.itemcont .iteminfodiv > div:nth-of-type(1) {
+  float: left;
+  margin-top: 15px;
+  text-align: left;
+}
+.itemcont .iteminfodiv > div:nth-of-type(2) {
+  float: right;
+  margin-top: 17px;
+  text-align: right;
+} 
+.itemcont .iteminfodiv > div:nth-of-type(1) small {
+  font-weight: 500;
+}
+.itemcont .iteminfodiv h5 {
+  font-size: 15px;
+  margin: 0;
+  margin-bottom: 5px;
+}
+.itemcont .iteminfodiv small {
+  font-size: 14px;
+  display: block;
+  margin: 0;
+  margin-bottom: 5px;
+}
+.itemcont .iteminfodiv i {
+  color: #ffc505;  
+}
 .productslist .iteminfodiv {
   float: left;
 }
@@ -2315,7 +2342,7 @@ footer .socials > div i {
   height: 4px;
   z-index: 999;
   background: #333;
-  transition: all 2s;
+  transition: all 1.2s;
 }
 .loginmsg {
   position: relative;

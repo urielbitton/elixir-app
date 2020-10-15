@@ -31,8 +31,8 @@ function Login(props) {
           setTimeout(() => {
             loginpage.style.display = 'none'
             props.logged()
-          }, 1000)
-        }, 2000)
+          }, 600)
+        }, 1200)
       }
       else {
         setCorrect(2)
@@ -49,10 +49,20 @@ function Login(props) {
           loginpage.style.display = 'none'
           props.clienton()
           props.logged()
-        }, 1000)
-      }, 2000)
+        }, 600)
+      }, 1200)
     }
   }
+
+  useEffect(() => {
+    const passwdinp = document.querySelector('.passwdinp')
+    passwdinp.onkeyup = (e) => {
+      let enter = e.keyCode || e.which
+      if(enter === 13){
+        document.querySelector('.loginbtn button').click()
+      }
+    }
+  },[])
 
   return (
     <div className="loginpage">
@@ -64,7 +74,7 @@ function Login(props) {
         <h3>Hello,<br/>Welcome Back</h3>
         <div className="loginform">
           <input placeholder="Username or Email" onChange={(e) => setUsername(e.target.value)}/>
-          <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
+          <input className="passwdinp" placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
           <label>
             <input type="checkbox"/>
             <small>Remember Me</small>
@@ -72,7 +82,7 @@ function Login(props) {
           <label> 
           <small><Link to="/forgot">Forgot Password?</Link></small>
           </label>
-          <Link to={admin?"/dashhome":"/clientdash"}><button onClick={() => loginSubmit()}>Login</button></Link>
+          <Link to={admin?"/dashhome":"/clientdash"} className="loginbtn"><button onClick={() => loginSubmit()}>Login</button></Link>
           <h6>Don't have an account? <Link to="/register" onClick={() => props.adminoff()}>Register Here</Link></h6>
           <Link to="/" onClick={() => props.adminoff()}><small className="backtosite">Back to Website<i class="fas fa-long-arrow-alt-right"></i></small></Link>
         </div> 

@@ -15,7 +15,7 @@ function Homecont(props) {
     <div className="homecont"> 
         <Topbar adminoff={props.adminoff}/>
         <Switch>
-          <Route path="/">
+          <Route path="/dashhome">
             <Home />
           </Route>
           <Route path="/products">

@@ -51,7 +51,7 @@ function Home(props) {
               <th>Status</th>
             </thead>
             <tbody>
-            {orderrows}  
+            {orderrows.reverse()}  
             </tbody>
           </table>
         </div>

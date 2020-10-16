@@ -4,7 +4,7 @@ import PageBanner from "./PageBanner"
 import { ProductContext } from "./ProductContext"
  
 function Checkout(props) {
-  const {products, general, customers, setCustomers, setOrders, cart} = useContext(ProductContext)
+  const {products, general, customers, setCustomers, orders, setOrders, cart} = useContext(ProductContext)
 
   const [details, setDetails] = useState(false)
   const [disable, setDisable] = useState(false)
@@ -23,6 +23,9 @@ function Checkout(props) {
   const [spent, setSpent] = useState(0) 
   const [cardnumber, setCardnumber] = useState()
   const [expdate, setExpdate] = useState('')
+  const [delivdate, setDelivdate] = useState(genDate())
+  const [productid, setProductid] = useState([])
+  const [delivspeed, setDelivspeed] = useState('Standard')
 
   general.total = general.subtotal + (general.subtotal*general.taxrate)
 
@@ -67,7 +70,10 @@ function Checkout(props) {
         products: general.cartitems,
         cardnumber: cardnumber,
         expdate: expdate,
-      }
+        delivdate: delivdate,
+        productid: productid,
+        delivspeed: delivspeed,
+      } 
     ])
   } 
 
@@ -95,7 +101,8 @@ function Checkout(props) {
         prod.tempqty = prod.units
         prod.datesold = genDate()
         prod.earnings = prod.price * prod.purchased_qty
-      }
+        productid.push(prod.id)
+      } 
       if (prod.purchased_qty > 8) {
         prod.hot = true
       }

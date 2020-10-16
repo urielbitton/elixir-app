@@ -1,3 +1,25 @@
+
+.topspacer {
+  height: 110px;
+}
+.clientpage { 
+  background: #fafafa;
+  padding: 30px;
+  overflow-y: scroll;
+  height: 100vh;
+}
+.clientpagetitle {
+  font-size: 24px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.clientpagesub {
+  font-size: 12px;
+  margin-bottom: 40px;
+  color: #777;
+  font-weight: 500;
+}
 .clientdash {
   display: grid;
   grid-template-columns: 300px auto;
@@ -14,13 +36,13 @@
   height: 100vh;
   overflow: scroll;
   overflow-x: hidden;
-}  
-.innersidebar {
+}   
+.clientdash .innersidebar {
   position: relative;
   height: 95%;
   width: 100%;
   overflow-y: scroll;
-  padding: 60px 40px;
+  padding: 60px 40px; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,23 +50,23 @@
 .innersidebar::-webkit-scrollbar {
   display: none;
 }
-.sidebar h4 {
+.clientdash .sidebar h4 {
   font-weight: 600;
   font-size: 24px;
   text-align: center;
   color: #333;
 }
-.sidemenu h5 {
+.clientdash .sidemenu h5 {
   font-size: 16px;
   color: #ccc;
   margin: 25px 0;
   cursor: pointer;
   transition: all 0.2s;
 }
-.sidemenu h5:hover {
+.clientdash .sidemenu h5:hover {
   color: #555;
 }
-.sidemenu h5 i {
+.clientdash .sidemenu h5 i {
   margin-right: 20px;
   font-size: 18px;
 }
@@ -399,6 +421,132 @@
 .addnewaddress h6 {
   font-weight: 500;
 }
+ 
+.orderbox {
+  position: relative;
+  width: 670px;
+  padding: 20px;
+  border-radius: 3px;
+  padding-left: 30px;
+  background: rgba(235, 237, 240,0.6);
+  display: grid;
+  grid-template-columns: 60% 35%;
+  grid-gap: 10px 15px;
+  margin-bottom: 30px;
+  border-left: 5px solid var(--color);
+} 
+.orderstatcirc {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background: rgb(130, 211, 0);
+  display: inline-block;
+  margin-right: 10px;
+} 
+.orderbox button {
+  display: block;
+  margin-bottom: 12px;
+  width: 100%;
+  padding: 13px 0;
+  border: 1px solid #333;
+  background: none;
+}
+.orderbox button:hover {
+  background: #333;
+  color: #fff;
+} 
+.orderbox h5 {
+  grid-column: span 2;
+}
+.orderbox .trackorderbtn {
+  background: #333;
+  color: #fff;
+} 
+.orderbox .trackorderbtn:hover {
+  background: #111;
+}
+.orderboxrow {
+  padding: 15px 10px;
+  border-radius: 5px;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+  margin-bottom: 1px;
+}
+.orderboxrow img { 
+  margin-right: 5px;
+  width: 55px;
+  height: 60px;
+  border-radius: 6px;
+}
+.multprodimgcont {
+  position: relative;
+  width: 55px;
+  height: 60px;
+  text-align: center;
+  cursor: pointer;
+}
+.multprodimgcont img {
+  filter: brightness(30%);
+}
+.multprodimgcont span {
+  font-size: 16px;
+  position: absolute;
+  z-index: 10;
+  color: #fff;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 17px;
+}
+.orderboxrow h4 {
+  font-size: 14px;
+  margin-left: 20px;
+}
+.orderboxrow h4 small {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+  color: #777;
+}
+.orderboxrow  small span {
+  font-size: 11px;
+  color: #aaa;
+}
+.orderspanel {
+  position: fixed;
+  top: 0;
+  right: -650px;
+  width: 600px;
+  height: 100%;
+  padding: 20px; 
+  background: #fff;
+  z-index: 999;
+  box-shadow: -12px 0px 26px -10px rgba(0,0,0,0.2);
+  transition: all 0.4s;
+}
+.orderspanel h3 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 23px;
+  color: #333;
+}
+.orderspanel .fa-times {
+  font-size: 30px;
+  padding: 5px;
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  cursor: pointer;
+}
+
+
+
+
+
 
 
 

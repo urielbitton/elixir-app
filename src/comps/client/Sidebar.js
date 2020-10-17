@@ -18,7 +18,7 @@ function Sidebar(props) {
           <img src="https://i.imgur.com/rSt6gHe.png" alt=""/>
           <h6>Download the elixir mobile app and manage your account <span>on the go</span>.</h6>
           <hr/>
-        </div>
+        </div> 
         <div className="sidebarfoot">
           <button onClick={() => props.logout()}><i class="fad fa-sign-out-alt"></i>Log Out</button>
         </div>

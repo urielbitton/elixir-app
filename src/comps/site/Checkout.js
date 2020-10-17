@@ -54,7 +54,7 @@ function Checkout(props) {
         city: city,
         postal: postal,
         address: address,
-        spent: general.total
+        spent: general.total, 
       }
     ])
   }
@@ -252,7 +252,7 @@ function Checkout(props) {
                     <label className="fullinp"><small>Name on Card</small><input placeholder="i.e. Hades Smith"/></label>
                     <label className="fullinp"><small>Card Number</small><input placeholder="i.e 4012 0394 1020 0001" onChange={(e) => setCardnumber(e.target.value)}/></label>
                     <label><small>Expiry Date</small><input placeholder="01/23" onChange={(e) => setExpdate(e.target.value)}/></label>
-                    <label><small>CVV</small><input placeholder="i.e. 209"/></label>
+                    <label><small>CVC</small><input placeholder="i.e. 209"/></label>
                   </form>
                 </div> 
               </div>

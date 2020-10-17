@@ -3,7 +3,7 @@ import { ProductContext } from '../site/ProductContext'
 
 function Home(props) {
 
-  const {products, orders, customers} = useContext(ProductContext)
+  const {products, orders, general, accounts} = useContext(ProductContext)
 
   const orderrows = orders.map(ord => {
     return <tr><td className="orderlink">#{ord.number}</td><td>{ord.products}</td><td>${ord.total.toFixed(2)}</td><td><button className="statusbtn">{ord.status}</button></td></tr>
@@ -85,21 +85,19 @@ function Home(props) {
           {ordertrack.reverse().slice(0,1)}
         </div>  
         <div className="dashbox paymentsbox smallbox">
-        <h5>Your Payments</h5>
+        <h5>Your Payments</h5> 
           <small>Manage<i className="fas fa-long-arrow-alt-right"></i></small>
-          <div className="paycard">
-            {/*<><i className="cardnums">*****{ord.cardnumber.slice(12)}</i><i className="expdate">exp: {ord.expdate}</i><h4>{ord.custname}</h4></>*/}
-            <h6>Visa</h6>
-            <div className="c1 circle"></div>  
-            <div className="c2 circle"></div>
-            <div className="triangle"></div>
-          </div> 
+            {
+              <div className="paycard"><i className="cardnums">*****{accounts.find(el => el.id===general.activeaccid).cardnumber.slice(12)}</i><i className="expdate">exp: {accounts.find(el => el.id===general.activeaccid).expdate}</i><h4>{accounts.find(el => el.id===general.activeaccid).name}</h4><h6>{accounts.find(el => el.id===general.activeaccid).cardtype}</h6><div className="c1 circle"></div><div className="c2 circle"></div><div className="triangle"></div></div>
+            }
         </div>
         <div className="dashbox addressbox smallbox">
           <h5>Your Addresses</h5>
           <small>Manage<i className="fas fa-long-arrow-alt-right"></i></small>
           <div className="addressrow">
-          {/*<><i class="far fa-map-marker-alt"></i> <h6>{cus.name}</h6> <h6>{cus.address}</h6> <h6>{cus.postal}</h6> <h6>{cus.city}</h6> <h6>{cus.country}</h6> <h6>Phone: {cus.phone}</h6></>*/}
+          {
+            <><i class="far fa-map-marker-alt"></i> <h6>{accounts.find(el => el.id===general.activeaccid).name}</h6> <h6>{accounts.find(el => el.id===general.activeaccid).address}</h6> <h6>{accounts.find(el => el.id===general.activeaccid).postal}</h6> <h6>{accounts.find(el => el.id===general.activeaccid).city}</h6> <h6>{accounts.find(el => el.id===general.activeaccid).country}</h6> <h6>Phone: {accounts.find(el => el.id===general.activeaccid).phone}</h6></>
+          }
           </div>
           <div className="addressrow addnewaddress">
             <div>

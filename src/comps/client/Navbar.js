@@ -4,7 +4,7 @@ import { ProductContext } from '../site/ProductContext'
 
 function Navbar(props) {
 
-  const {accounts} = useContext(ProductContext)
+  const {accounts, general} = useContext(ProductContext)
 
   return (
     <div className="topbar">  
@@ -20,9 +20,9 @@ function Navbar(props) {
         </label> 
       </div> 
       <div className="right">
-        <div className="profilecont">
-          <img src={accounts[accounts.length-1].pic} alt=""/>
-          <small>{accounts[accounts.length-1].name}</small>
+        <div className="profilecont" data-update={props.update}>
+          <img src={accounts.find(el => el.id === general.activeaccid).pic} alt=""/>
+          <small>{accounts.find(el => el.id === general.activeaccid).name}</small>
           <i className="fas fa-angle-down"></i>
         </div>
       </div>

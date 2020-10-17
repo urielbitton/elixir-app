@@ -4,7 +4,7 @@ import { ProductContext } from '../comps/site/ProductContext'
 
 function Register(props) {
 
-  const {accounts} = useContext(ProductContext)
+  const {accounts, general} = useContext(ProductContext)
 
   const [valid, setValid] = useState(0)
   const [id, setId] = useState(accounts.length)
@@ -13,6 +13,7 @@ function Register(props) {
   const [email, setEmail] = useState('')
   const [pass1, setPass1] = useState('')
   const [pass2, setPass2] = useState('')
+  const [pic, setPic] = useState('https://i.imgur.com/UBpqvP7.png')
   let history = useHistory()
  
   const regpage = document.querySelector('.registerpage')
@@ -20,7 +21,8 @@ function Register(props) {
 
   function createAccount() {
     if(name.length && username.length && pass1===pass2) {
-      let accountobj = {id:id,username:username,name:name,email:email,password:pass1,phone:"",address:"",country:"",city:""} 
+      let accountobj = {id:id,username:username,pic:pic,name:name,email:email,password:pass1,phone:"",country:"",
+      city:"",postal:"",compname:"",website:"",cid:"",address:"",apt:"",delivnotes:"",cardnumber:"",cardtype:"",expdate:"",cvc:""} 
       accounts.push(accountobj)
       setValid(1) 
       loader.style.width = '0'
@@ -31,6 +33,7 @@ function Register(props) {
         setTimeout(() => {
           regpage.style.display = 'none' 
           props.adminon()
+          general.activeaccid = id
           history.push("/login")
         }, 1000) 
       }, 2000)

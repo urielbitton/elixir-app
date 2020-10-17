@@ -4,13 +4,12 @@ import { ProductContext } from './site/ProductContext'
 
 function Login(props) {
 
-  const {accounts} = useContext(ProductContext)
+  const {accounts, general} = useContext(ProductContext)
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [correct, setCorrect] = useState(0)
   const [admin, setAdmin] = useState(true)
-  const [client, setClient] = useState(false)
   const creds = ['admin','uriel'] 
 
   document.body.style.overflowY = 'hidden'
@@ -35,7 +34,7 @@ function Login(props) {
         }, 1200)
       }
       else {
-        setCorrect(2)
+        setCorrect(2) 
       }
     } 
     if(accounts.some(el =>  username===el.username && password===el.password)) {
@@ -47,6 +46,7 @@ function Login(props) {
         loginpage.style.opacity = '0'
         setTimeout(() => {
           loginpage.style.display = 'none'
+          general.activeaccid = accounts.find(el => el.username===username).id
           props.clienton()
           props.logged()
         }, 600)
@@ -77,7 +77,7 @@ function Login(props) {
           <input className="passwdinp" placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
           <label>
             <input type="checkbox"/>
-            <small>Remember Me</small>
+            <small>Remember Me</small> 
           </label> 
           <label> 
           <small><Link to="/forgot">Forgot Password?</Link></small>

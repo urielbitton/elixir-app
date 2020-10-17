@@ -39,13 +39,13 @@
 }   
 .clientdash .innersidebar {
   position: relative;
-  height: 95%;
+  height: 100%;
   width: 100%;
   overflow-y: scroll;
   padding: 60px 40px; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .innersidebar::-webkit-scrollbar {
   display: none;
@@ -74,7 +74,7 @@
   text-align: center;
 }
 .promodiv img {
-  width: 120px;
+  width: 90px;
 }
 .promodiv h6 {
   font-size: 12px;
@@ -107,17 +107,20 @@
   top: 0;
   right: 15px;
   width: calc(100% - 285px); 
-  height: 120px;
+  height: 100px; 
   background: #fff;
   z-index: 999;
-  box-shadow: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   border-left: 1px solid rgba(10, 157, 255,0.04);
   padding: 10px 20px;
   transition: all 0.3s;
-} 
+}  
 .clientdash .topbar .left, .clientdash .topbar .right {
   position: relative;
-  top: 25px;
+  top: 15px;
+}
+.clientdash .topbar .left {
+  top: 11px;
 }
 .clientdash .topbar .sitelink:hover {
   background: rgba(0,0,0,0.03); 
@@ -332,7 +335,7 @@
 .paycard i.expdate {
   position: absolute;
   bottom: 20px;
-  right: 70px; 
+  right: 50px; 
   font-size: 11px;
   color: #fff;
   font-style: normal;
@@ -577,10 +580,10 @@
   grid-column: span 1;
 }
 .dashprofbox h6 {
-  font-size: 14px;
+  font-size: 12px;
   color: #aaa;
   margin-bottom: 20px;
-}
+} 
 .dashprofbox img {
   width: 90px;
   height: 90px;
@@ -636,8 +639,135 @@
 .accountcol1 > div {
   margin-bottom: 20px;
 }
+.profaccountdiv label {
+  cursor: pointer;
+}
+.dashnav {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+.dashnav h5 {
+  font-size: 12px;
+  color: #999;
+  font-weight: 500;
+  margin-right: 45px;
+  transition: all 0.2s;
+  cursor: pointer;
+  padding: 10px 0;
+  top: -10px;
+}
+.dashnav h5:hover {
+  color: #111;
+}
+.dashnavliner {
+  position: absolute;
+  left: 0px;
+  top: 25px;
+  height: 3px;
+  width: 97px;
+  background: var(--color);
+  transition: all 0.3s;
+} 
+.dashnav h5:first-child {
+  color: #333;
+  font-weight: 600;
+}
+.dashnavsep {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 100%;
+  background: rgba(241, 242, 246,1);
+  height: 3px;
+}
+.myaccountgrid [data-tab] {
+  display: none;
+}
+.myaccountgrid [data-tab="1"] {
+  display: block;
+}
+.myaccountgrid [data-tab] form {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 40px;
+  width: 95%;  
+  margin: auto;
+}
+.myaccountgrid [data-tab] form > h6 {
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #aaa;
+  grid-column: span 6;
+}
+.myaccountgrid [data-tab] form input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 7px;
+}
+.myaccountgrid [data-tab] form input::placeholder {
+  color: #ddd;
+} 
+.myaccountgrid [data-tab] form input:focus {
+  border-color: var(--color);
+}
+.myaccountgrid [data-tab] form label h6 {
+  color: #777;
+  margin-bottom: 10px;
+}
+.myaccountgrid [data-tab] form select {
+  width: 100%;
+  padding: 12px 7px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #ddd; 
+}
+.myaccountgrid [data-tab] form .span3 {
+  grid-column: span 3;
+}
+.myaccountgrid [data-tab] form .span2 {
+  grid-column: span 2;
+}
+.myaccountgrid [data-tab] form textarea {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  height: 60px;
+  resize: vertical;
+  width: 100%;
+  font-family: inherit;
+}
+.myaccountgrid [data-tab] form textarea::placeholder {
+  color: #ddd;
+}
+.myaccountgrid [data-tab] button {
+  padding: 12px 30px;
+  background: var(--color);
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 10px 17px -2px rgba(10,157,255,0.33);
+  margin-top: 50px;
+  margin-left: 20px;
+}
+.myaccountgrid [data-tab] button:hover {
+  box-shadow: 0px 10px 17px -2px rgba(10,157,255,0.43);
+}
+.showpasswordtxt {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #aaa;
+  user-select: none;
+  transition: all 0.2s;
+}
 
 
+ 
 
 
 

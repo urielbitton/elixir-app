@@ -37,7 +37,7 @@ html, body {
 * {
   letter-spacing: 0.3px;
 }
-h1,h2,h3,h4,h5,h6,i,p,li,button,a,span,small,img,section,input {
+h1,h2,h3,h4,h5,h6,i,p,li,button,a,span,small,img,section,input, label {
   position: relative;
   margin: 0;
 }

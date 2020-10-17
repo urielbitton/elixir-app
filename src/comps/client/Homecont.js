@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 import Home from './Home'
 import MyAccount from './MyAccount';
@@ -16,9 +16,10 @@ function Homecont(props) {
         <Orders />
       </Route>
       <Route path="/myaccount">
-        <MyAccount />
+        <MyAccount updateimg={props.updateimg}/>
       </Route>
     </Switch>
+    <div className="notifcont"></div>
     </>
   )
 }

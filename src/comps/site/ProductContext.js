@@ -475,7 +475,8 @@ const ProductContextProvider = (props) => {
       sizesarr: ["XS","S","M","L","XL"],
       coupons: [],
       customers: [],
-      compareprods: []
+      compareprods: [],
+      activeaccid: 0,
     }    
   )
   const [cart, setCart] = useState([
@@ -495,8 +496,8 @@ const ProductContextProvider = (props) => {
       id: 0,
       username: 'client',
       password: 'uriel',
-      name: 'Alison Hayley',
-      pic: 'https://i.imgur.com/UMv6hbM.jpg',
+      name: 'Uriel Bitton',
+      pic: '', 
     } 
   ])
    

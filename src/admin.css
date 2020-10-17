@@ -481,8 +481,8 @@ h2.homepagetitle {
   float: left;
   color: #555;
 }
-.addproductcont .uploadpic {
-  display: none;
+.addproductcont .uploadpic, .myaccountgrid .uploadpic {
+  display: none; 
 }
 .addproductcont .uploadercont {
   width: 350px;

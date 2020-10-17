@@ -13,8 +13,9 @@ function App() {
   const [login, setLogin] = useState(false)
   const [admin, setAdmin] = useState(false)
   const [client, setClient] = useState(false)
+  const [accountid, setAccountid] = useState()
   const history = useHistory()
-
+ 
   function logIn() { 
     setLogin(true) 
   }
@@ -35,14 +36,17 @@ function App() {
     setAdmin(false)
     document.body.style.overflowY = 'scroll'
   } 
+  function accountId(accountid) { 
+    setAccountid(accountid)
+  }
 
   return (      
     <>    
       <Router>  
         <ProductContextProvider>  
-          { admin?login?client?<Client adminoff={adminOff} logout={logOut} clientoff={clientOff}/>:<Admin adminoff={adminOff} logout={logOut}/>:<Login clienton={clientOn} clientoff={clientOff} logged={logIn} adminoff={adminOff}/>:<Website adminon={adminOn}/> } 
+          { admin?login?client?<Client accountid={accountid} adminoff={adminOff} logout={logOut} clientoff={clientOff}/>:<Admin adminoff={adminOff} logout={logOut}/>:<Login clienton={clientOn} clientoff={clientOff} logged={logIn} adminoff={adminOff} />:<Website adminon={adminOn}/> } 
           <Route path="/register">
-            <Register adminon={adminOn}/>
+            <Register adminon={adminOn} accountid={accountId}/>
           </Route>
         </ProductContextProvider> 
       </Router> 

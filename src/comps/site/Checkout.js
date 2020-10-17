@@ -60,7 +60,7 @@ function Checkout(props) {
   }
   function createOrder() {
     setOrders((newOrder) => [
-      ...newOrder,
+      ...newOrder, 
       {
         number: number,
         custname: fname + " " + lname,

@@ -7,6 +7,7 @@ function Orders() {
   const {customers, orders, setOrders} = useContext(ProductContext)
 
   const [id, setId] = useState(orders.length)
+  const [ordid, setOrdid] = useState()
   const [number, setNumber] = useState(0)
   const [custname, setCustname] = useState('')
   const [date, setDate] = useState('')
@@ -23,18 +24,17 @@ function Orders() {
       return <OrderRow id={ord.id} number={ord.number} custname={ord.custname} date={ord.date} status={ord.status} total={ord.total} manageorder={manageOrder}/>
   }) 
 
-  function manageOrder(id,number,name,date,status,total) {
+  function manageOrder(number,name,date,status,total) {
     setProdsel(true)
-    setId(id)
     setNumber(number)
     setCustname(name)
     setDate(date)
-    setStatus(status) 
+    setStatus(status)  
     setTotal(total)
   }
-  function saveOrder(id) {
-    orders.map(ord => {
-      if(ord.id === id) {
+  function saveOrder() {
+    orders.map(ord => { 
+      if(ord.number === number) { 
         ord.number = number
         ord.custname = custname
         ord.date = date
@@ -42,7 +42,7 @@ function Orders() {
         ord.total = total
         setUpdated(prev => prev+1)
       }
-    })
+    })  
   } 
 
   return (
@@ -98,7 +98,7 @@ function Orders() {
             <label>  
               <h6>Total</h6> <div className="currencydiv">$</div> <input className="priceinp" value={parseFloat(total).toFixed(2)} onChange={(e) => setTotal(parseFloat(e.target.value))} /> <div className="clear"></div>
             </label>
-            <button className="saveorderbtn" onClick={() => saveOrder(id)}>Save Order</button>
+            <button className="saveorderbtn" onClick={() => saveOrder()}>Save Order</button>
             <button className="removeorderbtn">Remove Order</button>
           </div>
         </div> 

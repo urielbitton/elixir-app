@@ -10,13 +10,13 @@ import Client from './comps/client/Client'
 
 function App() {
  
-  const [login, setLogin] = useState(true)
-  const [admin, setAdmin] = useState(true)
-  const [client, setClient] = useState(true)
+  const [login, setLogin] = useState(false)
+  const [admin, setAdmin] = useState(false)
+  const [client, setClient] = useState(false)
   const history = useHistory()
 
   function logIn() { 
-    setLogin(true)
+    setLogin(true) 
   }
   function logOut() {
     setLogin(false)

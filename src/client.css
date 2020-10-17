@@ -3,7 +3,6 @@
   height: 110px;
 }
 .clientpage { 
-  background: #fafafa;
   padding: 30px;
   overflow-y: scroll;
   height: 100vh;
@@ -22,13 +21,14 @@
 }
 .clientdash {
   display: grid;
-  grid-template-columns: 300px auto;
+  grid-template-columns: 270px auto;
 }
 .clientdash .sidebar {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: rgba(0,0,0,0.05);
+  background: #fff;
+  border-right: 1px solid rgba(0,0,0,0.02);
 }
 .clientdash .homecont {
   position: relative;
@@ -57,9 +57,9 @@
   color: #333;
 }
 .clientdash .sidemenu h5 {
-  font-size: 16px;
+  font-size: 15px;
   color: #ccc;
-  margin: 25px 0;
+  margin: 20px 0;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -97,7 +97,7 @@
   padding: 15px 40px;
   background: #333;
   color: #fff;
-  border-radius: 40px;
+  border-radius: 5px;
 }
 .sidebarfoot button:hover {
   background: #111;
@@ -106,15 +106,15 @@
   position: fixed;
   top: 0;
   right: 15px;
-  width: calc(100% - 315px); 
+  width: calc(100% - 285px); 
   height: 120px;
-  background: #fafafa;
+  background: #fff;
   z-index: 999;
   box-shadow: none;
   border-left: 1px solid rgba(10, 157, 255,0.04);
   padding: 10px 20px;
   transition: all 0.3s;
-}
+} 
 .clientdash .topbar .left, .clientdash .topbar .right {
   position: relative;
   top: 25px;
@@ -131,16 +131,17 @@
 
 .clientdash .homecont {
   padding: 30px;
-  background: #fafafa;
+  background: rgba(241, 242, 246,0.7);
 }
 .clientdash .homegrid {
   grid-template-columns: repeat(12, 1fr);
 }
-.clientdash .homecont .dashbox {
+.clientdash .dashbox {
   box-shadow: 0 1px 12px rgba(0,0,0,0.04);
   background: #fff;
   padding: 25px 20px;
   overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1)
 }
 .clientdash .homecont .statusbox {
   grid-column: span 4;
@@ -156,6 +157,15 @@
   color: #333;
   font-size: 17px;
   font-weight: 500;
+}
+.boxfader {
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+  z-index: 10;
 }
 .clientdash .homecont .dashbox small {
   position: absolute;
@@ -248,7 +258,7 @@
 .progtube {
   position: relative;
   width: 100%;
-  height: 7px;
+  height: 18px;
   border-radius: 100px;
   background: rgba(255,255,255,0.4);
   overflow: hidden;
@@ -258,38 +268,37 @@
   left: 0;
   height:100%;
   width: 0;
+  border-radius: 40px;
   background: #fff;
   transition: all 1s;
+  z-index: 50;
 }
 .trackpointers {
   position: absolute;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  top: 30px;
+}
+.progchecks {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.progchecks i {
+  color: var(--color);
+  font-size: 13px;
+  top: 2.5px;
 }
 .trackpointers i {
   color: #eee;
   font-size: 11px;
   font-style: normal;
   position: relative;
-  text-align: center;
-  line-height: 1.1;
-  display: flex;
 }
-.trackpointers i:nth-of-type(1) {
-  left: 7%;
-  top: -35px;
-}
-.trackpointers i:nth-of-type(2) {
-  left: 32%;
-  top: -7px;
-} 
-.trackpointers i:nth-of-type(3) {
-  left: 60%;
-  top: -82px;
-}
-.trackpointers i:nth-of-type(4) {
-  left: 85%;
-  top: -55px;
-}
+
 .paycard {
   position: relative;
   background: #2e394d; 
@@ -389,7 +398,7 @@
 }
 .addressbox .circle {
   position: absolute;
-  top: -23px; 
+  bottom: -23px; 
   right: -12px;
   width: 100px;
   height: 100px;
@@ -433,7 +442,7 @@
   grid-template-columns: 60% 35%;
   grid-gap: 10px 15px;
   margin-bottom: 30px;
-  border-left: 5px solid var(--color);
+  border-left: 5px solid transparent;
 } 
 .orderstatcirc {
   position: relative;
@@ -542,6 +551,102 @@
   right: 30px;
   cursor: pointer;
 }
+
+.myaccountpage {
+  background: rgba(241, 242, 246,0.7);
+}
+.myaccountgrid {
+  display: grid;
+  width: 100%;
+  margin: auto;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+.myaccountgrid .mainbox {
+  grid-column: span 3;
+}
+.clientdash .myaccountgrid .dashbox {
+  border-radius: 5px;
+  border-color: rgba(0,0,0,0.07)
+}
+.dashprofbox, .helpbox {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
+  grid-column: span 1;
+}
+.dashprofbox h6 {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+.dashprofbox img {
+  width: 90px;
+  height: 90px;
+  border-radius: 100%;
+}
+.dashprofbox h4, .helpbox h4 {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #555;
+}
+.profaccountdiv {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+}
+.profaccountdiv span {
+  position: absolute;
+  bottom: 5px;
+  right: -5px;
+  background: var(--color);
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+}
+.helpbox i {
+  font-size: 50px;
+  color: rgba(0,0,0,0.1)
+}
+.helpbox p {
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.7;
+  text-align: center;
+  margin: 20px auto;
+  width: 80%;
+}
+.helpbox button {
+  padding: 12px 25px;
+  background: var(--color);
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: 0px 10px 17px -2px rgba(10,157,255,0.33);
+}
+.helpbox button:hover {
+  box-shadow: 0px 10px 17px -2px rgba(10,157,255,0.43);
+}
+.accountcol1 > div {
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

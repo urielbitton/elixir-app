@@ -341,7 +341,10 @@ input::placeholder {
 }
 .adminapp .dashbox table tbody td {
   padding: 10px 5px;
-  font-size: 14px;
+  font-size: 14px; 
+}
+.adminapp .dashbox .orderstable tbody td {
+  padding: 25px 0;
 }
 .adminapp .dashbox table tbody td:first-child {
   width: 80px;

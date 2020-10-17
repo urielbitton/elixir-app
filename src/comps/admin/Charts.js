@@ -22,9 +22,9 @@ function Charts(props) {
     new Chart(document.getElementById("line-chart"), {
       type: 'line', 
       data: {
-        labels: ["Week 1","Week 2","Week 3","Week 4"],
+        labels: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29],
         datasets: [{ 
-            data: [general.revenue_range[0],general.revenue_range[1],general.revenue_range[2],general.revenue_range[3],general.revenue_range[4],general.revenue_range[5],general.revenue_range[6],general.revenue_range[7],general.revenue_range[8],general.revenue_range[9],general.revenue_range[10]],
+            data: [0,general.revenue_range[0],general.revenue_range[1],general.revenue_range[2],general.revenue_range[3],general.revenue_range[4],general.revenue_range[5],general.revenue_range[6],general.revenue_range[7],general.revenue_range[8],general.revenue_range[9],general.revenue_range[10]],
             label: "Revenue",
             borderColor: "#0a9dff",
             fill: true,
@@ -53,7 +53,7 @@ function Charts(props) {
               //beginAtZero: true,
             } 
           }],
-        } 
+        }  
       } 
     })
     //bar chart

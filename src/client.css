@@ -97,7 +97,7 @@
   padding: 15px 40px;
   background: #333;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 5px; 
 }
 .sidebarfoot button:hover {
   background: #111;
@@ -105,13 +105,12 @@
 .clientdash .topbar {
   position: fixed;
   top: 0;
-  right: 15px;
-  width: calc(100% - 285px); 
+  right: 5px;
+  width: calc(100% - 275px); 
   height: 100px; 
   background: #fff;
   z-index: 999;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  border-left: 1px solid rgba(10, 157, 255,0.04);
   padding: 10px 20px;
   transition: all 0.3s;
 }  
@@ -199,6 +198,12 @@
 .clientdash .homecont .smallbox small {
   top: 27px;
 }
+.clientdash .homecont .dashbox small a {
+  color: var(--color); 
+}
+.clientdash .homecont .addressbox small a, .clientdash .homecont .trackerbox  small a {
+  color: #fff;
+} 
 .clientdash .homecont .trackerbox {
   background: var(--color);
 }
@@ -765,15 +770,91 @@
   user-select: none;
   transition: all 0.2s;
 }
-
-
- 
-
-
-
-
-
-
+.trackerpanel {
+  position: fixed;
+  bottom: -90vh;
+  height: 85vh;
+  width: 70%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #fff;
+  box-shadow: 0px -5px 27px -13px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  padding: 30px;
+  z-index: 900;
+  transition: all 0.4s;
+}
+.trackerpanel .fa-times {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 30px;
+  color: #aaa;
+  cursor: pointer;
+}
+.trackerpanel .trackprog {
+  margin-top: 40px;
+}
+.trackerpanel h3 {
+  color: #777;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
+} 
+.bigtrackercont {
+  position: relative;
+}
+.trackerpanel .progtube {
+  width: 85%;
+  height: 40px;
+  background: rgba(241, 242, 246);
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+.trackerpanel .trackpointers {
+  position: relative;
+  top: 105px;
+  width: 85%;
+  margin: auto;
+  justify-content: space-around;
+}
+.trackerpanel .trackpointers i {
+  color: #555;
+  font-size: 13px;
+  font-weight: 600; 
+  text-align: center;
+}
+.trackerpanel .trackpointers i small {
+  display: block;
+  margin-top: 3px;
+  color: #999;
+  font-size: 11px;
+  font-weight: 500;
+} 
+.trackerpanel .trackpointers i small span {
+  display: block;
+}
+.trackerpanel .progchecks i:first-child {
+  color: #fff;
+} 
+.trackerpanel .progchecks i {
+  font-size: 21px;
+  top: auto;
+}
+.trackerpanel .progfill {
+  width: 15%;
+  background: var(--color);
+}
+.innertrackerpanel {
+  position: relative;
+  height: 90%;
+  overflow-y: scroll;
+}
+.innertrackerpanel::-webkit-scrollbar {
+  display: none;
+}
 
 
 

@@ -96,11 +96,11 @@ function Item(props) {
       <div className="iteminfodiv">
         <div>
           <h5 onClick={() => props.openproduct(props.prod,props.id,props.name,props.img,props.price,props.descript,props.color,props.cat,props.sizes,props.units,props.instock,props.addcart,props.wishlist,props.qty,props.ratings,props.compared,props.reviews,props.avgrating)}><Link to="/product">{props.name}</Link></h5>
-          <small style={{color: props.instock?"#62d900":"#ff0040"}}>{props.instock?"In Stock":"Out Of Stock"}</small>
-          </div>
+          <button disabled={!props.instock} style={{cursor: props.instock?"":"not-allowed",opacity: props.instock?"1":"0.5"}} className="newaddtocart" onClick={props.addcart?"":() => addToCart()}>{props.addcart?"Added To Cart":props.instock?"Add To Cart":"Out Of Stock"}</button>
+          </div> 
         <div>
           <small>${parseFloat(props.price).toFixed(2)}</small>
-          <small>
+          <small className="newstarsicons">
             { Array.apply(null, { length: Math.round(props.prod.avgrating.avg) }).map((el) => <i className="fas fa-star"></i> ) } 
             { Array.apply(null, { length: 5-Math.round(props.prod.avgrating.avg) }).map((el) => ( <i className="far fa-star"></i> )) }
           </small>

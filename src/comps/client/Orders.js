@@ -2,11 +2,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom"
 import { ProductContext } from '../site/ProductContext'
 
-function Orders() {
+function Orders(props) {
 
   const {products, orders} = useContext(ProductContext)
 
   const [ordopen, setOrdopen] = useState(false)
+  const [trackopen, setTrackopen] = useState(false)
+  let date = new Date()
+  let demodate = date.getFullYear() +"/" +(date.getMonth() + 1) +"/" +(date.getDate() < 10 ? "0" + date.getDate() : date.getDate())
+  let demotime = (date.getHours()<10?"0"+date.getHours():date.getHours())+":"+(date.getMinutes()<10?"0"+date.getMinutes():date.getMinutes())
  
   const myorders = orders.map(ord => {
     return (<div className="orderbox" style={{borderColor: ord.status==="Delivered"?"transparent":"var(--color)"}}>
@@ -25,7 +29,10 @@ function Orders() {
   
   useEffect(() => {
     const orderbtns = document.querySelectorAll('.myorderspage button.vieworderbtn')
+    const trackorderbtn = document.querySelectorAll('.myorderspage button.trackorderbtn')
     const orderspanel = document.querySelector('.orderspanel')
+    const trackerpanel = document.querySelector('.trackerpanel')
+
     orderbtns.forEach(el => {
       el.onclick = () => {
         if(ordopen === false) {
@@ -42,7 +49,32 @@ function Orders() {
       orderspanel.style.right = '-650px'
       setOrdopen(false)
     }
-  })
+
+    trackorderbtn.forEach(el => {
+      el.onclick = () => {
+        if(trackopen === false) {
+          trackerpanel.style.bottom = '0'
+          setTrackopen(true)
+        } 
+        else {
+          trackerpanel.style.bottom = '-90vh'
+          setTrackopen(false)
+        } 
+      }
+    }) 
+    document.querySelector('.trackerpanel .fa-times').onclick = () => {
+      trackerpanel.style.bottom = '-90vh'
+      setTrackopen(false)
+    }
+
+    if(props.opent === false) {
+      if(props.opentracker === true) {
+        trackorderbtn[0].click()
+        props.closetracker()  
+      }
+    }
+    
+  },[])
   
       
   return (
@@ -57,6 +89,34 @@ function Orders() {
         <h3>Order Details</h3>
         <i className="fal fa-times"></i>
       </div>
+      <div className="trackerpanel"> 
+        <h3>Tracking Details</h3>
+        <i className="fal fa-times"></i>
+        <div className="innertrackerpanel">
+        <div className="bigtrackercont">
+           <div className="trackprog">
+            <div className="trackpointers">
+              <i className="top">Pending<small>{demodate}<span>{demotime}</span></small></i> 
+              <i className="bottom">Processing<small>{demodate}<span>{demotime}</span></small></i> 
+              <i className="top">Shipped<small>{demodate}<span>{demotime}</span></small></i> 
+              <i className="bottom">Delivered<small>{demodate}<span>{demotime}</span></small></i> 
+            </div>
+            <div className="progtube">
+              <div className="progchecks">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div className="progfill"></div>
+            </div>
+           </div>
+        </div>
+        <div className="spacerl"></div>
+
+        </div>
+      </div> 
+
     </div>
   )
 }

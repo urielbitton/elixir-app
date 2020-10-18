@@ -58,7 +58,7 @@ function MyAccount(props) {
         dashnavliner.style.left = el.getAttribute('data-pos')+"px" 
         dashnavliner.style.width = el.getAttribute('data-width')+"px" 
         navlink.forEach(el2 => el2.style.cssText += 'color:#999;font-weight:500')
-        el.style.cssText += 'color:#333;font-weight:600'
+        el.style.cssText += 'color:var(--color);font-weight:600'
 
         let taber = el.getAttribute('data-taber')
         document.querySelectorAll('[data-tab]').forEach(el3 => el3.style.display = 'none')

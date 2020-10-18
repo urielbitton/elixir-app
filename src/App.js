@@ -46,7 +46,7 @@ function App() {
         <ProductContextProvider>  
           { admin?login?client?<Client accountid={accountid} adminoff={adminOff} logout={logOut} clientoff={clientOff}/>:<Admin adminoff={adminOff} logout={logOut}/>:<Login clienton={clientOn} clientoff={clientOff} logged={logIn} adminoff={adminOff} />:<Website adminon={adminOn}/> } 
           <Route path="/register">
-            <Register adminon={adminOn} accountid={accountId}/>
+            <Register adminon={adminOn} adminoff={adminOff} accountid={accountId}/>
           </Route>
         </ProductContextProvider> 
       </Router> 

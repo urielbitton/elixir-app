@@ -679,7 +679,7 @@ section .secsubtitle {
 } 
 .itemactions {
   position: absolute;
-  bottom: 80px;
+  bottom: 90px;
   height: 60px;
   left: 0;
   right: 0;
@@ -3061,10 +3061,22 @@ footer .socials > div i {
   margin-bottom: 5px;
   color: #333;
 }
+.newaddtocart {
+  padding: 10px 20px;
+  background: #333;
+  color: #fff;
+  margin-top: 10px;
+}
+.newaddtocart:hover {
+  background: #555;
+}
+.itemcont .iteminfodiv .newstarsicons {
+  position: relative;
+  margin-top: 20px;
+  display: block;
+}
 
-
-
-
+ 
 
 
 

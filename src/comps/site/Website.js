@@ -98,7 +98,7 @@ function Website(props) {
     setProd(prod)
     setId(id)
     setName(name)
-    setImg(img)
+    setImg(img) 
     setPrice(price)
     setDescript(descript)
     setColor(color)

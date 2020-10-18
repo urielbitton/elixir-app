@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 import { ProductContext } from '../site/ProductContext'
 
 function Home(props) {
@@ -32,7 +33,10 @@ function Home(props) {
         }
       } 
     }, 500) 
-    
+
+    document.querySelector('.addressbox small').onclick = () => setTimeout(() => { document.querySelector('[data-taber="2"]').click() }, 200)
+    document.querySelector('.paymentsbox small').onclick = () => setTimeout(() => { document.querySelector('[data-taber="3"]').click() }, 200)
+    document.querySelector('.trackerbox small a').onclick = () => setTimeout(() => { document.querySelector('.trackerpanel').style.bottom = '0'; props.opentracker() }, 400)
   },[]) 
 
   return ( 
@@ -43,7 +47,7 @@ function Home(props) {
       <div className="homegrid">
         <div className="dashbox statusbox">
           <h4>Latest Orders</h4>
-          <small>More<i className="fas fa-long-arrow-alt-right"></i></small>
+          <small><Link to="/myorders">More<i className="fas fa-long-arrow-alt-right"></i></Link></small>
           <table>
             <thead>
               <th>Order #</th>
@@ -80,20 +84,20 @@ function Home(props) {
         </div>
         <div className="dashbox trackerbox smallbox">
           <h5>Track Your Orders</h5>
-          <small>View<i className="fas fa-long-arrow-alt-right"></i></small>
+          <small><Link to="/myorders">View<i className="fas fa-long-arrow-alt-right"></i></Link></small>
           <div className="spacers"></div>
           {ordertrack.reverse().slice(0,1)}
         </div>  
         <div className="dashbox paymentsbox smallbox">
         <h5>Your Payments</h5> 
-          <small>Manage<i className="fas fa-long-arrow-alt-right"></i></small>
+          <small><Link to="/myaccount">Manage<i className="fas fa-long-arrow-alt-right"></i></Link></small>
             {
               <div className="paycard"><i className="cardnums">*****{accounts.find(el => el.id===general.activeaccid).cardnumber.slice(12)}</i><i className="expdate">exp: {accounts.find(el => el.id===general.activeaccid).expdate}</i><h4>{accounts.find(el => el.id===general.activeaccid).name}</h4><h6>{accounts.find(el => el.id===general.activeaccid).cardtype}</h6><div className="c1 circle"></div><div className="c2 circle"></div><div className="triangle"></div></div>
             }
         </div>
         <div className="dashbox addressbox smallbox">
           <h5>Your Addresses</h5>
-          <small>Manage<i className="fas fa-long-arrow-alt-right"></i></small>
+          <small><Link to="/myaccount">Manage<i className="fas fa-long-arrow-alt-right"></i></Link></small>
           <div className="addressrow">
           {
             <><i class="far fa-map-marker-alt"></i> <h6>{accounts.find(el => el.id===general.activeaccid).name}</h6> <h6>{accounts.find(el => el.id===general.activeaccid).address}</h6> <h6>{accounts.find(el => el.id===general.activeaccid).postal}</h6> <h6>{accounts.find(el => el.id===general.activeaccid).city}</h6> <h6>{accounts.find(el => el.id===general.activeaccid).country}</h6> <h6>Phone: {accounts.find(el => el.id===general.activeaccid).phone}</h6></>

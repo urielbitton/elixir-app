@@ -10,7 +10,7 @@ function Mainbg() {
   let numslides = 3
   let timeout = interval/numslides  
  
-  useEffect(() => {
+  useEffect(() => { 
     document.querySelector('.slide1').style.opacity = '1'
     setTimeout(() => { document.querySelector('.slide1 h6').style.cssText += 'opacity:1;left:0' },700)
     setTimeout(() => { document.querySelector('.slide1 h1').style.cssText += 'opacity:1;top:0' },1200)

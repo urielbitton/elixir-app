@@ -7,12 +7,14 @@ function Orders(props) {
 
   const {products, orders} = useContext(ProductContext)
 
-  const [orderstatus, setOrderstatus] = useState('')
+  const [orderstatus, setOderstatus] = useState('')
   const [trackingnum, setTrackingnum] = useState('')
   const [ordercarrier, setOrdercarrier] = useState('') 
   const [ordopen, setOrdopen] = useState(false)
   const [trackopen, setTrackopen] = useState(false)
   const [update, setUpdate] = useState(0)
+  const [orderwidth, setOrderwidth] = useState()
+
   let date = new Date()
   let demodate = date.getFullYear() +"/" +(date.getMonth() + 1) +"/" +(date.getDate() < 10 ? "0" + date.getDate() : date.getDate())
   let demotime = (date.getHours()<10?"0"+date.getHours():date.getHours())+":"+(date.getMinutes()<10?"0"+date.getMinutes():date.getMinutes())
@@ -32,19 +34,26 @@ function Orders(props) {
     </div>
   </div>)
   })
-
+ 
   function sendTrackingData(ord) {
-    setOrderstatus(ord.status)
+    switch(ord.status) {
+      case "Pending": setOrderwidth(16); break
+      case "Processing": setOrderwidth(40); break
+      case "Shipped": setOrderwidth(65); break
+      case "Delivered": setOrderwidth(100); break
+      case "Refunded": setOrderwidth(100); break
+      default: setOrderwidth(16)
+    }  
     setTrackingnum(ord.trackingnum)
-    setOrdercarrier(ord.carrier) 
+    setOrdercarrier(ord.carrier)  
     setUpdate(prev => prev+1)
   }
   function sendOrdersData() {
 
-  }
-  function saveToPdf() {  
-     
-  }  
+  } 
+  function saveToPdf() {   
+     window.print()
+  }    
   
   useEffect(() => {
     const orderbtns = document.querySelectorAll('.myorderspage button.vieworderbtn')
@@ -75,42 +84,28 @@ function Orders(props) {
         if(trackopen === false) {
           trackerpanel.style.bottom = '0'
           setTrackopen(true)
-          progfill.style.width = getStatusWidth(orderstatus)+"%"
         } 
         else {
           trackerpanel.style.bottom = '-110vh'
           setTrackopen(false)
-          progfill.style.width = '0'
-        } 
+        }  
       } 
     }) 
     document.querySelector('.trackerpanel .fa-times').onclick = () => {
       trackerpanel.style.bottom = '-110vh'
       setTrackopen(false)
-      progfill.style.width = '0'
     }
 
     if(props.opent === false) {
       if(props.opentracker === true) {
         trackorderbtn[0].click()
-        props.closetracker()  
+        props.closetracker()   
       }
-    }
-    function getStatusWidth(orderstatus) {
-      let orderwidth
-      switch(orderstatus) {
-        case "Pending": orderwidth = 16; break
-        case "Processing": orderwidth = 40; break
-        case "Shipped": orderwidth = 65; break
-        case "Delivered": orderwidth = 100; break
-        case "Refunded": orderwidth = 100; break
-        default: orderwidth = 0
-      }
-      return orderwidth
     }
 
+    
+
   },[])
-  
       
   return (
     <div className="myorderspage clientpage">
@@ -143,8 +138,8 @@ function Orders(props) {
       </div>
       <div className="trackerpanel" data-update={update}> 
         <h3>Tracking Details</h3>
-        <i className="fal fa-times"></i>
-
+        <i className="fal fa-times" onClick={() => setOrderwidth(0)}></i>
+ 
         <div className="trackingdetails">
           <img src={products[0].img} alt=""/>
           <div>
@@ -171,9 +166,9 @@ function Orders(props) {
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-check-circle"></i>
               </div>
-              <div className="progfill"></div>
+              <div className="progfill" style={{width:orderwidth+"%"}}></div>
             </div>
-           </div>
+           </div> 
         </div>
         <div className="spacerl"></div>
         <h4 className="tableheadertxt">Updates</h4>

@@ -7,11 +7,8 @@ function Home(props) {
   const {products, orders, general, accounts} = useContext(ProductContext)
 
   const orderrows = orders.map(ord => {
-    return <tr><td className="orderlink">#{ord.number}</td><td>{ord.products}</td><td>${ord.total.toFixed(2)}</td><td><button className="statusbtn">{ord.status}</button></td></tr>
+    return <tr><td className="orderlink">#{ord.number}</td><td>{ord.products}</td><td>${ord.total.toFixed(2)}</td><td><button className="statusbtn">{ord.status}</button></td><td>{ord.date}</td></tr>
   })
-  const ordertrack = orders.map(ord => {
-    return <div> <h6>Order: #{ord.number}<span>{ord.date}</span></h6> <div className="trackprog"><div className="trackpointers"><i className="top">Pending</i> <i className="bottom">Processing</i> <i className="top">Shipped</i> <i className="bottom">Delivered</i> </div><div className="progtube"><div className="progchecks"><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i></div><div className="progfill"></div></div></div></div>
-  }) 
   const recentpurch = products.map(prod => {
     if(prod.purchased_status===true)
       return <tr><td><img src={prod.img} alt=""/></td><td className="prodnametd">{prod.name}</td><td>${prod.price.toFixed(2)}</td><td>{prod.units}</td><td>${(prod.price*prod.units).toFixed(2)}</td><td style={{color:prod.instock?"var(--color)":"#FF3737"}}>{prod.instock?"In Stock":"Out of Stock"}</td></tr>
@@ -24,19 +21,19 @@ function Home(props) {
       if(document.body.contains(progfill)) {
       let orderstatus = orders[0].status
         switch(orderstatus) {
-          case "Payment Pending": progfill.style.width = '20%'; break
+          case "Pending": progfill.style.width = '16%'; break
           case "Processing": progfill.style.width = '40%'; break
           case "Shipped": progfill.style.width = '65%'; break
           case "Delivered": progfill.style.width = '100%'; break
           case "Refunded": progfill.style.width = '100%'; break
-          default: progfill.style.width = '15%' 
+          default: progfill.style.width = '0%'  
         }
       } 
     }, 500) 
 
     document.querySelector('.addressbox small').onclick = () => setTimeout(() => { document.querySelector('[data-taber="2"]').click() }, 200)
     document.querySelector('.paymentsbox small').onclick = () => setTimeout(() => { document.querySelector('[data-taber="3"]').click() }, 200)
-    document.querySelector('.trackerbox small a').onclick = () => setTimeout(() => { document.querySelector('.trackerpanel').style.bottom = '0'; props.opentracker() }, 400)
+    document.querySelector('.trackerbox small a').onclick = () => setTimeout(() => { document.querySelector('.trackerpanel').style.bottom = '0'; props.opentracker(); document.querySelector('.trackerpanel .progfill').style.width = '65%' }, 400)
   },[]) 
 
   return ( 
@@ -54,9 +51,10 @@ function Home(props) {
               <th>Products</th> 
               <th>Total</th>
               <th>Status</th>
+              <th>Date</th>
             </thead>
             <tbody>
-            {orderrows.reverse().slice(0,5)}  
+            {orderrows.slice(0,5)}  
             </tbody>
           </table>
         </div>
@@ -86,8 +84,8 @@ function Home(props) {
           <h5>Track Your Orders</h5>
           <small><Link to="/myorders">View<i className="fas fa-long-arrow-alt-right"></i></Link></small>
           <div className="spacers"></div>
-          {ordertrack.reverse().slice(0,1)}
-        </div>  
+          <div> <h6>Order: #{orders[0].number}<span>{orders[0].date}</span></h6> <div className="trackprog"><div className="trackpointers"><i className="top">Pending</i> <i className="bottom">Processing</i> <i className="top">Shipped</i> <i className="bottom">Delivered</i> </div><div className="progtube"><div className="progchecks"><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i></div><div className="progfill"></div></div></div></div>
+        </div>   
         <div className="dashbox paymentsbox smallbox">
         <h5>Your Payments</h5> 
           <small><Link to="/myaccount">Manage<i className="fas fa-long-arrow-alt-right"></i></Link></small>

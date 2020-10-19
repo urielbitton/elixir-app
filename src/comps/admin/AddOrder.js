@@ -9,7 +9,7 @@ function AddOrder() {
   const [id, setId] = useState(orders.length)
   const [number, setNumber] = useState(0)
   const [custname, setCustname] = useState('')
-  const [status, setStatus] = useState('Pending Payment')
+  const [status, setStatus] = useState('Pending')
   const [total, setTotal] = useState(0)
 
   const history = useHistory()
@@ -57,7 +57,7 @@ function AddOrder() {
             <label>
               <h6>Order Status</h6>
               <select onChange={(e) => setStatus(e.target.value)}>
-                <option value="Pending Payment">Pending Payment</option>
+                <option value="Pending">Pending Payment</option>
                 <option value="Processing">Processing</option>
                 <option value="Ready to Ship">Ready to Ship</option>
                 <option value="Shipped">Shipped</option>

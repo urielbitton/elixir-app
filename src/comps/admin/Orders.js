@@ -88,7 +88,7 @@ function Orders() {
             <label>
               <h6>Order Status</h6>
               <select className="orderstatusbtn" onChange={(e) => setStatus(e.target.value)}>
-                <option selected={status==="Pending Payment"?true:false} value="Pending Payment">Pending Payment</option>
+                <option selected={status==="Pending"?true:false} value="Pending">Pending Payment</option>
                 <option selected={status==="Processing"?true:false} value="Processing">Processing</option>
                 <option selected={status==="Shipped"?true:false} value="Shipped">Shipped</option>
                 <option selected={status==="Delivered"?true:false} value="Delivered">Delivered</option>

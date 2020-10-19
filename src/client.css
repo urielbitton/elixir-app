@@ -92,7 +92,7 @@
 }
 .sidebarfoot {
   text-align: center;
-}
+} 
 .sidebarfoot button {
   padding: 15px 40px;
   background: #333;
@@ -105,8 +105,8 @@
 .clientdash .topbar {
   position: fixed;
   top: 0;
-  right: 5px;
-  width: calc(100% - 275px); 
+  right: 11px;
+  width: calc(100% - 282px); 
   height: 100px; 
   background: #fff;
   z-index: 999;
@@ -457,7 +457,7 @@
   width: 8px;
   height: 8px;
   border-radius: 100%;
-  background: rgb(130, 211, 0);
+  background: #82d300;
   display: inline-block;
   margin-right: 10px;
 } 
@@ -551,6 +551,12 @@
   font-size: 23px;
   color: #333;
 }
+.innerorderspanel {
+  position: relative;
+  width: 100%;
+  height: 90%;
+  overflow-y: scroll;
+}
 .orderspanel .fa-times {
   font-size: 30px;
   padding: 5px;
@@ -558,6 +564,73 @@
   top: 15px;
   right: 30px;
   cursor: pointer;
+}
+.orderspanel h5 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 30px;
+}
+.innerorderspanel::-webkit-scrollbar {
+  display: none;
+}
+.orderpanelsrow {
+  width: 95%;
+  margin: auto;
+  background: #fafafa;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 7px;
+  border: 1px solid #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.orderpanelsrow img {
+  width: 50px;
+}
+.orderpanelsrow h6 {
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+  flex-basis: 25%;
+}
+.orderpaneltotal {
+  position: relative;
+  margin: auto;
+  margin-top: 20px;
+  width: 95%;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+.orderpaneltotal span {
+  font-weight: 600;
+  float: right;
+}
+.orderpaneldets {
+  margin: auto;
+  width: 95%;
+  background: #fafafa;
+  border-radius: 5px;
+  padding: 10px;
+}
+.orderpaneldets h6 {
+  margin: 12px 0;
+  font-size: 14px;
+  color: #555;
+  font-weight: 600;
+}
+.orderpaneldets h6 span {
+  float: right;
+  font-weight: 500;
+}
+.orderspanel button {
+  padding: 13px 25px;
+  margin-top: 30px;
+  background: #333;
+  color: #fff;
+}
+.orderspanel button:hover {
+  background: #555;
 }
 
 .myaccountpage {
@@ -769,11 +842,11 @@
   color: #aaa;
   user-select: none;
   transition: all 0.2s;
-}
+} 
 .trackerpanel {
   position: fixed;
-  bottom: -90vh;
-  height: 85vh;
+  bottom: -110vh;
+  height: 100vh;
   width: 70%;
   left: 0;
   right: 0;
@@ -782,8 +855,9 @@
   box-shadow: 0px -5px 27px -13px rgba(0,0,0,0.15);
   border-radius: 10px;
   padding: 30px;
-  z-index: 900;
+  z-index: 999;
   transition: all 0.4s;
+  text-align: center;
 }
 .trackerpanel .fa-times {
   position: absolute;
@@ -794,7 +868,7 @@
   cursor: pointer;
 }
 .trackerpanel .trackprog {
-  margin-top: 40px;
+  margin-top: 0;
 }
 .trackerpanel h3 {
   color: #777;
@@ -806,7 +880,7 @@
   position: relative;
 }
 .trackerpanel .progtube {
-  width: 85%;
+  width: 100%;
   height: 40px;
   background: rgba(241, 242, 246);
   margin: auto;
@@ -816,7 +890,7 @@
 .trackerpanel .trackpointers {
   position: relative;
   top: 105px;
-  width: 85%;
+  width: 100%;
   margin: auto;
   justify-content: space-around;
 }
@@ -836,7 +910,7 @@
 .trackerpanel .trackpointers i small span {
   display: block;
 }
-.trackerpanel .progchecks i:first-child {
+.trackerpanel .progchecks i:nth-of-type(1), .trackerpanel .progchecks i:nth-of-type(2), .trackerpanel .progchecks i:nth-of-type(3) {
   color: #fff;
 } 
 .trackerpanel .progchecks i {
@@ -844,23 +918,78 @@
   top: auto;
 }
 .trackerpanel .progfill {
-  width: 15%;
+  width: 0%;
   background: var(--color);
+  transition: all 1s ease-in-out;
+  transition-delay: 0.5s;
 }
 .innertrackerpanel {
   position: relative;
-  height: 90%;
+  width: 85%;
+  height: 70%;
+  margin: auto;
+  overflow: hidden;
+}
+.trackerpanel img {
+  width: 90px; 
+  margin-right: 20px;
+  margin-top: 30px;
+}
+.trackertablecont {
+  position: relative;
+  width: 100%;
+  height: 60%;
   overflow-y: scroll;
 }
-.innertrackerpanel::-webkit-scrollbar {
+.trackertablecont::-webkit-scrollbar {
   display: none;
 }
+.trackerpanel table {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  margin: auto;
+  font-size: 13px;
+  border-collapse: collapse;
+}  
+.trackerpanel table th, .trackerpanel table td {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+.trackerpanel table td {
+  padding: 20px 0;
+}
+.trackerpanel table td span {
+  font-weight: 600;
+  color: #333;
+}
+.trackerpanel table th:last-child, .trackerpanel table td:last-child {
+  text-align: right;
+}
+.trackingdetails {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+.trackingdetails h5 {
+  margin-bottom: 5px;
+  width: 300px;
+}
+.trackingdetails h5 span {
+  font-weight: 500;
+  float: right;
+}
+h4.tableheadertxt {
+  font-size: 20px;
+  color: #777;
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: 30px;
 
-
-
-
-
-
+}
 
 
 

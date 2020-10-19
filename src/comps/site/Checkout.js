@@ -26,17 +26,19 @@ function Checkout(props) {
   const [delivdate, setDelivdate] = useState(genDate())
   const [productid, setProductid] = useState([])
   const [delivspeed, setDelivspeed] = useState('Standard')
+  const [carrier, setCarrier] = useState('Fedex')
+  const [trackingnum, setTrackingnum] = useState(Math.floor(Math.random() * 99999999) + 10000000)
 
   general.total = general.subtotal + (general.subtotal*general.taxrate)
 
   const [number, setNumber] = useState(Math.floor(Math.random() * 9999) + 1000)
   const [custname, setCustname] = useState("")
   const [date, setDate] = useState(genDate())
-  const [status, setStatus] = useState("Pending Payment")
+  const [status, setStatus] = useState("Pending")
   const [ordtotal, setOrdtotal] = useState(general.total)
 
   let history = useHistory()
-
+ 
   function genDate() {
     let date = new Date()
     return (date.getFullYear() +"-" +(date.getMonth() + 1) +"-" +(date.getDate() < 10 ? "0" + date.getDate() : date.getDate()))
@@ -59,22 +61,23 @@ function Checkout(props) {
     ])
   }
   function createOrder() {
-    setOrders((newOrder) => [
-      ...newOrder, 
-      {
-        number: number,
-        custname: fname + " " + lname,
-        date: date,
-        status: status,
-        total: ordtotal,
-        products: general.cartitems,
-        cardnumber: cardnumber,
-        expdate: expdate,
-        delivdate: delivdate,
-        productid: productid,
-        delivspeed: delivspeed,
-      } 
-    ])
+    let ordersobj = {
+      number: number,
+      custname: fname + " " + lname,
+      date: date,
+      status: status,
+      total: ordtotal,
+      products: general.cartitems,
+      cardnumber: cardnumber,
+      expdate: expdate,
+      delivdate: delivdate,
+      productid: productid,
+      delivspeed: delivspeed,
+      carrier: "",
+      trackingnum: trackingnum,
+      tracklocation: "Montreal, Canada",
+    }  
+    orders.unshift(ordersobj)
   } 
 
   function placeOrder() {

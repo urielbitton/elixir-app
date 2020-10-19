@@ -25,7 +25,7 @@ const ProductContextProvider = (props) => {
       selsize: "",
       purchased_status: false, 
       purchased_qty: 0,
-      earnings: 0,
+      earnings: 0, 
       neworder: false,
       tempqty: 0,
       datesold: '',

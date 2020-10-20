@@ -18,7 +18,7 @@ function Home(props) {
   useEffect(() => {
     const progfill = document.querySelector('.progfill')
     setTimeout(() => {
-      if(document.body.contains(progfill)) {
+      if(document.body.contains(progfill) && orders.length) {
       let orderstatus = orders[0].status
         switch(orderstatus) {
           case "Pending": progfill.style.width = '16%'; break
@@ -81,10 +81,10 @@ function Home(props) {
           <small>More<i className="fas fa-long-arrow-alt-right"></i></small>
         </div>
         <div className="dashbox trackerbox smallbox">
-          <h5>Track Your Orders</h5>
+          <h5>Track Your Orders</h5> 
           <small><Link to="/myorders">View<i className="fas fa-long-arrow-alt-right"></i></Link></small>
           <div className="spacers"></div>
-          <div> <h6>Order: #{orders[0].number}<span>{orders[0].date}</span></h6> <div className="trackprog"><div className="trackpointers"><i className="top">Pending</i> <i className="bottom">Processing</i> <i className="top">Shipped</i> <i className="bottom">Delivered</i> </div><div className="progtube"><div className="progchecks"><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i></div><div className="progfill"></div></div></div></div>
+          <div> <h6>Order: #{orders.length?orders[0].number:""}<span>{orders.length?orders[0].date:""}</span></h6> <div className="trackprog"><div className="trackpointers"><i className="top">Pending</i> <i className="bottom">Processing</i> <i className="top">Shipped</i> <i className="bottom">Delivered</i> </div><div className="progtube"><div className="progchecks"><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i><i class="fas fa-check-circle"></i></div><div className="progfill"></div></div></div></div>
         </div>   
         <div className="dashbox paymentsbox smallbox">
         <h5>Your Payments</h5> 

@@ -71,8 +71,8 @@ function Login(props) {
         <img src="https://i.imgur.com/0CWFpAm.jpg" alt="loginimg"/>
       </div> 
       <div className="logininfo">
-        <h3>Hello,<br/>Welcome Back</h3>
-        <div className="loginform">
+        <h3>Hello {accounts.length?(accounts.find(x => x.id === general.activeaccid).name).split(" ")[0]:"Guest"},<br/>Welcome{accounts.length?" Back":""}.</h3>
+        <div className="loginform"> 
           <input placeholder="Username or Email" onChange={(e) => setUsername(e.target.value)}/>
           <input className="passwdinp" placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
           <label>

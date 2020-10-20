@@ -9,14 +9,19 @@ function Orders(props) {
 
   const [orderstatus, setOderstatus] = useState('')
   const [trackingnum, setTrackingnum] = useState('')
-  const [ordercarrier, setOrdercarrier] = useState('') 
+  const [ordercarrier, setOrdercarrier] = useState('')
+  const [delivspeed, setDelivspeed] = useState('') 
   const [ordopen, setOrdopen] = useState(false)
-  const [trackopen, setTrackopen] = useState(false)
+  const [trackopen, setTrackopen] = useState(false) 
   const [update, setUpdate] = useState(0)
   const [orderwidth, setOrderwidth] = useState()
+  const [prodimg, setProdimg] = useState('')
+  const [prodtitle, setProdtitle] = useState('')
+  const [prodnum, setProdnum] = useState('') 
+  const [updatesarr, setUpdatesarr] = useState([])
 
   let date = new Date()
-  let demodate = date.getFullYear() +"/" +(date.getMonth() + 1) +"/" +(date.getDate() < 10 ? "0" + date.getDate() : date.getDate())
+  let demodate = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) +"/" +(date.getMonth() + 1) +"/"+ date.getFullYear()
   let demotime = (date.getHours()<10?"0"+date.getHours():date.getHours())+":"+(date.getMinutes()<10?"0"+date.getMinutes():date.getMinutes())
   const orderspanel = document.querySelector('.orderspanel')
  
@@ -46,6 +51,11 @@ function Orders(props) {
     }  
     setTrackingnum(ord.trackingnum)
     setOrdercarrier(ord.carrier)  
+    setDelivspeed(ord.delivspeed)  
+    setProdimg(products.find(x => x.id === ord.productid[0]).img)
+    setProdtitle(products.find(x => x.id === ord.productid[0]).name)
+    setProdnum(ord.products)
+    setUpdatesarr(ord.updates)
     setUpdate(prev => prev+1)
   }
   function sendOrdersData() {
@@ -103,8 +113,6 @@ function Orders(props) {
       }
     }
 
-    
-
   },[])
       
   return (
@@ -130,6 +138,7 @@ function Orders(props) {
           <div className="orderpaneldets">
             <h6>Order Number: <span>#98821</span></h6>
             <h6>Carrier: <span>{ordercarrier}</span></h6>
+            <h6>Delivery Speed: <span>{delivspeed}</span></h6>
             <h6>Tracking Number: <span>{trackingnum}</span></h6>
             <h6>Expected Delivery: <span>02/12/2020</span></h6>
           </div>
@@ -141,12 +150,13 @@ function Orders(props) {
         <i className="fal fa-times" onClick={() => setOrderwidth(0)}></i>
  
         <div className="trackingdetails">
-          <img src={products[0].img} alt=""/>
+          <img src={prodimg} alt=""/>
           <div>
             <h5>Tracking Number: <span>{trackingnum}</span></h5>
-            <h5>Products: <span>Women's Fur Coat + 4 more</span></h5>
-            <h5>Expected: <span>07/21/2020</span></h5>
+            <h5>Products: <span>{prodtitle} + {prodnum-1} more</span></h5>
+            <h5>Expected: <span>{demodate}</span></h5>
             <h5>Carrier: <span>{ordercarrier}</span></h5>
+            <h5>Delivery Speed: <span>{delivspeed}</span></h5>
           </div>
         </div> 
 
@@ -173,15 +183,16 @@ function Orders(props) {
         <div className="spacerl"></div>
         <h4 className="tableheadertxt">Updates</h4>
         <div className="trackertablecont">
-          <table>
+          <table> 
             <thead>
               <th>Date</th><th>Location</th><th>Event</th>
             </thead>
             <tbody>
-              <tr><td>09/17/2020<br/>9:15am</td><td>Montreal, Canada</td><td><span>Shipped</span><br/>Carrier: Fedex</td></tr>
-              <tr><td>09/16/2020<br/>6:45pm</td><td>Montreal, Canada</td><td><span>Ready to Ship</span><br/>Waiting for carrier</td></tr>
-              <tr><td>09/16/2020<br/>5:35pm</td><td>Montreal, Canada</td><td><span>Pending</span><br/>Payment Complete</td></tr>
-              <tr><td>09/15/2020<br/>1:30am</td><td>Montreal, Canada</td><td><span>Ordered</span><br/></td></tr>
+              {
+                updatesarr.map(el => {
+                  return <tr><td>{el.date}<br/>{el.time}</td><td>{el.location}</td><td><span>{el.event}</span><br/>{el.notes}</td></tr>
+                })
+              } 
             </tbody>
           </table>
         </div>

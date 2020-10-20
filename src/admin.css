@@ -1238,12 +1238,22 @@ h4.rightbartitle {
 }
 .orderstatusbtn {
   padding: 12px 20px;
-  border-radius: 5px;
+  border-radius: 5px; 
   background: #111;
   border: none;
   color: #fff;
   appearance:none;
-  text-align-last:center;
+  text-align:center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.carrierselect {
+  padding: 12px;
+  border-radius: 5px;
+  background: #f5f5f5;
+  border: none;
+  color: #333;
+  width: 90%;
   cursor: pointer;
   transition: all 0.2s;
 }

@@ -10,7 +10,7 @@ function Client(props) {
 
   function updateImg() {
     setUpdate(prev => prev+1)
-  }
+  } 
 
   return (
     <div className="clientdash">

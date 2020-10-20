@@ -26,7 +26,6 @@ function Checkout(props) {
   const [delivdate, setDelivdate] = useState(genDate())
   const [productid, setProductid] = useState([])
   const [delivspeed, setDelivspeed] = useState('Standard')
-  const [carrier, setCarrier] = useState('Fedex')
   const [trackingnum, setTrackingnum] = useState(Math.floor(Math.random() * 99999999) + 10000000)
 
   general.total = general.subtotal + (general.subtotal*general.taxrate)
@@ -41,7 +40,31 @@ function Checkout(props) {
  
   function genDate() {
     let date = new Date()
-    return (date.getFullYear() +"-" +(date.getMonth() + 1) +"-" +(date.getDate() < 10 ? "0" + date.getDate() : date.getDate()))
+    return ((date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) +"-" +(date.getMonth() + 1) +"-" + date.getFullYear())
+  }
+  function genTime() {
+    let date = new Date()
+    return (date.getHours() < 10 ? "0"+date.getHours():date.getHours()) + ":"+ (date.getMinutes() < 10 ? "0"+date.getMinutes():date.getMinutes())
+  }
+   
+  function createOrder() {
+    let ordersobj = {
+      number: number,
+      custname: fname + " " + lname,
+      date: date,
+      status: status,
+      total: ordtotal,
+      products: general.cartitems,
+      cardnumber: cardnumber,
+      expdate: expdate,
+      delivdate: delivdate,
+      productid: productid,
+      delivspeed: delivspeed,
+      carrier: "",
+      trackingnum: trackingnum,
+      updates: [{date:genDate(), time:genTime(), location:"Montreal, Canada", event:"Pending", notes:"Ordered"}],
+    }  
+    orders.unshift(ordersobj)
   }
   function createCustomer() {
     setCustomers((newCust) => [...newCust,
@@ -59,25 +82,6 @@ function Checkout(props) {
         spent: general.total, 
       }
     ])
-  }
-  function createOrder() {
-    let ordersobj = {
-      number: number,
-      custname: fname + " " + lname,
-      date: date,
-      status: status,
-      total: ordtotal,
-      products: general.cartitems,
-      cardnumber: cardnumber,
-      expdate: expdate,
-      delivdate: delivdate,
-      productid: productid,
-      delivspeed: delivspeed,
-      carrier: "",
-      trackingnum: trackingnum,
-      tracklocation: "Montreal, Canada",
-    }  
-    orders.unshift(ordersobj)
   } 
 
   function placeOrder() {

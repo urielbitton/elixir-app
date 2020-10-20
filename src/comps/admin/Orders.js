@@ -15,20 +15,34 @@ function Orders() {
   const [total, setTotal] = useState(0) 
   const [updated, setUpdated] = useState(0)
   const [prodsel, setProdsel] = useState(false)
+  const [trackingnum, setTrackingnum] = useState()
+  const [carrier, setCarrier] = useState('')
+  const [delivspeed, setDelivspeed] = useState('')
 
   const [find, setFind] = useState('')
   const pattern = new RegExp('\\b' + find, 'i')
 
   const allorders = orders.map(ord => {
     if(pattern.test(ord.number))
-      return <OrderRow id={ord.id} number={ord.number} custname={ord.custname} date={ord.date} status={ord.status} total={ord.total} manageorder={manageOrder}/>
+      return <OrderRow id={ord.id} number={ord.number} custname={ord.custname} date={ord.date} carrier={ord.carrier} trackingnum={ord.trackingnum} status={ord.status} total={ord.total} manageorder={manageOrder}/>
   }) 
 
-  function manageOrder(number,name,date,status,total) {
+  function genDate() {
+    let date = new Date()
+    return ((date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) +"-" +(date.getMonth() + 1) +"-" + date.getFullYear())
+  }
+  function genTime() {
+    let date = new Date()
+    return (date.getHours() < 10 ? "0"+date.getHours():date.getHours()) + ":"+ (date.getMinutes() < 10 ? "0"+date.getMinutes():date.getMinutes())
+  }
+  function manageOrder(number,name,date,carrier,trackingnum,delivspeed,status,total) {
     setProdsel(true)
     setNumber(number)
     setCustname(name)
     setDate(date)
+    setCarrier(carrier)
+    setTrackingnum(trackingnum)
+    setDelivspeed(delivspeed)
     setStatus(status)  
     setTotal(total)
   }
@@ -38,11 +52,15 @@ function Orders() {
         ord.number = number
         ord.custname = custname
         ord.date = date
+        ord.carrier = carrier
+        ord.trackingnum = trackingnum
+        ord.delivspeed = delivspeed
         ord.status = status
         ord.total = total
+        ord.updates.unshift({date:genDate(), time:genTime(), location:"Montreal, Canada", event:ord.status, notes:""})
         setUpdated(prev => prev+1)
       }
-    })  
+    })   
   } 
 
   return (
@@ -61,6 +79,8 @@ function Orders() {
                 <th>Order #</th>
                 <th>Name</th>
                 <th>Date</th>
+                <th>Carrier</th>
+                <th>Tracking #</th>
                 <th>Order Status</th>
                 <th>Total</th>
               </tr>
@@ -82,8 +102,26 @@ function Orders() {
               <input value={custname} onChange={(e) => setCustname(e.target.value)}/>
             </label>
             <label>
-              <h6>Date</h6>
-              <input type="date" value={date} onChange={(e) => setDate(e.target.value)}/> 
+              <h6>Carrier</h6>
+              <select className="carrierselect" onChange={(e) => setCarrier(e.target.value)}>
+                <option default selected disabled>Choose a Carrier</option>
+                <option selected={carrier==="Canada Post"?true:false} value="Canada Post">Canada Post</option>
+                <option selected={carrier==="Fedex"?true:false} value="Fedex">Fedex</option>
+                <option selected={carrier==="UPS"?true:false} value="UPS">UPS</option>
+                <option selected={carrier==="Purolator"?true:false} value="Purolator">Purolator</option>
+              </select> 
+            </label>
+            <label>
+              <h6>Tracking Number</h6>
+              <input value={trackingnum} onChange={(e) => setTrackingnum(e.target.value)}/> 
+            </label>
+            <label>
+              <h6>Delivery Speed</h6>
+              <select className="carrierselect" onChange={(e) => setDelivspeed(e.target.value)}>
+                <option selected={delivspeed==="Standard"?true:false} value="Standard">Standard</option>
+                <option selected={delivspeed==="Express"?true:false} value="Express">Express</option>
+                <option selected={delivspeed==="Same Day"?true:false} value="Same Day">Same Day</option>
+              </select> 
             </label>
             <label>
               <h6>Order Status</h6>

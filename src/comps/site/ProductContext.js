@@ -492,13 +492,7 @@ const ProductContextProvider = (props) => {
 
   ]) 
   const [accounts, setAccounts] = useState([
-    {
-      id: 0,
-      username: 'client',
-      password: 'uriel',
-      name: 'Uriel Bitton',
-      pic: '', 
-    } 
+    
   ])
    
   return (

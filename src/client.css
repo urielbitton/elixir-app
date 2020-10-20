@@ -896,7 +896,7 @@
 }
 .trackerpanel .trackpointers i {
   color: #555;
-  font-size: 13px;
+  font-size: 13px;  
   font-weight: 600; 
   text-align: center;
 }
@@ -910,7 +910,7 @@
 .trackerpanel .trackpointers i small span {
   display: block;
 }
-.trackerpanel .progchecks i:nth-of-type(1), .trackerpanel .progchecks i:nth-of-type(2), .trackerpanel .progchecks i:nth-of-type(3) {
+.trackerpanel .progchecks i {
   color: #fff;
 } 
 .trackerpanel .progchecks i {
@@ -988,10 +988,9 @@ h4.tableheadertxt {
   font-weight: 500;
   text-align: left;
   margin-bottom: 30px;
-
 }
 
-
+ 
 
 
 

@@ -874,7 +874,8 @@
   color: #777;
   font-size: 24px;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 } 
 .bigtrackercont {
   position: relative;

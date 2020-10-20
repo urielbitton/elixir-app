@@ -8,9 +8,13 @@ function Orders(props) {
   const {products, orders} = useContext(ProductContext)
 
   const [orderstatus, setOderstatus] = useState('')
+  const [ordernum, setOrdernum] = useState('')
+  const [expdate, setExpdate] = useState('')
+  const [productid, setProductid] = useState([])
   const [trackingnum, setTrackingnum] = useState('')
+  const [ordertotal, setOrdertotal] = useState(0)
   const [ordercarrier, setOrdercarrier] = useState('')
-  const [delivspeed, setDelivspeed] = useState('') 
+  const [delivspeed, setDelivspeed] = useState('Standard') 
   const [ordopen, setOrdopen] = useState(false)
   const [trackopen, setTrackopen] = useState(false) 
   const [update, setUpdate] = useState(0)
@@ -29,12 +33,12 @@ function Orders(props) {
     return (<div className="orderbox" style={{borderColor: ord.status==="Delivered"?"transparent":"var(--color)"}}>
     <h5><div className="orderstatcirc" style={{background: ord.status==="Delivered"?"var(--color)":"#82d300"}}></div>{ord.status==="Pending"?"Pending":ord.status}</h5>
     <div>
-      <div className="orderboxrow"><img src={products.find(x => x.id === ord.productid[0]).img} alt=""/><div className="multprodimgcont" style={{display: ord.products>1?"block":"none"}}><span>+{ord.products-1}</span><img src={ord.products>1?products.find(x => x.id === ord.productid[1]).img:"#"} alt=""/></div><h4>Arrives {ord.delivdate}<br/><small>8am - 8pm</small></h4></div>
+      <div className="orderboxrow"><img src={products.find(x => x.id === ord.productid[0]).img} alt=""/><div className="multprodimgcont" style={{display: ord.products>1?"block":"none"}}><span>+{ord.products-1}</span><img src={ord.products>1?products.find(x => x.id === ord.productid[1]).img:"#"} alt=""/></div><h4>{ord.status==="Delivered"?"Arrived on":"Arrives"} {ord.delivdate}<br/><small>8am - 8pm</small></h4></div>
       <div className="orderboxrow"><small>{ord.carrier.length?"Delivery by":""} {ord.carrier}<br/><span>#{ord.number} - {ord.delivspeed}</span></small></div>
     </div>
     <div>
       <button className="trackorderbtn" onClick={() => sendTrackingData(ord)}>Track Order</button>
-      <button className="vieworderbtn" onClick={() => sendOrdersData()}>View Order Details</button>
+      <button className="vieworderbtn" onClick={() => sendOrdersData(ord)}>View Order Details</button>
       <button>Get Invoice</button>
     </div>
   </div>)
@@ -58,8 +62,16 @@ function Orders(props) {
     setUpdatesarr(ord.updates)
     setUpdate(prev => prev+1)
   }
-  function sendOrdersData() {
-
+  function sendOrdersData(ord) {
+    setOrdernum(ord.number)
+    setExpdate(ord.expdate)
+    setTrackingnum(ord.trackingnum)
+    setProductid(ord.productid)
+    setOrdertotal(ord.total)
+    setOrdercarrier(ord.carrier)  
+    setDelivspeed(ord.delivspeed)  
+    setProdnum(ord.products)
+    setUpdate(prev => prev+1)
   } 
   function saveToPdf() {   
      window.print()
@@ -123,24 +135,26 @@ function Orders(props) {
 
       {myorders}
 
-      <div className="orderspanel">
+      <div className="orderspanel" data-update={update}>
         <h3>Order Details</h3>
         <i className="fal fa-times"></i>
         <div className="spacer"></div>
         <div className="innerorderspanel">
           <h5>Products</h5>
-          <div className="orderpanelsrow"><img src={products[0].img} alt=""/><h6>{products[0].name}</h6><h6>Price: {products[0].price}</h6><h6>Quantity: {products[0].purchased_qty}</h6></div>
-          <div className="orderpanelsrow"><img src={products[1].img} alt=""/><h6>{products[1].name}</h6><h6>Price: {products[1].price}</h6><h6>Quantity: {products[1].purchased_qty}</h6></div>
-          <div className="orderpanelsrow"><img src={products[4].img} alt=""/><h6>{products[4].name}</h6><h6>Price: {products[4].price}</h6><h6>Quantity: {products[4].purchased_qty}</h6></div>
-          <div className="orderpaneltotal">Total: <span>$1086.15</span></div>
+          { 
+            productid.map(el => {
+              return <div className="orderpanelsrow"><img src={products.find(x => x.id === el).img} alt=""/><h6>{products.find(x => x.id === el).name}</h6><h6>Price: ${(products.find(x => x.id === el).price).toFixed(2)}</h6><h6>Quantity: {products.find(x => x.id === el).purchased_qty}</h6></div>
+            })
+          } 
+          <div className="orderpaneltotal">Total: <span>${ordertotal.toFixed(2)}</span></div>
           <div className="spacer"></div>
           <h5>Details</h5>
           <div className="orderpaneldets">
-            <h6>Order Number: <span>#98821</span></h6>
+            <h6>Order Number: <span>#{ordernum}</span></h6>
             <h6>Carrier: <span>{ordercarrier}</span></h6>
             <h6>Delivery Speed: <span>{delivspeed}</span></h6>
             <h6>Tracking Number: <span>{trackingnum}</span></h6>
-            <h6>Expected Delivery: <span>02/12/2020</span></h6>
+            <h6>Expected Delivery: <span>{expdate}</span></h6>
           </div>
           <button onClick={() => saveToPdf()}>Download Order</button>
         </div>  

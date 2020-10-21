@@ -30,7 +30,7 @@ function Home(props) {
         }
       } 
     }, 500)  
-
+    
     document.querySelector('.addressbox small').onclick = () => setTimeout(() => { document.querySelector('[data-taber="2"]').click() }, 200)
     document.querySelector('.paymentsbox small').onclick = () => setTimeout(() => { document.querySelector('[data-taber="3"]').click() }, 200)
     document.querySelector('.trackerbox small a').onclick = () => setTimeout(() => { props.opentracker() }, 400)

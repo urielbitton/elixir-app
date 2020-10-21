@@ -477,6 +477,7 @@ const ProductContextProvider = (props) => {
       customers: [],
       compareprods: [],
       activeaccid: 0,
+      recently_purch: [],
     }    
   )
   const [cart, setCart] = useState([

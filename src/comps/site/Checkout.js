@@ -101,6 +101,7 @@ function Checkout(props) {
     })
     products.map((prod) => {
       if (prod.addcart) {
+        general.recently_purch.push({id:prod.id}) 
         prod.purchased_status = true
         prod.neworder = true
         prod.purchased_qty += prod.units

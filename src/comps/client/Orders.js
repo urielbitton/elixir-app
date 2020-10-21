@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom"
 import { ProductContext } from '../site/ProductContext'
-import { jsPDF } from "jspdf"
 
 function Orders(props) {
 
@@ -33,7 +32,7 @@ function Orders(props) {
     return (<div className="orderbox" style={{borderColor: ord.status==="Delivered"?"transparent":"var(--color)"}}>
     <h5><div className="orderstatcirc" style={{background: ord.status==="Delivered"?"var(--color)":"#82d300"}}></div>{ord.status==="Pending"?"Pending":ord.status}</h5>
     <div>
-      <div className="orderboxrow"><img src={products.find(x => x.id === ord.productid[0]).img} alt=""/><div className="multprodimgcont" style={{display: ord.products>1?"block":"none"}}><span>+{ord.products-1}</span><img src={ord.products>1?products.find(x => x.id === ord.productid[1]).img:"#"} alt=""/></div><h4>{ord.status==="Delivered"?"Arrived on":"Arrives"} {ord.delivdate}<br/><small>8am - 8pm</small></h4></div>
+      <div className="orderboxrow"><img src={products.find(x => x.id === ord.productid[0]).img} alt=""/><div className="multprodimgcont" style={{display: ord.products>1?"block":"none"}}><span>+{ord.productid.length-1}</span><img src={ord.productid.length>1?products.find(x => x.id === ord.productid[1]).img:"#"} alt=""/></div><h4>{ord.status==="Delivered"?"Arrived on":"Arrives"} {ord.delivdate}<br/><small>8am - 8pm</small></h4></div>
       <div className="orderboxrow"><small>{ord.carrier.length?"Delivery by":""} {ord.carrier}<br/><span>#{ord.number} - {ord.delivspeed}</span></small></div>
     </div>
     <div>
@@ -41,7 +40,7 @@ function Orders(props) {
       <button className="vieworderbtn" onClick={() => sendOrdersData(ord)}>View Order Details</button>
       <button>Get Invoice</button>
     </div>
-  </div>)
+  </div>) 
   })
  
   function sendTrackingData(ord) {
@@ -157,6 +156,7 @@ function Orders(props) {
             <h6>Expected Delivery: <span>{expdate}</span></h6>
           </div>
           <button onClick={() => saveToPdf()}>Download Order</button>
+          <div className="spacers"></div>
         </div>  
       </div>
       <div className="trackerpanel" data-update={update}> 
@@ -186,7 +186,7 @@ function Orders(props) {
             <div className="progtube">
               <div className="progchecks">
                 <i class="fas fa-check-circle"></i>
-                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-check-circle"></i> 
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-check-circle"></i>
               </div>

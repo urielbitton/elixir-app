@@ -20,62 +20,63 @@ function Home() {
   topproducts = products.sort((a,b) => {
     return (b.purchased_qty) - (a.purchased_qty)
   }).map(prod => {
-    if(prod.purchased_qty > 5) 
+    if(prod.purchased_qty > 6) 
       return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.qty} qty_purch={prod.purchased_qty} earnings={prod.earnings} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} datesold={prod.datesold}/>
   }) 
-  const recentprods = general.recently_purch.sort((a,b) => {
+  const recentprods = products.sort((a,b) => {
     if(sort[0]===0) {
       if(sort[1]===0)
         return a.id-b.id
       else 
-        return b.id-a.id
+        return b.id-a.id 
     } 
     else if(sort[0]===1) {
       if(sort[1]===0) {
-        if(products.find(x => x.id===a.id).name > products.find(x => x.id===b.id).name)
+        if(a.name > b.name)
           return -1
-        else if(products.find(x => x.id===a.id).name < products.find(x => x.id===b.id).name)
+        else if(a.name < b.name)
           return 1
       }
       else {
-       if(products.find(x => x.id===a.id).name > products.find(x => x.id===b.id).name)
+       if(a.name > b.name)
         return 1
-       else if(products.find(x => x.id===a.id).name < products.find(x => x.id===b.id).name)
+       else if(a.name < b.name)
         return -1
       }
     } 
     else if(sort[0]===2) {
       if(sort[1]===0)
-        return products.find(x => x.id===a.id).price-products.find(x => x.id===b.id).price
+        return a.price-b.price
       else
-        return products.find(x => x.id===b.id).price-products.find(x => x.id===a.id).price
+        return b.price-a.price
     }
     else if(sort[0]===3) {
       if(sort[1]===0)
-        return products.find(x => x.id===a.id).qty-products.find(x => x.id===b.id).qty
+        return a.qty-b.qty
       else 
-      return products.find(x => x.id===b.id).qty-products.find(x => x.id===a.id).qty
+      return b.qty-a.qty
     } 
     else if(sort[0]===4) {
       if(sort[1]===0)
-        return products.find(x => x.id===a.id).purchased_qty-products.find(x => x.id===b.id).purchased_qty
+        return a.purchased_qty-b.purchased_qty
       else 
-      return products.find(x => x.id===b.id).purchased_qty-products.find(x => x.id===a.id).purchased_qty
+      return b.purchased_qty-a.purchased_qty
     } 
     else if(sort[0]===5) {
       if(sort[1]===0)
-        return products.find(x => x.id===a.id).earnings-products.find(x => x.id===b.id).earnings
+        return a.earnings-b.earnings
       else
-        return products.find(x => x.id===b.id).earnings-products.find(x => x.id===a.id).earnings
+        return b.earnings-a.earnings
     }
     else if(sort[0]===6) { 
       if(sort[1]===0) 
-        return products.find(x => x.id===a.id).instock-products.find(x => x.id===b.id).instock
+        return a.instock-b.instock
       else
-        return products.find(x => x.id===b.id).instock-products.find(x => x.id===a.id).instock
-    }
-  }).map(el => {
-      return <DashTableRow img={products.find(x => x.id===el.id).img} name={products.find(x => x.id===el.id).name} price={products.find(x => x.id===el.id).price} qty={products.find(x => x.id===el.id).qty} qty_purch={products.find(x => x.id===el.id).purchased_qty} earnings={products.find(x => x.id===el.id).earnings} status={products.find(x => x.id===el.id).purchased_status} instock={products.find(x => x.id===el.id).instock} hot={products.find(x => x.id===el.id).hot} sale={products.find(x => x.id===el.id).sale} id={products.find(x => x.id===el.id).id} datesold={products.find(x => x.id===el.id).datesold} openproduct={openProduct} />
+        return b.instock-a.instock
+    }  
+  }).map(prod => {
+    if(prod.purchased === true)
+      return <DashTableRow img={prod.img} name={prod.name} price={prod.price} qty={prod.qty} qty_purch={prod.purchased_qty} earnings={prod.earnings} status={prod.purchased_status} instock={prod.instock} hot={prod.hot} sale={prod.sale} id={prod.id} datesold={prod.datesold} openproduct={openProduct} />
   }) 
    
   function openProduct() {} 
@@ -130,7 +131,7 @@ function Home() {
             </tr>
           </thead>
           <tbody>
-            {topproducts}
+            {topproducts.slice(0,10)}
           </tbody> 
           <tfoot><td colSpan="8"><small className="footnote">* based on products that sold 6 or more units</small></td></tfoot>
           <tfoot>
@@ -170,25 +171,28 @@ function Home() {
             </tr>
           </thead>
           <tbody>
-            {recentprods}
+            {recentprods.slice(0,10)}
           </tbody>  
           <tfoot>
             <div className="spacers"></div>
             <small onClick={() => prodshow===5?setProdshow(Infinity):setProdshow(5)}>{prodshow===5?"Show All":"Show Less"}</small>
           </tfoot>
-          <tfoot>
+          <tfoot> 
             {
-              general.recently_purch.map(el => {
-                recearnings += products.find(x => x.id===el.id).earnings
-                recqtypurch += products.find(x => x.id===el.id).purchased_qty
-                recavgprice += products.find(x => x.id===el.id).price 
+              products.map(prod => {
+                if(prod.purchased===true) {
+                  reccount++
+                  recearnings += prod.earnings
+                  recqtypurch += prod.purchased_qty
+                  recavgprice += prod.price 
+                }
               })  
             } 
             <td className="tfootdetails" colSpan="8">
-              <h6>{general.recently_purch.length} <span>{general.recently_purch.length===1?"Product":"Products"}</span></h6>
+              <h6>{reccount} <span>{reccount===1?"Product":"Products"}</span></h6>
               <h6>${recearnings.toFixed(2)} <span>Total earnings</span></h6>
               <h6>{recqtypurch} <span>Quantities sold</span></h6>
-              <h6>${isNaN(recavgprice/general.recently_purch.length)?0:(recavgprice/general.recently_purch.length).toFixed(2)} <span>Average price</span></h6>
+              <h6>${isNaN(recavgprice/reccount)?0:(recavgprice/reccount).toFixed(2)} <span>Average price</span></h6>
             </td>
           </tfoot> 
         </table>

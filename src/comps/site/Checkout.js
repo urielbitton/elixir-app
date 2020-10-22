@@ -4,7 +4,7 @@ import PageBanner from "./PageBanner"
 import { ProductContext } from "./ProductContext"
  
 function Checkout(props) {
-  const {products, general, customers, setCustomers, orders, setOrders, cart} = useContext(ProductContext)
+  const {products, general, customers, setCustomers, orders, cart} = useContext(ProductContext)
 
   const [details, setDetails] = useState(false)
   const [disable, setDisable] = useState(false)
@@ -101,7 +101,7 @@ function Checkout(props) {
     })
     products.map((prod) => {
       if (prod.addcart) {
-        general.recently_purch.push({id:prod.id}) 
+        prod.purchased = true //for recently purchased items in admin dash
         prod.purchased_status = true
         prod.neworder = true
         prod.purchased_qty += prod.units
@@ -109,12 +109,13 @@ function Checkout(props) {
         prod.tempqty = prod.units
         prod.datesold = genDate()
         prod.earnings = prod.price * prod.purchased_qty
+        prod.units = 1
         productid.push(prod.id)
       } 
       if (prod.purchased_qty > 8) {
         prod.hot = true
       }
-      if (prod.purchased_qty > prod.qty) {
+      if (prod.qty <= 0) {
         prod.instock = false
       }
     }) 

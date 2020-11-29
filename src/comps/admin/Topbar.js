@@ -5,9 +5,9 @@ import Search from './Search';
 function Topbar(props) { 
 
   const [darkmode, setDarkmode] = useState(false)
-  const [keyword, setKeyword] = useState()
-  const pattern = new RegExp('\\b' + keyword, 'i')
-
+  const [keyword, setKeyword] = useState('') 
+  const pattern = new RegExp('\\b' + keyword.replace(/[\W_]+/g,""), 'i')
+ 
   function slideGrid() {
     const dashboard = document.querySelector('.dashboard')
     if(!dashboard.classList.contains('minidash')) {

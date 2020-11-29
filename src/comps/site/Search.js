@@ -5,15 +5,15 @@ import { ProductContext } from "./ProductContext";
 function Search(props) {
 
   const { products, setProducts, general, setGeneral } = useContext(ProductContext)
-  const [keyword, setKeyword] = useState('zzz') 
-  const pattern = new RegExp('\\b' + keyword, 'i')
+  const [keyword, setKeyword] = useState('zzzzz') 
+  const pattern = new RegExp('\\b' + keyword.replace(/[\W_]+/g,""), 'i')
 
   document.querySelectorAll('.resultrow').forEach(el => el.onclick = () => {
     document.querySelector('.searchcont .close').click()
     setTimeout(() => {
       document.querySelector('.searchcont input').value = ''
     }, 500)
-  })  
+  })   
  
   return (
     <div className="searchcont">
